@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Dragon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dragon.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/mains/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/mains/show.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/mains_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/mains_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +53,7 @@
       <updated>1580475998235</updated>
       <workItem from="1580475999515" duration="3198000" />
       <workItem from="1580481347533" duration="5672000" />
-      <workItem from="1581067685500" duration="696000" />
+      <workItem from="1581067685500" duration="2573000" />
     </task>
     <servers />
   </component>
