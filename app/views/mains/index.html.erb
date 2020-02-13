@@ -1,4 +1,8 @@
 <h1>mains.index.html.erb</h1>
 <div>
   <h1> @message </h1>
+  <ul><%@characters.each do |deatils| %>
+    <li><%= deatils.name %></li>
+    <% end %>
+  </ul>
 </div>
