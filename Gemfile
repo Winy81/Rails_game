@@ -23,6 +23,10 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# User login system
+gem 'devise'
+
+# for scheduled functions
 gem 'whenever', require: false
 
 # Use ActiveModel has_secure_password
