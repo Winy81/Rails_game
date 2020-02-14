@@ -1,6 +1,7 @@
 class CharactersController < ApplicationController
 
   before_action :set_character_details, only: [:show]
+  before_action :authenticate_user!
 
   def show
 

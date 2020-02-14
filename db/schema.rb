@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200214091613) do
+ActiveRecord::Schema.define(version: 20200214093719) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name",                                     null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20200214091613) do
     t.integer  "activity_require_level", default: 0,       null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
