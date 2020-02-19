@@ -29,6 +29,9 @@ gem 'devise'
 # for scheduled functions
 gem 'whenever', require: false
 
+#for layout
+gem 'bootstrap', '~> 4.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

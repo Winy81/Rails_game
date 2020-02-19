@@ -1,11 +1,12 @@
 <h1>mains.index.html.erb</h1>
 <div>
   <h1> @message </h1>
-  <ul><%@characters.each do |deatils| %>
-      <li>Character: <%= deatils.name %></li>
-      <li>Age Of Character: <%= deatils.age %></li>
-      <li>Status:<%= deatils.status %></li>
-      <li>Owner: <%= deatils.user_id %></li>
+  <br class="list-inline"><%@characters.each do |deatils| %>
+      <li class="list-inline-item">Character: <%= deatils.name %></li>
+      <li class="list-inline-item">Age Of Character: <%= deatils.age %></li>
+      <li class="list-inline-item">Status:<%= deatils.status %></li>
+      <li class="list-inline-item">Owner: <%= deatils.user_id %></li>
+      </br>
     <% end %>
   </ul>
 </div>
