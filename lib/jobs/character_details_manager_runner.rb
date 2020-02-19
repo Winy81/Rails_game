@@ -1,5 +1,5 @@
 module Jobs
-  class CharacterDetailsManagerRunner < ResqueJob
+  class CharacterDetailsManagerRunner
     @queue = :manager
 
     def perform

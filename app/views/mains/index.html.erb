@@ -2,7 +2,10 @@
 <div>
   <h1> @message </h1>
   <ul><%@characters.each do |deatils| %>
-    <li><%= deatils.name %></li>
+      <li>Character: <%= deatils.name %></li>
+      <li>Age Of Character: <%= deatils.age %></li>
+      <li>Status:<%= deatils.status %></li>
+      <li>Owner: <%= deatils.user_id %></li>
     <% end %>
   </ul>
 </div>
