@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20200225082309) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "user_id"
-    t.boolean  "hibernated"
-    t.boolean  "manualy_hibernated"
+    t.boolean  "hibernated",default:false
+    t.boolean  "manualy_hibernated",default:false
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20200225082309) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.boolean  "has_character"
+    t.boolean  "has_character",default:false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
