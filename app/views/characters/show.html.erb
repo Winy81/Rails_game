@@ -1,0 +1,10 @@
+<h1>Characters#show</h1>
+</br>
+  <ul class="list-inline">
+    <li class="list-inline-item">Character: <%= @characters.name %></li>
+    <li class="list-inline-item">Age Of Character: <%= @characters.age %></li>
+    <li class="list-inline-item">Status:<%= @characters.status %></li>
+    <li class="list-inline-item">Owner: <%= @characters.user_id %></li>
+    <%= link_to 'Character', controller: 'character', action: 'show'%>
+    </br>
+</ul>
