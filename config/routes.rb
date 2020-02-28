@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :mains, only: [:index, :show]
+  resources :characters, only: [:new, :show, :create]
 
   root to: 'mains#index'
 
