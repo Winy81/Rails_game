@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :mains, only: [:index, :show]
   resources :characters, only: [:new, :show, :create]
 
+  get 'character_info/:id', to: 'characters#character_info', as: :character_info
+
   root to: 'mains#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

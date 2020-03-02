@@ -10,7 +10,7 @@
         <%  if current_user.id.present? && character.user_id == current_user.id %>
           <%= link_to 'My_Character', character_path(character.id, {extra: 'from_index'}) %>
         <% else %>
-          <% link_to 'Character_info', character_info_path(character.id, {extra: 'from_index'})  %>
+          <%= link_to 'Character_info', character_info_path(character.id, {extra: 'from_index'})  %>
         <% end  %>
       </li>
       </br>
