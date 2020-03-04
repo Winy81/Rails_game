@@ -3,6 +3,11 @@ class CharactersController < ApplicationController
   before_action :set_character_details, only: [:show, :character_info]
   before_action :authenticate_user!
 
+  def index
+    @message = "Hello from charatcer_controller#index"
+    @characters = Character.all
+  end
+
   def show
 
   end

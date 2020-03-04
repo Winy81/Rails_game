@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :mains, only: [:index, :show]
-  resources :characters, only: [:new, :show, :create]
+  resources :characters, only: [:index, :new, :show, :create]
 
   get 'character_info/:id', to: 'characters#character_info', as: :character_info
 
