@@ -1,1 +1,20 @@
-<h1>mains#show.html.erb</h1>
+<h1><%= @message %>></h1>
+</br>
+<h2>Details of Character:</h2>
+<ul class="list-inline">
+  <li class="list-inline-item">Character: <%= @character.name %></li>
+  <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
+  <li class="list-inline-item">Status:<%= @character.status %></li>
+  <li class="list-inline-item">Owner: <%= @character.user_id %></li>
+  </br>
+</ul>
+
+</br>
+
+<h2>Owner of Character:</h2>
+<ul class="list-inline">
+  <li class="list-inline-item">Character: <%= @user.name %></li>
+  <li class="list-inline-item">Memeber since: <%= @user.created_at %></li>
+  <li class="list-inline-item">Number of created Characters: <%=  %></li>
+  </br>
+</ul>
