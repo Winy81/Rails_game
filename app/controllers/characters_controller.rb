@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
 
   def index
     @message = "Hello from charatcer_controller#index"
-    @characters = Character.all
+    @characters = Character.all.age_order_alive_filter
   end
 
   def show

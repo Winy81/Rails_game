@@ -4,7 +4,7 @@ class MainsController < ApplicationController
 
   def index
     @message = "Hello from mains_controller#index"
-    @characters = Character.all
+    @characters = Character.all.age_order_alive_filter.limit(100)
   end
 
   def show
