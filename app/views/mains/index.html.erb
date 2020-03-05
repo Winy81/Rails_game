@@ -1,5 +1,5 @@
-<h1>mains.index.html.erb</h1>
 <div>
+  <%= render 'shared/nav_for_guests' %>
   <h1> @message </h1>
   <ul class="list-inline"><%@characters.each do |character| %>
       <li class="list-inline-item">Character: <%= character.name %></li>
@@ -7,7 +7,7 @@
       <li class="list-inline-item">Status:<%= character.status %></li>
       <li class="list-inline-item">Owner: <%= character.user_id %></li>
       <li class="list-inline-item">
-          <%= link_to 'Character_info', main_path(character.id, {extra: 'from_index'})  %>
+          <%= link_to 'Character_info', main_path(character.id, {extra: 'from_mains.index'})  %>
       </li>
       </br>
     <% end %>

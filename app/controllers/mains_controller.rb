@@ -9,7 +9,7 @@ class MainsController < ApplicationController
 
   def show
     @message = "Hello from mains_controller#index"
-    @user = User.find(id=@character.user_id)
+    @user = User.find_by(id:@character.user_id)
     @number_of_characters = Character.where(user_id:@user.id)
   end
 
