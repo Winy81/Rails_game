@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :characters, only: [:index, :new, :show, :create]
 
   get 'character_info/:id', to: 'characters#character_info', as: :character_info
+  get 'all_of_my_character', to: 'characters#all_of_my_character', as: :all_of_my_character
 
   root to: 'mains#index'
 

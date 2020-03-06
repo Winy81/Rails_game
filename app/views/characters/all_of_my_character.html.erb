@@ -1,0 +1,9 @@
+<h1> @message </h1>
+<h2>Your characters history</h2>
+<br class="list-inline"><% @characters.each do |character| %>
+    <li class="list-inline-item">Character: <%= character.name %></li>
+    <li class="list-inline-item">Age Of Character: <%= character.age %></li>
+    <li class="list-inline-item">Status:<%= character.status %></li>
+    </br>
+  <% end %>
+</ul>
