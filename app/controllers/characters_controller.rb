@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_character_details, only: [:show, :character_info]
+  before_action :set_character_details, only: [:show, :character_info, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -23,6 +23,11 @@ class CharactersController < ApplicationController
 
   def create
 
+  end
+
+  def destroy
+    current_character = @character.delete
+    redirect_to characters_path, notice: "The character with id: #{current_character.id} has been deleted"
   end
 
   def character_info
