@@ -18,11 +18,17 @@ class CharactersController < ApplicationController
   end
 
   def new
-
+    Character.new
   end
 
   def create
+    @character = Character.new(character_params)
 
+    if @character.save
+      redirect_to character_path(@character), notice: "The character with id: #{current_character.id} has became alive!!!"
+    else
+      redirect_to new_character_path, notice: "The character has not been created"
+    end
   end
 
   def destroy
