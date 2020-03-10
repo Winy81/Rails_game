@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :mains, only: [:index, :show]
-  resources :characters, only: [:index, :new, :show, :create, :destroy]
+  resources :characters, only: [:index, :new, :show, :create, :destroy, :update]
 
   get 'character_info/:id', to: 'characters#character_info', as: :character_info
   get 'all_of_my_character', to: 'characters#all_of_my_character', as: :all_of_my_character
+  get 'character/:id/feeding', to: 'characters#feeding', as: :character_feeding
+  get 'character/:id/activity', to: 'characters#activity', as: :character_activity
+
 
   root to: 'mains#index'
 

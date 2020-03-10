@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_character_details, only: [:show, :character_info, :destroy]
+  before_action :set_character_details, only: [:show, :character_info, :destroy, :feeding, :activity]
   before_action :authenticate_user!
 
   def index
@@ -15,6 +15,14 @@ class CharactersController < ApplicationController
 
   def show
 
+  end
+
+  def feeding
+    @message = "Hello from character_controller#feeding"
+  end
+
+  def activity
+    @message = "Hello from character_controller#activity"
   end
 
   def new
