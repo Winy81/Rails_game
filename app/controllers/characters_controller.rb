@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
 
-  before_action :set_character_details, only: [:show, :character_info, :destroy, :feeding, :activity]
+  before_action :set_character_details, only: [:show, :character_info, :destroy, :feeding, :activity, :update]
   before_action :authenticate_user!
 
   def index
@@ -23,6 +23,14 @@ class CharactersController < ApplicationController
 
   def activity
     @message = "Hello from character_controller#activity"
+  end
+
+  def update
+      if @character.update_attributes(:fed_state => params[:fed_state])
+        redirect_to character_path(@character), notice: "5 Fed_points added"
+      else
+        redirect_to character_path(@character), notice: "Did not like it"
+      end
   end
 
   def new
