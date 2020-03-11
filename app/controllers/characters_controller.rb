@@ -4,25 +4,25 @@ class CharactersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @message = "Hello from character_controller#index"
+    @message = "Hello from CharactersController#index"
     @characters = Character.all.age_order_alive_filter
   end
 
   def all_of_my_character
-    @message = "Hello from character_controller#all_of_my_character"
+    @message = "Hello from CharactersController#all_of_my_character"
     @characters = Character.where(user_id: current_user.id).order(:id => :desc)
   end
 
   def show
-
+    @message = "Hello from CharactersController#showr"
   end
 
   def feeding
-    @message = "Hello from character_controller#feeding"
+    @message = "Hello from CharactersController#feeding"
   end
 
   def activity
-    @message = "Hello from character_controller#activity"
+    @message = "Hello from CharactersController#activity"
   end
 
   def update

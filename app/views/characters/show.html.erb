@@ -1,10 +1,12 @@
-<h1>Characters#show</h1>
+<h1> <%= @message %></h1>
 </br>
-<ul class="list-inline">
+<br class="list-inline">
   <li class="list-inline-item">Character: <%= @character.name %></li>
   <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
   <li class="list-inline-item">Status:<%= @character.status %></li>
   <li class="list-inline-item">Owner: <%= @character.user_id %></li>
-  <li class="list-inline-item"><%= link_to 'Delete', character_path(@character), method: :delete, data: {confirm: "Are you sure"} %></li>
+  <li class="list-inline-item">Hungry: <%= @character.fed_state %> - <%= link_to 'Eat', character_feeding_path(@character)%> - </li>
+  <li class="list-inline-item">Activity <%= @character.activity_require_level %> - <%= link_to 'Play', character_activity_path(@character)%> - </li>
+  <p>Destroy <%= @character.name %>  -  <%= link_to 'Delete', character_path(@character), method: :delete, data: {confirm: "Are you sure"} %></p>
   </br>
 </ul>
