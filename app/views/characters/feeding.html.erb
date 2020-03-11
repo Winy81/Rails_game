@@ -1,12 +1,18 @@
 <h1> <%= @message %></h1>
 
-<h2><%=  @character.fed_state%></h2>
+<h2>Your Fed State is <%=  @character.fed_state%></h2>
 <div id="feeding">
   <ul class="list-inline">
-    <li> <%= link_to "Small Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 5) }), :method=> :put  %></li>
-    <li> <%= link_to "Minor Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 10) }), :method=> :put  %></li>
-    <li><%= link_to "Normal Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 15) }), :method=> :put  %></li>
-    <li><%= link_to "Large Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 20) }), :method=> :put  %></li>
-    <li><%= link_to "Extra Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 25) }), :method=> :put  %></li>
+    <li> <%= link_to "Small Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }), :method=> :put  %></li>
+    <li> <%= link_to "Minor Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }), :method=> :put  %></li>
+    <li><%= link_to "Normal Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 15), extra: 'from_feeding' }), :method=> :put  %></li>
+    <li><%= link_to "Large Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 20), extra: 'from_feeding' }), :method=> :put  %></li>
+    <li><%= link_to "Extra Potion", character_path(@character.id, {fed_state:  (@character.fed_state + 25), extra: 'from_feeding' }), :method=> :put  %></li>
   </ul>
+
+  </br>
+  </br>
+  </br>
+
+  <p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
 </div>
