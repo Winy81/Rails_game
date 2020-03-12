@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/helpers/date_transform_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/characters_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/characters_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/characters_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/characters_helper.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +69,7 @@
       <workItem from="1581067685500" duration="16283000" />
       <workItem from="1581688408188" duration="5374000" />
       <workItem from="1582291932891" duration="2436000" />
-      <workItem from="1582630419433" duration="39157000" />
+      <workItem from="1582630419433" duration="40832000" />
     </task>
     <servers />
   </component>
@@ -78,10 +77,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="216" y="216" width="815" height="562" key="DiffContextDialog" timestamp="1583938027770">
+    <state x="216" y="216" width="815" height="562" key="DiffContextDialog" timestamp="1584020158181">
       <screen x="0" y="23" width="1920" height="999" />
     </state>
-    <state x="216" y="216" width="815" height="562" key="DiffContextDialog/0.23.1920.999@0.23.1920.999" timestamp="1583938027770" />
+    <state x="216" y="216" width="815" height="562" key="DiffContextDialog/0.23.1920.999@0.23.1920.999" timestamp="1584020158181" />
     <state x="639" y="326" width="670" height="676" key="search.everywhere.popup" timestamp="1580476975000">
       <screen x="0" y="23" width="1920" height="999" />
     </state>

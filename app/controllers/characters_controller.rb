@@ -26,7 +26,7 @@ class CharactersController < ApplicationController
   end
 
   def update
-    route = request_path_recogniser(params[:extra])
+    route = request_path_recognise_helper(params[:extra])
     if route == "feeding"
       update_fed_state(@character)
     elsif route == "activity"
@@ -71,14 +71,6 @@ class CharactersController < ApplicationController
                                       :happiness,
                                       :fed_state,
                                       :activity_require_level)
-  end
-
-  def request_path_recogniser(params)
-    if params == 'from_feeding'
-       "feeding"
-    elsif params == 'from_activity'
-       "activity"
-    end
   end
 
   def update_fed_state(character)
