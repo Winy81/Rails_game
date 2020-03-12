@@ -1,7 +1,7 @@
 <h1> @message </h1>
 
 <ul class="list-inline"><%@characters.each do |character| %>
-    <li class="list-inline-item">Character: <%= character.name %></li>
+    <li class="list-inline-item">Name of Character: <%= character.name %></li>
     <li class="list-inline-item">Age Of Character: <%= character.age %></li>
     <li class="list-inline-item">Status:<%= character.status %></li>
     <li class="list-inline-item">Owner: <%= character.user_id %></li>
@@ -15,3 +15,5 @@
     </br>
     <% end %>
 </ul>
+
+<p><%= link_to 'My Characters History', all_of_my_character_path({extra: 'from_index'}) %></p>

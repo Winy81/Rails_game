@@ -49,7 +49,8 @@ class CharactersController < ApplicationController
   end
 
   def destroy
-    current_character = @character.delete
+    current_character = @character
+    @character.delete
     redirect_to characters_path, notice: "The character with id: #{current_character.id} has been deleted"
   end
 

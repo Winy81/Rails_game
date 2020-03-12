@@ -1,9 +1,16 @@
 <h1> <%= @message %></h1>
 <h2>Your characters history</h2>
 <br class="list-inline"><% @characters.each do |character| %>
-    <li class="list-inline-item">Character: <%= character.name %></li>
+    <li class="list-inline-item">Name of Character: <%= character.name %></li>
     <li class="list-inline-item">Age Of Character: <%= character.age %></li>
     <li class="list-inline-item">Status:<%= character.status %></li>
+  <% if character.status == 'alive' %>
+    <%= link_to 'Manage Character', character_path(character.id, {extra: 'from_all_of_my_character'}) %>
+  <% else %>
+    <li class="list-inline-item">This Character has died on: <%= character.updated_at.strftime('%Y:%m:%d') %></li>
+    <li class="list-inline-item">Was living:  <%= life_length_counter(character) %></li>
+  <% end %>
     </br>
   <% end %>
 </ul>
+
