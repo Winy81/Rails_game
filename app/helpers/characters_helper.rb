@@ -1,28 +1,23 @@
 module CharactersHelper
 
+  include DateTransformHelper
+
   def life_length_counter(character)
     length = character.updated_at - character.created_at
-    time_converter(length)
+    result(length)
   end
 
   private
 
-  def time_converter(seconds)
-    hours = seconds / 3600
+  def result(seconds)
+    hours = seconds / SECOND_IN_A_HOUR
     full_days = hours_to_full_days(hours)
     hours = rest_of_hours(hours)
-    result = "#{full_days} Days and #{hours} Hours"
-    result
+    formated_time_layout(full_days,hours)
   end
 
-  def hours_to_full_days(hours)
-    full_days = (hours / 24).to_i
-    full_days
-  end
-
-  def rest_of_hours(hours)
-    full_hours = (hours % 24).to_i
-    full_hours
+  def formated_time_layout(full_days,hours)
+    "#{full_days} Days and #{hours} Hours"
   end
 
 end
