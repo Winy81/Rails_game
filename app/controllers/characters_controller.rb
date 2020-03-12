@@ -14,7 +14,7 @@ class CharactersController < ApplicationController
   end
 
   def show
-    @message = "Hello from CharactersController#showr"
+    @message = "Hello from CharactersController#show"
   end
 
   def feeding
@@ -26,11 +26,12 @@ class CharactersController < ApplicationController
   end
 
   def update
-      if @character.update_attributes(:fed_state => params[:fed_state])
-        redirect_to character_path(@character), notice: "5 Fed_points added"
-      else
-        redirect_to character_path(@character), notice: "Did not like it"
-      end
+    route = request_path_recogniser(params[:extra])
+    if route == "feeding"
+      update_fed_state(@character)
+    elsif route == "activity"
+      update_activity_state(@character)
+    end
   end
 
   def new
@@ -71,4 +72,29 @@ class CharactersController < ApplicationController
                                       :fed_state,
                                       :activity_require_level)
   end
+
+  def request_path_recogniser(params)
+    if params == 'from_feeding'
+       "feeding"
+    elsif params == 'from_activity'
+       "activity"
+    end
+  end
+
+  def update_fed_state(character)
+    if character.update_attributes(:fed_state => params[:fed_state])
+      redirect_to character_path(character), notice: "Fed_points added"
+    else
+      redirect_to character_path(character), notice: "Did not like it"
+    end
+  end
+
+  def update_activity_state(character)
+    if character.update_attributes(:activity_require_level => params[:activity_require_level])
+      redirect_to character_path(character), notice: "Activity points has burned down"
+    else
+      redirect_to character_path(character), notice: "Did not like it"
+    end
+  end
+
 end
