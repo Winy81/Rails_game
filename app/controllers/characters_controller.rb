@@ -82,7 +82,7 @@ class CharactersController < ApplicationController
     if character.update_attributes(:fed_state => value.fed_level_max_setter)
       redirect_to character_path(character), notice: character.fed_state == 100 ? "Your are full" : "Fed point added"
     else
-      redirect_to character_path(character), notice: "Did not like it"
+      redirect_to character_path(character), alert: "Did not like it"
     end
   end
 
@@ -90,7 +90,7 @@ class CharactersController < ApplicationController
     if character.update_attributes(:activity_require_level => params[:activity_require_level])
       redirect_to character_path(character), notice: "Activity points has burned down"
     else
-      redirect_to character_path(character), notice: "Did not like it"
+      redirect_to character_path(character), alert: "Did not like it"
     end
   end
 
@@ -99,11 +99,12 @@ class CharactersController < ApplicationController
   end
 
   def alive_check
-    @character.status == "alive" ? true : redirection_to_characters("This Character is dead")
+    @character.status == "alive" ? true : redirection_to_characters("warning","This Character is dead")
   end
 
-  def redirection_to_characters(message, extra="")
-    redirect_to characters_path, notice: "#{message} #{extra}"
+  def redirection_to_characters(type, message, extra="")
+    output_type = type.to_sym
+    redirect_to characters_path, {output_type.to_sym => "#{message} #{extra}"}
   end
 
 end

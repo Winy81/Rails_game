@@ -1,5 +1,6 @@
-<h1> @message </h1>
-
+<h1><%= @message %></h1>
+<h2>Current user_id: <%= current_user.id %></h2>
+</br>
 <ul class="list-inline"><%@characters.each do |character| %>
     <li class="list-inline-item">Name of Character: <%= character.name %></li>
     <li class="list-inline-item">Age Of Character: <%= character.age %></li>

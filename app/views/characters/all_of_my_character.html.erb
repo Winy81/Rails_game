@@ -1,4 +1,5 @@
 <h1> <%= @message %></h1>
+<h2>Current user_id: <%= current_user.id %></h2>
 <h2>Your characters history</h2>
 <br class="list-inline"><% @characters.each do |character| %>
     <li class="list-inline-item">Name of Character: <%= character.name %></li>
