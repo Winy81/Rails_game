@@ -74,8 +74,9 @@ class CharactersController < ApplicationController
   end
 
   def update_fed_state(character)
-    if character.update_attributes(:fed_state => params[:fed_state])
-      redirect_to character_path(character), notice: "Fed_points added"
+    value = fed_limit
+    if character.update_attributes(:fed_state => value.fed_level_max_setter)
+      redirect_to character_path(character), notice: character.fed_state == 100 ? "Your are full" : "Fed point added"
     else
       redirect_to character_path(character), notice: "Did not like it"
     end
@@ -87,6 +88,10 @@ class CharactersController < ApplicationController
     else
       redirect_to character_path(character), notice: "Did not like it"
     end
+  end
+
+  def fed_limit
+    DataFieldLimitSetter.new(params[:fed_state].to_i)
   end
 
 end
