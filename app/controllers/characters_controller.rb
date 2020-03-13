@@ -2,6 +2,7 @@ class CharactersController < ApplicationController
 
   before_action :set_character_details, only: [:show, :character_info, :destroy, :feeding, :activity, :update]
   before_action :authenticate_user!
+  before_action :alive_check, only: [:show, :feeding, :activity, :update ]
 
   def index
     @message = "Hello from CharactersController#index"
@@ -49,8 +50,11 @@ class CharactersController < ApplicationController
 
   def destroy
     current_character = @character
-    @character.delete
-    redirect_to characters_path, notice: "The character with id: #{current_character.id} has been deleted"
+    if @character.delete
+      redirection_to_characters("Character has been deleted with id:", current_character.id)
+    else
+      redirection_to_characters("Was not successful to delete Character with id:", current_character.id)
+    end
   end
 
   def character_info
@@ -94,4 +98,14 @@ class CharactersController < ApplicationController
     DataFieldLimitSetter.new(params[:fed_state].to_i)
   end
 
+  def alive_check
+    @character.status == "alive" ? true : redirection_to_characters("This Character is dead")
+  end
+
+  def redirection_to_characters(message, extra="")
+    redirect_to characters_path, notice: "#{message} #{extra}"
+  end
+
 end
+
+
