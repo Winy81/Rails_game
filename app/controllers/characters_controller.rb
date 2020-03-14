@@ -42,18 +42,19 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(character_params)
     if @character.save
-      redirect_to character_path(@character), notice: "The character with id: #{current_character.id} has became alive!!!"
+      redirection_to_character_path(@character,"notice", "Tha character has born. You gave name: ", @character.name)
     else
-      redirect_to new_character_path, notice: "The character has not been created"
+      flash.now[:alert] = "The character has not been created"
+      render :new
     end
   end
 
   def destroy
     current_character = @character
     if @character.delete
-      redirection_to_characters("Character has been deleted with id:", current_character.id)
+      redirection_to_characters_path("warning","Character has been deleted with id:", current_character.id)
     else
-      redirection_to_characters("Was not successful to delete Character with id:", current_character.id)
+      redirection_to_characters_path("alert","Was not successful to delete Character with id:", current_character.id)
     end
   end
 
@@ -80,17 +81,21 @@ class CharactersController < ApplicationController
   def update_fed_state(character)
     value = fed_limit
     if character.update_attributes(:fed_state => value.fed_level_max_setter)
-      redirect_to character_path(character), notice: character.fed_state == 100 ? "Your are full" : "Fed point added"
+      if character.fed_state == 100
+        redirection_to_character_path(character,"warning", "Your are full")
+      else
+        redirection_to_character_path(character,"notice", "Fed point added")
+      end
     else
-      redirect_to character_path(character), alert: "Did not like it"
+      redirection_to_character_path(character,"alert", "Did not like it")
     end
   end
 
   def update_activity_state(character)
     if character.update_attributes(:activity_require_level => params[:activity_require_level])
-      redirect_to character_path(character), notice: "Activity points has burned down"
+      redirection_to_character_path(character,"notice", "Activity points has burned down")
     else
-      redirect_to character_path(character), alert: "Did not like it"
+      redirection_to_character_path(character,"alert", "Did not move")
     end
   end
 
@@ -99,12 +104,17 @@ class CharactersController < ApplicationController
   end
 
   def alive_check
-    @character.status == "alive" ? true : redirection_to_characters("warning","This Character is dead")
+    @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is dead")
   end
 
-  def redirection_to_characters(type, message, extra="")
+  def redirection_to_characters_path(type, message, extra="")
     output_type = type.to_sym
-    redirect_to characters_path, {output_type.to_sym => "#{message} #{extra}"}
+    redirect_to characters_path, {output_type => "#{message} #{extra}"}
+  end
+
+  def redirection_to_character_path(current_character,type, message, extra="")
+    output_type = type.to_sym
+    redirect_to character_path(current_character), {output_type => "#{message} #{extra}"}
   end
 
 end
