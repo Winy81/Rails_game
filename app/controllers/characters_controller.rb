@@ -41,6 +41,8 @@ class CharactersController < ApplicationController
 
   def activity_process
     @message = "Hello from CharactersController#activity_process"
+    @sent_points_of_activity = (@character.activity_require_level.to_i - params[:activity_require_level].to_i)
+    @current_activity_state = params[:activity_require_level]
   end
 
   def update

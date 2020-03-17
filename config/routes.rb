@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'character/:id/feeding', to: 'characters#feeding', as: :character_feeding
   get 'character/:id/activity', to: 'characters#activity', as: :character_activity
   get 'character/:id/feeding_process', to: 'characters#feeding_process', as: :feeding_process
+  get 'character/:id/activity_process', to: 'characters#activity_process', as: :activity_process
 
   root to: 'mains#index'
 

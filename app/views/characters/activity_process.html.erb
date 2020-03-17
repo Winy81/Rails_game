@@ -1,0 +1,19 @@
+<h1> <%= @message %></h1>
+<h2>Current user_id: <%= current_user.id %></h2>
+</br>
+
+<h2>Your Activity Require State is :<%=  @character.activity_require_level%></h2>
+
+</br>
+<h4>Claim-able Activity points: <%= @sent_points_of_activity %></h4>
+</br>
+
+
+<div style="display:">
+  <%= link_to "Claim your Points", character_path(@character.id, {activity_require_level:  (@current_activity_state), extra: 'from_activity' }), class:"btn btn-outline-danger", :method => :put  %>
+</div>
+
+</br>
+</br>
+
+<p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
