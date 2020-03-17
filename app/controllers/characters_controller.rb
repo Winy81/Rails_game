@@ -1,8 +1,15 @@
 class CharactersController < ApplicationController
 
-  before_action :set_character_details, only: [:show, :character_info, :destroy, :feeding, :activity, :update]
+  before_action :set_character_details, only: [:show,
+                                               :character_info,
+                                               :destroy,
+                                               :feeding,
+                                               :activity,
+                                               :update,
+                                               :feeding_process,
+                                               :activity_process]
   before_action :authenticate_user!
-  before_action :alive_check, only: [:show, :feeding, :activity, :update ]
+  before_action :alive_check, only: [:show, :feeding, :activity, :feeding_process, :activity_process, :update ]
 
   def index
     @message = "Hello from CharactersController#index"
@@ -22,8 +29,17 @@ class CharactersController < ApplicationController
     @message = "Hello from CharactersController#feeding"
   end
 
+  def feeding_process
+    @message = "Hello from CharactersController#feeding_process"
+    @current_fed_state = params[:fed_state]
+  end
+
   def activity
     @message = "Hello from CharactersController#activity"
+  end
+
+  def activity_process
+    @message = "Hello from CharactersController#activity_process"
   end
 
   def update

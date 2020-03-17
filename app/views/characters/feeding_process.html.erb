@@ -1,0 +1,10 @@
+<h1> <%= @message %></h1>
+<h2>Current user_id: <%= current_user.id %></h2>
+</br>
+
+<h2>Your Fed State is <%=  @character.fed_state%></h2>
+
+</br>
+</br>
+
+<%= link_to "Claim your Points", character_path(@character.id, {fed_state:  (@current_fed_state), extra: 'from_feeding' }), :method => :put  %>

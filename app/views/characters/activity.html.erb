@@ -4,11 +4,11 @@
 <h2>Your Activity Require State is <%=  @character.activity_require_level%></h2>
 <div id="feeding">
   <ul class="list-inline">
-    <li> <%= link_to "1 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 1), extra: 'from_activity' }), :method=> :put  %></li>
-    <li> <%= link_to "2 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2), extra: 'from_activity' }), :method=> :put  %></li>
-    <li><%= link_to "5 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 5), extra: 'from_activity' }), :method=> :put  %></li>
-    <li><%= link_to "10 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 10), extra: 'from_activity' }), :method=> :put  %></li>
-    <li><%= link_to "30 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 30), extra: 'from_activity' }), :method=> :put  %></li>
+    <li> <%= link_to "1 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 1), extra: 'from_activity' }), :method => :put  %></li>
+    <li> <%= link_to "2 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2), extra: 'from_activity' }), :method => :put  %></li>
+    <li><%= link_to "5 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 5), extra: 'from_activity' }), :method => :put  %></li>
+    <li><%= link_to "10 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 10), extra: 'from_activity' }), :method => :put  %></li>
+    <li><%= link_to "30 minute", character_path(@character.id, {activity_require_level:  (@character.activity_require_level - 30), extra: 'from_activity' }), :method => :put  %></li>
   </ul>
 
   </br>
