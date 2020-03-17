@@ -5,6 +5,15 @@
 <h2>Your Fed State is <%=  @character.fed_state%></h2>
 
 </br>
+<h4>Claim-able feed point: <%= @sent_potion_of_food %></h4>
 </br>
 
-<%= link_to "Claim your Points", character_path(@character.id, {fed_state:  (@current_fed_state), extra: 'from_feeding' }), :method => :put  %>
+
+<div style="display:">
+  <%= link_to "Claim your Points", character_path(@character.id, {fed_state:  (@current_fed_state), extra: 'from_feeding' }), class:"btn btn-outline-danger", :method => :put  %>
+</div>
+
+</br>
+</br>
+
+<p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>

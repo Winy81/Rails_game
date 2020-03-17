@@ -31,6 +31,7 @@ class CharactersController < ApplicationController
 
   def feeding_process
     @message = "Hello from CharactersController#feeding_process"
+    @sent_potion_of_food = -1*(@character.fed_state.to_i - params[:fed_state].to_i)
     @current_fed_state = params[:fed_state]
   end
 
