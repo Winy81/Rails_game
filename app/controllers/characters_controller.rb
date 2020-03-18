@@ -1,13 +1,12 @@
 class CharactersController < ApplicationController
-  include CharactersServices
-  before_action :set_character_details, only: [:show,
-                                               :character_info,
-                                               :destroy,
-                                               :feeding,
-                                               :activity,
-                                               :update,
-                                               :feeding_process,
-                                               :activity_process]
+
+  before_action :set_character_details_with_owner_filter, only: [:show,
+                                                                 :destroy,
+                                                                 :feeding,
+                                                                 :activity,
+                                                                 :update,
+                                                                 :feeding_process,
+                                                                 :activity_process]
   before_action :authenticate_user!
   before_action :alive_check, only: [:show, :feeding, :activity, :feeding_process, :activity_process, :update ]
 
@@ -77,13 +76,16 @@ class CharactersController < ApplicationController
   end
 
   def character_info
-
+    @character = Character.find(params[:id])
   end
 
   private
 
-  def set_character_details
+  def set_character_details_with_owner_filter
     @character = Character.find(params[:id])
+    if @character.user_id != current_user.id
+      redirection_to_characters_path("alert","That Character is not Yours!")
+    end
   end
 
   def character_params

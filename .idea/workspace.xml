@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/services/characters_services/request_path_recogniser.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/characters_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/characters_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/character_details_manager.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/character_details_manager.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/data_field_limit_setter.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/data_field_limit_setter.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +74,7 @@
       <workItem from="1581688408188" duration="5374000" />
       <workItem from="1582291932891" duration="2436000" />
       <workItem from="1582630419433" duration="60999000" />
-      <workItem from="1584371239795" duration="10534000" />
+      <workItem from="1584371239795" duration="11387000" />
     </task>
     <servers />
   </component>
