@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/characters/activity_process.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/characters_services/request_path_recogniser.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/characters_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/characters_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/activity.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/feeding_process.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/feeding_process.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/character_details_manager.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/character_details_manager.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/data_field_limit_setter.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/data_field_limit_setter.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +44,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/services/characters_services" />
+    </key>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
@@ -73,7 +78,7 @@
       <workItem from="1581688408188" duration="5374000" />
       <workItem from="1582291932891" duration="2436000" />
       <workItem from="1582630419433" duration="60999000" />
-      <workItem from="1584371239795" duration="6567000" />
+      <workItem from="1584371239795" duration="10534000" />
     </task>
     <servers />
   </component>

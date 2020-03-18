@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-
+  include CharactersServices
   before_action :set_character_details, only: [:show,
                                                :character_info,
                                                :destroy,
@@ -46,10 +46,9 @@ class CharactersController < ApplicationController
   end
 
   def update
-    route = request_path_recognise_helper(params[:extra])
-    if route == "feeding"
+    if path_recogniser == "feeding"
       update_fed_state(@character)
-    elsif route == "activity"
+    elsif path_recogniser == "activity"
       update_activity_state(@character)
     end
   end
@@ -98,8 +97,7 @@ class CharactersController < ApplicationController
   end
 
   def update_fed_state(character)
-    value = fed_limit
-    if character.update_attributes(:fed_state => value.fed_level_max_setter)
+    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter)
       if character.fed_state == 100
         redirection_to_character_path(character,"warning", "Your are full")
       else
@@ -119,7 +117,11 @@ class CharactersController < ApplicationController
   end
 
   def fed_limit
-    DataFieldLimitSetter.new(params[:fed_state].to_i)
+    CharactersServices::DataFieldLimitSetter.new(params[:fed_state].to_i)
+  end
+
+  def path_recogniser
+    CharactersServices::RequestPathRecogniser.new(params[:extra]).request_path_recognise_helper
   end
 
   def alive_check
