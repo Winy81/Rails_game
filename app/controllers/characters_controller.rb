@@ -54,16 +54,24 @@ class CharactersController < ApplicationController
 
   def new
     @message = "Hello from CharactersController#new"
-    Character.new
+    if Character.where(user_id:current_user.id).count > 0
+      redirection_to_characters_path("alert","You have a character Alive")
+    else
+      Character.new
+    end
   end
 
   def create
-    @character = Character.new(character_params)
-    if @character.save
-      redirection_to_character_path(@character,"notice", "Tha character has born. You gave name: ", @character.name)
+    if Character.where(user_id:current_user.id).count > 0
+      redirection_to_characters_path("alert","You have a character Alive")
     else
-      flash.now[:alert] = "The character has not been created"
-      render :new
+      @character = Character.new(character_params)
+      if @character.save
+        redirection_to_character_path(@character,"notice", "Tha character has born. You gave name: ", @character.name)
+      else
+        flash.now[:alert] = "The character has not been created"
+        render :new
+      end
     end
   end
 
