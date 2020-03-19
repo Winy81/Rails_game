@@ -53,6 +53,7 @@ class CharactersController < ApplicationController
   end
 
   def new
+    @message = "Hello from CharactersController#new"
     Character.new
   end
 
@@ -90,6 +91,7 @@ class CharactersController < ApplicationController
 
   def character_params
     params.require(:character).permit(:id,
+                                      :user_id,
                                       :name,
                                       :status,
                                       :age,
