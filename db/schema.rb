@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20200226081938) do
     t.string   "name",                                     null: false
     t.string   "status",                 default: "alive", null: false
     t.integer  "age",                    default: 0,       null: false
-    t.string   "happiness",              default: "100",   null: false
+    t.integer  "happiness",              default: 100,     null: false
     t.integer  "fed_state",              default: 100,     null: false
     t.integer  "activity_require_level", default: 0,       null: false
     t.datetime "created_at",                               null: false
