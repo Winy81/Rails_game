@@ -87,6 +87,7 @@ class CharactersController < ApplicationController
   def character_info
     @message = "Hello from CharactersController#character_info"
     @character = Character.find(params[:id])
+    @user = User.find_by(id:@character.user_id)
   end
 
   def owner_info
