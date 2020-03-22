@@ -8,7 +8,7 @@
   <% if character.status == 'alive' %>
     <%= link_to 'Manage Character', character_path(character.id, {extra: 'from_all_of_my_character'}) %>
   <% else %>
-    <li class="list-inline-item">This Character has died on: <%= character.updated_at.strftime('%Y:%m:%d') %></li>
+    <li class="list-inline-item">This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
     <li class="list-inline-item">Was living:  <%= life_length_counter(character) %></li>
   <% end %>
   </br>

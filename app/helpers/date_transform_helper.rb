@@ -11,4 +11,8 @@ module DateTransformHelper
     (hours % HOURS_IN_A_DAY).to_i
   end
 
+  def date_view_optimizer(date)
+    date.strftime('%Y:%m:%d')
+  end
+
 end

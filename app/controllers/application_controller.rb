@@ -5,8 +5,4 @@ class ApplicationController < ActionController::Base
 
   add_flash_types :success, :warning, :danger
 
-  def after_sign_in_path_for(current_user)
-    characters_path
-  end
-
 end
