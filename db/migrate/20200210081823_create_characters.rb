@@ -4,7 +4,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :name,                   null: false
       t.string :status,                 null: false,default: "alive"
       t.integer :age,                   null: false,default: 0
-      t.string :happiness,              null: false,default: 100
+      t.integer :happiness,              null: false,default: 100
       t.integer :fed_state,             null: false,default: 100
       t.integer :activity_require_level,null: false,default: 0
 

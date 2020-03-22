@@ -8,6 +8,18 @@
 </head>
 <body>
 
+<% if current_user %>
+  <%= render 'shared/nav_for_users' %>
+<% else %>
+  <%= render 'shared/nav_for_guests' %>
+<% end %>
+
+<% flash.each do |key, message| %>
+  <div class="text-center alert alert-<%= message_manager(key) %>">
+    <%= message %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>

@@ -1,0 +1,20 @@
+<h1> <%= @message %></h1>
+<h2>Current user_id: <%= current_user.id %></h2>
+</br>
+
+<h2>Your Fed State is <%=  @character.fed_state%></h2>
+<div id="feeding">
+  <ul class="list-inline">
+    <li> <%= link_to "Small Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }) %></li>
+    <li> <%= link_to "Minor Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }) %></li>
+    <li><%= link_to "Normal Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15), extra: 'from_feeding' }) %></li>
+    <li><%= link_to "Large Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20), extra: 'from_feeding' }) %></li>
+    <li><%= link_to "Extra Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25), extra: 'from_feeding' }) %></li>
+  </ul>
+
+  </br>
+  </br>
+  </br>
+
+  <p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
+</div>
