@@ -1,13 +1,11 @@
 <p class="float-right small"><%= @message %></p>
+</br>
+</br>
 <div>
-  <ul class="list-inline"><%@characters.each do |character| %>
-      <li class="list-inline-item">Character: <%= character.name %></li>
+  <br class="list-inline"><%@characters.each do |character| %>
+      <li class="list-inline-item">Character: <%= link_to character.name, main_path(character.id, {extra: 'from_mains.index'})  %></li>
       <li class="list-inline-item">Age Of Character: <%= character.age %></li>
       <li class="list-inline-item">Status:<%= character.status %></li>
-      <li class="list-inline-item">Owner: <%= character.user_id %></li>
-      <li class="list-inline-item">
-          <%= link_to 'Character_info', main_path(character.id, {extra: 'from_mains.index'})  %>
-      </li>
       </br>
     <% end %>
   </ul>
