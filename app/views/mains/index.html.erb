@@ -1,12 +1,26 @@
-<p class="float-right small"><%= @message %></p>
 </br>
+
 </br>
-<div>
-  <br class="list-inline"><%@characters.each do |character| %>
-      <li class="list-inline-item">Character: <%= link_to character.name, main_path(character.id, {extra: 'from_mains.index'})  %></li>
-      <li class="list-inline-item">Age Of Character: <%= character.age %></li>
-      <li class="list-inline-item">Status:<%= character.status %></li>
-      </br>
-    <% end %>
-  </ul>
+<div class='container' style="height:400px">
+  <div class="row">
+  <div class="col-md-3 row justify-content-center side_mains_container" style="border-right:1px solid #EFEFEF">
+    <h1 class="" style="padding-top:25%">Message of test side content</h1>
+  </div>
+  <div class="col-md-9 row justify-content-center">
+    </br>
+    </br>
+    <div>
+      <ul class="list-inline"><%@characters.each do |character| %>
+        <li class="list-inline-item">Character: <%= link_to character.name, main_path(character.id, {extra: 'from_mains.index'})  %></li>
+        <li class="list-inline-item">Age Of Character: <%= character.age %></li>
+        <li class="list-inline-item">Owner: <%= user_name_fetch(character.user_id) %></li>
+        <li class="list-inline-item">Status: <%= character.status %></li>
+        </br>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+  </div>
 </div>
+
+<p class="float-right small"><%= @message %></p>
