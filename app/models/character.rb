@@ -6,4 +6,8 @@ class Character < ActiveRecord::Base
     order(:age => :desc)
   end
 
+  def self.age_order_alive_filter
+    order(:age => :desc).where(status:"alive")
+  end
+
 end

@@ -5,7 +5,7 @@ include DateTransformHelper
 RSpec.feature 'Show characters without user logged in' do
 
   before do
-    @user = User.create(name:'Test_user', email:'email@email.com', password:'password', )
+    @user = User.create(name:'Test_user', email:'email@email.com', password:'password')
     @character = Character.create(name:'Test_character', user_id:@user.id)
     @number_of_characters = Character.where(user_id:@user.id)
   end
@@ -13,6 +13,9 @@ RSpec.feature 'Show characters without user logged in' do
   scenario 'shows character details' do
     visit '/'
     click_link 'Test_character'
+
+    expect(page).to have_content('sign up')
+    expect(page).to have_content('log-in')
 
     expect(page).to have_content('Details of Character:')
     expect(page).to have_content(@character.name)
