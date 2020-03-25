@@ -1,20 +1,20 @@
 <p class="float-right small"><%= @message %></p>
 <h2>Current user_id: <%= current_user.id %></h2>
 </br>
+<ul class="list-inline">
+  <li class="list-inline-item">Name of Character: <%= @my_character.name %></li>
+  <li class="list-inline-item">Age Of Character: <%= @my_character.age %></li>
+  <li class="list-inline-item"><%= link_to 'Character action page', character_path(@my_character.id, {extra: 'from_index'}) %></li>
+  <li class="list-inline-item"><%= link_to 'My Characters History', all_of_my_character_path({extra: 'from_index'}) %></li>
+</ul>
+</br>
 <ul class="list-inline"><%@characters.each do |character| %>
     <li class="list-inline-item">Name of Character: <%= character.name %></li>
     <li class="list-inline-item">Age Of Character: <%= character.age %></li>
-    <li class="list-inline-item">Status:<%= character.status %></li>
     <li class="list-inline-item">Owner: <%= character.user_id %></li>
     <li class="list-inline-item">
-        <%  if current_user.id.present? && character.user_id == current_user.id %>
-        <%= link_to 'My_Character', character_path(character.id, {extra: 'from_index'}) %>
-        <% else %>
-        <%= link_to 'Character_info', character_info_path(character.id, {extra: 'from_index'})  %>
-        <% end  %>
+      <%= link_to 'Character_info', character_info_path(character.id, {extra: 'from_index'})  %>
     </li>
     </br>
     <% end %>
 </ul>
-
-<p><%= link_to 'My Characters History', all_of_my_character_path({extra: 'from_index'}) %></p>

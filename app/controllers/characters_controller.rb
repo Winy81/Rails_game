@@ -13,6 +13,7 @@ class CharactersController < ApplicationController
   def index
     @message = "Hello from CharactersController#index"
     @characters = Character.all.age_order_alive_filter
+    @my_character = @characters.where(user_id: current_user.id, status:'alive').first
   end
 
   def all_of_my_character
