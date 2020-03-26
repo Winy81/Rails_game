@@ -1,26 +1,70 @@
-<p class="float-right small"><%= @message %></p>
-<h2>Current user_id: <%= current_user.id %></h2>
-</br>
+
+<section class="content-section text-center text-secondary">
+<div class="container pt-3">
 <ul class="list-inline">
-  <li class="list-inline-item">Name of Character: <%= @character.name %></li>
-  <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
-  <li class="list-inline-item">Status:<%= @character.status %></li>
-  <li class="list-inline-item">Hungry: <%= @character.fed_state %></li>
-  <li class="list-inline-item">Activity <%= @character.activity_require_level %></li>
+  <li class="list-inline-item"><h6>Name Of Character: <%= @character.name %></h6></li></br>
+  <li class="list-inline-item"><h6>Age Of Character: <%= @character.age %></h6></li>
+  <li class="list-inline-item"><h6>Hungry: <%= @character.fed_state %></h6></li>
+  <li class="list-inline-item"><h6>Activity <%= @character.activity_require_level %></h6></li>
+  <li class="list-inline-item"><h6>Happiness <%= @character.happiness %></h6></li>
 </ul>
+</div>
+</section>
 </br>
 
-<ul class="list-inline">
-  <li class="list-inline-item"><%= link_to 'Feed your Character', character_feeding_path(@character), class:"btn btn-outline-success"%></li>
-  <li class="list-inline-item"><%= link_to 'Play with Your Character', character_activity_path(@character), class:"btn btn-outline-success"%></li>
-</ul>
+<section class="content-section text-faded text-center">
+  <div class="container mt-4 mb-2">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image">
+          <%= link_to image_tag('action/icons8-restaurant-100.png'), character_feeding_path(@character) %>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Feeding</strong>
+        </h5>
+        <p class="text-secondary mb-0">Main: Fed State </p>
+        <p class="text-secondary mb-0">Secondary: Happiness </p>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image">
+          <%= link_to image_tag('action/icons8-trainers-100.png'), character_activity_path(@character) %>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Training</strong>
+        </h5>
+        <p class="text-secondary mb-0">Main: Activity Require  </p>
+        <p class="text-secondary mb-0">Secondary: Happiness </p>
+        <p class="text-secondary mb-0">Loses: Fed State </p>
+
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image">
+          <li class="list-inline-item"><%= link_to image_tag('action/icons8-soccer-ball-100.png') %></li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Playing</strong>
+        </h5>
+        <p class="text-secondary mb-0">Main: Happiness  </p>
+        <p class="text-secondary mb-0">Secondary: Activity Require </p>
+        <p class="text-secondary mb-0">Loses: Fed State </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
 </br>
+
+
 
 <p><%= link_to 'Back to the Characters Page ', characters_path, class:"float-right" %></p>
 
 </br>
 
 
-<p><%= link_to 'Destroy your character', character_path(@character), method: :delete, data: {confirm: "Are you sure"}, class:"float-right", style: 'color:red' %></p>
+<!-- <p><%= link_to 'Destroy your character', character_path(@character), method: :delete, data: {confirm: "Are you sure"}, class:"float-right", style: 'color:red' %></p> -->
 

@@ -5,6 +5,28 @@ body{
   padding: 20px;
 }
 
+.action_image{
+  border-left:1px dotted white;
+  border-right:1px dotted white;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-bottom:20px;
+  border-radius:5px;
+  transition: all 0.5s ease;
+}
+
+.action_image:hover{
+  border-left: 2px dotted grey;
+  border-right: 2px dotted grey;
+  margin-left: 100px;
+  margin-right: 100px;
+  border-radius: 35px;
+  padding-bottom: 20px;
+  transition: all 0.5s ease;
+}
+
 #footer {
   position: absolute;
   bottom: 50px;
