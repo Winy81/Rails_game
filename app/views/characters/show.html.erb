@@ -19,10 +19,10 @@
         <div class="action_image">
           <%= link_to image_tag('action/icons8-restaurant-100.png'), character_feeding_path(@character) %>
         </div>
-        <h5 class="mt-4 text-secondary">
-          <strong>Feeding</strong>
+        <h5 class="mt-4 action_image_text">
+          <strong><%= link_to 'Feeding', class:'text-dark' %></strong>
         </h5>
-        <p class="text-secondary mb-0">Main: Fed State </p>
+        <p class="text-secondary mb-0 ">Main: Fed State </p>
         <p class="text-secondary mb-0">Secondary: Happiness </p>
       </div>
 
@@ -31,8 +31,8 @@
         <div class="action_image">
           <%= link_to image_tag('action/icons8-trainers-100.png'), character_activity_path(@character) %>
         </div>
-        <h5 class="mt-4 text-secondary">
-          <strong>Training</strong>
+        <h5 class="mt-4 text-secondary action_image_text">
+          <strong><%= link_to 'Training', class:'text-dark' %></strong>
         </h5>
         <p class="text-secondary mb-0">Main: Activity Require  </p>
         <p class="text-secondary mb-0">Secondary: Happiness </p>
@@ -44,8 +44,8 @@
         <div class="action_image">
           <li class="list-inline-item"><%= link_to image_tag('action/icons8-soccer-ball-100.png') %></li>
         </div>
-        <h5 class="mt-4 text-secondary">
-          <strong>Playing</strong>
+        <h5 class="mt-4 text-secondary action_image_text">
+          <strong><%= link_to 'Playing', class:'text-dark' %></strong>
         </h5>
         <p class="text-secondary mb-0">Main: Happiness  </p>
         <p class="text-secondary mb-0">Secondary: Activity Require </p>
