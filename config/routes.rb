@@ -12,6 +12,13 @@ Rails.application.routes.draw do
   get 'character/:id/activity_process', to: 'characters#activity_process', as: :activity_process
   get 'user/:id/owner_info', to: 'characters#owner_info', as: :owner_info
 
+
+  scope '/info' do
+    get 'guides/fed_state', to: 'guides#fed_state', as: :fed_state
+    get 'guides/activity_require_level', to: 'guides#activity_require_level', as: :activity_require
+    get 'guides/happiness', to: 'guides#happiness', as: :happiness
+  end
+
   root to: 'mains#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
