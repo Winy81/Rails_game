@@ -26,20 +26,26 @@ class CharactersController < ApplicationController
   end
 
   def feeding
+    #test required
+    flash.now[:alert] = "Opps, your character couldn't finish the meal" unless params[:fed_state] == nil
     @message = "Hello from CharactersController#feeding"
   end
 
   def feeding_process
+    #test required
     @message = "Hello from CharactersController#feeding_process"
     @sent_potion_of_food = -1*(@character.fed_state.to_i - params[:fed_state].to_i)
     @current_fed_state = params[:fed_state]
   end
 
   def activity
+    #test required
+    flash.now[:alert] = "Opps, your character couldn't finish the training" unless params[:activity_require_level] == nil
     @message = "Hello from CharactersController#activity"
   end
 
   def activity_process
+    #test required
     @message = "Hello from CharactersController#activity_process"
     @sent_points_of_activity = (@character.activity_require_level.to_i - params[:activity_require_level].to_i)
     @current_activity_state = params[:activity_require_level]
@@ -63,6 +69,7 @@ class CharactersController < ApplicationController
   end
 
   def create
+    #test required
     if Character.where(user_id:current_user.id).count > 0
       redirection_to_characters_path("alert","You have a character Alive")
     else
@@ -98,6 +105,7 @@ class CharactersController < ApplicationController
 
   private
 
+  #test required
   def set_character_details_with_owner_filter
     @character = Character.find(params[:id])
     if @character.user_id != current_user.id
@@ -116,6 +124,7 @@ class CharactersController < ApplicationController
                                       :activity_require_level)
   end
 
+  #test and refactor into service class required
   def update_fed_state(character)
     if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter)
       if character.fed_state == 100
@@ -128,6 +137,7 @@ class CharactersController < ApplicationController
     end
   end
 
+  #test and refactor into service class required
   def update_activity_state(character)
     if character.update_attributes(:activity_require_level => params[:activity_require_level])
       redirection_to_character_path(character,"notice", "Activity points has burned down")
@@ -148,11 +158,13 @@ class CharactersController < ApplicationController
     @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is dead")
   end
 
+  #test and refactor into service class required
   def redirection_to_characters_path(type, message, extra="")
     output_type = type.to_sym
     redirect_to characters_path, {output_type => "#{message} #{extra}"}
   end
 
+  #test and refactor into service class required
   def redirection_to_character_path(current_character,type, message, extra="")
     output_type = type.to_sym
     redirect_to character_path(current_character), {output_type => "#{message} #{extra}"}
