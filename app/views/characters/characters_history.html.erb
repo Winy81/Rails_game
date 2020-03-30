@@ -1,0 +1,27 @@
+<p class="float-right small"><%= @message %></p>
+
+</br>
+<ul class="list-inline">
+  <li class="list-inline-item">Name of User: <%= @owner_of_character.name %></li>
+  <li class="list-inline-item">He is member from: <%= date_view_optimizer(@owner_of_character.created_at) %></li>
+  </br>
+</ul>
+
+</br>
+</br>
+<ul class="list-inline"><% @owners_characters.each do |character| %>
+  <li class="list-inline-item">Name of Character: <%= character.name %></li>
+  <li class="list-inline-item">Age Of Character: <%= character.age %></li>
+  <li class="list-inline-item">Status:<%= character.status %></li>
+    <% if character.status == 'alive' %>
+      <%= link_to 'Character details', character_info_path(character.id, {extra: 'from_characters_history'}) %>
+    <% else %>
+      <li class="list-inline-item">This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
+      <li class="list-inline-item">Was living:  <%= life_length_counter(character) %></li>
+    <% end %>
+</ul>
+<% end %>
+</br>
+</br>
+
+<p><%= link_to 'Back to the Characters Page ', characters_path %></p>

@@ -21,6 +21,16 @@ class CharactersController < ApplicationController
     @characters = Character.where(user_id: current_user.id).order(:id => :desc)
   end
 
+  def characters_history
+    @message = "Hello from CharactersController#characters_history"
+    if params[:id].to_i == current_user.id
+      redirect_to all_of_my_character_path
+    else
+      @owner_of_character = User.find_by(id:params[:id])
+      @owners_characters = Character.where(user_id:@owner_of_character.id).order(:status => :asc, :id => :desc)
+    end
+  end
+
   def show
     @message = "Hello from CharactersController#show"
   end
@@ -102,6 +112,8 @@ class CharactersController < ApplicationController
     @message = "Hello from CharactersController#owner_info"
     @user = User.find(params[:id])
   end
+
+
 
   private
 

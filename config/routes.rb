@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   post 'character/:id/activity_process', to: 'characters#activity_process', as: :activity_process
   get 'character/:id/activity_process', to: 'characters#activity_process'
 
-  get 'user/:id/owner_info', to: 'characters#owner_info', as: :owner_info
-
+  scope '/user' do
+    get ':id/characters_history', to: 'characters#characters_history', as: :characters_history
+  end
 
   scope '/info' do
     get 'guides/fed_state', to: 'guides#fed_state', as: :fed_state

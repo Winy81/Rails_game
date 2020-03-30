@@ -5,8 +5,8 @@
 <h2>Your Fed State is <%=  @character.fed_state%></h2>
 <div id="feeding">
   <ul class="list-inline">
-    <li> <%= link_to "Small Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }), method: :post %></li>
-    <li> <%= link_to "Minor Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }), method: :post %></li>
+    <li><%= link_to "Small Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }), method: :post %></li>
+    <li><%= link_to "Minor Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }), method: :post %></li>
     <li><%= link_to "Normal Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15), extra: 'from_feeding' }), method: :post %></li>
     <li><%= link_to "Large Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20), extra: 'from_feeding' }), method: :post %></li>
     <li><%= link_to "Extra Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25), extra: 'from_feeding' }), method: :post %></li>
