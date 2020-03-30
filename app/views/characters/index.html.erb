@@ -2,13 +2,17 @@
 <h2>Current user_id: <%= current_user.id %></h2>
 </br>
 <ul class="list-inline">
-  <li class="list-inline-item">Name of Character: <%= @my_character.name %></li>
-  <li class="list-inline-item">Age Of Character: <%= @my_character.age %></li>
-  <li class="list-inline-item"><%= link_to 'Character action page', character_path(@my_character.id, {extra: 'from_index'}) %></li>
-  <li class="list-inline-item"><%= link_to 'My Characters History', all_of_my_character_path({extra: 'from_index'}) %></li>
+  <% if @my_character.nil? %>
+    <li class="list-inline-item">You have no living Character!, <%= link_to "Create one now", new_character_path %></li>
+  <% else %>
+    <li class="list-inline-item">Name of Character: <%= @my_character.name %></li>
+    <li class="list-inline-item">Age Of Character: <%= @my_character.age %></li>
+    <li class="list-inline-item"><%= link_to 'Character action page', character_path(@my_character.id, {extra: 'from_index'}) %></li>
+    <li class="list-inline-item"><%= link_to 'My Characters History', all_of_my_character_path({extra: 'from_index'}) %></li>
+  <%end %>
 </ul>
 </br>
-<ul class="list-inline"><%@filtered_characters.each do |character| %>
+<ul class="list-inline"><%@characters.each do |character| %>
     <li class="list-inline-item">Name of Character: <%= character.name %></li>
     <li class="list-inline-item">Age Of Character: <%= character.age %></li>
     <li class="list-inline-item">Owner: <%= character.user_id %></li>
@@ -16,5 +20,5 @@
       <%= link_to 'Character_info', character_info_path(character.id, {extra: 'from_index'})  %>
     </li>
     </br>
-    <% end %>
+  <% end %>
 </ul>

@@ -12,9 +12,8 @@ class CharactersController < ApplicationController
 
   def index
     @message = "Hello from CharactersController#index"
-    @characters = Character.all
+    @characters = Character.all.order(:age => :desc).limit(15)
     @my_character = @characters.where(user_id: current_user.id, status:'alive').first
-    @filtered_characters = @characters.age_order_alive_filter.current_users_character(current_user)
   end
 
   def all_of_my_character
@@ -71,8 +70,9 @@ class CharactersController < ApplicationController
   end
 
   def new
+    #test required
     @message = "Hello from CharactersController#new"
-    if Character.where(user_id:current_user.id).count > 0
+    if alive_check_for_create_character
       redirection_to_characters_path("alert","You have a character Alive")
     else
       Character.new
@@ -81,7 +81,7 @@ class CharactersController < ApplicationController
 
   def create
     #test required
-    if Character.where(user_id:current_user.id).count > 0
+    if alive_check_for_create_character
       redirection_to_characters_path("alert","You have a character Alive")
     else
       @character = Character.new(character_params)
@@ -162,6 +162,10 @@ class CharactersController < ApplicationController
 
   def alive_check
     @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is dead")
+  end
+
+  def alive_check_for_create_character
+    Character.where(user_id:current_user.id, status:"alive").count > 0
   end
 
   #test and refactor into service class required

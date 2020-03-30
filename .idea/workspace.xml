@@ -89,18 +89,19 @@
       <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state x="572" y="229" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.821@0.23.1440.821" timestamp="1584964612264" />
-    <state x="79" y="29" width="1293" height="720" key="DiffContextDialog" timestamp="1585552462842">
-      <screen x="0" y="23" width="1440" height="819" />
+    <state x="79" y="29" width="1293" height="718" key="DiffContextDialog" timestamp="1585584678448">
+      <screen x="0" y="23" width="1440" height="816" />
     </state>
-    <state x="79" y="29" width="1293" height="718" key="DiffContextDialog/0.23.1440.816@0.23.1440.816" timestamp="1585121918080" />
+    <state x="79" y="29" width="1293" height="718" key="DiffContextDialog/0.23.1440.816@0.23.1440.816" timestamp="1585584678448" />
     <state x="79" y="29" width="1293" height="720" key="DiffContextDialog/0.23.1440.819@0.23.1440.819" timestamp="1585552462842" />
     <state x="79" y="29" width="1293" height="723" key="DiffContextDialog/0.23.1440.821@0.23.1440.821" timestamp="1585428757163" />
     <state x="79" y="29" width="1293" height="723" key="DiffContextDialog/0.23.1440.822@0.23.1440.822" timestamp="1585428743691" />
     <state x="79" y="29" width="1293" height="724" key="DiffContextDialog/0.23.1440.823@0.23.1440.823" timestamp="1584179855859" />
     <state x="216" y="216" width="815" height="562" key="DiffContextDialog/0.23.1920.999@0.23.1920.999" timestamp="1584025555870" />
-    <state x="600" y="350" width="670" height="476" key="find.popup" timestamp="1585551763842">
-      <screen x="0" y="23" width="1440" height="819" />
+    <state x="600" y="349" width="670" height="476" key="find.popup" timestamp="1585584602949">
+      <screen x="0" y="23" width="1440" height="816" />
     </state>
+    <state x="600" y="349" width="670" height="476" key="find.popup/0.23.1440.816@0.23.1440.816" timestamp="1585584602949" />
     <state x="600" y="350" width="670" height="476" key="find.popup/0.23.1440.819@0.23.1440.819" timestamp="1585551763842" />
     <state x="1050" y="253" width="639" height="476" key="find.popup/0.23.1920.999@0.23.1920.999" timestamp="1584346659523" />
     <state x="479" y="272" width="670" height="557" key="search.everywhere.popup" timestamp="1584971070422">
