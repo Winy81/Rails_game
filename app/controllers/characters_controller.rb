@@ -12,8 +12,9 @@ class CharactersController < ApplicationController
 
   def index
     @message = "Hello from CharactersController#index"
-    @characters = Character.all.age_order_alive_filter
+    @characters = Character.all
     @my_character = @characters.where(user_id: current_user.id, status:'alive').first
+    @filtered_characters = @characters.age_order_alive_filter.current_users_character(current_user)
   end
 
   def all_of_my_character
@@ -107,13 +108,6 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     @user = User.find_by(id:@character.user_id)
   end
-
-  def owner_info
-    @message = "Hello from CharactersController#owner_info"
-    @user = User.find(params[:id])
-  end
-
-
 
   private
 

@@ -10,4 +10,8 @@ class Character < ActiveRecord::Base
     order(:age => :desc).where(status:"alive")
   end
 
+  def self.current_users_character(user)
+    where.not(user_id:user.id)
+  end
+
 end
