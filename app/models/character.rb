@@ -2,6 +2,11 @@ class Character < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :name, length: { maximum: 12 }
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :user_id, presence: true
+
   def self.age_order_filter
     order(:age => :desc)
   end

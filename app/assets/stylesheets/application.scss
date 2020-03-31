@@ -6,8 +6,8 @@ body{
 }
 
 .action_image{
-  border-left:1px dotted white;
-  border-right:1px dotted white;
+  border-left:1px solid white;
+  border-right:1px solid white;
   padding-top:10px;
   padding-bottom:20px;
   margin-left: 0px;
@@ -17,8 +17,8 @@ body{
 }
 
 .action_image:hover{
-  border-left: 2px dotted grey;
-  border-right: 2px dotted grey;
+  border-left: 5px solid rgb(211,211,211);
+  border-right: 5px solid rgb(211,211,211);
   margin-left: 100px;
   margin-right: 100px;
   border-radius: 35px;
@@ -27,8 +27,8 @@ body{
 }
 
 .action_image_text{
-  border-left:1px dotted white;
-  border-right:1px dotted white;
+  border-left:1px solid white;
+  border-right:1px solid white;
   padding-top:10px;
   padding-bottom:10px;
   margin-left: 0px;
@@ -38,8 +38,8 @@ body{
 }
 
 .action_image_text:hover{
-  border-left: 2px dotted grey;
-  border-right: 2px dotted grey;
+  border-left: 5px solid rgb(211,211,211);
+  border-right: 5px solid rgb(211,211,211);
   margin-left: 100px;
   margin-right: 100px;
   border-radius: 10px;
