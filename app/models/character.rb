@@ -2,7 +2,7 @@ class Character < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :name, length: { maximum: 12 }
+  validates :name, length: { maximum: 25 }
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :user_id, presence: true
