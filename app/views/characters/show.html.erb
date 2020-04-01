@@ -16,8 +16,10 @@
   <div class="container mt-4 mb-2">
     <div class="row">
       <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-        <div class="action_image">
-          <%= link_to image_tag('action/icons8-restaurant-100.png'), character_feeding_path(@character) %>
+        <div class="action_image_3">
+          <li class="list-inline-item">
+          <%= link_to image_tag('action/icons8-restaurant-50.png'), character_feeding_path(@character) %>
+          </li>
         </div>
         <h5 class="mt-4 action_image_text">
           <strong><%= link_to 'Feeding', fed_state_path, class:'text-dark' %></strong>
@@ -28,10 +30,12 @@
 
 
       <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-        <div class="action_image">
-          <%= link_to image_tag('action/icons8-trainers-100.png'), character_activity_path(@character) %>
+        <div class="action_image_3">
+          <li class="list-inline-item">
+          <%= link_to image_tag('action/icons8-trainers-50.png'), character_activity_path(@character) %>
+          </li>
         </div>
-        <h5 class="mt-4 text-secondary action_image_text">
+        <h5 class="mt-4 action_image_text">
           <strong><%= link_to 'Training', activity_require_path,  class:'text-dark' %></strong>
         </h5>
         <p class="text-secondary mb-0">Main: Activity Require  </p>
@@ -41,10 +45,12 @@
       </div>
 
       <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-        <div class="action_image">
-          <li class="list-inline-item"><%= link_to image_tag('action/icons8-soccer-ball-100.png') %></li>
+        <div class="action_image_3">
+          <li class="list-inline-item">
+            <%= link_to image_tag('action/icons8-soccer-ball-50.png') %>
+          </li>
         </div>
-        <h5 class="mt-4 text-secondary action_image_text">
+        <h5 class="mt-4 action_image_text">
           <strong><%= link_to 'Playing', happiness_path, class:'text-dark' %></strong>
         </h5>
         <p class="text-secondary mb-0">Main: Happiness  </p>
