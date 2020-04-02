@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/action/icons8-restaurant-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/menu/icons8-restaurant-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/action/icons8-soccer-ball-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/menu/icons8-soccer-ball-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/action/icons8-trainers-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/menu/icons8-trainers-50.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/activity.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/feeding.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/feeding.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/characters_services/request_path_recogniser.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/request_path_recogniser.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/activity_process.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity_process.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/feeding_process.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/feeding_process.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

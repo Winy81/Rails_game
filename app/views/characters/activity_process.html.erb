@@ -10,7 +10,7 @@
 
 
 <div style="display:">
-  <%= link_to "Claim your Points", character_path(@character.id, {activity_require_level:  (@current_activity_state), extra: 'from_activity' }), class:"btn btn-outline-danger", :method => :put  %>
+  <%= link_to "Claim your Points", character_path(@character.id, {activity_require_level:  (@current_activity_state), extra: 'from_activity_process' }), class:"btn btn-outline-secondary", :method => :put  %>
 </div>
 
 </br>
