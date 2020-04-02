@@ -12,7 +12,7 @@ class CharactersController < ApplicationController
 
   def index
     @message = "Hello from CharactersController#index"
-    @characters = Character.all.order(:age => :desc).limit(15)
+    @characters = Character.all.order(:age => :desc).limit(12)
     @my_character = @characters.where(user_id: current_user.id, status:'alive').first
   end
 
