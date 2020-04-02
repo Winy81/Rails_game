@@ -7,7 +7,7 @@
   <% else %>
     <li class="list-inline-item">Name of Character: <%= @my_character.name %></li>
     <li class="list-inline-item">Age Of Character: <%= @my_character.age %></li>
-    <li class="list-inline-item"><%= link_to 'Character action page', character_path(@my_character.id, {extra: 'from_index'}) %></li>
+    <li class="list-inline-item"><%= link_to 'Character training page', character_path(@my_character.id, {extra: 'from_index'}) %></li>
     <li class="list-inline-item"><%= link_to 'My Characters History', all_of_my_character_path({extra: 'from_index'}) %></li>
   <%end %>
 </ul>
