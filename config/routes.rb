@@ -8,64 +8,26 @@ Rails.application.routes.draw do
   get 'all_of_my_character', to: 'characters#all_of_my_character', as: :all_of_my_character
   get 'character/:id/feeding', to: 'characters#feeding', as: :character_feeding
   get 'character/:id/activity', to: 'characters#activity', as: :character_activity
-  get 'character/:id/feeding_process', to: 'characters#feeding_process', as: :feeding_process
-  get 'character/:id/activity_process', to: 'characters#activity_process', as: :activity_process
-  get 'user/:id/owner_info', to: 'characters#owner_info', as: :owner_info
+
+  post 'character/:id/feeding_process', to: 'characters#feeding_process', as: :feeding_process
+  get 'character/:id/feeding_process', to: 'characters#feeding'
+  post 'character/:id/activity_process', to: 'characters#activity_process', as: :activity_process
+  get 'character/:id/activity_process', to: 'characters#activity'
+
+  scope '/user' do
+    get ':id/characters_history', to: 'characters#characters_history', as: :characters_history
+  end
+
+  scope '/info' do
+    get 'guides/fed_state', to: 'guides#fed_state', as: :fed_state
+    get 'guides/activity_require', to: 'guides#activity_require_level', as: :activity_require
+    get 'guides/happiness', to: 'guides#happiness', as: :happiness
+
+    get 'statics/about_us', to: 'statics#about_us', as: :about_us
+    get 'statics/contact', to: 'statics#contact', as: :contact
+    get 'statics/game_description', to: 'statics#game_description', as: :game_description
+  end
 
   root to: 'mains#index'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

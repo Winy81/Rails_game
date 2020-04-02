@@ -12,7 +12,8 @@ class CharactersController < ApplicationController
 
   def index
     @message = "Hello from CharactersController#index"
-    @characters = Character.all.age_order_alive_filter
+    @characters = Character.all.order(:age => :desc).limit(12)
+    @my_character = @characters.where(user_id: current_user.id, status:'alive').first
   end
 
   def all_of_my_character
@@ -20,25 +21,41 @@ class CharactersController < ApplicationController
     @characters = Character.where(user_id: current_user.id).order(:id => :desc)
   end
 
+  def characters_history
+    @message = "Hello from CharactersController#characters_history"
+    if params[:id].to_i == current_user.id
+      redirect_to all_of_my_character_path
+    else
+      @owner_of_character = User.find_by(id:params[:id])
+      @owners_characters = Character.where(user_id:@owner_of_character.id).order(:status => :asc, :id => :desc)
+    end
+  end
+
   def show
     @message = "Hello from CharactersController#show"
   end
 
   def feeding
+    #test required
+    flash.now[:alert] = "Opps, your character couldn't finish the meal" unless params[:fed_state] == nil
     @message = "Hello from CharactersController#feeding"
   end
 
   def feeding_process
+    #test required
     @message = "Hello from CharactersController#feeding_process"
     @sent_potion_of_food = -1*(@character.fed_state.to_i - params[:fed_state].to_i)
     @current_fed_state = params[:fed_state]
   end
 
   def activity
+    #test required
+    flash.now[:alert] = "Opps, your character couldn't finish the training" unless params[:activity_require_level] == nil
     @message = "Hello from CharactersController#activity"
   end
 
   def activity_process
+    #test required
     @message = "Hello from CharactersController#activity_process"
     @sent_points_of_activity = (@character.activity_require_level.to_i - params[:activity_require_level].to_i)
     @current_activity_state = params[:activity_require_level]
@@ -53,8 +70,9 @@ class CharactersController < ApplicationController
   end
 
   def new
+    #test required
     @message = "Hello from CharactersController#new"
-    if Character.where(user_id:current_user.id).count > 0
+    if alive_check_for_create_character
       redirection_to_characters_path("alert","You have a character Alive")
     else
       Character.new
@@ -62,7 +80,8 @@ class CharactersController < ApplicationController
   end
 
   def create
-    if Character.where(user_id:current_user.id).count > 0
+    #test required
+    if alive_check_for_create_character
       redirection_to_characters_path("alert","You have a character Alive")
     else
       @character = Character.new(character_params)
@@ -90,13 +109,9 @@ class CharactersController < ApplicationController
     @user = User.find_by(id:@character.user_id)
   end
 
-  def owner_info
-    @message = "Hello from CharactersController#owner_info"
-    @user = User.find(params[:id])
-  end
-
   private
 
+  #test required
   def set_character_details_with_owner_filter
     @character = Character.find(params[:id])
     if @character.user_id != current_user.id
@@ -115,6 +130,7 @@ class CharactersController < ApplicationController
                                       :activity_require_level)
   end
 
+  #test and refactor into service class required
   def update_fed_state(character)
     if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter)
       if character.fed_state == 100
@@ -127,6 +143,7 @@ class CharactersController < ApplicationController
     end
   end
 
+  #test and refactor into service class required
   def update_activity_state(character)
     if character.update_attributes(:activity_require_level => params[:activity_require_level])
       redirection_to_character_path(character,"notice", "Activity points has burned down")
@@ -147,11 +164,17 @@ class CharactersController < ApplicationController
     @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is dead")
   end
 
+  def alive_check_for_create_character
+    Character.where(user_id:current_user.id, status:"alive").count > 0
+  end
+
+  #test and refactor into service class required
   def redirection_to_characters_path(type, message, extra="")
     output_type = type.to_sym
     redirect_to characters_path, {output_type => "#{message} #{extra}"}
   end
 
+  #test and refactor into service class required
   def redirection_to_character_path(current_character,type, message, extra="")
     output_type = type.to_sym
     redirect_to character_path(current_character), {output_type => "#{message} #{extra}"}

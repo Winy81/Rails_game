@@ -1,20 +1,100 @@
-<h1> <%= @message %></h1>
-<h2>Current user_id: <%= current_user.id %></h2>
-</br>
+<p class="float-right small"><%= @message %></p>
+<p>Current user_id: <%= current_user.id %></p>
 
 <h2>Your Fed State is <%=  @character.fed_state%></h2>
-<div id="feeding">
-  <ul class="list-inline">
-    <li> <%= link_to "Small Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }) %></li>
-    <li> <%= link_to "Minor Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }) %></li>
-    <li><%= link_to "Normal Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15), extra: 'from_feeding' }) %></li>
-    <li><%= link_to "Large Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20), extra: 'from_feeding' }) %></li>
-    <li><%= link_to "Extra Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25), extra: 'from_feeding' }) %></li>
-  </ul>
+<br id="feeding">
 
-  </br>
-  </br>
-  </br>
+<!--  <ul class="list-inline">-->
+<!--    <li><%#= link_to "Small Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }), method: :post %></li>-->
+<!--    <li><%#= link_to "Minor Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }), method: :post %></li>-->
+<!--    <li><%#= link_to "Normal Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15), extra: 'from_feeding' }), method: :post %></li>-->
+<!--    <li><%#= link_to "Large Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20), extra: 'from_feeding' }), method: :post %></li>-->
+<!--    <li><%#= link_to "Extra Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25), extra: 'from_feeding' }), method: :post %></li>-->
+<!--  </ul>-->
 
-  <p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
+<section class="content-section text-faded text-center">
+  <div class="container mt-4 mb-2">
+    <div class="row">
+
+      <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-cherry-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Small</strong>
+        </h5>
+        <p class="text-secondary mb-0 ">Fed State: +5 </p>
+        <p class="text-secondary mb-0">Happiness: +1</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-croissant-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Minor</strong>
+        </h5>
+        <p class="text-secondary mb-0 ">Fed State +10 </p>
+        <p class="text-secondary mb-0">Happiness +2</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-porridge-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15), extra: 'from_feeding' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Normal</strong>
+        </h5>
+        <p class="text-secondary mb-0 ">Fed State +15 </p>
+        <p class="text-secondary mb-0">Happiness +3</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20), extra: 'from_feeding' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Large</strong>
+        </h5>
+        <p class="text-secondary mb-0 ">Fed State +20 </p>
+        <p class="text-secondary mb-0">Happiness +4</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25), extra: 'from_feeding' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Extra</strong>
+        </h5>
+        <p class="text-secondary mb-0 ">Fed State +25 </p>
+        <p class="text-secondary mb-0">Happiness +5</p>
+      </div>
+
+      <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
+      </div>
+
+    </div>
+  </div>
+</section>
+</br>
+
+<p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
 </div>

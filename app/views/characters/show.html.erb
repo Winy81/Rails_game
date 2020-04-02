@@ -1,20 +1,76 @@
-<h1> <%= @message %></h1>
-<h2>Current user_id: <%= current_user.id %></h2>
-</br>
+
+<section class="content-section text-center text-secondary">
+<div class="container pt-3">
 <ul class="list-inline">
-  <li class="list-inline-item">Name of Character: <%= @character.name %></li>
-  <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
-  <li class="list-inline-item">Status:<%= @character.status %></li>
-  <li class="list-inline-item">Owner: <%= @character.user_id %></li>
-  <li class="list-inline-item">Hungry: <%= @character.fed_state %> - <%= link_to 'Eat', character_feeding_path(@character)%> - </li>
-  <li class="list-inline-item">Activity <%= @character.activity_require_level %> - <%= link_to 'Play', character_activity_path(@character)%> - </li>
+  <li class="list-inline-item"><h6>Name Of Character: <%= @character.name %></h6></li></br>
+  <li class="list-inline-item"><h6>Age Of Character: <%= @character.age %></h6></li>
+  <li class="list-inline-item"><h6>Hungry: <%= @character.fed_state %></h6></li>
+  <li class="list-inline-item"><h6>Activity <%= @character.activity_require_level %></h6></li>
+  <li class="list-inline-item"><h6>Happiness <%= @character.happiness %></h6></li>
 </ul>
+</div>
+</section>
 </br>
 
-<p><%= link_to 'Back to the Characters Page ', characters_path %></p>
+<section class="content-section text-faded text-center">
+  <div class="container mt-4 mb-2">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_3">
+          <li class="list-inline-item">
+          <%= link_to image_tag('menu/icons8-restaurant-50.png'), character_feeding_path(@character) %>
+          </li>
+        </div>
+        <h5 class="mt-4 action_image_text">
+          <strong><%= link_to 'Feeding', fed_state_path, class:'text-dark' %></strong>
+        </h5>
+        <p class="text-secondary mb-0 ">Main: Fed State </p>
+        <p class="text-secondary mb-0">Secondary: Happiness </p>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_3">
+          <li class="list-inline-item">
+          <%= link_to image_tag('menu/icons8-trainers-50.png'), character_activity_path(@character) %>
+          </li>
+        </div>
+        <h5 class="mt-4 action_image_text">
+          <strong><%= link_to 'Training', activity_require_path,  class:'text-dark' %></strong>
+        </h5>
+        <p class="text-secondary mb-0">Main: Activity Require  </p>
+        <p class="text-secondary mb-0">Secondary: Happiness </p>
+        <p class="text-secondary mb-0">Loses: Fed State </p>
+
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_3">
+          <li class="list-inline-item">
+            <%= link_to image_tag('menu/icons8-soccer-ball-50.png') %>
+          </li>
+        </div>
+        <h5 class="mt-4 action_image_text">
+          <strong><%= link_to 'Playing', happiness_path, class:'text-dark' %></strong>
+        </h5>
+        <p class="text-secondary mb-0">Main: Happiness  </p>
+        <p class="text-secondary mb-0">Secondary: Activity Require </p>
+        <p class="text-secondary mb-0">Loses: Fed State </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
 </br>
 
 
-<p>Destroy   -   <%= @character.name %>  -  <%= link_to 'Delete', character_path(@character), method: :delete, data: {confirm: "Are you sure"} %></p>
+
+<p><%= link_to 'Back to the Characters Page ', characters_path, class:"float-right" %></p>
+
+</br>
+
+
+<!-- <p><%= link_to 'Destroy your character', character_path(@character), method: :delete, data: {confirm: "Are you sure"}, class:"float-right", style: 'color:red' %></p> -->
 
