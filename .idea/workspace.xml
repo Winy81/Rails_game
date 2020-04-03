@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/layout/characters/index_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/layout/characters/all_of_my_character_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Dragon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dragon.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/locales/devise.en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/devise.en.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/layout/mains/index_mains_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/layout/mains/index_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/layout/mains/show_mains_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/layout/mains/show_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/layout/mains/show_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/layout/mains/show_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
