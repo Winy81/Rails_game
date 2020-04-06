@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature 'All of my character' do
+RSpec.feature 'All of my character page' do
 
-  feature 'Has to turn up all of the Users Character'
+  feature 'Has to turn up all of the current user Character'
 
   before do
     @user_all_of_my_c = User.create(name:'user_all_of_my_c', email: 'user_all_of_my_c@email.com', password:'password', password_confirmation:'password')
