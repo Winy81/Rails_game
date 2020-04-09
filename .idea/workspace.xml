@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/layout/characters/character_info_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/characters/character_info.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/character_info.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +78,7 @@
       <workItem from="1582291932891" duration="2436000" />
       <workItem from="1582630419433" duration="60999000" />
       <workItem from="1584371239795" duration="44291000" />
-      <workItem from="1586335722665" duration="3261000" />
+      <workItem from="1586335722665" duration="4705000" />
     </task>
     <servers />
   </component>
