@@ -1,18 +1,54 @@
 <p class="float-right small"><%= @message %></p>
-<h2>Current user_id: <%= current_user.id %></h2>
-</br>
-<ul class="list-inline">
-  <li class="list-inline-item">Name of Character: <%= @character.name %></li>
-  <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
-  <li class="list-inline-item">Status:<%= @character.status %></li>
-  <li class="list-inline-item">Owner:  <%= @user.name %></li>
-  </br>
-</ul>
-
-<%= link_to 'More details', characters_history_path(@user.id)%>
 
 </br>
+<section class="content-section text-muted text-center">
+
+
+  <div class="container mt-5 mb-5">
+    <ul class="list-inline mt-5 mb-5">
+      <li class="list-inline-item">Name of Character: <%= @character.name %></li>
+      <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
+      <li class="list-inline-item">Status:<%= @character.status %></li>
+      <li class="list-inline-item">Fed State:<%= @character.fed_state %></li>
+      <li class="list-inline-item">Activity:<%= @character.activity_require_level %></li>
+      <li class="list-inline-item">Happiness:<%= @character.happiness %></li>
+      </br>
+    </ul>
+  </div>
+
+
+
+  <div class="container text-center">
+    <div class="row">
+    <div class="col-lg-4 col-md-7"></div>
+    <div class="col-lg-4 col-md-7">
+      <div class="action_image_3">
+        <p><%= link_to image_tag('menu/icons8-forward-50.png'), characters_history_path(@user.id)%></p>
+        <p class="list-inline-item small text-dark"> Owner info </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-7"></div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
 </br>
 </br>
 
-<p><%= link_to 'Back to the Characters Page ', characters_path %></p>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-lg-4 col-md-7"></div>
+    <div class="col-lg-4 col-md-7">
+      <div class="action_image_3">
+      <p><%= link_to image_tag('menu/icons8-backward-50.png'), characters_path%></p>
+      <p class="list-inline-item small text-dark">Characters Page</p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-7"></div>
+  </div>
+</div>
