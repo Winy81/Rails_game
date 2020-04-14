@@ -1,54 +1,48 @@
 <p class="float-right small"><%= @message %></p>
 
 </br>
-<section class="content-section text-muted text-center">
-
-
+</br>
+<section class="content-section mt-5 mb-5 text-muted text-center">
   <div class="container mt-5 mb-5">
-    <ul class="list-inline mt-5 mb-5">
-      <li class="list-inline-item">Name of Character: <%= @character.name %></li>
+  <h3>Details of Character: <%= @character.name %></h3>
+    </br>
+    <ul class="list-inline mb-5">
       <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
       <li class="list-inline-item">Status:<%= @character.status %></li>
       <li class="list-inline-item">Fed State:<%= @character.fed_state %></li>
       <li class="list-inline-item">Activity:<%= @character.activity_require_level %></li>
       <li class="list-inline-item">Happiness:<%= @character.happiness %></li>
-      </br>
     </ul>
   </div>
 
-
-
-  <div class="container text-center">
-    <div class="row">
-    <div class="col-lg-4 col-md-7"></div>
-    <div class="col-lg-4 col-md-7">
-      <div class="action_arrow">
-        <p><%= link_to image_tag('menu/icons8-forward-50.png'), characters_history_path(@user.id)%></p>
-      </div>
-        <p class="list-inline-item small text-dark"> Owner info </p>
-    </div>
-    <div class="col-lg-4 col-md-7"></div>
-    </div>
-  </div>
-
-
 </section>
 
-
-
-
+</br>
 </br>
 </br>
 
-<div class="container text-center">
-  <div class="row">
+<section class="content-section mt-5 text-muted text-center">
+
+<div class="container mt-5 text-center">
+  <div class="row mt-5">
+
     <div class="col-lg-4 col-md-7"></div>
-    <div class="col-lg-4 col-md-7">
+    <div class="col-lg-2 col-md-7">
       <div class="action_arrow">
         <p><%= link_to image_tag('menu/icons8-backward-50.png'), characters_path%></p>
       </div>
-        <p class="list-inline-item small text-dark">Characters Page</p>
+      <p class="list-inline-item small text-dark">Characters Page</p>
+    </div>
+
+    <div class="col-lg-2 col-md-7">
+      <div class="action_arrow">
+        <p><%= link_to image_tag('menu/icons8-forward-50.png'), characters_history_path(@user.id)%></p>
+      </div>
+      <p class="list-inline-item small text-dark">Owner info</p>
     </div>
     <div class="col-lg-4 col-md-7"></div>
+
   </div>
 </div>
+
+</section>
