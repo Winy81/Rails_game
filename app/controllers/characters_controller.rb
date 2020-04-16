@@ -9,7 +9,7 @@ class CharactersController < ApplicationController
                                                                  :feeding_deny,
                                                                  :activity_process]
   before_action :authenticate_user!
-  before_action :alive_check, only: [:show, :feeding, :activity, :feeding_process, :activity_process, :update ]
+  before_action :alive_check, only: [:show, :feeding, :feeding_deny, :feeding_process, :activity, :activity_process, :update ]
 
   def index
     @message = "Hello from CharactersController#index"
