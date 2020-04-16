@@ -15,17 +15,23 @@ RSpec.feature 'Feeding process page' do
                                              happiness:50)
   end
 
-  feature 'Should be redirected for action page with GET request' do
+  feature 'When the page refreshed with new data (GET request)' do
 
-    scenario 'When called the page from outside' do
+    scenario 'Should be not proceed and redirected for character page' do
+
+      character_id = @char_of_feeding_proc.id
+      increased_fed_state = 20
+
+      visit "/character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{increased_fed_state}"
+
+      @char_of_feeding_proc.fed_state.should == 10
+      current_path.should == character_path(@char_of_feeding_proc)
+      expect(page).to have_content("Opps, your character couldn't finish the meal")
+      expect(page).to have_content(@char_of_feeding_proc.fed_state)
 
     end
-
-    scenario 'When the data manually changed' do
-
-    end
-
   end
+
 
   feature 'Should be proceed with POST request' do
 

@@ -6,6 +6,7 @@ class CharactersController < ApplicationController
                                                                  :activity,
                                                                  :update,
                                                                  :feeding_process,
+                                                                 :feeding_deny,
                                                                  :activity_process]
   before_action :authenticate_user!
   before_action :alive_check, only: [:show, :feeding, :activity, :feeding_process, :activity_process, :update ]
@@ -36,9 +37,11 @@ class CharactersController < ApplicationController
   end
 
   def feeding
-    #test required
-    flash.now[:alert] = "Opps, your character couldn't finish the meal" unless params[:fed_state] == nil
     @message = "Hello from CharactersController#feeding"
+  end
+
+  def feeding_deny
+    redirection_to_character_path(@character,"alert", "Opps, your character couldn't finish the meal")
   end
 
   def feeding_process
