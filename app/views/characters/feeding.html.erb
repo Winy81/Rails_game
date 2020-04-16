@@ -2,8 +2,16 @@
 
 </br>
 
-<h2>Your Fed State is: <%=  @character.fed_state%></h2>
-<br id="feeding">
+<section class="content-section text-center text-secondary">
+  <div class="container pt-3">
+    <ul class="list-inline">
+      <li class="list-inline-item"><h6>Fed State: <%= @character.fed_state %></h6></li>
+      <li class="list-inline-item"><h6>Happiness: <%= @character.happiness %></h6></li>
+    </ul>
+  </div>
+</section>
+
+</br>
 
 
 <section class="content-section text-faded text-center">

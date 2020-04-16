@@ -19,11 +19,14 @@ RSpec.feature 'Feeding page' do
 
     character_id = @char_of_feeding_page.id
     character_current_fed_state = @char_of_feeding_page.fed_state
+    character_current_happiness = @char_of_feeding_page.happiness
 
     visit "/character/#{@char_of_feeding_page.id}/feeding"
 
-    expect(page).to have_content('Your Fed State is:')
+    expect(page).to have_content('Fed State:')
     expect(page).to have_content(character_current_fed_state)
+    expect(page).to have_content('Happiness:')
+    expect(page).to have_content(character_current_happiness)
 
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 5}')]")
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 10}')]")
