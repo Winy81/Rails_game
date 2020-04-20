@@ -40,20 +40,21 @@ RSpec.feature 'Feeding process page' do
 
       character_id = current_character.id
       character_current_fed_state = current_character.fed_state
-      claim_able_points = 5
+      claim_able_feed_points = 5
 
       visit "character/#{character_id}/feeding"
 
       current_path.should == character_feeding_path(current_character)
 
-      find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + claim_able_points}')]").click
+      find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
 
-      expect(page).to have_content('Your Fed State is:')
+      expect(page).to have_content('Fed State:')
+      expect(page).to have_content('Happiness:')
       expect(page).to have_content(character_current_fed_state)
-      expect(page).to have_content('Claim-able Feeding point:')
-      expect(page).to have_content(claim_able_points)
+      expect(page).to have_content('Claim-able:')
+      expect(page).to have_content(claim_able_feed_points)
 
-      #find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + claim_able_points}')]")
+      find(:xpath, "//a[contains(@href,'/characters/#{character_id}?extra=from_feeding_process&fed_state=#{character_current_fed_state + claim_able_feed_points}')]")
       page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
     end
 
