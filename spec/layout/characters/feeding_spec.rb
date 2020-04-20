@@ -7,15 +7,15 @@ RSpec.feature 'Feeding page' do
     login_as(@user_feeding_page)
 
     @char_of_feeding_page = Character.create(name:'char_feeding_page',
-                                    user_id:1,
-                                    status:'alive',
-                                    age: 214,
-                                    fed_state:10,
-                                    activity_require_level:46,
-                                    happiness:31)
+                                             user_id:1,
+                                             status:'alive',
+                                             age: 214,
+                                             fed_state:10,
+                                             activity_require_level:46,
+                                             happiness:31)
   end
 
-  scenario 'Should turn up with list of food' do
+  scenario 'Should turn up with list of foods' do
 
     character_id = @char_of_feeding_page.id
     character_current_fed_state = @char_of_feeding_page.fed_state
