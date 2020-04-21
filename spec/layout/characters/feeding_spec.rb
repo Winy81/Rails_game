@@ -37,5 +37,6 @@ RSpec.feature 'Feeding page' do
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process')]", :count => 5)
 
     page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
+
   end
 end
