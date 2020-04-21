@@ -1,105 +1,125 @@
 <p class="float-right small"><%= @message %></p>
-<p>Current user_id: <%= current_user.id %></p>
-<h2>Your Activity Require State is: <%=  @character.activity_require_level%></h2>
-<div id="feeding">
 
-  <!--  <ul class="list-inline">-->
-  <!--    <li> <%#= link_to "1 minute", activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 1),  extra: 'from_activity'}), method: :post %></li>-->
-  <!--    <li> <%#= link_to "2 minute", activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2), extra: 'from_activity' }), method: :post %></li>-->
-  <!--    <li><%#= link_to "5 minute", activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 5), extra: 'from_activity' }), method: :post %></li>-->
-  <!--    <li><%#= link_to "10 minute", activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 10), extra: 'from_activity' }), method: :post %></li>-->
-  <!--    <li><%#= link_to "30 minute", activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 30), extra: 'from_activity' }), method: :post %></li>-->
-  <!--  </ul>-->
+</br>
 
-  <section class="content-section text-faded text-center">
-    <div class="container mt-5 mb-2">
-      <div class="row">
+<section class="content-section text-center text-secondary">
+  <div class="container pt-3">
+    <ul class="list-inline">
+      <li class="list-inline-item"><h6>Activity State: <%= @character.activity_require_level %></h6></li>
+      <li class="list-inline-item"><h6>Fed State: <%= @character.fed_state %></h6></li>
+      <li class="list-inline-item"><h6>Happiness: <%= @character.happiness %></h6></li>
+    </ul>
+  </div>
+</section>
 
-        <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
-        </div>
+</br>
 
-        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-          <div class="action_image_5">
-            <li class="list-inline-item">
-              <%= link_to image_tag('training/icons8-tennis-player-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 1),  extra: 'from_activity'}), method: :post %>
-            </li>
-          </div>
-          <h5 class="mt-4 text-secondary">
-            <strong>Small</strong>
-          </h5>
-          <p class="text-secondary mb-0">Activity Require +1</p>
-          <p class="text-secondary mb-0">Happiness: +1</p>
-          <p class="text-secondary mb-0 ">Fed State: -1 </p>
-        </div>
+<section class="content-section text-faded text-center">
+  <div class="container mt-5">
+    <div class="row">
 
-
-        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-          <div class="action_image_5">
-            <li class="list-inline-item">
-              <%= link_to image_tag('training/icons8-skiing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2), extra: 'from_activity' }), method: :post %>
-            </li>
-          </div>
-          <h5 class="mt-4 text-secondary">
-            <strong>Minor</strong>
-          </h5>
-          <p class="text-secondary mb-0">Activity Require +2</p>
-          <p class="text-secondary mb-0">Happiness: +1</p>
-          <p class="text-secondary mb-0 ">Fed State: -2 </p>
-        </div>
-
-
-        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-          <div class="action_image_5">
-            <li class="list-inline-item">
-              <%= link_to image_tag('training/icons8-climbing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 3), extra: 'from_activity' }), method: :post %>
-            </li>
-          </div>
-          <h5 class="mt-4 text-secondary">
-            <strong>Normal</strong>
-          </h5>
-          <p class="text-secondary mb-0">Activity Require +3</p>
-          <p class="text-secondary mb-0">Happiness: +1</p>
-          <p class="text-secondary mb-0 ">Fed State: -3 </p>
-        </div>
-
-
-        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-          <div class="action_image_5">
-            <li class="list-inline-item">
-              <%= link_to image_tag('training/icons8-canoe-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 4), extra: 'from_activity' }), method: :post %>
-            </li>
-          </div>
-          <h5 class="mt-4 text-secondary">
-            <strong>Large</strong>
-          </h5>
-          <p class="text-secondary mb-0">Activity Require +4</p>
-          <p class="text-secondary mb-0">Happiness: +1</p>
-          <p class="text-secondary mb-0 ">Fed State: -4 </p>
-        </div>
-
-
-        <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-          <div class="action_image_5">
-            <li class="list-inline-item">
-              <%= link_to image_tag('training/icons8-weightlifting-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 5), extra: 'from_activity' }), method: :post %>
-            </li>
-          </div>
-          <h5 class="mt-4 text-secondary">
-            <strong>Extra</strong>
-          </h5>
-          <p class="text-secondary mb-0">Activity Require +5</p>
-          <p class="text-secondary mb-0">Happiness: +1</p>
-          <p class="text-secondary mb-0 ">Fed State: -5 </p>
-        </div>
-
-        <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
-        </div>
-
+      <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
       </div>
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('training/icons8-tennis-player-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2),  extra: 'from_activity'}), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Small</strong>
+        </h5>
+        <p class="text-secondary mb-0">Activity Require -2</p>
+        <p class="text-secondary mb-0">Happiness: +1</p>
+        <p class="text-secondary mb-0 ">Fed State: -1 </p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('training/icons8-skiing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 4), extra: 'from_activity' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Minor</strong>
+        </h5>
+        <p class="text-secondary mb-0">Activity Require -4</p>
+        <p class="text-secondary mb-0">Happiness: +2</p>
+        <p class="text-secondary mb-0 ">Fed State: -2 </p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('training/icons8-climbing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 6), extra: 'from_activity' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Normal</strong>
+        </h5>
+        <p class="text-secondary mb-0">Activity Require -6</p>
+        <p class="text-secondary mb-0">Happiness: +3</p>
+        <p class="text-secondary mb-0 ">Fed State: -3 </p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('training/icons8-canoe-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 8), extra: 'from_activity' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Large</strong>
+        </h5>
+        <p class="text-secondary mb-0">Activity Require -8</p>
+        <p class="text-secondary mb-0">Happiness: +4</p>
+        <p class="text-secondary mb-0 ">Fed State: -4 </p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('training/icons8-weightlifting-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 10), extra: 'from_activity' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Extra</strong>
+        </h5>
+        <p class="text-secondary mb-0">Activity Require -10</p>
+        <p class="text-secondary mb-0">Happiness: +5</p>
+        <p class="text-secondary mb-0 ">Fed State: -5 </p>
+      </div>
+
+      <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  </br>
+</br>
 
-  <p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
-</div>
+<section class="content-section mt-5 text-muted text-center">
+
+  <div class="container mt-5 text-center">
+    <div class="row mt-5">
+
+      <div class="col-lg-5 col-md-7"></div>
+
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to image_tag('menu/icons8-backward-50.png'), character_path(@character) %></p>
+        </div>
+        <p class="list-inline-item small text-dark">Action Page</p>
+      </div>
+
+      <div class="col-lg-5 col-md-7"></div>
+
+    </div>
+  </div>
+</section>
