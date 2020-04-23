@@ -28,7 +28,7 @@ RSpec.feature 'Show characters without when user logged in' do
       login_as(@user)
     end
 
-    scenario 'user has own character' do
+    scenario 'user has not own character' do
 
       characters = Character.all.count
 
@@ -55,17 +55,17 @@ RSpec.feature 'Show characters without when user logged in' do
 
     scenario 'user has now own character' do
 
-      @character = Character.create(name:'Test_character', user_id:1)
-      characters = Character.all.count
+      character = Character.create(name:'Test_character', user_id:1)
 
       visit '/characters'
       current_path.should == characters_path
 
-      expect(page).to have_link('Character training page')
-      expect(page).to have_link('My Characters History')
+      find(:xpath, "//a[contains(@href,'/characters/#{character.id}?extra=from_index')]")
+      find(:xpath, "//a[contains(@href,'all_of_my_character?extra=from_index')]")
+      #find(:xpath, "//a[contains(@href,'')]")
 
-      expect(page).to have_content(@character.name)
-      expect(page).to have_content(@character.age)
+      expect(page).to have_content(character.name)
+      expect(page).to have_content(character.age)
 
       expect(page).to have_content(@character_2.name)
       expect(page).to have_content(@character_2.age)
@@ -74,9 +74,6 @@ RSpec.feature 'Show characters without when user logged in' do
       expect(page).to have_content(@character_3.name)
       expect(page).to have_content(@character_3.age)
       expect(page).to have_content(@character_3.status)
-
-      expect(page).to have_content('Character info', count: characters)
-
 
     end
 
