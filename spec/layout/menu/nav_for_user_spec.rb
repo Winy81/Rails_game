@@ -3,7 +3,14 @@ require 'rails_helper'
 RSpec.feature 'Menu for users' do
 
   before do
-    @user = User.create(name:'Test_user', email:'email@email.com', password:'password')
+    @user_for_menu = User.create(name:'Test_user', email:'email@email.com', password:'password', password_confirmation:'password')
+    @char_for_menu = Character.create(name:'@char_for_menu',
+                                             user_id:1,
+                                             status:'alive',
+                                             age: 214,
+                                             fed_state:80,
+                                             activity_require_level:60,
+                                             happiness:50)
   end
 
   scenario 'shows user details and actions' do
@@ -18,7 +25,7 @@ RSpec.feature 'Menu for users' do
 
     expect(page).to have_link('Sign Out')
 
-    expect(page).to have_content(@user.name)
+    expect(page).to have_content(@user_for_menu.name)
 
   end
 
