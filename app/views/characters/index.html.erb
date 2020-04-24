@@ -4,7 +4,17 @@
     <div class="col-lg-4 col-md-7 pr-5 border-right">
       <ul class="list text-center">
         <% if @my_character.nil? %>
-          <li class="list-inline-item">You have no living Character! <%= link_to "Create one now", new_character_path %></li>
+          <li class="list-inline-item text-muted">You have no living Character!</li>
+          <div class="row mt-4 text-center">
+            <div class="col-lg-2 col-md-7"></div>
+            <div class="col-lg-8 col-md-7">
+              <div class="action_arrow">
+                <p><%= link_to image_tag('menu/icons8-forward-50.png'), new_character_path %></p>
+              </div>
+              <p class="list-inline-item small text-dark">Create one now</p>
+            </div>
+            <div class="col-lg-2 col-md-7"></div>
+          </div>
         <% else %>
           <li class="list-item text-center mb-5"><h4 class="text-muted">Your Active Character:</h4></li>
           <li class="list-item mb-1">Name: <%= @my_character.name %></li>
@@ -38,20 +48,34 @@
   <div class="row mt-4 text-center">
 
 
+    <% if @my_character.nil? %>
 
-    <div class="col-lg-2 col-md-7">
-      <div class="action_arrow">
-        <p><%= link_to image_tag('menu/icons8-forward-50.png'), character_path(@my_character.id, {extra: 'from_index'}) %></p>
+      <div class="col-lg-1 col-md-7"></div>
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to image_tag('menu/icons8-forward-50.png'), all_of_my_character_path({extra: 'from_index'}) %></p>
+        </div>
+        <p class="list-inline-item small text-dark">My Characters History</p>
       </div>
-      <p class="list-inline-item small text-dark">Character Training</p>
-    </div>
+      <div class="col-lg-1 col-md-7"></div>
 
-    <div class="col-lg-2 col-md-7">
-      <div class="action_arrow">
-        <p><%= link_to image_tag('menu/icons8-forward-50.png'), all_of_my_character_path({extra: 'from_index'}) %></p>
+    <% else %>
+
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to image_tag('menu/icons8-forward-50.png'), character_path(@my_character.id, {extra: 'from_index'}) %></p>
+        </div>
+        <p class="list-inline-item small text-dark">Character Training</p>
       </div>
-      <p class="list-inline-item small text-dark">My Characters History</p>
-    </div>
+
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to image_tag('menu/icons8-forward-50.png'), all_of_my_character_path({extra: 'from_index'}) %></p>
+        </div>
+        <p class="list-inline-item small text-dark">My Characters History</p>
+      </div>
+
+    <% end %>
 
     <div class="col-lg-3 col-md-7"></div>
 
