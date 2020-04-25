@@ -33,8 +33,7 @@ RSpec.feature 'Characters history page' do
       expect(page).to have_content('LeaderBoard')
       expect(page).to have_content('Name:', count: number_of_character)
 
-      find(:xpath, "//a[contains(@href,'mains')]")
-
+      page.should have_xpath("//a[contains(@href,'mains')]", :count => number_of_character + 1)
     end
 
   end

@@ -1,10 +1,6 @@
-</br>
-
-</br>
 <div class='container index_content_container' style="height:400px">
   <div class="row">
     <div class="col-md-5 row justify-content-center side_mains_container" style="border-right:1px solid #EFEFEF">
-      <h1 class="" style="padding-top:30%">Message of test side content</h1>
     </div>
 
     <div class="col-md-7 list_of_character">
@@ -12,10 +8,14 @@
       <div class="list_of_character">
         <ul class="list">
           <%@characters.each_with_index do |character,index| %>
-            <li class="list-inline-item" style="width:40px"><%= index + 1  %></li>
-            <li class="list-inline-item" style="width:280px">Name: <%= character.name %></li>
-            <li class="list-inline-item" style="width:110px">Age: <%= character.age %></li>
-            <li class="list-inline-item" style="width:110px">Status: <%= character.status %></li>
+            <li class="list-inline-item" style="width:30px"><%= index + 1  %></li>
+            <li class="list-inline-item" style="width:250px">Name: <%= character.name %></li>
+            <li class="list-inline-item" style="width:100px">Age: <%= character.age %></li>
+            <li class="list-inline-item" style="width:100px">Status: <%= character.status %></li>
+            <li class="list-inline-item mx-auto img-fluid small_arrow">
+              <%= link_to '->', main_path(character.id, {extra: 'from_mains'}), class: 'btn btn-secondary mb-1'%>
+              <%#= link_to image_tag('menu/next_for_list-25.png'), main_path(character.id, {extra: 'from_mains'})%>
+            </li>
             </br>
           <% end %>
         </ul>
@@ -26,7 +26,8 @@
 
         <div class="col-lg-4 col-md-7">
           <div class="action_arrow">
-            <p><%= link_to image_tag('menu/icons8-forward-50.png')%></p>
+            <%= link_to '->', leaderboard_path, class: 'btn btn-secondary mb-1'%>
+<!--            <p><%#= link_to image_tag('menu/icons8-forward-50.png'), leaderboard_path %></p>-->
           </div>
           <p class="list-inline-item small text-dark">Expanded Leaderboard</p>
         </div>
