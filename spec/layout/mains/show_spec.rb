@@ -6,13 +6,13 @@ RSpec.feature 'Show characters without user logged in' do
 
   before do
     @user_main_show = User.create!(name:'user_main_show', email:'user_main_show@email.com', password:'password', password_confirmation:'password')
-    @character_main_show = Character.create!(name:'character_main_show', user_id:@user_main_show.id)
+    @character_main_show = Character.create(name:'character_main_show', user_id:@user_main_show.id)
     @number_of_characters = Character.where(user_id:@user_main_show.id)
   end
 
   scenario 'shows character details' do
-    visit '/'
-    click_link 'character_main_show'
+    visit '/mains/1'
+
 
     expect(page).to have_content('sign up')
     expect(page).to have_content('log-in')

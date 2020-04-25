@@ -1,0 +1,18 @@
+<h4 class="list-item text-center text-muted">LeaderBoard:</h4></li>
+<div class="container index_content_container">
+  <div class="row justify-content-center full_leader_board">
+    <ul class="list">
+      <%@characters.each_with_index do |character,index| %>
+        <li class="list-inline-item" style="width:40px"><%= index + 1  %></li>
+        <li class="list-inline-item" style="width:280px">Name: <%= character.name %></li>
+        <li class="list-inline-item" style="width:110px">Age: <%= character.age %></li>
+        <li class="list-inline-item" style="width:110px">Status: <%= character.status %></li>
+        <li class="list-inline-item mx-auto img-fluid small_arrow">
+          <%= link_to image_tag('menu/next_for_list-25.png'), main_path(character.id, {extra: 'from_mains'})%>
+        </li>
+        </br>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+</div>

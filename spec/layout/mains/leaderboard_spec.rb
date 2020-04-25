@@ -26,12 +26,12 @@ RSpec.feature 'Characters history page' do
 
     scenario 'Should turn up with all of the character and link for Main#index' do
 
-      number_of_character = Character.all
+      number_of_character = Character.all.count
 
       visit '/leaderboard'
 
       expect(page).to have_content('LeaderBoard')
-      expect(page).to have_content('name', count: number_of_character)
+      expect(page).to have_content('Name:', count: number_of_character)
 
       find(:xpath, "//a[contains(@href,'mains')]")
 

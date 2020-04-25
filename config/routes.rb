@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :mains, only: [:index, :show]
   resources :characters, only: [:index, :new, :show, :create, :destroy, :update]
 
+  get 'leaderboard', to: 'mains#leaderboard', as: :leaderboard
+
   get 'character_info/:id', to: 'characters#character_info', as: :character_info
   get 'all_of_my_character', to: 'characters#all_of_my_character', as: :all_of_my_character
   get 'character/:id/feeding', to: 'characters#feeding', as: :character_feeding

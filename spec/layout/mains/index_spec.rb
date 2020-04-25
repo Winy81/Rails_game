@@ -16,7 +16,7 @@ RSpec.feature 'Show characters without user logged in' do
     expect(page).to have_content('sign up')
     expect(page).to have_content('log-in')
 
-    expect(page).to have_content('Top Characters:')
+    expect(page).to have_content('LeaderBoard:')
 
     expect(page).to have_link(@character.name)
     expect(page).to have_content(@character.age)
