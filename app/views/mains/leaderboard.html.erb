@@ -8,7 +8,7 @@
         <li class="list-inline-item" style="width:110px">Age: <%= character.age %></li>
         <li class="list-inline-item" style="width:110px">Status: <%= character.status %></li>
         <li class="list-inline-item mx-auto img-fluid small_arrow">
-          <%= link_to '->', main_path(character.id, {extra: 'from_leaderboard'}), class: 'btn btn-secondary mb-1'%>
+          <%= link_to '->', main_path(character.id, {extra: 'from_leaderboard'}), class: 'btn btn-outline-secondary mb-1'%>
           <%#= link_to image_tag('menu/next_for_list-25.png'), main_path(character.id, {extra: 'from_mains'})%>
         </li>
         </br>
@@ -27,7 +27,7 @@
 
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow">
-          <%= link_to '<-', mains_path({extra: 'from_leaderboard'}), class: 'btn btn-secondary'%>
+          <%= link_to '<-', mains_path({extra: 'from_leaderboard'}), class: 'btn btn-outline-secondary'%>
 <!--          <p><%#= link_to image_tag('menu/icons8-backward-50.png'), mains_path %></p>-->
         </div>
         <p class="list-inline-item small text-dark">Characters Page</p>

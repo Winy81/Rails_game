@@ -13,7 +13,7 @@
             <li class="list-inline-item" style="width:100px">Age: <%= character.age %></li>
             <li class="list-inline-item" style="width:100px">Status: <%= character.status %></li>
             <li class="list-inline-item mx-auto img-fluid small_arrow">
-              <%= link_to '->', main_path(character.id, {extra: 'from_mains'}), class: 'btn btn-secondary mb-1'%>
+              <%= link_to 'Go', main_path(character.id, {extra: 'from_mains'}), class: 'btn btn-outline-secondary mb-1'%>
               <%#= link_to image_tag('menu/next_for_list-25.png'), main_path(character.id, {extra: 'from_mains'})%>
             </li>
             </br>
@@ -26,7 +26,7 @@
 
         <div class="col-lg-4 col-md-7">
           <div class="action_arrow">
-            <%= link_to '->', leaderboard_path, class: 'btn btn-secondary mb-1'%>
+            <%= link_to 'Go', leaderboard_path, class: 'btn btn-outline-secondary mb-1'%>
 <!--            <p><%#= link_to image_tag('menu/icons8-forward-50.png'), leaderboard_path %></p>-->
           </div>
           <p class="list-inline-item small text-dark">Expanded Leaderboard</p>

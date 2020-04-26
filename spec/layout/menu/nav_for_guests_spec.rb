@@ -7,8 +7,8 @@ RSpec.feature 'Menu for guests' do
     visit '/'
 
 
-    expect(page).to have_link('sign up')
-    expect(page).to have_link('log-in')
+    expect(page).to have_link('Sign in')
+    expect(page).to have_link('Log in')
 
   end
 
