@@ -22,7 +22,7 @@
           </li>
         </div>
         <h5 class="mt-4 action_image_text">
-          <strong><%= link_to 'Feeding', fed_state_path, class:'text-dark' %></strong>
+          <%= link_to 'Feeding', fed_state_path, class: 'btn btn-outline-secondary mb-1'%>
         </h5>
         <p class="text-secondary mb-0 ">Main: Fed State </p>
         <p class="text-secondary mb-0">Secondary: Happiness </p>
@@ -36,7 +36,7 @@
           </li>
         </div>
         <h5 class="mt-4 action_image_text">
-          <strong><%= link_to 'Training', activity_require_path,  class:'text-dark' %></strong>
+          <%= link_to 'Activity', activity_require_path, class: 'btn btn-outline-secondary mb-1'%>
         </h5>
         <p class="text-secondary mb-0">Main: Activity Require  </p>
         <p class="text-secondary mb-0">Secondary: Happiness </p>
@@ -51,7 +51,7 @@
           </li>
         </div>
         <h5 class="mt-4 action_image_text">
-          <strong><%= link_to 'Playing', happiness_path, class:'text-dark' %></strong>
+          <%= link_to 'Happiness', happiness_path, class: 'btn btn-outline-secondary mb-1'%>
         </h5>
         <p class="text-secondary mb-0">Main: Happiness  </p>
         <p class="text-secondary mb-0">Secondary: Activity Require </p>
@@ -74,8 +74,8 @@
       <div class="col-lg-5 col-md-7"></div>
 
       <div class="col-lg-2 col-md-7">
-        <div class="action_arrow">
-          <p><%= link_to image_tag('menu/icons8-backward-50.png'), characters_path %></p>
+        <div class="action_arrow pt-4">
+          <p><%= link_to 'Back', characters_path, class: 'btn btn-outline-secondary' %></p>
         </div>
         <p class="list-inline-item small text-dark">Characters Page</p>
       </div>
