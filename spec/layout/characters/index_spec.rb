@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Show characters without when user logged in' do
+RSpec.feature 'Show characters' do
 
   before do
     @character_2 = Character.create(name:'Test_character_2', user_id:2)
@@ -14,8 +14,8 @@ RSpec.feature 'Show characters without when user logged in' do
       visit '/characters'
       current_path.should == new_user_session_path
 
-      expect(page).to have_content('sign up')
-      expect(page).to have_content('log-in')
+      expect(page).to have_link('Sign up')
+      expect(page).to have_link('Log in')
       expect(page).to have_content('You need to sign in or sign up first.')
     end
 

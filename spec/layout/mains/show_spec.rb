@@ -14,8 +14,8 @@ RSpec.feature 'Show characters without user logged in' do
     visit '/mains/1'
 
 
-    expect(page).to have_content('sign up')
-    expect(page).to have_content('log-in')
+    expect(page).to have_link('Sign in')
+    expect(page).to have_link('Log in')
 
     expect(page).to have_content('Details of Character:')
     expect(page).to have_content(@character_main_show.name)

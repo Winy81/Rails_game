@@ -13,8 +13,8 @@ RSpec.feature 'Show characters without user logged in' do
 
     visit '/'
 
-    expect(page).to have_content('sign up')
-    expect(page).to have_content('log-in')
+    expect(page).to have_link('Sign in')
+    expect(page).to have_link('Log in')
 
     expect(page).to have_content('LeaderBoard:')
 

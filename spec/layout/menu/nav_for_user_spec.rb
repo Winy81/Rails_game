@@ -16,7 +16,7 @@ RSpec.feature 'Menu for users' do
   scenario 'shows user details and actions' do
 
     visit '/'
-    click_link 'log-in'
+    click_link 'Log in'
 
     fill_in 'user_email', with: 'email@email.com'
     fill_in 'user_password', with: 'password'
