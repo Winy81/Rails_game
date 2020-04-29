@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     get 'guides/fed_state', to: 'guides#fed_state', as: :fed_state
     get 'guides/activity_require', to: 'guides#activity_require_level', as: :activity_require
     get 'guides/happiness', to: 'guides#happiness', as: :happiness
+    get 'guides/age', to: 'guides#age', as: :age
+    get 'guides/hibernated', to: 'guides#hibernated', as: :hibernated
+    get 'guides/status', to: 'guides#status', as: :status
 
     get 'statics/about_us', to: 'statics#about_us', as: :about_us
     get 'statics/contact', to: 'statics#contact', as: :contact

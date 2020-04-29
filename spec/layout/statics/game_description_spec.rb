@@ -25,9 +25,9 @@ RSpec.feature 'Game description' do
 
     scenario 'With link into characters#index when current user exists' do
 
-      visit'/info/statics/game_description'
-
       login_as(@user_for_game_desc)
+
+      visit'/info/statics/game_description'
 
       expect(page).to have_content('Age')
       expect(page).to have_content('Status')
