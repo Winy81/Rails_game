@@ -1,4 +1,27 @@
 <p class="float-right small"><%= @message %></p>
 </br>
 </br>
-<p><%= link_to 'Back to the Characters Page ', characters_path, class:"float-right" %></p>
+<h4 class="list-item text-center text-muted mt-2">Age:</h4></li>
+<section class="content-section text-muted text-center mt-1">
+
+  <div class="container text-center">
+    <div class="row mt-5">
+
+      <div class="col-lg-5 col-md-7"></div>
+
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <% if current_user %>
+            <%= link_to 'Back', characters_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%>
+          <% else %>
+            <%= link_to 'Back', mains_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%>
+          <% end %>
+        </div>
+        <p class="list-inline-item small text-dark">Characters Page</p>
+      </div>
+
+      <div class="col-lg-5 col-md-7"></div>
+
+    </div>
+  </div>
+</section>
