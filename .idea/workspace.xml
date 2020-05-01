@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/views/shared/_dinamic_single_index_back_button.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guides/activity_require.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/activity_require.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guides/age.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/age.html.erb" afterDir="false" />
@@ -9,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/app/views/guides/happiness.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/happiness.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guides/hibernated.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/hibernated.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/guides/status.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/status.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/statics/game_description.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/statics/game_description.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +88,7 @@
       <workItem from="1586335722665" duration="17891000" />
       <workItem from="1586960394952" duration="14863000" />
       <workItem from="1587394074284" duration="27746000" />
-      <workItem from="1588063211873" duration="3749000" />
+      <workItem from="1588063211873" duration="4018000" />
     </task>
     <servers />
   </component>
