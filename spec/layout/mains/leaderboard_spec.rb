@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.feature 'Characters history page' do
 
   before do
+    @user_leaderb = User.create(name:'@user_leaderb', email: '@user_leaderb@email.com', password:'password', password_confirmation:'password')
+
     5.times do |user|
       current_user = User.create(email:"Dummy_#{user}@email.com",
                                  password: "password",
@@ -32,8 +34,9 @@ RSpec.feature 'Characters history page' do
 
       expect(page).to have_content('LeaderBoard')
       expect(page).to have_content('Name:', count: number_of_character)
-
+      #15 character + back
       page.should have_xpath("//a[contains(@href,'mains')]", :count => number_of_character + 1)
+
     end
 
   end
@@ -41,6 +44,17 @@ RSpec.feature 'Characters history page' do
   feature 'With User who logged in' do
 
     scenario 'Should turn up with all of the character and link for Character#index' do
+
+      login_as(@user_leaderb)
+
+      number_of_character = Character.all.count
+
+      visit '/leaderboard'
+
+      expect(page).to have_content('LeaderBoard')
+      expect(page).to have_content('Name:', count: number_of_character)
+      #15 character
+      page.should have_xpath("//a[contains(@href,'character_info')]", :count => number_of_character)
 
     end
 
