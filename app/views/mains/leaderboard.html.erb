@@ -8,14 +8,17 @@
         <li class="list-inline-item" style="width:110px">Age: <%= character.age %></li>
         <li class="list-inline-item" style="width:110px">Status: <%= character.status %></li>
         <li class="list-inline-item mx-auto img-fluid small_arrow">
-          <%= link_to 'Go', main_path(character.id, {extra: 'from_leaderboard'}), class: 'btn btn-outline-secondary mb-1'%>
-          <%#= link_to image_tag('menu/next_for_list-25.png'), main_path(character.id, {extra: 'from_mains'})%>
+          <% if current_user %>
+            <%= link_to 'Go', character_info_path(character.id, {extra: 'from_index'}), class: 'btn btn-outline-secondary mb-1'%>
+          <% else %>
+            <%= link_to 'Go', main_path(character.id, {extra: 'from_leaderboard'}), class: 'btn btn-outline-secondary mb-1'%>
+          <% end %>
         </li>
         </br>
       <% end %>
     </ul>
   </div>
-  </div>
+</div>
 </div>
 
 <section class="content-section text-muted text-center mt-1">
