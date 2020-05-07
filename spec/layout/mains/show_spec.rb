@@ -10,24 +10,57 @@ RSpec.feature 'Show characters without user logged in' do
     @number_of_characters = Character.where(user_id:@user_main_show.id)
   end
 
-  scenario 'shows character details' do
-    visit '/mains/1'
+  feature 'shows character details' do
 
+    before do
+      @name_of_character = @character_main_show.name
+      @age_of_character = @character_main_show.age
+      @status_of_character = @character_main_show.status
 
-    expect(page).to have_link('Sign in')
-    expect(page).to have_link('Log in')
+      @name_of_user = @user_main_show.name
+      @user_created_date = @user_main_show.date_view_optimizer(@user_main_show.created_at)
+    end
 
-    expect(page).to have_content('Details of Character:')
-    expect(page).to have_content(@character_main_show.name)
-    expect(page).to have_content(@character_main_show.age)
-    expect(page).to have_content(@character_main_show.status)
+    scenario 'with quest user' do
 
-    expect(page).to have_content(@user_main_show.name)
-    expect(page).to have_content(@user_main_show.date_view_optimizer(@user_main_show.created_at))
+      visit '/mains/1'
 
-    expect(@number_of_characters.count).to eq(1)
+      expect(page).to have_link('Sign in')
+      expect(page).to have_link('Log in')
 
-    expect(page).to have_link('Back to the Main Page')
+      expect(page).to have_content('Details of Character:')
+      expect(page).to have_content(@name_of_character)
+      expect(page).to have_content(@age_of_character)
+      expect(page).to have_content(@status_of_character)
+
+      expect(page).to have_content(@name_of_user)
+      expect(page).to have_content(@user_created_date)
+
+      expect(@number_of_characters.count).to eq(1)
+
+      page.should have_xpath("//a[contains(@href,'mains')]", :count => 1)
+
+    end
+
+    scenario 'with user' do
+
+      login_as(@user_main_show)
+
+      visit '/mains/1'
+
+      expect(page).to have_link('Sign Out')
+
+      expect(page).to have_content(@name_of_character)
+      expect(page).to have_content(@age_of_character)
+      expect(page).to have_content(@status_of_character)
+
+      expect(page).to have_content(@name_of_user)
+      expect(page).to have_content(@user_created_date)
+
+      expect(@number_of_characters.count).to eq(1)
+
+      page.should have_xpath("//a[contains(@href,'characters')]", :count => 1)
+
+    end
   end
-
 end
