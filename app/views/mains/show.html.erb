@@ -1,23 +1,29 @@
-<p class="float-right small"><%= @message %></p>
-</br>
-<h2>Details of Character:</h2>
-<ul class="list-inline">
-  <li class="list-inline-item">Name of Character: <%= @character.name %></li>
-  <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
-  <li class="list-inline-item">Status:<%= @character.status %></li>
+<section class="content-section mt-5 mb-5 text-muted text-center">
+  <h2 class="mb-5">Info Page:</h2>
   </br>
-</ul>
-
-</br>
-
-<h2>Owner of Character:</h2>
-<ul class="list-inline">
-  <li class="list-inline-item">User: <%= @user.name %></li>
-  <li class="list-inline-item">Memeber since: <%= date_view_optimizer(@user.created_at) %></li>
-  <li class="list-inline-item">Number of created Characters: <%= @number_of_characters.count %></li>
   </br>
-</ul>
+  <div class="container mt-5 mb-5">
+    <h3>Details of Character: <%= @character.name %></h3>
+    </br>
+    <ul class="list-inline mb-5">
+      <li class="list-inline-item">Name of Character: <%= @character.name %></li>
+      <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
+      <li class="list-inline-item">Status:<%= @character.status %></li>
+    </ul>
+  </div>
+    <div class="container mt-5 mb-5">
+    <h3>Owner of Character:</h3>
+    <ul class="list-inline">
+      <li class="list-inline-item">User: <%= @user.name %></li>
+      <li class="list-inline-item">Memeber since: <%= date_view_optimizer(@user.created_at) %></li>
+      <li class="list-inline-item">Number of created Characters: <%= @number_of_characters.count %></li>
+      </br>
+    </ul>
+  </div>
+
+</section>
 
 </br>
+</br>
 
-<p><%= link_to 'Back to the Main Page', mains_path %></p>
+<%= render 'shared/dinamic_single_index_back_button' %>
