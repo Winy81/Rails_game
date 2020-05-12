@@ -15,13 +15,13 @@ RSpec.feature 'All of my character page' do
 
       visit '/all_of_my_character'
 
-      expect(page).to have_content('Current user_id:')
       expect(current_path).to eq(all_of_my_character_path)
       expect(page).to have_content(@user_all_of_my_c.name)
       expect(page).to have_content('Your characters history:')
       expect(page).to have_content('You have no Character!')
       expect(page).to have_link('Create one now')
-      expect(page).to have_link('Back to the Characters Page')
+      expect(page).to have_link('Back')
+      expect(page).to have_content('Characters Page')
 
     end
 
@@ -40,15 +40,16 @@ RSpec.feature 'All of my character page' do
 
       visit '/all_of_my_character'
 
-      expect(page).to have_content('Current user_id:')
       expect(current_path).to eq(all_of_my_character_path)
       expect(page).to have_content(@user_all_of_my_c.name)
       expect(page).to have_content('Your characters history:')
-      expect(page).to have_content('Name of Character:', count: all_of_character_of_user_all_of_my_c)
+      expect(page).to have_content('Name:', count: all_of_character_of_user_all_of_my_c)
+      expect(page).to have_content('Age:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Was living:', count: all_of_character_of_user_all_of_my_c)
-      expect(page).to have_content('Status:dead', count: all_of_character_of_user_all_of_my_c)
+      expect(page).to have_content('Status: dead', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Your characters history')
-      expect(page).to have_link('Back to the Characters Page')
+      expect(page).to have_link('Back')
+      expect(page).to have_content('Characters Page')
 
     end
 
@@ -62,17 +63,17 @@ RSpec.feature 'All of my character page' do
 
       visit '/all_of_my_character'
 
-      expect(page).to have_content('Current user_id:')
       expect(current_path).to eq(all_of_my_character_path)
-      expect(page).to have_link('Manage Character')
+      expect(page).to have_link('Go', count:1)
       expect(page).to have_content(@user_all_of_my_c.name)
       expect(page).to have_content('Your characters history')
-      expect(page).to have_link('Manage Character')
-      expect(page).to have_content('Status:alive', count: character_alive)
-      expect(page).to have_content('Name of Character:', count: all_of_character_of_user_all_of_my_c)
+      expect(page).to have_content('Status: alive', count: character_alive)
+      expect(page).to have_content('Age:', count: all_of_character_of_user_all_of_my_c)
+      expect(page).to have_content('Name:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Was living:', count: all_of_character_of_user_all_of_my_c - character_alive)
-      expect(page).to have_content('Status:dead', count: all_of_character_of_user_all_of_my_c - character_alive)
-      expect(page).to have_link('Back to the Characters Page')
+      expect(page).to have_content('Status: dead', count: all_of_character_of_user_all_of_my_c - character_alive)
+      expect(page).to have_link('Back')
+      expect(page).to have_content('Characters Page')
 
     end
   end

@@ -12,9 +12,9 @@
         </br>
       <% else %>
         <ul class="list-inline"><% @characters.each do |character| %>
-            <li class="list-inline-item mb-3" style="width:220px">Name<%= character.name %></li>
-            <li class="list-inline-item mb-3" style="width:60px">Age<%= character.age %></li>
-            <li class="list-inline-item mb-3" style="width:100px">Status:<%= character.status %></li>
+            <li class="list-inline-item mb-3" style="width:220px">Name: <%= character.name %></li>
+            <li class="list-inline-item mb-3" style="width:80px">Age: <%= character.age %></li>
+            <li class="list-inline-item mb-3" style="width:100px">Status: <%= character.status %></li>
             <% if character.status == 'alive' %>
               <%= link_to 'Go', character_path(character.id, {extra: 'from_all_of_my_character'}), class: 'btn btn-outline-secondary mb-1', style:"width:50px"%>
             <% else %>
