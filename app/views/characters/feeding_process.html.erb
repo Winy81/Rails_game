@@ -40,14 +40,14 @@
       <div class="col-lg-4 col-md-7"></div>
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow">
-          <p><%= link_to image_tag('menu/icons8-backward-50.png'), character_path(@character) %></p>
+          <p><%= link_to 'Back', character_path(@character),class: 'btn btn-outline-secondary' %></p>
         </div>
         <p class="list-inline-item small text-dark">Characters Page</p>
       </div>
 
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow">
-          <p><%= link_to image_tag('menu/icons8-forward-50.png'), character_path(@character.id, {fed_state:  (@current_fed_state), extra: 'from_feeding_process' }), :method => :put%></p>
+          <p><%= link_to 'Claim', character_path(@character.id, {fed_state:  (@current_fed_state), extra: 'from_feeding_process' }), class: 'btn btn-outline-secondary', :method => :put%></p>
         </div>
         <p class="list-inline-item small text-dark">Claim your Points</p>
       </div>

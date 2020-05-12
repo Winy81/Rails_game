@@ -52,8 +52,8 @@
 
       <div class="col-lg-1 col-md-7"></div>
       <div class="col-lg-2 col-md-7">
-        <div class="action_arrow pt-4">
-          <p><%= link_to 'Go', all_of_my_character_path({extra: 'from_index'}), class: 'btn btn-outline-secondary' %></p>
+        <div class="action_arrow">
+          <p><%= link_to 'Go', all_of_my_character_path({extra: 'from_index'}), class: 'btn btn-outline-secondary p-3 main_action_button' %></p>
         </div>
         <p class="list-inline-item small text-dark">My Characters History</p>
       </div>
@@ -62,15 +62,15 @@
     <% else %>
 
       <div class="col-lg-2 col-md-7">
-        <div class="action_arrow pt-4">
-          <p><%= link_to 'Go', character_path(@my_character.id, {extra: 'from_index'}), class: 'btn btn-outline-secondary' %></p>
+        <div class="action_arrow">
+          <p><%= link_to 'Go', character_path(@my_character.id, {extra: 'from_index'}), class: 'btn btn-outline-secondary p-3 main_action_button' %></p>
         </div>
         <p class="list-inline-item small text-dark">Character Training</p>
       </div>
 
       <div class="col-lg-2 col-md-7">
-        <div class="action_arrow pt-4">
-          <p><%= link_to 'Go', all_of_my_character_path({extra: 'from_index'}), class: 'btn btn-outline-secondary' %></p>
+        <div class="action_arrow">
+          <p><%= link_to 'Go', all_of_my_character_path({extra: 'from_index'}), class: 'btn btn-outline-secondary p-3 main_action_button' %></p>
         </div>
         <p class="list-inline-item small text-dark">My Characters History</p>
       </div>
