@@ -1,9 +1,13 @@
 require 'rails_helper'
 
+include DateTransformHelper
+
 RSpec.feature 'Characters history page' do
 
   before do
     @user_c_h = User.create(name:'user_c_h', email: 'user_c_h@email.com', password:'password', password_confirmation:'password')
+    @user_who_logged_in = User.create(name:'user_who_logged_in', email: 'user_who_logged_in@email.com', password:'password', password_confirmation:'password')
+    login_as(@user_who_logged_in)
   end
 
   feature 'When the checked character not belongs to current user' do
@@ -15,6 +19,24 @@ RSpec.feature 'Characters history page' do
       end
 
       scenario 'Should return with one character with its details' do
+
+        all_of_character_of_user_user_c_h = Character.where(user_id:1).count
+
+        visit "/user/#{@user_c_h.id}/characters_history"
+
+        expect(current_path).to eq(characters_history_path(@user_c_h.id))
+
+        expect(page).to have_content('Name of User:')
+        expect(page).to have_content( @user_c_h.name)
+        expect(page).to have_content('He is member from:')
+        expect(page).to have_content(date_view_optimizer(@user_c_h.created_at))
+
+        expect(page).to have_content('Name of Character:', count: all_of_character_of_user_user_c_h)
+        expect(page).to have_content('Age:', count: all_of_character_of_user_user_c_h)
+        expect(page).to have_content('Status:', count: all_of_character_of_user_user_c_h)
+
+        expect(page).to have_link('Back')
+        expect(page).to have_content('Characters Page')
 
       end
 
