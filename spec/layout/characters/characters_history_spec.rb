@@ -89,6 +89,22 @@ RSpec.feature 'Characters history page' do
 
     scenario 'Should be redirected fot all_of my_characters_path' do
 
+      login_as(@user_c_h)
+
+      visit "/user/#{@user_c_h.id}/characters_history"
+
+      all_of_character_of_user_user_c_h = Character.where(user_id:1).count
+      expect(current_path).to eq(all_of_my_character_path)
+
+      expect(page).to have_content(@user_c_h.name)
+      expect(page).to have_content('Your characters history:')
+      expect(page).to have_content('Name:', count: all_of_character_of_user_user_c_h)
+      expect(page).to have_content('Age:', count: all_of_character_of_user_user_c_h)
+      expect(page).to have_content('Status:', count: all_of_character_of_user_user_c_h)
+
+      expect(page).to have_link('Back')
+      expect(page).to have_content('Characters Page')
+
     end
 
   end
