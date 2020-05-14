@@ -17,7 +17,7 @@ RSpec.feature 'All of my character page' do
 
       expect(current_path).to eq(all_of_my_character_path)
       expect(page).to have_content(@user_all_of_my_c.name)
-      expect(page).to have_content('Your characters history:')
+      expect(page).to have_content('Your characters history')
       expect(page).to have_content('You have no Character!')
       expect(page).to have_link('Create one now')
       expect(page).to have_link('Back')
@@ -42,12 +42,11 @@ RSpec.feature 'All of my character page' do
 
       expect(current_path).to eq(all_of_my_character_path)
       expect(page).to have_content(@user_all_of_my_c.name)
-      expect(page).to have_content('Your characters history:')
+      expect(page).to have_content('Your characters history')
       expect(page).to have_content('Name:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Age:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Was living:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Status: dead', count: all_of_character_of_user_all_of_my_c)
-      expect(page).to have_content('Your characters history')
       expect(page).to have_link('Back')
       expect(page).to have_content('Characters Page')
 

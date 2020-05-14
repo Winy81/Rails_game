@@ -26,12 +26,13 @@ RSpec.feature 'Characters history page' do
 
         expect(current_path).to eq(characters_history_path(@user_c_h.id))
 
-        expect(page).to have_content('Name of User:')
+        expect(page).to have_content('Characters history')
+        expect(page).to have_content('User:')
         expect(page).to have_content( @user_c_h.name)
-        expect(page).to have_content('He is member from:')
+        expect(page).to have_content('Member since:')
         expect(page).to have_content(date_view_optimizer(@user_c_h.created_at))
 
-        expect(page).to have_content('Name of Character:', count: all_of_character_of_user_user_c_h)
+        expect(page).to have_content('Name:', count: all_of_character_of_user_user_c_h)
         expect(page).to have_content('Age:', count: all_of_character_of_user_user_c_h)
         expect(page).to have_content('Status:', count: all_of_character_of_user_user_c_h)
 
@@ -62,14 +63,15 @@ RSpec.feature 'Characters history page' do
 
         expect(current_path).to eq(characters_history_path(@user_c_h.id))
 
-        expect(page).to have_content('Name of User:')
+        expect(page).to have_content('Characters history')
+        expect(page).to have_content('User:')
         expect(page).to have_content( @user_c_h.name)
-        expect(page).to have_content('He is member from:')
+        expect(page).to have_content('Member since:')
         expect(page).to have_content(date_view_optimizer(@user_c_h.created_at))
 
         expect(page).to have_link('Details', count: 1)
 
-        expect(page).to have_content('Name of Character:', count: all_of_character_of_user_user_c_h)
+        expect(page).to have_content('Name:', count: all_of_character_of_user_user_c_h)
         expect(page).to have_content('Age:', count: all_of_character_of_user_user_c_h)
         expect(page).to have_content('Status:', count: all_of_character_of_user_user_c_h)
         expect(page).to have_content('This Character has died on:', count: all_of_character_of_user_user_c_h - 1)
@@ -97,7 +99,7 @@ RSpec.feature 'Characters history page' do
       expect(current_path).to eq(all_of_my_character_path)
 
       expect(page).to have_content(@user_c_h.name)
-      expect(page).to have_content('Your characters history:')
+      expect(page).to have_content('Your characters history')
       expect(page).to have_content('Name:', count: all_of_character_of_user_user_c_h)
       expect(page).to have_content('Age:', count: all_of_character_of_user_user_c_h)
       expect(page).to have_content('Status:', count: all_of_character_of_user_user_c_h)
