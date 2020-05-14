@@ -1,10 +1,8 @@
-<p class="float-right small"><%= @message %></p>
-
 </br>
-</br>
+<h4 class="list-item text-center text-muted mt-4">Character Information</h4></li>
 <section class="content-section mt-5 mb-5 text-muted text-center">
   <div class="container mt-5 mb-5">
-  <h3>Details of Character: <%= @character.name %></h3>
+  <h6>Character: <%= @character.name %></h6>
     </br>
     <ul class="list-inline mb-5">
       <li class="list-inline-item">Age Of Character: <%= @character.age %></li>
@@ -17,9 +15,7 @@
 
 </section>
 
-</br>
-</br>
-</br>
+<div class="spacer_1"></div>
 
 <section class="content-section mt-5 text-muted text-center">
 
@@ -29,14 +25,14 @@
     <div class="col-lg-4 col-md-7"></div>
     <div class="col-lg-2 col-md-7">
       <div class="action_arrow">
-        <p><%= link_to image_tag('menu/icons8-backward-50.png'), characters_path%></p>
+        <p><%= link_to 'Back', characters_path, class: 'btn btn-outline-secondary'%></p>
       </div>
       <p class="list-inline-item small text-dark">Characters Page</p>
     </div>
 
     <div class="col-lg-2 col-md-7">
       <div class="action_arrow">
-        <p><%= link_to image_tag('menu/icons8-forward-50.png'), characters_history_path(@user.id)%></p>
+        <p><%= link_to 'Go', characters_history_path(@user.id), class: 'btn btn-outline-secondary'%></p>
       </div>
       <p class="list-inline-item small text-dark">Owner info</p>
     </div>

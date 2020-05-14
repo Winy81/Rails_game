@@ -24,7 +24,8 @@ RSpec.feature 'Character info page' do
     find(:xpath, "//a[contains(@href,'user/#{id_for_link}/characters_history')]")
     page.all(:xpath, "//a[contains(@href,'characters')]")
 
-    expect(page).to have_content('Details of Character:')
+    expect(page).to have_content('Character Information')
+    expect(page).to have_content('Character:')
     expect(page).to have_content(@character_1.name)
     expect(page).to have_content('Age Of Character:')
     expect(page).to have_content(@character_1.age)

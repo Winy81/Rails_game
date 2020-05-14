@@ -165,8 +165,17 @@ ul {
 
 }
 
+.spacer_1{
+  margin-top:400px;
+}
+
 .full_leader_board{
   max-height:400px;
+  overflow-y: scroll;
+}
+
+.full_character_history{
+  height:270px;
   overflow-y: scroll;
 }
 
