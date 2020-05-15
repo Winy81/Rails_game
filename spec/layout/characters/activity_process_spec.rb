@@ -49,8 +49,8 @@ RSpec.feature 'Feeding process page' do
 
 
         current_path.should == character_path(@char_of_activity_proc)
-        expect(page).to have_content("Your are too tired to move")
-        expect(page).to have_content('Activity require:')
+        expect(page).to have_content('Your are too tired to move')
+        expect(page).to have_content('Activity')
         expect(page).to have_content('0')
         Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == 0
 

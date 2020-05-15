@@ -152,8 +152,12 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_activity_state(character)
-    if character.update_attributes(:activity_require_level => params[:activity_require_level])
-      redirection_to_character_path(character,"notice", "Activity points has burned down")
+    if character.update_attributes(:activity_require_level => activity_limit.activity_level_min_setter)
+      if character.activity_require_level == 0
+        redirection_to_character_path(character,"warning", "Your are too tired to move")
+      else
+        redirection_to_character_path(character,"notice", "Activity point has burned down")
+      end
     else
       redirection_to_character_path(character,"alert", "Did not move")
     end
@@ -161,6 +165,10 @@ class CharactersController < ApplicationController
 
   def fed_limit
     CharactersServices::DataFieldLimitSetter.new(params[:fed_state].to_i)
+  end
+
+  def activity_limit
+    CharactersServices::DataFieldLimitSetter.new(params[:activity_require_level].to_i)
   end
 
   def path_recogniser
