@@ -61,6 +61,27 @@ RSpec.feature 'Feeding process page' do
 
       scenario 'Should be turn up with page with claim-able details and process button' do
 
+        current_character = Character.find_by(id:1)
+
+        character_id = current_character.id
+        character_current_activity_require_level = current_character.activity_require_level
+        claim_able_activity_points = 2
+
+        visit "character/#{character_id}/activity"
+
+        current_path.should == character_activity_path(current_character)
+
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}')]").click
+
+        expect(page).to have_content('Fed State:')
+        expect(page).to have_content('Happiness:')
+        expect(page).to have_content(character_current_activity_require_level)
+        expect(page).to have_content('Claim-able:')
+        expect(page).to have_content(claim_able_activity_points)
+
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}')]")
+        page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
+
 
       end
     end
