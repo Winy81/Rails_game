@@ -10,7 +10,7 @@ RSpec.feature 'Feeding process page' do
                                              status:'alive',
                                              age: 214,
                                              fed_state:50,
-                                             activity_require_level:80,
+                                             activity_require_level:5,
                                              happiness:50)
   end
 
@@ -19,11 +19,11 @@ RSpec.feature 'Feeding process page' do
     scenario 'Should be not proceed and redirected for character page' do
 
       character_id = @char_of_activity_proc.id
-      increased_activity_state = 15
+      decrease_activity_state = -3
 
-      visit "/character/#{character_id}/activity_process?activity_require_level=#{increased_activity_state}&extra=from_activity"
+      visit "/character/#{character_id}/activity_process?activity_require_level=#{decrease_activity_state}&extra=from_activity"
 
-      @char_of_activity_proc.activity_require_level.should == 80
+      @char_of_activity_proc.activity_require_level.should == 5
       current_path.should == character_path(@char_of_activity_proc)
       expect(page).to have_content("Opps, your character couldn't finish the training")
       expect(page).to have_content(@char_of_activity_proc.activity_require_level)
@@ -36,8 +36,23 @@ RSpec.feature 'Feeding process page' do
 
     feature 'With overloaded values' do
 
-      scenario 'Should be proceed until the max and redirected for character page with notice' do
+      scenario 'Should be proceed until the min and redirected for character page with notice' do
 
+        character_id = @char_of_activity_proc.id
+        character_activity_require_level = @char_of_activity_proc.activity_require_level
+
+        visit "/character/#{character_id}/activity"
+
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity_require_level - 10}')]").click
+
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_activity_require_level - 10}')]").click
+
+
+        current_path.should == character_path(@char_of_activity_proc)
+        expect(page).to have_content("Your are too tired to move")
+        expect(page).to have_content('Activity require:')
+        expect(page).to have_content('0')
+        Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == 0
 
       end
     end
