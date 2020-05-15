@@ -7,9 +7,10 @@ class CharactersController < ApplicationController
                                                                  :update,
                                                                  :feeding_process,
                                                                  :feeding_deny,
-                                                                 :activity_process]
+                                                                 :activity_process,
+                                                                 :activity_deny]
   before_action :authenticate_user!
-  before_action :alive_check, only: [:show, :feeding, :feeding_deny, :feeding_process, :activity, :activity_process, :update ]
+  before_action :alive_check, only: [:show, :feeding, :feeding_deny, :feeding_process, :activity, :activity_deny, :activity_process, :update ]
 
   def index
     @message = "Hello from CharactersController#index"
@@ -53,8 +54,11 @@ class CharactersController < ApplicationController
 
   def activity
     #test required
-    flash.now[:alert] = "Opps, your character couldn't finish the training" unless params[:activity_require_level] == nil
     @message = "Hello from CharactersController#activity"
+  end
+
+  def activity_deny
+    redirection_to_character_path(@character,"alert", "Opps, your character couldn't finish the training")
   end
 
   def activity_process

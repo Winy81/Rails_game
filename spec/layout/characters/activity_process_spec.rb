@@ -18,6 +18,16 @@ RSpec.feature 'Feeding process page' do
 
     scenario 'Should be not proceed and redirected for character page' do
 
+      character_id = @char_of_activity_proc.id
+      increased_activity_state = 15
+
+      visit "/character/#{character_id}/activity_process?activity_require_level=#{increased_activity_state}&extra=from_activity"
+
+      @char_of_activity_proc.activity_require_level.should == 80
+      current_path.should == character_path(@char_of_activity_proc)
+      expect(page).to have_content("Opps, your character couldn't finish the training")
+      expect(page).to have_content(@char_of_activity_proc.activity_require_level)
+
     end
   end
 
