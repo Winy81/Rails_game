@@ -75,6 +75,7 @@ RSpec.feature 'Feeding process page' do
 
         expect(page).to have_content('Fed State:')
         expect(page).to have_content('Happiness:')
+        expect(page).to have_content('Activity require:')
         expect(page).to have_content(character_current_activity_require_level)
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_activity_points)
