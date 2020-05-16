@@ -4,12 +4,12 @@
     <div class="col-lg-4 col-md-7 pr-5 border-right">
       <ul class="list text-center">
         <% if @my_character.nil? %>
-          <li class="list-inline-item text-muted">You have no living Character!</li>
+          <li class="list-inline-item text-muted"><h4>You have no living Character!</h4></li>
           <div class="row mt-4 text-center">
             <div class="col-lg-2 col-md-7"></div>
             <div class="col-lg-8 col-md-7">
-              <div class="action_arrow">
-                <p><%= link_to image_tag('menu/icons8-forward-50.png'), new_character_path %></p>
+              <div class="action_arrow pt-4">
+                <p><%= link_to 'Create', new_character_path, class: 'btn btn-outline-secondary p-3 main_action_button' %></p>
               </div>
               <p class="list-inline-item small text-dark">Create one now</p>
             </div>
