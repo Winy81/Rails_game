@@ -11,19 +11,22 @@ RSpec.feature 'Feeding process page' do
 
     scenario 'Should be not proceed and create a character' do
 
+      name_of_next_char = 'Test_character'
+
       number_of_character_before = Character.where(user_id:1).count
       expect(number_of_character_before).to eq(0)
 
       visit 'characters'
       find(:xpath, "//a[contains(@href,'/characters/new')]").click
 
-      fill_in 'character_name', with: 'char_of_new'
-      click_button 'Create Character'
+      fill_in 'character_name', with: name_of_next_char
+      click_button 'Create'
 
       number_of_character_after = Character.where(user_id:1).count
       current_character = Character.find_by(user_id:1)
 
       current_path.should == character_path(current_character)
+      expect(page).to have_content("Tha character has born. You gave name: #{name_of_next_char}")
       character_activity_path(current_character)
       expect(number_of_character_after).to eq(1)
 
