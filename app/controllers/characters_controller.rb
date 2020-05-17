@@ -176,7 +176,7 @@ class CharactersController < ApplicationController
   end
 
   def alive_check
-    @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is dead")
+    @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is Dead already!")
   end
 
   def alive_check_for_create_character
