@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Feeding process page' do
+RSpec.feature 'New page' do
 
   before do
     @user_char_new = User.create(name:'user_activity_process', email: 'user_activity_process@email.com', password:'password', password_confirmation:'password')

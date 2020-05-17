@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Show characters' do
+RSpec.feature 'Index page' do
 
   before do
     @character_2 = Character.create(name:'Test_character_2', user_id:2)
