@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   get 'all_of_my_character', to: 'characters#all_of_my_character', as: :all_of_my_character
   get 'character/:id/feeding', to: 'characters#feeding', as: :character_feeding
   get 'character/:id/activity', to: 'characters#activity', as: :character_activity
+  get 'character/:id/playing', to: 'characters#playing', as: :character_playing
 
   post 'character/:id/feeding_process', to: 'characters#feeding_process', as: :feeding_process
   get 'character/:id/feeding_process', to: 'characters#feeding_deny'
   post 'character/:id/activity_process', to: 'characters#activity_process', as: :activity_process
   get 'character/:id/activity_process', to: 'characters#activity_deny'
+  post 'character/:id/playing_process', to: 'characters#playing_process', as: :playing_process
 
   scope '/user' do
     get ':id/characters_history', to: 'characters#characters_history', as: :characters_history

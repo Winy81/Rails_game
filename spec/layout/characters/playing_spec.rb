@@ -28,13 +28,13 @@ RSpec.feature 'Playing page' do
     expect(page).to have_content('Fed State:')
     expect(page).to have_content(character_current_fed_state)
 
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 2}&extra=from_playing')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 4}&extra=from_playing')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 6}&extra=from_playing')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 8}&extra=from_playing')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 10}&extra=from_playing')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 2}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 4}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 6}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 8}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 10}')]")
 
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process')]", :count => 5)
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process')]", :count => 5)
 
     page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 

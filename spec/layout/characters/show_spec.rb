@@ -91,7 +91,7 @@ RSpec.feature 'Character show page' do
 
       find(:xpath, "//a[contains(@href,'/character/#{current_character.id}/feeding')]")
       find(:xpath, "//a[contains(@href,'/character/#{current_character.id}/activity')]")
-      #find(:xpath, "//a[contains(@href,'/character/#{current_character.id}/play')]")
+      find(:xpath, "//a[contains(@href,'/character/#{current_character.id}/playing')]")
 
 
     end

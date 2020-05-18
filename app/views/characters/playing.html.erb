@@ -1,0 +1,120 @@
+<p class="float-right small"><%= @message %></p>
+
+</br>
+
+<section class="content-section text-center text-secondary">
+  <div class="container pt-3">
+    <ul class="list-inline">
+      <li class="list-inline-item"><h6>Happiness: <%= @character.happiness %></h6></li>
+      <li class="list-inline-item"><h6>Fed State: <%= @character.fed_state %></h6></li>
+    </ul>
+  </div>
+</section>
+
+</br>
+
+
+<section class="content-section text-faded text-center">
+  <div class="container mt-5 mb-4">
+    <div class="row">
+
+      <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
+      </div>
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-cherry-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 2), extra: 'from_playing' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Small</strong>
+        </h5>
+        <p class="text-secondary mb-0">Happiness: +2</p>
+        <p class="text-secondary mb-0 ">Fed State: -5</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-croissant-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 4), extra: 'from_playing' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Minor</strong>
+        </h5>
+        <p class="text-secondary mb-0">Happiness: +4</p>
+        <p class="text-secondary mb-0 ">Fed State: -10</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-porridge-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 6), extra: 'from_playing' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Normal</strong>
+        </h5>
+        <p class="text-secondary mb-0">Happiness: +6</p>
+        <p class="text-secondary mb-0 ">Fed State: -15</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 8), extra: 'from_playing' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Large</strong>
+        </h5>
+        <p class="text-secondary mb-0">Happiness: +8</p>
+        <p class="text-secondary mb-0 ">Fed State: -20</p>
+      </div>
+
+
+      <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+        <div class="action_image_5">
+          <li class="list-inline-item">
+            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 10), extra: 'from_playing' }), method: :post %>
+          </li>
+        </div>
+        <h5 class="mt-4 text-secondary">
+          <strong>Extra</strong>
+        </h5>
+        <p class="text-secondary mb-0">Happiness: +10</p>
+        <p class="text-secondary mb-0 ">Fed State: -25</p>
+      </div>
+
+      <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
+      </div>
+
+    </div>
+  </div>
+</section>
+</br>
+</br>
+
+<section class="content-section mt-5 text-muted text-center">
+
+  <div class="container mt-5 text-center">
+    <div class="row mt-5">
+
+      <div class="col-lg-5 col-md-7"></div>
+
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to 'Back', character_path(@character), class: 'btn btn-outline-secondary' %></p>
+        </div>
+        <p class="list-inline-item small text-dark">Action Page</p>
+      </div>
+
+      <div class="col-lg-5 col-md-7"></div>
+
+    </div>
+  </div>
+</section>

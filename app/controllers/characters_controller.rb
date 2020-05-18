@@ -4,13 +4,22 @@ class CharactersController < ApplicationController
                                                                  :destroy,
                                                                  :feeding,
                                                                  :activity,
+                                                                 :playing,
                                                                  :update,
                                                                  :feeding_process,
                                                                  :feeding_deny,
                                                                  :activity_process,
                                                                  :activity_deny]
   before_action :authenticate_user!
-  before_action :alive_check, only: [:show, :feeding, :feeding_deny, :feeding_process, :activity, :activity_deny, :activity_process, :update ]
+  before_action :alive_check, only: [:show,
+                                     :feeding,
+                                     :feeding_deny,
+                                     :feeding_process,
+                                     :activity,
+                                     :activity_deny,
+                                     :activity_process,
+                                     :playing,
+                                     :update ]
 
   def index
     @message = "Hello from CharactersController#index"
@@ -66,6 +75,11 @@ class CharactersController < ApplicationController
     @message = "Hello from CharactersController#activity_process"
     @sent_points_of_activity = (@character.activity_require_level.to_i - params[:activity_require_level].to_i)
     @current_activity_state = params[:activity_require_level]
+  end
+
+  def playing
+    #test required
+    @message = "Hello from CharactersController#playing"
   end
 
   def update
