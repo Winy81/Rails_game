@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/views/characters/activity.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/feeding.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/feeding.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/characters/playing.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/playing.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/show.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +83,7 @@
       <workItem from="1586335722665" duration="17891000" />
       <workItem from="1586960394952" duration="14863000" />
       <workItem from="1587394074284" duration="27746000" />
-      <workItem from="1588063211873" duration="44079000" />
+      <workItem from="1588063211873" duration="44392000" />
     </task>
     <servers />
   </component>
