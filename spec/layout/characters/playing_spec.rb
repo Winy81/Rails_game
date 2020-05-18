@@ -17,11 +17,26 @@ RSpec.feature 'Playing page' do
 
   scenario 'Should turn up with list of playings' do
 
-    character_id = @user_playing_page.id
-    character_current_fed_state = @user_playing_page.fed_state
-    character_current_happiness = @user_playing_page.happiness
+    character_id = @char_of_playing_page.id
+    character_current_fed_state = @char_of_playing_page.fed_state
+    character_current_happiness = @char_of_playing_page.happiness
 
-    visit "/character/#{@char_of_feeding_page.id}/playing"
+    visit "/character/#{@char_of_playing_page.id}/playing"
+
+    expect(page).to have_content('Happiness:')
+    expect(page).to have_content(character_current_happiness)
+    expect(page).to have_content('Fed State:')
+    expect(page).to have_content(character_current_fed_state)
+
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 2}&extra=from_playing')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 4}&extra=from_playing')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 6}&extra=from_playing')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 8}&extra=from_playing')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?happiness=#{character_current_happiness + 10}&extra=from_playing')]")
+
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process')]", :count => 5)
+
+    page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
   end
 end
