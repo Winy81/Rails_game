@@ -9,7 +9,8 @@ class CharactersController < ApplicationController
                                                                  :feeding_process,
                                                                  :feeding_deny,
                                                                  :activity_process,
-                                                                 :activity_deny]
+                                                                 :activity_deny,
+                                                                 :playing_deny]
   before_action :authenticate_user!
   before_action :alive_check, only: [:show,
                                      :feeding,
@@ -19,6 +20,7 @@ class CharactersController < ApplicationController
                                      :activity_deny,
                                      :activity_process,
                                      :playing,
+                                     :playing_deny,
                                      :update ]
 
   def index
@@ -80,6 +82,10 @@ class CharactersController < ApplicationController
   def playing
     #test required
     @message = "Hello from CharactersController#playing"
+  end
+
+  def playing_deny
+    redirection_to_character_path(@character,"alert", "Opps, your character has not become Happy")
   end
 
   def update

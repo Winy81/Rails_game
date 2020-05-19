@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'character/:id/activity_process', to: 'characters#activity_process', as: :activity_process
   get 'character/:id/activity_process', to: 'characters#activity_deny'
   post 'character/:id/playing_process', to: 'characters#playing_process', as: :playing_process
+  get 'character/:id/playing_process', to: 'characters#playing_deny'
 
   scope '/user' do
     get ':id/characters_history', to: 'characters#characters_history', as: :characters_history
