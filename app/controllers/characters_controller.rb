@@ -2,15 +2,16 @@ class CharactersController < ApplicationController
 
   before_action :set_character_details_with_owner_filter, only: [:show,
                                                                  :destroy,
-                                                                 :feeding,
-                                                                 :activity,
-                                                                 :playing,
                                                                  :update,
+                                                                 :feeding,
                                                                  :feeding_process,
                                                                  :feeding_deny,
-                                                                 :activity_process,
+                                                                 :activity,
                                                                  :activity_deny,
-                                                                 :playing_deny]
+                                                                 :activity_process,
+                                                                 :playing,
+                                                                 :playing_deny,
+                                                                 :playing_process]
   before_action :authenticate_user!
   before_action :alive_check, only: [:show,
                                      :feeding,
@@ -21,7 +22,8 @@ class CharactersController < ApplicationController
                                      :activity_process,
                                      :playing,
                                      :playing_deny,
-                                     :update ]
+                                     :playing_process,
+                                     :update]
 
   def index
     @message = "Hello from CharactersController#index"
@@ -88,11 +90,20 @@ class CharactersController < ApplicationController
     redirection_to_character_path(@character,"alert", "Opps, your character has not become Happy")
   end
 
+  def playing_process
+    #test required
+    @message = "Hello from CharactersController#playing_process"
+    @sent_playing_points = -1*(@character.happiness.to_i - params[:happiness].to_i)
+    @current_happiness_state = params[:happiness]
+  end
+
   def update
     if path_recogniser == "feeding"
       update_fed_state(@character)
     elsif path_recogniser == "activity"
       update_activity_state(@character)
+    elsif path_recogniser == "playing"
+      update_playing_state(@character)
     end
   end
 
@@ -183,12 +194,29 @@ class CharactersController < ApplicationController
     end
   end
 
+  #test and refactor into service class required
+  def update_playing_state(character)
+    if character.update_attributes(:happiness => happiness_limit.happiness_level_max_setter)
+      if character.happiness == 100
+        redirection_to_character_path(character,"warning", "Your Character do not want to play more")
+      else
+        redirection_to_character_path(character,"notice", "Happiness point added")
+      end
+    else
+      redirection_to_character_path(character,"alert", "Did not move")
+    end
+  end
+
   def fed_limit
     CharactersServices::DataFieldLimitSetter.new(params[:fed_state].to_i)
   end
 
   def activity_limit
     CharactersServices::DataFieldLimitSetter.new(params[:activity_require_level].to_i)
+  end
+
+  def happiness_limit
+    CharactersServices::DataFieldLimitSetter.new(params[:happiness].to_i)
   end
 
   def path_recogniser
