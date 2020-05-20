@@ -25,7 +25,7 @@ RSpec.feature 'Activity page' do
 
     visit "/character/#{@user_activity_page.id}/activity"
 
-    expect(page).to have_content('Activity State:')
+    expect(page).to have_content('Activity require:')
     expect(page).to have_content(character_current_activity_state)
     expect(page).to have_content('Fed State: ')
     expect(page).to have_content(character_current_fed_state)

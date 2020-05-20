@@ -73,15 +73,19 @@ RSpec.feature 'Activity process page' do
 
         find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}')]").click
 
+        expect(page).to have_content('Activity require:')
         expect(page).to have_content('Fed State:')
         expect(page).to have_content('Happiness:')
-        expect(page).to have_content('Activity require:')
         expect(page).to have_content(character_current_activity_require_level)
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_activity_points)
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}')]")
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
+
+        current_path.should == character_path(current_character)
+        expect(page).to have_content('Activity require')
+        expect(page).to have_content(character_current_activity_require_level - claim_able_activity_points)
 
 
       end

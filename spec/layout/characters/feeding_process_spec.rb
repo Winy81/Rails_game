@@ -79,8 +79,12 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_feed_points)
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?extra=from_feeding_process&fed_state=#{character_current_fed_state + claim_able_feed_points}')]")
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?extra=from_feeding_process&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
+
+        current_path.should == character_path(current_character)
+        expect(page).to have_content('Fed State:')
+        expect(page).to have_content(character_current_fed_state + claim_able_feed_points)
 
       end
     end
