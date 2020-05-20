@@ -61,6 +61,31 @@ RSpec.feature 'Playing process page' do
 
       scenario 'Should be turn up with page with claim-able details and process button' do
 
+        current_character = Character.find_by(id:1)
+
+        character_id = current_character.id
+        character_happiness_state = current_character.happiness
+        claim_able_happiness_points = 4
+
+        visit "character/#{character_id}/playing"
+
+        current_path.should == character_playing_path(current_character)
+
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_happiness_state + claim_able_happiness_points}')]").click
+
+        expect(page).to have_content('Happiness:')
+        expect(page).to have_content('Fed State:')
+        expect(page).to have_content(character_happiness_state)
+        expect(page).to have_content('Claim-able:')
+        expect(page).to have_content(claim_able_happiness_points)
+
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?extra=from_playing_process&happiness=#{character_happiness_state + claim_able_happiness_points}')]").click
+        page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
+
+        current_path.should == character_path(current_character)
+        expect(page).to have_content('Happiness')
+        expect(page).to have_content(character_happiness_state + claim_able_happiness_points)
+
       end
     end
   end
