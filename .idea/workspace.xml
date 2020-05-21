@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/layout/characters/activity_process_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/layout/characters/activity_process_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/layout/characters/feeding_process_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/layout/characters/feeding_process_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/activity_process.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity_process.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/feeding_process.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/feeding_process.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/playing_process.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/playing_process.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +83,7 @@
       <workItem from="1586335722665" duration="17891000" />
       <workItem from="1586960394952" duration="14863000" />
       <workItem from="1587394074284" duration="27746000" />
-      <workItem from="1588063211873" duration="49960000" />
+      <workItem from="1588063211873" duration="50957000" />
     </task>
     <servers />
   </component>
@@ -119,10 +119,11 @@
     <state x="600" y="352" width="670" height="481" key="find.popup/0.23.1440.823@0.23.1440.823" timestamp="1585899624609" />
     <state x="700" y="410" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1589661005982" />
     <state x="1050" y="253" width="639" height="476" key="find.popup/0.23.1920.999@0.23.1920.999" timestamp="1584346659523" />
-    <state x="479" y="272" width="670" height="557" key="search.everywhere.popup" timestamp="1584971070422">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="559" y="317" width="782" height="657" key="search.everywhere.popup" timestamp="1589973210509">
+      <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="479" y="272" width="670" height="557" key="search.everywhere.popup/0.23.1440.822@0.23.1440.822" timestamp="1584971070422" />
+    <state x="559" y="317" width="782" height="657" key="search.everywhere.popup/0.23.1680.969@0.23.1680.969" timestamp="1589973210509" />
     <state x="639" y="326" width="670" height="676" key="search.everywhere.popup/0.23.1920.999@0.23.1920.999" timestamp="1580476975000" />
   </component>
 </project>
