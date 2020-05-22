@@ -3,11 +3,11 @@ module ApplicationHelper
   def message_manager(key)
     case key
     when "notice"
-      "secondary"
+      "secondary border-success border-top-0 border-bottom-0 border-3"
     when "warning"
-      "secondary text-warning"
+      "secondary border-warning border-top-0 border-bottom-0 border-3"
     when "alert"
-      "secondary text-danger"
+      "secondary border-danger border-top-0 border-bottom-0 border-3"
     end
   end
 

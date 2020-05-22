@@ -1,19 +1,60 @@
-<p class="float-right small"><%= @message %></p>
-<h2>Current user_id: <%= current_user.id %></h2>
+</br>
+<h4 class="list-item text-center text-muted mt-4">Activity Require points Claim</h4></li>
+
+<section class="content-section text-center mt -5 mb-5">
+  <div class="container pt-5 mt-5 mb-5">
+    <div class="row mt-5 mb-5">
+      <div class="col-lg-3 col-md-7"></div>
+      <div class="col-lg-6 col-md-7">
+        <table class="table table-sm table-borderless text-secondary">
+          <thead>
+          <tr>
+            <th>Fed State: <%= @character.fed_state %></th>
+            <th>Happiness: <%= @character.happiness %></th>
+            <th>Activity require:<%=  @character.activity_require_level%></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td>Claim-able: <%=  %></td>
+            <td>Claim-able: <%=  %></td>
+            <td>Claim-able: - <%= @sent_points_of_activity %></td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="col-lg-3 col-md-7"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</br>
+</br>
 </br>
 
-<h2>Your Activity Require State is :<%=  @character.activity_require_level%></h2>
+<section class="content-section mt-5 text-muted text-center">
 
-</br>
-<h4>Claim-able Activity points: <%= @sent_points_of_activity %></h4>
-</br>
+  <div class="container mt-5 text-center">
+    <div class="row mt-5">
 
+      <div class="col-lg-4 col-md-7"></div>
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to 'Back', character_path(@character), class: 'btn btn-outline-secondary' %></p>
+        </div>
+        <p class="list-inline-item small text-dark">Characters Page</p>
+      </div>
 
-<div style="display:">
-  <%= link_to "Claim your Points", character_path(@character.id, {activity_require_level:  (@current_activity_state), extra: 'from_activity_process' }), class:"btn btn-outline-secondary", :method => :put  %>
-</div>
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to 'Claim', character_path(@character.id, {activity_require_level:  (@current_activity_state), extra: 'from_activity_process' }), class:'btn btn-outline-secondary', :method => :put  %></p>
+        </div>
+        <p class="list-inline-item small text-dark">Claim your Points</p>
+      </div>
+      <div class="col-lg-4 col-md-7"></div>
 
-</br>
-</br>
+    </div>
+  </div>
 
-<p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
+</section>

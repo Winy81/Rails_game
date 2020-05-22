@@ -1,4 +1,15 @@
-<p class="float-right small"><%= @message %></p>
-</br>
-</br>
-<p><%= link_to 'Back to the Characters Page ', characters_path, class:"float-right" %></p>
+<h4 class="list-item text-center text-muted mt-2">Guides:</h4></li>
+<div class="container index_content_container">
+  <h4 class="list-item text-center text-muted mt-2">Stats:</h4>
+  <div class="row justify-content-center full_leader_board mt-1">
+    <ul class="list">
+      <li class="list-inline-item"><%= link_to 'Age', age_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%></li>
+      <li class="list-inline-item"><%= link_to 'Status', status_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%></li>
+      <li class="list-inline-item"><%= link_to 'Fed State', fed_state_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%></li>
+      <li class="list-inline-item"><%= link_to 'Activity Require', activity_require_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%></li>
+      <li class="list-inline-item"><%= link_to 'Happiness', happiness_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%></li>
+      <li class="list-inline-item"><%= link_to 'Hibernated', hibernated_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%></li>
+  </div>
+</div>
+
+<%= render 'shared/dinamic_single_index_back_button' %>

@@ -1,7 +1,5 @@
 class GuidesController < ApplicationController
 
-  before_action :authenticate_user!
-
   def fed_state
     @message = "Hello from GuidesController#fed_state"
   end
@@ -14,5 +12,19 @@ class GuidesController < ApplicationController
   def happiness
     @message = "Hello from GuidesController#happiness"
   end
+
+  def age
+    @message = "Hello from GuidesController#age"
+  end
+
+  def hibernated
+    @message = "Hello from GuidesController#hibernated"
+  end
+
+  def status
+    @message = "Hello from GuidesController#status"
+  end
+
+
 
 end

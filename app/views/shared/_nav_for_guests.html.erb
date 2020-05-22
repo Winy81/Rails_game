@@ -1,7 +1,17 @@
-<p class="float-right small">This is the partial of _nav_for_guests.html.erb</p>
-<h1 class="display-3 font-weight-bold font-italic">Dragon's Life</h1>
+<h1 class="display-4 font-weight-bold font-italic text-muted ml-2">Dragon's Life</h1>
 <ul class="list-inline">
-  <li class="list-inline-item"><%= link_to 'sign up', new_user_registration_path %></li>
-  <li class="list-inline-item"></li><%= link_to 'log-in', new_user_session_path %></li>
+  <div class="row">
+    <div class="col-md-4 ml-2">
+      <li class="list-inline-item"><%= link_to 'Sign in', new_user_registration_path, class: 'btn btn-outline-secondary' %></li>
+      <li class="list-inline-item"><%= link_to 'Log in', new_user_session_path, class: 'btn btn-outline-secondary' %></li>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-3 justify-content-center">
+      <li class="list-inline-item"><%= link_to 'Guide', game_description_path, class: 'btn btn-outline-secondary' %></li>
+      <li class="list-inline-item"><%= link_to 'Contact Us', contact_path, class: 'btn btn-outline-secondary' %></li>
+      <li class="list-inline-item"><%= link_to 'About Us', about_us_path, class: 'btn btn-outline-secondary' %></li>
+    </div>
+  </div>
+  </div>
 </ul>
 <hr>

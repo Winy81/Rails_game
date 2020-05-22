@@ -1,0 +1,25 @@
+</br>
+<h4 class="list-item text-center text-muted mt-4">Leaderboard</h4>
+<div class="container index_content_container">
+  <div class="row justify-content-center full_leader_board mt-1">
+    <ul class="list">
+      <%@characters.each_with_index do |character,index| %>
+        <li class="list-inline-item" style="width:40px"><%= index + 1  %></li>
+        <li class="list-inline-item" style="width:280px">Name: <%= character.name %></li>
+        <li class="list-inline-item" style="width:110px">Age: <%= character.age %></li>
+        <li class="list-inline-item" style="width:110px">Status: <%= character.status %></li>
+        <li class="list-inline-item mx-auto img-fluid small_arrow">
+          <% if current_user %>
+            <%= link_to 'Go', character_info_path(character.id, {extra: 'from_leaderboard'}), class: 'btn btn-outline-secondary mb-1'%>
+          <% else %>
+            <%= link_to 'Go', main_path(character.id, {extra: 'from_leaderboard'}), class: 'btn btn-outline-secondary mb-1'%>
+          <% end %>
+        </li>
+        </br>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
+</br>
+<%= render 'shared/dinamic_single_index_back_button' %>

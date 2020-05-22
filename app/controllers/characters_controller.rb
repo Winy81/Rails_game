@@ -2,17 +2,32 @@ class CharactersController < ApplicationController
 
   before_action :set_character_details_with_owner_filter, only: [:show,
                                                                  :destroy,
-                                                                 :feeding,
-                                                                 :activity,
                                                                  :update,
+                                                                 :feeding,
                                                                  :feeding_process,
-                                                                 :activity_process]
+                                                                 :feeding_deny,
+                                                                 :activity,
+                                                                 :activity_deny,
+                                                                 :activity_process,
+                                                                 :playing,
+                                                                 :playing_deny,
+                                                                 :playing_process]
   before_action :authenticate_user!
-  before_action :alive_check, only: [:show, :feeding, :activity, :feeding_process, :activity_process, :update ]
+  before_action :alive_check, only: [:show,
+                                     :feeding,
+                                     :feeding_deny,
+                                     :feeding_process,
+                                     :activity,
+                                     :activity_deny,
+                                     :activity_process,
+                                     :playing,
+                                     :playing_deny,
+                                     :playing_process,
+                                     :update]
 
   def index
     @message = "Hello from CharactersController#index"
-    @characters = Character.all.order(:age => :desc).limit(12)
+    @characters = Character.all.order(:age => :desc).limit(10)
     @my_character = @characters.where(user_id: current_user.id, status:'alive').first
   end
 
@@ -36,9 +51,11 @@ class CharactersController < ApplicationController
   end
 
   def feeding
-    #test required
-    flash.now[:alert] = "Opps, your character couldn't finish the meal" unless params[:fed_state] == nil
     @message = "Hello from CharactersController#feeding"
+  end
+
+  def feeding_deny
+    redirection_to_character_path(@character,"alert", "Opps, your character couldn't finish the meal")
   end
 
   def feeding_process
@@ -50,8 +67,11 @@ class CharactersController < ApplicationController
 
   def activity
     #test required
-    flash.now[:alert] = "Opps, your character couldn't finish the training" unless params[:activity_require_level] == nil
     @message = "Hello from CharactersController#activity"
+  end
+
+  def activity_deny
+    redirection_to_character_path(@character,"alert", "Opps, your character couldn't finish the training")
   end
 
   def activity_process
@@ -61,11 +81,29 @@ class CharactersController < ApplicationController
     @current_activity_state = params[:activity_require_level]
   end
 
+  def playing
+    #test required
+    @message = "Hello from CharactersController#playing"
+  end
+
+  def playing_deny
+    redirection_to_character_path(@character,"alert", "Opps, your character has not become Happy")
+  end
+
+  def playing_process
+    #test required
+    @message = "Hello from CharactersController#playing_process"
+    @sent_playing_points = -1*(@character.happiness.to_i - params[:happiness].to_i)
+    @current_happiness_state = params[:happiness]
+  end
+
   def update
     if path_recogniser == "feeding"
       update_fed_state(@character)
     elsif path_recogniser == "activity"
       update_activity_state(@character)
+    elsif path_recogniser == "playing"
+      update_playing_state(@character)
     end
   end
 
@@ -145,8 +183,25 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_activity_state(character)
-    if character.update_attributes(:activity_require_level => params[:activity_require_level])
-      redirection_to_character_path(character,"notice", "Activity points has burned down")
+    if character.update_attributes(:activity_require_level => activity_limit.activity_level_min_setter)
+      if character.activity_require_level == 0
+        redirection_to_character_path(character,"warning", "Your are too tired to move")
+      else
+        redirection_to_character_path(character,"notice", "Activity point has burned down")
+      end
+    else
+      redirection_to_character_path(character,"alert", "Did not move")
+    end
+  end
+
+  #test and refactor into service class required
+  def update_playing_state(character)
+    if character.update_attributes(:happiness => happiness_limit.happiness_level_max_setter)
+      if character.happiness == 100
+        redirection_to_character_path(character,"warning", "Your Character do not want to play more")
+      else
+        redirection_to_character_path(character,"notice", "Happiness point added")
+      end
     else
       redirection_to_character_path(character,"alert", "Did not move")
     end
@@ -156,12 +211,20 @@ class CharactersController < ApplicationController
     CharactersServices::DataFieldLimitSetter.new(params[:fed_state].to_i)
   end
 
+  def activity_limit
+    CharactersServices::DataFieldLimitSetter.new(params[:activity_require_level].to_i)
+  end
+
+  def happiness_limit
+    CharactersServices::DataFieldLimitSetter.new(params[:happiness].to_i)
+  end
+
   def path_recogniser
     CharactersServices::RequestPathRecogniser.new(params[:extra]).request_path_recognise_helper
   end
 
   def alive_check
-    @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is dead")
+    @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is Dead already!")
   end
 
   def alive_check_for_create_character

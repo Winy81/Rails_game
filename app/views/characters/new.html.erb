@@ -1,10 +1,32 @@
-<p class="float-right small"><%= @message %></p>
-<h2>Current user_id: <%= current_user.id %></h2>
 </br>
 
-<%= form_for :character, url: characters_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br />
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.submit %>
-<% end %>
+<h4 class="text-center text-muted mt-5">Create your new Character</h4>
+<div class="container index_content_container">
+  <div class="row justify-content-center full_leader_board mt-1">
+
+    </br>
+    </br>
+
+
+    <%= form_for :character, url: characters_path do |f| %>
+      <h6 class="text-center text-muted mt-5 mb-4">Name of your new Character</h6>
+      <div class="form-group">
+      <%= f.text_field :name, class: 'form-control'%><br />
+      <p class="small text-center text-muted mb-3">Max 25 character long</p>
+
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+
+        </br>
+        </br>
+
+      <div class="action_arrow  mt-5 pt-4">
+        <p><%= f.submit 'Create', class: 'btn btn-outline-secondary btn-block' %></p>
+      </div>
+      <p class="text-center small text-dark">Create Now</p>
+      </div>
+
+    <% end %>
+
+
+  </div>
+</div>

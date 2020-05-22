@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.9', '>= 3.9.1'
   gem 'capybara', '~> 3.31'
+  gem 'database_cleaner', '1.3.0'
 end
 
 group :development do

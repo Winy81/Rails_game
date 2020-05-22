@@ -1,19 +1,20 @@
-<p class="float-right small"><%= @message %></p>
-<p>Current user_id: <%= current_user.id %></p>
+</br>
+<h4 class="list-item text-center text-muted mt-4">Feeding</h4></li>
 
-<h2>Your Fed State is <%=  @character.fed_state%></h2>
-<br id="feeding">
+<section class="content-section text-center text-secondary">
+  <div class="container pt-3">
+    <ul class="list-inline">
+      <li class="list-inline-item"><h6>Fed State: <%= @character.fed_state %></h6></li>
+      <li class="list-inline-item"><h6>Happiness: <%= @character.happiness %></h6></li>
+    </ul>
+  </div>
+</section>
 
-<!--  <ul class="list-inline">-->
-<!--    <li><%#= link_to "Small Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), extra: 'from_feeding' }), method: :post %></li>-->
-<!--    <li><%#= link_to "Minor Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), extra: 'from_feeding' }), method: :post %></li>-->
-<!--    <li><%#= link_to "Normal Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15), extra: 'from_feeding' }), method: :post %></li>-->
-<!--    <li><%#= link_to "Large Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20), extra: 'from_feeding' }), method: :post %></li>-->
-<!--    <li><%#= link_to "Extra Potion", feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25), extra: 'from_feeding' }), method: :post %></li>-->
-<!--  </ul>-->
+</br>
+
 
 <section class="content-section text-faded text-center">
-  <div class="container mt-4 mb-2">
+  <div class="container mt-5 mb-4">
     <div class="row">
 
       <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
@@ -94,7 +95,25 @@
     </div>
   </div>
 </section>
+
 </br>
 
-<p><%= link_to 'Back to the Character Details Page ', character_path(@character)%></p>
-</div>
+<section class="content-section mt-5 text-muted text-center">
+
+  <div class="container mt-5 text-center">
+    <div class="row mt-5">
+
+      <div class="col-lg-5 col-md-7"></div>
+
+      <div class="col-lg-2 col-md-7">
+        <div class="action_arrow">
+          <p><%= link_to 'Back', character_path(@character), class: 'btn btn-outline-secondary' %></p>
+        </div>
+        <p class="list-inline-item small text-dark">Action Page</p>
+      </div>
+
+      <div class="col-lg-5 col-md-7"></div>
+
+    </div>
+  </div>
+</section>
