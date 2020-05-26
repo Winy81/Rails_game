@@ -9,8 +9,8 @@ RSpec.feature 'Create new user page' do
     expect(page).to have_content('Sign up')
 
     fill_in 'user_email', with: 'test_user_reg@email.com'
-    fill_in 'user_password', with: 'test_user_reg'
-    fill_in 'user_password_confirmation', with: 'test_user_reg'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
 
     click_button 'Sign up'
 
@@ -24,7 +24,24 @@ RSpec.feature 'Create new user page' do
     visit '/users/sign_up'
 
     expect(page).to have_content('Sign up')
-    
+
+    fill_in 'user_name', with: 'test_user_reg'
+    fill_in 'user_email', with: 'test_user_reg@email.com'
+    fill_in 'user_password', with: 'password'
+    fill_in 'user_password_confirmation', with: 'password'
+
+    click_button 'Sign up'
+
+    user = User.find_by(name:'test_user_reg')
+
+    expect(user.name).to eq('test_user_reg')
+    expect(user.email).to eq('test_user_reg@email.com')
+    expect(user.has_character).to eq(false)
+
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+
+    expect(current_path).to eq(characters_path)
+
   end
 
 end
