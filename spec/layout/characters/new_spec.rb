@@ -9,7 +9,7 @@ RSpec.feature 'New page' do
 
   feature 'When the user has NOT character alive' do
 
-    scenario 'Should be not proceed and create a character' do
+    scenario 'Should be proceed and create a character' do
 
       name_of_next_char = 'Test_character'
 
@@ -24,11 +24,13 @@ RSpec.feature 'New page' do
 
       number_of_character_after = Character.where(user_id:1).count
       current_character = Character.find_by(user_id:1)
+      current_user = User.find_by(id:1)
 
       current_path.should == character_path(current_character)
       expect(page).to have_content("Tha character has born. You gave name: #{name_of_next_char}")
       character_activity_path(current_character)
       expect(number_of_character_after).to eq(1)
+      expect(current_user.has_character).to eq(true)
 
     end
   end
