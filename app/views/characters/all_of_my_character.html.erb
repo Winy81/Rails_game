@@ -3,31 +3,33 @@
 </br>
 <div class="container index_content_container">
   <div class="row justify-content-center mt-1">
-    <ul class="list">
-      <% if @characters.empty? %>
+    <% if @characters.empty? %>
+      <ul class="list">
         <li class="list-inline-item">You have no Character!</li>
-        <%= link_to "Create one now", new_character_path %>
-        </ul>
-        </br>
-        </br>
-      <% else %>
-        <ul class="list-inline"><% @characters.each do |character| %>
-            <li class="list-inline-item mb-3" style="width:220px">Name: <%= character.name %></li>
-            <li class="list-inline-item mb-3" style="width:80px">Age: <%= character.age %></li>
-            <li class="list-inline-item mb-3" style="width:100px">Status: <%= character.status %></li>
-            <% if character.status == 'alive' %>
-              <%= link_to 'Go', character_path(character.id, {extra: 'from_all_of_my_character'}), class: 'btn btn-outline-secondary mb-1', style:"width:50px"%>
-            <% else %>
-              <li class="list-inline-item mb-3" >This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
-              <li class="list-inline-item mb-3" >Was living:  <%= life_length_counter(character) %></li>
-            <% end %>
-            </br>
+        <li class="list-inline-item"><%= link_to "Create one now", new_character_path, class: 'btn btn-outline-secondary btn-block' %></li>
+      </ul>
+      </br>
+      </br>
+    <% else %>
+      <ul class="list-inline"><% @characters.each do |character| %>
+          <li class="list-inline-item mb-3" style="width:220px">Name: <%= character.name %></li>
+          <li class="list-inline-item mb-3" style="width:80px">Age: <%= character.age %></li>
+          <li class="list-inline-item mb-3" style="width:100px">Status: <%= character.status %></li>
+          <% if character.status == 'alive' %>
+            <%= link_to 'Go', character_path(character.id, {extra: 'from_all_of_my_character'}), class: 'btn btn-outline-secondary mb-1', style:"width:50px"%>
+          <% else %>
+            <li class="list-inline-item mb-3" >This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
+            <li class="list-inline-item mb-3" >Was living:  <%= life_length_counter(character) %></li>
           <% end %>
           </br>
-      <% end  %>
-      </ul>
+        <% end %>
+        </br>
+    <% end  %>
+    </ul>
   </div>
 </div>
+
+<div class="spacer_3_5"></div>
 
 <%= render 'shared/dinamic_single_index_back_button' %>
 
