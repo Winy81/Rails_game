@@ -1,6 +1,6 @@
 <% if resource.errors.any? %>
   <div id="error_explanation">
-    <div class="text-center alert alert" style="margin-top:-55px;margin-bottom:25px ">
+    <div class="text-center alert alert-secondary border-danger border-top-0 border-bottom-0 border-3" style="margin-top:-55px;margin-bottom:25px ">
       <% resource.errors.full_messages.each do |message| %>
         <%= message + ".  "%>
       <% end %>
