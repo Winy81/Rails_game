@@ -123,6 +123,7 @@ class CharactersController < ApplicationController
       redirection_to_characters_path("alert","You have a character Alive")
     else
       @character = Character.new(character_params)
+      update_user_has_character_field(current_user)
       if @character.save
         redirection_to_character_path(@character,"notice", "Tha character has born. You gave name: ", @character.name)
       else
@@ -241,6 +242,10 @@ class CharactersController < ApplicationController
   def redirection_to_character_path(current_character,type, message, extra="")
     output_type = type.to_sym
     redirect_to character_path(current_character), {output_type => "#{message} #{extra}"}
+  end
+
+  def update_user_has_character_field(user)
+    user.update_attributes(has_character:true)
   end
 
 end

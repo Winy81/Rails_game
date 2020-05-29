@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  include DeviceWhiteFilter
+
   add_flash_types :success, :warning, :danger
 
   #for device log_in redirect

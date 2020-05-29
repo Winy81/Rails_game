@@ -4,5 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :characters
+  validates_presence_of :name
+
+  has_many :characters, dependent: :destroy
+
 end

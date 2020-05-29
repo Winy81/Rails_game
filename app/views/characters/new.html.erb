@@ -11,18 +11,18 @@
     <%= form_for :character, url: characters_path do |f| %>
       <h6 class="text-center text-muted mt-5 mb-4">Name of your new Character</h6>
       <div class="form-group">
-      <%= f.text_field :name, class: 'form-control'%><br />
-      <p class="small text-center text-muted mb-3">Max 25 character long</p>
+        <%= f.text_field :name, class: 'form-control'%><br />
+        <p class="small text-center text-muted mb-3">Max 25 character long</p>
 
-      <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
 
         </br>
         </br>
 
-      <div class="action_arrow  mt-3 pt-4">
-        <p><%= f.submit 'Create', class: 'btn btn-outline-secondary btn-block' %></p>
-      </div>
-      <p class="text-center small text-dark">Create Now</p>
+        <div class="action_arrow  mt-5 pt-4">
+          <p><%= f.submit 'Create', class: 'btn btn-outline-secondary btn-block' %></p>
+        </div>
+        <p class="text-center small text-dark">Create Now</p>
       </div>
 
     <% end %>
