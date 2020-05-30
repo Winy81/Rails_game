@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :characters, dependent: :destroy
+  has_one :wallet, dependent: :destroy
 
 end
