@@ -125,6 +125,7 @@ class CharactersController < ApplicationController
       @character = Character.new(character_params)
       update_user_has_character_field(current_user)
       if @character.save
+        WalletServices::BasicWalletCreator.new(current_user).setup_starter_amount
         redirection_to_character_path(@character,"notice", "Tha character has born. You gave name: ", @character.name)
       else
         flash.now[:alert] = "The character has not been created"

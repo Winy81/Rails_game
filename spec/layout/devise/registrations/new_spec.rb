@@ -42,9 +42,6 @@ RSpec.feature 'Create new user page' do
 
     expect(current_path).to eq(characters_path)
 
-    wallet_of_user = Wallet.find_by(id:user.id)
-    expect(wallet_of_user).to eq(100)
-
   end
 
 end
