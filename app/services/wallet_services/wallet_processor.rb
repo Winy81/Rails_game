@@ -1,8 +1,7 @@
 module WalletServices
-
-  STARTER_AMOUNT = 100
-
   class WalletProcessor
+
+    STARTER_AMOUNT = 100
 
   end
 

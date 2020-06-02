@@ -6,7 +6,7 @@ module WalletServices
     end
 
     def setup_starter_amount
-      Wallet.create(user_id:@user.id, amount:WalletServices::STARTER_AMOUNT)
+      Wallet.create(user_id:@user.id, amount:WalletServices::WalletProcessor::STARTER_AMOUNT)
     end
 
   end

@@ -115,7 +115,7 @@ puts "All of characters has been updated "
 
 
 User.all.each do |user|
-  Wallet.create(user_id:user.id, amount:100)
+  Wallet.create(user_id:user.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT)
   print '.'
 end
 
