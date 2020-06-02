@@ -112,3 +112,11 @@ users.each do |user|
 end
 
 puts "All of characters has been updated "
+
+
+User.all.each do |user|
+  Wallet.create(user_id:user.id, amount:100)
+  print '.'
+end
+
+puts "User's Wallets has been created"
