@@ -49,6 +49,7 @@ RSpec.feature 'New page' do
                                       fed_state:50,
                                       activity_require_level:5,
                                       happiness:50)
+      @user_char_new_wallet = Wallet.create(user_id:@user_char_new.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
     end
 
     scenario 'Should be not proceed and redirected for character page with message' do
@@ -60,6 +61,9 @@ RSpec.feature 'New page' do
       current_path.should == characters_path
       expect(page).to have_content('You have a character Alive')
       expect(number_of_character).to eq(1)
+
+      expect(page).to have_content(@user_char_new_wallet.amount)
+      expect(@user_char_new_wallet.amount).to eq(100)
 
     end
   end

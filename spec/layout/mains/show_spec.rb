@@ -7,6 +7,7 @@ RSpec.feature 'Show characters without user logged in' do
   before do
     @user_main_show = User.create!(name:'user_main_show', email:'user_main_show@email.com', password:'password', password_confirmation:'password')
     @character_main_show = Character.create(name:'character_main_show', user_id:@user_main_show.id)
+    @user_main_show_wallet = Wallet.create(user_id:@user_main_show.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
     @number_of_characters = Character.where(user_id:@user_main_show.id)
   end
 
@@ -38,6 +39,8 @@ RSpec.feature 'Show characters without user logged in' do
 
       expect(@number_of_characters.count).to eq(1)
 
+      expect(page).not_to have_content(@user_main_show_wallet.amount)
+
       page.should have_xpath("//a[contains(@href,'mains')]", :count => 1)
 
     end
@@ -58,6 +61,9 @@ RSpec.feature 'Show characters without user logged in' do
       expect(page).to have_content(@user_created_date)
 
       expect(@number_of_characters.count).to eq(1)
+
+      expect(page).to have_content(@user_main_show_wallet.amount)
+      expect(@user_main_show_wallet.amount).to eq(100)
 
       page.should have_xpath("//a[contains(@href,'characters')]", :count => 1)
 
