@@ -13,6 +13,9 @@ RSpec.feature 'Feeding page' do
                                              fed_state:10,
                                              activity_require_level:46,
                                              happiness:31)
+    \
+    @user_feeding_page_wallet = Wallet.create(user_id:@user_feeding_page.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
+
   end
 
   scenario 'Should turn up with list of foods' do
@@ -27,6 +30,9 @@ RSpec.feature 'Feeding page' do
     expect(page).to have_content(character_current_fed_state)
     expect(page).to have_content('Happiness:')
     expect(page).to have_content(character_current_happiness)
+
+    expect(page).to have_content(@user_feeding_page_wallet.amount)
+    expect(@user_feeding_page_wallet.amount).to eq(100)
 
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 5}')]")
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 10}')]")

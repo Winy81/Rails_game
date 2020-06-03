@@ -13,6 +13,8 @@ RSpec.feature 'Playing page' do
                                              fed_state:10,
                                              activity_require_level:46,
                                              happiness:31)
+
+    @user_playing_page_wallet = Wallet.create(user_id:@user_playing_page.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
   end
 
   scenario 'Should turn up with list of playings' do
@@ -27,6 +29,9 @@ RSpec.feature 'Playing page' do
     expect(page).to have_content(character_current_happiness)
     expect(page).to have_content('Fed State:')
     expect(page).to have_content(character_current_fed_state)
+
+    expect(page).to have_content(@user_playing_page_wallet.amount)
+    expect(@user_playing_page_wallet.amount).to eq(100)
 
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 2}')]")
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 4}')]")
