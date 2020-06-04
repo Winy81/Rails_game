@@ -13,6 +13,9 @@ RSpec.feature 'Character info page' do
                                     fed_state:56,
                                     activity_require_level:46,
                                     happiness:31)
+
+    @user_char_info_wallet = Wallet.create(user_id:@user_char_info.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
+
   end
 
   scenario 'Should turn up with details of Character' do
@@ -23,6 +26,9 @@ RSpec.feature 'Character info page' do
 
     find(:xpath, "//a[contains(@href,'user/#{id_for_link}/characters_history')]")
     page.all(:xpath, "//a[contains(@href,'characters')]")
+
+    expect(page).to have_content(@user_char_info_wallet.amount)
+    expect(@user_char_info_wallet.amount).to eq(100)
 
     expect(page).to have_content('Character Information')
     expect(page).to have_content('Character:')
