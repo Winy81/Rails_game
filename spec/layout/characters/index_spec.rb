@@ -52,13 +52,17 @@ RSpec.feature 'Index page' do
 
     scenario 'user has now own character' do
 
-      character = Character.create(name:'Test_character', user_id:1)
+      character = Character.create(name:'Test_character', user_id:@user.id)
+      character_wallet = Wallet.create(user_id:@user.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
 
       visit '/characters'
       current_path.should == characters_path
 
       find(:xpath, "//a[contains(@href,'/characters/#{character.id}?extra=from_index')]")
       find(:xpath, "//a[contains(@href,'all_of_my_character?extra=from_index')]")
+
+      expect(page).to have_content(character_wallet.amount)
+      expect(character_wallet.amount).to eq(100)
 
       expect(page).to have_content(character.name)
       expect(page).to have_content(character.age)
