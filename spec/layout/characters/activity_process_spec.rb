@@ -12,6 +12,9 @@ RSpec.feature 'Activity process page' do
                                              fed_state:50,
                                              activity_require_level:5,
                                              happiness:50)
+
+    @user_activity_process_wallet = Wallet.create(user_id:@user_activity_process.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
+
   end
 
   feature 'When the page refreshed with new data (GET request)' do
@@ -40,19 +43,22 @@ RSpec.feature 'Activity process page' do
 
         character_id = @char_of_activity_proc.id
         character_activity_require_level = @char_of_activity_proc.activity_require_level
+        users_wallet = @user_activity_process_wallet.amount
 
         visit "/character/#{character_id}/activity"
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity_require_level - 10}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity_require_level - 10}&amount=#{users_wallet - 5}')]").click
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_activity_require_level - 10}')]").click
-
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_activity_require_level - 10}&amount=#{users_wallet - 5}')]").click
 
         current_path.should == character_path(@char_of_activity_proc)
         expect(page).to have_content('Your are too tired to move')
         expect(page).to have_content('Activity')
         expect(page).to have_content('0')
         Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == 0
+
+        expect(page).to have_content(@user_activity_process_wallet.amount)
+        expect(@user_activity_process_wallet.amount).to eq(users_wallet - 5)
 
       end
     end
@@ -66,12 +72,13 @@ RSpec.feature 'Activity process page' do
         character_id = current_character.id
         character_current_activity_require_level = current_character.activity_require_level
         claim_able_activity_points = 2
+        users_wallet = @user_activity_process_wallet.amount
 
         visit "character/#{character_id}/activity"
 
         current_path.should == character_activity_path(current_character)
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet - 5}')]").click
 
         expect(page).to have_content('Activity require:')
         expect(page).to have_content('Fed State:')
@@ -80,13 +87,15 @@ RSpec.feature 'Activity process page' do
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_activity_points)
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}')]").click
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet - 5}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
         current_path.should == character_path(current_character)
         expect(page).to have_content('Activity require')
         expect(page).to have_content(character_current_activity_require_level - claim_able_activity_points)
 
+        expect(page).to have_content(@user_activity_process_wallet.amount)
+        expect(@user_activity_process_wallet.amount).to eq(users_wallet - 5)
 
       end
     end
