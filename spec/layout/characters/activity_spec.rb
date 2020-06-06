@@ -25,6 +25,7 @@ RSpec.feature 'Activity page' do
     character_current_activity_state = @user_activity_page.activity_require_level
     character_current_fed_state = @user_activity_page.fed_state
     character_current_happiness = @user_activity_page.happiness
+    users_wallet = @user_activity_page_wallet.amount
 
     visit "/character/#{@user_activity_page.id}/activity"
 
@@ -38,11 +39,11 @@ RSpec.feature 'Activity page' do
     expect(page).to have_content(@user_activity_page_wallet.amount)
     expect(@user_activity_page_wallet.amount).to eq(100)
 
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 2}&extra=from_activity')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 4}&extra=from_activity')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 6}&extra=from_activity')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 8}&extra=from_activity')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 10}&extra=from_activity')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet + 2}&extra=from_activity')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet + 4}&extra=from_activity')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 6}&amount=#{users_wallet + 6}&extra=from_activity')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 8}&amount=#{users_wallet + 8}&extra=from_activity')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 10}&amount=#{users_wallet + 10}&extra=from_activity')]")
 
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process')]", :count => 5)
 

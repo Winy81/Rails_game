@@ -67,7 +67,7 @@ class CharactersController < ApplicationController
 
   def activity
     #test required
-    @message = "Hello from CharactersController#activity"
+    @amount = Wallet.find_by(user_id: current_user.id).amount
   end
 
   def activity_deny
