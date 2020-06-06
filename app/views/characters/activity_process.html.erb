@@ -48,7 +48,7 @@
 
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow">
-          <p><%= link_to 'Claim', character_path(@character.id, {activity_require_level:  (@current_activity_state), extra: 'from_activity_process' }), class:'btn btn-outline-secondary', :method => :put  %></p>
+          <p><%= link_to 'Claim', character_path(@character.id, {activity_require_level:  (@current_activity_state), amount: (@current_amount), extra: 'from_activity_process' }), class:'btn btn-outline-secondary', :method => :put  %></p>
         </div>
         <p class="list-inline-item small text-dark">Claim your Points</p>
       </div>

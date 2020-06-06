@@ -12,6 +12,8 @@ class CharactersController < ApplicationController
                                                                  :playing,
                                                                  :playing_deny,
                                                                  :playing_process]
+
+  before_action :wallet_view
   before_action :authenticate_user!
   before_action :alive_check, only: [:show,
                                      :feeding,
@@ -67,7 +69,6 @@ class CharactersController < ApplicationController
 
   def activity
     #test required
-    @amount = Wallet.find_by(user_id: current_user.id).amount
   end
 
   def activity_deny
@@ -78,6 +79,7 @@ class CharactersController < ApplicationController
     #test required
     @message = "Hello from CharactersController#activity_process"
     @sent_points_of_activity = (@character.activity_require_level.to_i - params[:activity_require_level].to_i)
+    @current_amount = params[:amount]
     @current_activity_state = params[:activity_require_level]
   end
 
@@ -101,7 +103,7 @@ class CharactersController < ApplicationController
     if path_recogniser == "feeding"
       update_fed_state(@character)
     elsif path_recogniser == "activity"
-      update_activity_state(@character)
+      update_from_activity_state(@character)
     elsif path_recogniser == "playing"
       update_playing_state(@character)
     end
@@ -184,11 +186,12 @@ class CharactersController < ApplicationController
   end
 
   #test and refactor into service class required
-  def update_activity_state(character)
+  def update_from_activity_state(character)
     if character.update_attributes(:activity_require_level => activity_limit.activity_level_min_setter)
       if character.activity_require_level == 0
         redirection_to_character_path(character,"warning", "Your are too tired to move")
       else
+        update_amount
         redirection_to_character_path(character,"notice", "Activity point has burned down")
       end
     else
@@ -207,6 +210,10 @@ class CharactersController < ApplicationController
     else
       redirection_to_character_path(character,"alert", "Did not move")
     end
+  end
+
+  def update_amount
+    WalletServices::WalletActionManager.new(current_user, params[:amount].to_i).action_amount_calculator
   end
 
   def fed_limit

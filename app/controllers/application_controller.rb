@@ -11,4 +11,15 @@ class ApplicationController < ActionController::Base
     characters_path
   end
 
+  def wallet_view
+    if current_user && has_user_created_character != 0
+      current_users_wallet = Wallet.find_by(user_id:current_user.id)
+      @amount = current_users_wallet.amount
+    end
+  end
+
+  def has_user_created_character
+    Character.where(user_id:current_user.id).count
+  end
+
 end

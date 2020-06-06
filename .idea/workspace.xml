@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/services/wallet_services/wallet_action_manager.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/characters_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/characters_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/characters/activity.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/activity_process.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity_process.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/shared/_nav_for_users.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/_nav_for_users.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/layout/characters/activity_process_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/layout/characters/activity_process_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/layout/characters/activity_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/layout/characters/activity_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +89,7 @@
       <workItem from="1587394074284" duration="27746000" />
       <workItem from="1588063211873" duration="59793000" />
       <workItem from="1591267961897" duration="595000" />
-      <workItem from="1591275170701" duration="2167000" />
+      <workItem from="1591275170701" duration="8343000" />
     </task>
     <servers />
   </component>
