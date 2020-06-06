@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  before_action :wallet_view
+
   protect_from_forgery with: :exception
 
   include DeviceWhiteFilter
