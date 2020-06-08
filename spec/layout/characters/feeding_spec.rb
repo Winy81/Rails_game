@@ -35,11 +35,11 @@ RSpec.feature 'Feeding page' do
     expect(page).to have_content(@user_feeding_page_wallet.amount)
     expect(@user_feeding_page_wallet.amount).to eq(100)
 
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 5}&amount=#{users_wallet - 3}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 10}&amount=#{users_wallet - 6}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 15}&amount=#{users_wallet - 9}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 20}&amount=#{users_wallet - 12}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{character_current_fed_state + 25}&amount=#{users_wallet - 15}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?amount=#{users_wallet - 3}&extra=from_feeding&fed_state=#{character_current_fed_state + 5}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?amount=#{users_wallet - 6}&extra=from_feeding&fed_state=#{character_current_fed_state + 10}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?amount=#{users_wallet - 9}&extra=from_feeding&fed_state=#{character_current_fed_state + 15}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?amount=#{users_wallet - 12}&extra=from_feeding&fed_state=#{character_current_fed_state + 20}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?amount=#{users_wallet - 15}&extra=from_feeding&fed_state=#{character_current_fed_state + 25}')]")
 
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process')]", :count => 5)
 

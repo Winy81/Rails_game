@@ -63,6 +63,7 @@ class CharactersController < ApplicationController
     #test required
     @message = "Hello from CharactersController#feeding_process"
     @sent_potion_of_food = -1*(@character.fed_state.to_i - params[:fed_state].to_i)
+    @current_amount = params[:amount]
     @current_fed_state = params[:fed_state]
   end
 
@@ -177,6 +178,7 @@ class CharactersController < ApplicationController
       if character.fed_state == 100
         redirection_to_character_path(character,"warning", "Your are full")
       else
+        update_amount
         redirection_to_character_path(character,"notice", "Fed point added")
       end
     else
