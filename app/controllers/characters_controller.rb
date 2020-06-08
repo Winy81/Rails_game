@@ -12,7 +12,7 @@ class CharactersController < ApplicationController
                                                                  :playing,
                                                                  :playing_deny,
                                                                  :playing_process]
-  
+
   before_action :authenticate_user!
   before_action :alive_check, only: [:show,
                                      :feeding,
