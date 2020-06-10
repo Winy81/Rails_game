@@ -22,6 +22,7 @@ RSpec.feature 'Playing page' do
     character_id = @char_of_playing_page.id
     character_current_fed_state = @char_of_playing_page.fed_state
     character_current_happiness = @char_of_playing_page.happiness
+    users_wallet = @user_playing_page_wallet.amount
 
     visit "/character/#{@char_of_playing_page.id}/playing"
 
@@ -33,11 +34,11 @@ RSpec.feature 'Playing page' do
     expect(page).to have_content(@user_playing_page_wallet.amount)
     expect(@user_playing_page_wallet.amount).to eq(100)
 
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 2}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 4}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 6}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 8}')]")
-    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_current_happiness + 10}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 1}&extra=from_playing&happiness=#{character_current_happiness + 2}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 2}&extra=from_playing&happiness=#{character_current_happiness + 4}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 3}&extra=from_playing&happiness=#{character_current_happiness + 6}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 4}&extra=from_playing&happiness=#{character_current_happiness + 8}')]")
+    page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 5}&extra=from_playing&happiness=#{character_current_happiness + 10}')]")
 
     page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process')]", :count => 5)
 

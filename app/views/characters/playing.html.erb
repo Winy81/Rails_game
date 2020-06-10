@@ -23,7 +23,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-yoga-mat-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 2), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-yoga-mat-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 2), amount:(@amount - 1), extra: 'from_playing' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -37,7 +37,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-racket-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 4), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-racket-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 4), amount:(@amount - 2), extra: 'from_playing' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -51,7 +51,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-game-controller-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 6), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-game-controller-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 6), amount:(@amount - 3), extra: 'from_playing' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -65,7 +65,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-rock-music-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 8), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-rock-music-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 8), amount:(@amount - 4), extra: 'from_playing' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -79,7 +79,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-surf-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 10), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-surf-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 10), amount:(@amount - 5), extra: 'from_playing' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
