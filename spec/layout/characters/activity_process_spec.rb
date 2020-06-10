@@ -72,13 +72,14 @@ RSpec.feature 'Activity process page' do
         character_id = current_character.id
         character_current_activity_require_level = current_character.activity_require_level
         claim_able_activity_points = 2
+        claimed_amount = 2
         users_wallet = @user_activity_process_wallet.amount
 
         visit "character/#{character_id}/activity"
 
         current_path.should == character_activity_path(current_character)
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet + 2}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet + claimed_amount}')]").click
 
         expect(page).to have_content('Activity require:')
         expect(page).to have_content('Fed State:')
@@ -87,7 +88,7 @@ RSpec.feature 'Activity process page' do
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_activity_points)
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet + 2}')]").click
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet + claimed_amount}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
         current_path.should == character_path(current_character)
@@ -97,6 +98,7 @@ RSpec.feature 'Activity process page' do
         updated_wallet = Wallet.find_by(user_id:@user_activity_process.id).amount
 
         expect(page).to have_content(updated_wallet)
+        expect(updated_wallet).to eq(users_wallet + claimed_amount)
 
       end
     end

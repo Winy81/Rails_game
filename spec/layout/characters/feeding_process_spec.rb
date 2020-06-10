@@ -42,12 +42,13 @@ RSpec.feature 'Feeding process page' do
         character_id = @char_of_feeding_proc.id
         character_fed_state = @char_of_feeding_proc.fed_state
         users_wallet = @user_feeding_process_wallet.amount
+        lost_amount = 15
 
         visit "/character/#{character_id}/feeding"
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?amount=#{users_wallet - 15}&extra=from_feeding&fed_state=#{character_fed_state + 25}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_fed_state + 25}')]").click
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - 15}&extra=from_feeding_process&fed_state=#{character_fed_state + 25}')]").click
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - lost_amount}&extra=from_feeding_process&fed_state=#{character_fed_state + 25}')]").click
 
 
         current_path.should == character_path(@char_of_feeding_proc)
@@ -71,13 +72,14 @@ RSpec.feature 'Feeding process page' do
         character_id = current_character.id
         character_current_fed_state = current_character.fed_state
         claim_able_feed_points = 5
+        lost_amount = 3
         users_wallet = @user_feeding_process_wallet.amount
 
         visit "character/#{character_id}/feeding"
 
         current_path.should == character_feeding_path(current_character)
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?amount=#{users_wallet - 3}&extra=from_feeding&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
 
         expect(page).to have_content('Fed State:')
         expect(page).to have_content('Happiness:')
@@ -85,7 +87,7 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_feed_points)
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - 3}&extra=from_feeding_process&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - lost_amount}&extra=from_feeding_process&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
         current_path.should == character_path(current_character)
@@ -95,6 +97,7 @@ RSpec.feature 'Feeding process page' do
         updated_wallet = Wallet.find_by(user_id:@user_feeding_process.id).amount
 
         expect(page).to have_content(updated_wallet)
+        expect(updated_wallet).to eq(users_wallet - lost_amount)
 
       end
     end
