@@ -46,9 +46,9 @@ RSpec.feature 'Playing process page' do
 
         visit "/character/#{character_id}/playing"
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_happiness_state + 10}&amount=#{users_wallet - 5}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?amount=#{users_wallet - 5}&extra=from_playing&happiness=#{character_happiness_state + 10}')]").click
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?extra=from_playing_process&happiness=#{character_happiness_state + 10}&amount=#{users_wallet - 5}')]").click
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - 5}&extra=from_playing_process&happiness=#{character_happiness_state + 10}')]").click
 
 
         current_path.should == character_path(@char_of_playing_proc)
@@ -72,13 +72,14 @@ RSpec.feature 'Playing process page' do
         character_id = current_character.id
         character_happiness_state = current_character.happiness
         claim_able_happiness_points = 4
+        lost_amount = 2
         users_wallet = @user_playing_process_wallet.amount
 
         visit "character/#{character_id}/playing"
 
         current_path.should == character_playing_path(current_character)
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?extra=from_playing&happiness=#{character_happiness_state + claim_able_happiness_points}&amount=#{users_wallet - 5}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?amount=#{users_wallet - lost_amount}&extra=from_playing&happiness=#{character_happiness_state + claim_able_happiness_points}')]").click
 
         expect(page).to have_content('Happiness:')
         expect(page).to have_content('Fed State:')
@@ -86,7 +87,7 @@ RSpec.feature 'Playing process page' do
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_happiness_points)
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?extra=from_playing_process&happiness=#{character_happiness_state + claim_able_happiness_points}&amount=#{users_wallet - 5}')]").click
+        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - lost_amount}&extra=from_playing_process&happiness=#{character_happiness_state + claim_able_happiness_points}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
         current_path.should == character_path(current_character)
@@ -96,6 +97,7 @@ RSpec.feature 'Playing process page' do
         updated_wallet = Wallet.find_by(user_id:@user_playing_process.id).amount
 
         expect(page).to have_content(updated_wallet)
+        expect(updated_wallet).to eq(users_wallet - lost_amount)
 
       end
     end

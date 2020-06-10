@@ -96,6 +96,7 @@ class CharactersController < ApplicationController
     #test required
     @message = "Hello from CharactersController#playing_process"
     @sent_playing_points = -1*(@character.happiness.to_i - params[:happiness].to_i)
+    @current_amount = params[:amount]
     @current_happiness_state = params[:happiness]
   end
 
@@ -206,6 +207,7 @@ class CharactersController < ApplicationController
       if character.happiness == 100
         redirection_to_character_path(character,"warning", "Your Character do not want to play more")
       else
+        update_amount
         redirection_to_character_path(character,"notice", "Happiness point added")
       end
     else
