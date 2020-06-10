@@ -87,6 +87,7 @@ RSpec.feature 'Activity process page' do
         expect(page).to have_content(character_current_activity_require_level)
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_activity_points)
+        expect(page).to have_content("Going to Get: #{claimed_amount} Gold")
 
         find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet + claimed_amount}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
