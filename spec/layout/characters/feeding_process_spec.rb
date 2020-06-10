@@ -86,6 +86,7 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content(character_current_fed_state)
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_feed_points)
+        expect(page).to have_content("Going to Cost: #{lost_amount} Gold")
 
         find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - lost_amount}&extra=from_feeding_process&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")

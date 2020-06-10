@@ -61,10 +61,10 @@ class CharactersController < ApplicationController
 
   def feeding_process
     #test required
-    @message = "Hello from CharactersController#feeding_process"
-    @sent_potion_of_food = -1*(@character.fed_state.to_i - params[:fed_state].to_i)
-    @current_amount = params[:amount]
     @current_fed_state = params[:fed_state]
+    @current_amount = params[:amount]
+    @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+    @costs = wallet_view - @current_amount.to_i
   end
 
   def activity
