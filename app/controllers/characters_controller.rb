@@ -80,7 +80,7 @@ class CharactersController < ApplicationController
     @current_amount = params[:amount]
     @current_activity_state = params[:activity_require_level]
     @sent_points_of_activity = (@character.activity_require_level.to_i - @current_activity_state.to_i)
-    @reach = -1*(wallet_view - @current_amount.to_i)
+    @earn = -1*(wallet_view - @current_amount.to_i)
   end
 
   def playing
