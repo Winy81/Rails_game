@@ -86,6 +86,7 @@ RSpec.feature 'Playing process page' do
         expect(page).to have_content(character_happiness_state)
         expect(page).to have_content('Claim-able:')
         expect(page).to have_content(claim_able_happiness_points)
+        expect(page).to have_content("Going to Cost: #{lost_amount} Gold")
 
         find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - lost_amount}&extra=from_playing_process&happiness=#{character_happiness_state + claim_able_happiness_points}')]").click
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")

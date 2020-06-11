@@ -94,10 +94,10 @@ class CharactersController < ApplicationController
 
   def playing_process
     #test required
-    @message = "Hello from CharactersController#playing_process"
-    @sent_playing_points = -1*(@character.happiness.to_i - params[:happiness].to_i)
     @current_amount = params[:amount]
     @current_happiness_state = params[:happiness]
+    @sent_playing_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+    @costs = wallet_view - @current_amount.to_i
   end
 
   def update
