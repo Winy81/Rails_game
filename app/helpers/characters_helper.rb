@@ -20,4 +20,12 @@ module CharactersHelper
     "#{full_days} Days and #{hours} Hours"
   end
 
+  def costs_amount_on_actions(amount)
+    "Going to Cost: #{amount} Gold"
+  end
+
+  def reached_amount_on_actions(amount)
+    "Going to Get: #{amount} Gold"
+  end
+  
 end
