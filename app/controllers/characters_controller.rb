@@ -12,6 +12,7 @@ class CharactersController < ApplicationController
                                                                  :playing,
                                                                  :playing_deny,
                                                                  :playing_process]
+
   before_action :authenticate_user!
   before_action :alive_check, only: [:show,
                                      :feeding,
@@ -60,14 +61,14 @@ class CharactersController < ApplicationController
 
   def feeding_process
     #test required
-    @message = "Hello from CharactersController#feeding_process"
-    @sent_potion_of_food = -1*(@character.fed_state.to_i - params[:fed_state].to_i)
     @current_fed_state = params[:fed_state]
+    @current_amount = params[:amount]
+    @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+    @costs = wallet_view - @current_amount.to_i
   end
 
   def activity
     #test required
-    @message = "Hello from CharactersController#activity"
   end
 
   def activity_deny
@@ -76,9 +77,10 @@ class CharactersController < ApplicationController
 
   def activity_process
     #test required
-    @message = "Hello from CharactersController#activity_process"
-    @sent_points_of_activity = (@character.activity_require_level.to_i - params[:activity_require_level].to_i)
+    @current_amount = params[:amount]
     @current_activity_state = params[:activity_require_level]
+    @sent_points_of_activity = (@character.activity_require_level.to_i - @current_activity_state.to_i)
+    @earn = -1*(wallet_view - @current_amount.to_i)
   end
 
   def playing
@@ -92,16 +94,17 @@ class CharactersController < ApplicationController
 
   def playing_process
     #test required
-    @message = "Hello from CharactersController#playing_process"
-    @sent_playing_points = -1*(@character.happiness.to_i - params[:happiness].to_i)
+    @current_amount = params[:amount]
     @current_happiness_state = params[:happiness]
+    @sent_playing_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+    @costs = wallet_view - @current_amount.to_i
   end
 
   def update
     if path_recogniser == "feeding"
       update_fed_state(@character)
     elsif path_recogniser == "activity"
-      update_activity_state(@character)
+      update_from_activity_state(@character)
     elsif path_recogniser == "playing"
       update_playing_state(@character)
     end
@@ -125,6 +128,7 @@ class CharactersController < ApplicationController
       @character = Character.new(character_params)
       update_user_has_character_field(current_user)
       if @character.save
+        WalletServices::BasicWalletCreator.new(current_user).setup_starter_amount
         redirection_to_character_path(@character,"notice", "Tha character has born. You gave name: ", @character.name)
       else
         flash.now[:alert] = "The character has not been created"
@@ -175,6 +179,7 @@ class CharactersController < ApplicationController
       if character.fed_state == 100
         redirection_to_character_path(character,"warning", "Your are full")
       else
+        update_amount
         redirection_to_character_path(character,"notice", "Fed point added")
       end
     else
@@ -183,11 +188,12 @@ class CharactersController < ApplicationController
   end
 
   #test and refactor into service class required
-  def update_activity_state(character)
+  def update_from_activity_state(character)
     if character.update_attributes(:activity_require_level => activity_limit.activity_level_min_setter)
       if character.activity_require_level == 0
         redirection_to_character_path(character,"warning", "Your are too tired to move")
       else
+        update_amount
         redirection_to_character_path(character,"notice", "Activity point has burned down")
       end
     else
@@ -201,11 +207,16 @@ class CharactersController < ApplicationController
       if character.happiness == 100
         redirection_to_character_path(character,"warning", "Your Character do not want to play more")
       else
+        update_amount
         redirection_to_character_path(character,"notice", "Happiness point added")
       end
     else
       redirection_to_character_path(character,"alert", "Did not move")
     end
+  end
+
+  def update_amount
+    WalletServices::WalletActionManager.new(current_user, params[:amount].to_i).action_amount_calculator
   end
 
   def fed_limit

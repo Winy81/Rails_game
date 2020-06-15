@@ -4,6 +4,7 @@ RSpec.feature 'Character show page' do
 
   before do
     @user_char_show = User.create(name:'user_char_show', email: 'user_char_show@email.com', password:'password', password_confirmation:'password')
+    @user_char_show_wallet = Wallet.create(user_id:@user_char_show.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
     login_as(@user_char_show)
   end
 
@@ -83,6 +84,8 @@ RSpec.feature 'Character show page' do
       expect(page).to have_content(current_character.fed_state)
       expect(page).to have_content(current_character.activity_require_level)
       expect(page).to have_content(current_character.happiness)
+      expect(page).to have_content(@user_char_show_wallet.amount)
+      expect(@user_char_show_wallet.amount).to eq(100)
 
       expect(page).to have_link('Feeding')
       expect(page).to have_link('Activity')

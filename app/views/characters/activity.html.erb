@@ -23,7 +23,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-tennis-player-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2),  extra: 'from_activity'}), method: :post %>
+            <%= link_to image_tag('training/icons8-tennis-player-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2), amount:(@amount + 2),  extra: 'from_activity'}), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -38,7 +38,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-skiing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 4), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-skiing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 4), amount:(@amount + 4), extra: 'from_activity' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -53,7 +53,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-climbing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 6), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-climbing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 6), amount:(@amount + 6), extra: 'from_activity' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -68,7 +68,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-canoe-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 8), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-canoe-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 8), amount:(@amount + 8), extra: 'from_activity' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -83,7 +83,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-weightlifting-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 10), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-weightlifting-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 10), amount:(@amount + 10), extra: 'from_activity' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">

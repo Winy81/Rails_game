@@ -32,6 +32,9 @@ RSpec.feature 'All of my character page' do
     before do
       @character_2_of_user = Character.create(name:'Test_char_2_of_user', user_id:1, status:'dead')
       @character_3_of_user = Character.create(name:'Test_char_3_of_user', user_id:1, status:'dead')
+
+      @user_all_of_my_c_wallet = Wallet.create(user_id:@user_all_of_my_c.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
+
     end
 
     scenario 'User has not character alive' do
@@ -49,6 +52,9 @@ RSpec.feature 'All of my character page' do
       expect(page).to have_content('Status: dead', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_link('Back')
       expect(page).to have_content('Characters Page')
+
+      expect(page).to have_content(@user_all_of_my_c_wallet.amount)
+      expect(@user_all_of_my_c_wallet.amount).to eq(100)
 
     end
 
@@ -73,6 +79,9 @@ RSpec.feature 'All of my character page' do
       expect(page).to have_content('Status: dead', count: all_of_character_of_user_all_of_my_c - character_alive)
       expect(page).to have_link('Back')
       expect(page).to have_content('Characters Page')
+
+      expect(page).to have_content(@user_all_of_my_c_wallet.amount)
+      expect(@user_all_of_my_c_wallet.amount).to eq(100)
 
     end
   end

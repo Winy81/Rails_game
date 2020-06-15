@@ -22,6 +22,9 @@
           </tr>
           </tbody>
         </table>
+
+        <%= render 'characters/shared/amount_on_process' %>
+
         <div class="col-lg-3 col-md-7"></div>
       </div>
     </div>
@@ -47,7 +50,7 @@
 
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow">
-          <p><%= link_to 'Claim', character_path(@character.id, {happiness:  (@current_happiness_state), extra: 'from_playing_process' }), class: 'btn btn-outline-secondary', :method => :put%></p>
+          <p><%= link_to 'Claim', character_path(@character.id, {happiness:  (@current_happiness_state), amount: (@current_amount), extra: 'from_playing_process' }), class: 'btn btn-outline-secondary', :method => :put%></p>
         </div>
         <p class="list-inline-item small text-dark">Claim your Points</p>
       </div>

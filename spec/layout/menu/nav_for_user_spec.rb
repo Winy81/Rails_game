@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+include WalletServices
+
 RSpec.feature 'Menu for users' do
 
   before do
@@ -11,6 +13,7 @@ RSpec.feature 'Menu for users' do
                                              fed_state:80,
                                              activity_require_level:60,
                                              happiness:50)
+    @user_for_menu_wallet = Wallet.create(user_id:@user_for_menu.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
   end
 
   scenario 'shows user details and actions' do
@@ -26,6 +29,8 @@ RSpec.feature 'Menu for users' do
     expect(page).to have_link('Sign Out')
 
     expect(page).to have_content(@user_for_menu.name)
+    expect(page).to have_content(@user_for_menu_wallet.amount)
+    expect(@user_for_menu_wallet.amount).to eq(100)
 
   end
 
