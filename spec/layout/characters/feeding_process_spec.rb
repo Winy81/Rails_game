@@ -89,7 +89,7 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content("Going to Cost: #{lost_amount} Gold")
 
         find_button('Claim').click
-        
+
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
         current_path.should == character_path(current_character)
