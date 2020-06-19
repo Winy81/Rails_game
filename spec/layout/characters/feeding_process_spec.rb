@@ -48,7 +48,7 @@ RSpec.feature 'Feeding process page' do
 
         find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_fed_state + 25}')]").click
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - lost_amount}&extra=from_feeding_process&fed_state=#{character_fed_state + 25}')]").click
+        find_button('Claim').click
 
 
         current_path.should == character_path(@char_of_feeding_proc)
@@ -88,7 +88,8 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content(claim_able_feed_points)
         expect(page).to have_content("Going to Cost: #{lost_amount} Gold")
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?amount=#{users_wallet - lost_amount}&extra=from_feeding_process&fed_state=#{character_current_fed_state + claim_able_feed_points}')]").click
+        find_button('Claim').click
+        
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
         current_path.should == character_path(current_character)
