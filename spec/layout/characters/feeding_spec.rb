@@ -27,6 +27,8 @@ RSpec.feature 'Feeding page' do
 
     visit "/character/#{@char_of_feeding_page.id}/feeding"
 
+    expect(page).to have_content('Name Of Character:')
+    expect(page).to have_content(@char_of_feeding_page.name)
     expect(page).to have_content('Fed State:')
     expect(page).to have_content(character_current_fed_state)
     expect(page).to have_content('Happiness:')

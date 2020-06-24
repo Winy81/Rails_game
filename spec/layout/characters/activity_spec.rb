@@ -6,7 +6,7 @@ RSpec.feature 'Activity page' do
     @user_activity_page = User.create(name:'user_activity_page', email: 'user_activity_page@email.com', password:'password', password_confirmation:'password')
     login_as(@user_activity_page)
 
-    @user_activity_page = Character.create(name:'char_activity_page',
+    @character_activity_page = Character.create(name:'char_activity_page',
                                              user_id:1,
                                              status:'alive',
                                              age: 214,
@@ -22,13 +22,15 @@ RSpec.feature 'Activity page' do
 
     character_id = @user_activity_page.id
 
-    character_current_activity_state = @user_activity_page.activity_require_level
-    character_current_fed_state = @user_activity_page.fed_state
-    character_current_happiness = @user_activity_page.happiness
+    character_current_activity_state = @character_activity_page.activity_require_level
+    character_current_fed_state = @character_activity_page.fed_state
+    character_current_happiness = @character_activity_page.happiness
     users_wallet = @user_activity_page_wallet.amount
 
-    visit "/character/#{@user_activity_page.id}/activity"
+    visit "/character/#{@character_activity_page.id}/activity"
 
+    expect(page).to have_content('Name Of Character:')
+    expect(page).to have_content(@character_activity_page.name)
     expect(page).to have_content('Activity require:')
     expect(page).to have_content(character_current_activity_state)
     expect(page).to have_content('Fed State: ')

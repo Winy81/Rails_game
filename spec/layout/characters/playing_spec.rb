@@ -26,6 +26,8 @@ RSpec.feature 'Playing page' do
 
     visit "/character/#{@char_of_playing_page.id}/playing"
 
+    expect(page).to have_content('Name Of Character:')
+    expect(page).to have_content(@char_of_playing_page.name)
     expect(page).to have_content('Happiness:')
     expect(page).to have_content(character_current_happiness)
     expect(page).to have_content('Fed State:')
