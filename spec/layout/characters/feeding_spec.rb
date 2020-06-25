@@ -68,13 +68,14 @@ RSpec.feature 'Feeding page' do
     feature 'The current user is NOT the owner of the character' do
 
       before do
+        @extra_user_feeding_page = User.create(name:'@xtra_user_feeding_page', email: 'extra_user_feeding_page@email.com', password:'password', password_confirmation:'password')
         @extra_char_feeding_page = Character.create(name:'extra_char_feeding_page',
-                         user_id:5,
-                         status:'alive',
-                         age: 214,
-                         fed_state:10,
-                         activity_require_level:46,
-                         happiness:31)
+                                                    user_id:@extra_user_feeding_page.id,
+                                                    status:'alive',
+                                                    age: 214,
+                                                    fed_state:10,
+                                                    activity_require_level:46,
+                                                    happiness:31)
       end
 
       scenario 'Should return with en error message and redirected for characters page' do
