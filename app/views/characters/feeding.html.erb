@@ -110,7 +110,7 @@
         <div class="action_image_5">
           <li class="list-inline-item">
             <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25),
-                                                                                                           amount:(@amount - 5),
+                                                                                                           amount:(@amount - 25),
                                                                                                            happiness: (@character.happiness + 5),
                                                                                                            activity_require_level:  (@character.activity_require_level - 5),
                                                                                                            extra: 'from_feeding' }), method: :post %>
