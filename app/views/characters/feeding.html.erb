@@ -25,7 +25,11 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-cherry-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5), amount:(@amount - 3), extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-cherry-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5),
+                                                                                                     amount:(@amount - 3),
+                                                                                                     happiness: (@character.happiness + 1),
+                                                                                                     activity_require_level:  (@character.activity_require_level - 1),
+                                                                                                     extra: 'from_feeding' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -42,7 +46,11 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-croissant-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10), amount:(@amount - 6), extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-croissant-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10),
+                                                                                                        amount:(@amount - 6),
+                                                                                                        happiness: (@character.happiness + 2),
+                                                                                                        activity_require_level:  (@character.activity_require_level - 2),
+                                                                                                        extra: 'from_feeding' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -59,7 +67,11 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-porridge-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15), amount:(@amount - 9), extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-porridge-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15),
+                                                                                                       amount:(@amount - 15),
+                                                                                                       happiness: (@character.happiness + 3),
+                                                                                                       activity_require_level:  (@character.activity_require_level - 3),
+                                                                                                       extra: 'from_feeding' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -76,7 +88,11 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20), amount:(@amount - 12), extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20),
+                                                                                                           amount:(@amount - 20),
+                                                                                                           happiness: (@character.happiness + 4),
+                                                                                                           activity_require_level:  (@character.activity_require_level - 4),
+                                                                                                           extra: 'from_feeding' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -93,7 +109,11 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25), amount:(@amount - 15), extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25),
+                                                                                                           amount:(@amount - 5),
+                                                                                                           happiness: (@character.happiness + 5),
+                                                                                                           activity_require_level:  (@character.activity_require_level - 5),
+                                                                                                           extra: 'from_feeding' }), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
