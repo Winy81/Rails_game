@@ -21,14 +21,18 @@ RSpec.feature 'Feeding page' do
   scenario 'Should turn up with list of foods' do
 
     character_id = @char_of_feeding_page.id
+    character_current_activity_state = @char_of_feeding_page.activity_require_level
     character_current_fed_state = @char_of_feeding_page.fed_state
     character_current_happiness = @char_of_feeding_page.happiness
+    character_current_name = @char_of_feeding_page.name
     users_wallet = @user_feeding_page_wallet.amount
 
     visit "/character/#{@char_of_feeding_page.id}/feeding"
 
     expect(page).to have_content('Name Of Character:')
-    expect(page).to have_content(@char_of_feeding_page.name)
+    expect(page).to have_content(character_current_name)
+    expect(page).to have_content('Activity require:')
+    expect(page).to have_content(character_current_activity_state)
     expect(page).to have_content('Fed State:')
     expect(page).to have_content(character_current_fed_state)
     expect(page).to have_content('Happiness:')

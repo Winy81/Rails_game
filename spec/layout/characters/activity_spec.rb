@@ -21,16 +21,16 @@ RSpec.feature 'Activity page' do
   scenario 'Should turn up with list of activities' do
 
     character_id = @user_activity_page.id
-
     character_current_activity_state = @character_activity_page.activity_require_level
     character_current_fed_state = @character_activity_page.fed_state
     character_current_happiness = @character_activity_page.happiness
+    character_current_name = @character_activity_page.name
     users_wallet = @user_activity_page_wallet.amount
 
     visit "/character/#{@character_activity_page.id}/activity"
 
     expect(page).to have_content('Name Of Character:')
-    expect(page).to have_content(@character_activity_page.name)
+    expect(page).to have_content(character_current_name)
     expect(page).to have_content('Activity require:')
     expect(page).to have_content(character_current_activity_state)
     expect(page).to have_content('Fed State: ')
