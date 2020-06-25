@@ -26,6 +26,9 @@ class CharactersController < ApplicationController
                                      :playing_process,
                                      :update]
 
+
+  rescue_from ActiveRecord::RecordNotFound, with: :no_character_exist_rescue
+
   def index
     @message = "Hello from CharactersController#index"
     @characters = Character.all.order(:age => :desc).limit(10)
@@ -257,6 +260,10 @@ class CharactersController < ApplicationController
 
   def update_user_has_character_field(user)
     user.update_attributes(has_character:true)
+  end
+
+  def no_character_exist_rescue
+    redirection_to_characters_path("alert",'That Character is not exist!')
   end
 
 end

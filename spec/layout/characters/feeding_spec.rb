@@ -87,6 +87,32 @@ RSpec.feature 'Feeding page' do
 
       end
     end
+  end
+
+  feature 'When the Character does NOT exist' do
+
+    scenario 'Because dead' do
+
+      @char_of_feeding_page.update_attributes(status:'dead')
+
+      visit "/character/#{@char_of_feeding_page.id}/feeding"
+
+      current_path.should == characters_path
+      expect(page).to have_content('This Character is Dead already!')
+
+    end
+
+    feature 'Because never been created' do
+
+      scenario 'Should return with en error message and redirected for characters page' do
+
+      visit "/character/1234567/feeding"
+
+      current_path.should == characters_path
+      expect(page).to have_content('That Character is not exist!')
+
+      end
+    end
 
   end
 end
