@@ -66,7 +66,11 @@ class CharactersController < ApplicationController
     #test required
     @current_fed_state = params[:fed_state]
     @current_amount = params[:amount]
+    @current_activity_state = params[:activity_require_level]
+    @current_happiness_state = params[:happiness]
     @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+    @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+    @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
     @costs = wallet_view - @current_amount.to_i
   end
 
@@ -176,17 +180,27 @@ class CharactersController < ApplicationController
                                       :activity_require_level)
   end
 
+
+
   #test and refactor into service class required
   def update_fed_state(character)
-    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter)
-      if character.fed_state == 100
-        redirection_to_character_path(character,"warning", "Your are full")
-      else
-        update_amount
-        redirection_to_character_path(character,"notice", "Fed point added")
-      end
+    binding.pry
+    if params[:activity_require_level].to_i < 0
+      redirection_to_character_path(character,"warning", "Your are too tired to move")
     else
-      redirection_to_character_path(character,"alert", "Did not like it")
+      if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
+                                     :activity_require_level => activity_limit.activity_level_min_setter,
+                                     :happiness => happiness_limit.happiness_level_max_setter)
+
+        if character.fed_state == 100
+          redirection_to_character_path(character,"warning", "Your are full")
+        else
+          redirection_to_character_path(character,"notice", "Fed point added")
+        end
+        paying_service
+      else
+        redirection_to_character_path(character,"alert", "Did not like it")
+      end
     end
   end
 
@@ -196,7 +210,7 @@ class CharactersController < ApplicationController
       if character.activity_require_level == 0
         redirection_to_character_path(character,"warning", "Your are too tired to move")
       else
-        update_amount
+        paying_service
         redirection_to_character_path(character,"notice", "Activity point has burned down")
       end
     else
@@ -210,7 +224,7 @@ class CharactersController < ApplicationController
       if character.happiness == 100
         redirection_to_character_path(character,"warning", "Your Character do not want to play more")
       else
-        update_amount
+        paying_service
         redirection_to_character_path(character,"notice", "Happiness point added")
       end
     else
@@ -218,7 +232,7 @@ class CharactersController < ApplicationController
     end
   end
 
-  def update_amount
+  def paying_service
     WalletServices::WalletActionManager.new(current_user, params[:amount].to_i).action_amount_calculator
   end
 

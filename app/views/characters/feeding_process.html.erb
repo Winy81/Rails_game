@@ -11,15 +11,16 @@
           <thead>
           <tr>
             <th>Fed State: <%= @character.fed_state %></th>
+            <th>Activity Require: <%= @character.activity_require_level %></th>
             <th>Happiness: <%= @character.happiness %></th>
           </tr>
           </thead>
 
           <tbody>
           <tr>
-            <td>Claim-able: + <%= @sent_potion_of_food %></td>
-            <td>Claim-able: <%=  %></td>
-
+            <td>Claim-able: <%= @sent_potion_of_food %></td>
+            <td>Claim-able: <%= @sent_points_of_activity %></td>
+            <td>Claim-able: <%= @sent_happiness_points%></td>
           </tr>
           </tbody>
         </table>
@@ -51,7 +52,11 @@
 
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow mb-3">
-          <%= button_to 'Claim', character_path(@character.id, {fed_state:  (@current_fed_state), amount: (@current_amount), extra: 'from_feeding_process' }), id:'claim_button',
+          <%= button_to 'Claim', character_path(@character.id, {fed_state: @current_fed_state,
+                                                                amount: @current_amount,
+                                                                activity_require_level: @current_activity_state,
+                                                                happiness: @current_happiness_state,
+                                                                extra: 'from_feeding_process' }), id:'claim_button',
                            disabled: false, :remote => true, class: 'btn btn-outline-secondary', :method => :put %>
         </div>
         <p class="list-inline-item small text-dark">Claim your Points</p>
