@@ -263,7 +263,7 @@ class CharactersController < ApplicationController
   end
 
   def no_character_exist_rescue
-    redirection_to_characters_path("alert",'That Character is not exist!')
+    redirection_to_characters_path('alert','That Character is not exist!')
   end
 
 end

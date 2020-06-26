@@ -62,12 +62,12 @@ RSpec.feature 'Playing page' do
       before do
         @extra_user_playing_page = User.create(name:'extra_user_playing_page', email: 'extra_user_playing_page@email.com', password:'password', password_confirmation:'password')
         @extra_char_playing_page = Character.create(name:'extra_char_playing_page',
-                                                       user_id:@extra_user_playing_page.id,
-                                                       status:'alive',
-                                                       age: 214,
-                                                       fed_state:10,
-                                                       activity_require_level:46,
-                                                       happiness:31)
+                                                    user_id:@extra_user_playing_page.id,
+                                                    status:'alive',
+                                                    age: 214,
+                                                    fed_state:10,
+                                                    activity_require_level:46,
+                                                    happiness:31)
       end
 
       scenario 'Should return with en error message and redirected for characters page' do
@@ -76,6 +76,32 @@ RSpec.feature 'Playing page' do
 
         current_path.should == characters_path
         expect(page).to have_content('That Character is not Yours!')
+
+      end
+    end
+  end
+
+  feature 'When the Character does NOT exist' do
+
+    scenario 'Because dead' do
+
+      @char_of_playing_page.update_attributes(status:'dead')
+
+      visit "/character/#{@char_of_playing_page.id}/playing"
+
+      current_path.should == characters_path
+      expect(page).to have_content('This Character is Dead already!')
+
+    end
+
+    feature 'Because never been created' do
+
+      scenario 'Should return with en error message and redirected for characters page' do
+
+        visit "/character/1234567/playing"
+
+        current_path.should == characters_path
+        expect(page).to have_content('That Character is not exist!')
 
       end
     end

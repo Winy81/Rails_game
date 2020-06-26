@@ -106,10 +106,10 @@ RSpec.feature 'Feeding page' do
 
       scenario 'Should return with en error message and redirected for characters page' do
 
-      visit "/character/1234567/feeding"
+        visit "/character/1234567/feeding"
 
-      current_path.should == characters_path
-      expect(page).to have_content('That Character is not exist!')
+        current_path.should == characters_path
+        expect(page).to have_content('That Character is not exist!')
 
       end
     end
