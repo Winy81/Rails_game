@@ -184,7 +184,6 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_fed_state(character)
-    binding.pry
     if params[:activity_require_level].to_i < 0
       redirection_to_character_path(character,"warning", "Your are too tired to move")
     else
@@ -193,7 +192,7 @@ class CharactersController < ApplicationController
                                      :happiness => happiness_limit.happiness_level_max_setter)
 
         if character.fed_state == 100
-          redirection_to_character_path(character,"warning", "Your are full")
+          redirection_to_character_path(character,"warning", "Your character is are full")
         else
           redirection_to_character_path(character,"notice", "Fed point added")
         end
