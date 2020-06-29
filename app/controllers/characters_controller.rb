@@ -185,7 +185,7 @@ class CharactersController < ApplicationController
   #test and refactor into service class required
   def update_fed_state(character)
     unless paying_service_budget_check? == true
-      if params[:activity_require_level].to_i < 0
+      if not_enough_available_activity_points?
         redirection_to_character_path(character,"warning", "Your are too tired to move")
       else
         if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
@@ -285,6 +285,10 @@ class CharactersController < ApplicationController
 
   def no_character_exist_rescue
     redirection_to_characters_path('alert','That Character is not exist!')
+  end
+
+  def not_enough_available_activity_points?
+    params[:activity_require_level].to_i < 0
   end
 
 end
