@@ -63,15 +63,19 @@ class CharactersController < ApplicationController
   end
 
   def feeding_process
-    #test required
-    @current_fed_state = params[:fed_state]
-    @current_amount = params[:amount]
-    @current_activity_state = params[:activity_require_level]
-    @current_happiness_state = params[:happiness]
-    @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
-    @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
-    @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
-    @costs = wallet_view - @current_amount.to_i
+    @current_amount = params[:amount].to_i
+    @spendable_amount = -1*(@current_user.wallet.amount - @current_amount)
+    if paying_service_budget_check?(@spendable_amount) == true
+      @current_fed_state = params[:fed_state]
+      @current_activity_state = params[:activity_require_level]
+      @current_happiness_state = params[:happiness]
+      @costs = wallet_view - @current_amount
+      @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+      @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+      @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+    else
+      redirection_to_character_path(@character,"warning", "Your have not enough Gold for this action")
+    end
   end
 
   def activity
@@ -184,7 +188,6 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_fed_state(character)
-    unless paying_service_budget_check? == true
       if not_enough_available_activity_points?
         redirection_to_character_path(character,"warning", "Your are too tired to move")
       else
@@ -193,7 +196,7 @@ class CharactersController < ApplicationController
                                        :happiness => happiness_limit.happiness_level_max_setter)
 
           if character.fed_state == 100
-            redirection_to_character_path(character,"warning", "Your character is are full")
+            redirection_to_character_path(character,"warning", "Your character is full")
           else
             redirection_to_character_path(character,"notice", "Fed point added")
           end
@@ -202,9 +205,6 @@ class CharactersController < ApplicationController
           redirection_to_character_path(character,"alert", "Did not like it")
         end
       end
-    else
-      redirection_to_character_path(character,"warning", "Your have not enough Gold for this action")
-    end
   end
 
   #test and refactor into service class required
@@ -235,8 +235,8 @@ class CharactersController < ApplicationController
     end
   end
 
-  def paying_service_budget_check?
-    WalletServices::WalletActionManager.new(current_user, params[:amount].to_i).budget_check?
+  def paying_service_budget_check?(amount)
+    WalletServices::WalletActionManager.new(current_user, amount).budget_check?
   end
 
   def paying_service_proceed

@@ -12,7 +12,7 @@ module WalletServices
 
     def budget_check?
       budget = Wallet.find_by(user_id:@user.id).amount
-      return true if budget - @amount > 0
+      budget - @amount.abs < 0 ? false : true
     end
 
   end

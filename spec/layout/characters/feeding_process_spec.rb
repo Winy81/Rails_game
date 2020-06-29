@@ -39,6 +39,8 @@ RSpec.feature 'Feeding process page' do
 
       scenario 'Should be proceed until the max and redirected for character page with notice' do
 
+        binding.pry
+
         character_id = @char_of_feeding_proc.id
         character_fed_state = @char_of_feeding_proc.fed_state
         character_activity = @char_of_feeding_proc.activity_require_level
@@ -54,7 +56,7 @@ RSpec.feature 'Feeding process page' do
 
 
         current_path.should == character_path(@char_of_feeding_proc)
-        expect(page).to have_content("Your character is are full")
+        expect(page).to have_content('Your character is full')
         expect(page).to have_content('Fed State:')
         expect(page).to have_content('100')
         Character.find_by(id:@char_of_feeding_proc.id).fed_state.should == 100
@@ -63,36 +65,9 @@ RSpec.feature 'Feeding process page' do
         expect(@user_feeding_process_wallet.amount).to eq(users_wallet)
 
       end
-    end
-
-    feature 'With too low activity' do
-
-      before do
-        @char_of_feeding_proc.update_attributes(fed_state:50,activity_require_level:2)
-      end
-
-      scenario 'Should do not proceed and return with error message' do
-
-        character_id = @char_of_feeding_proc.id
-        character_fed_state = @char_of_feeding_proc.fed_state
-        character_activity = @char_of_feeding_proc.activity_require_level
-        character_happiness = @char_of_feeding_proc.happiness
-        users_wallet = @user_feeding_process_wallet.amount
-        lost_amount = 25
-
-        visit "/character/#{character_id}/feeding"
-
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - 5}&amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_fed_state + 25}&happiness=#{character_happiness + 5}')]").click
-
-        find_button('Claim').click
-
-        current_path.should == character_path(@char_of_feeding_proc)
-
-        expect(page).to have_content('Your are too tired to move')
-
-      end
 
     end
+
 
     feature 'With acceptable increase' do
 
