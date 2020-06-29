@@ -113,7 +113,6 @@ RSpec.feature 'Feeding page' do
 
       end
     end
-
   end
 end
 
