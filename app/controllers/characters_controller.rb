@@ -65,16 +65,20 @@ class CharactersController < ApplicationController
   def feeding_process
     @current_amount = params[:amount].to_i
     @spendable_amount = -1*(@current_user.wallet.amount - @current_amount)
-    if paying_service_budget_check?(@spendable_amount) == true
-      @current_fed_state = params[:fed_state]
-      @current_activity_state = params[:activity_require_level]
-      @current_happiness_state = params[:happiness]
-      @costs = wallet_view - @current_amount
-      @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
-      @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
-      @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+    @current_fed_state = params[:fed_state]
+    @current_activity_state = params[:activity_require_level]
+    @current_happiness_state = params[:happiness]
+    @costs = wallet_view - @current_amount
+    if not_enough_available_activity_points?
+      redirection_to_character_path(@character,"warning", "Your are too tired to move")
     else
-      redirection_to_character_path(@character,"warning", "Your have not enough Gold for this action")
+      if paying_service_budget_check?(@spendable_amount) == true
+        @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+        @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+        @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+      else
+        redirection_to_character_path(@character,"warning", "Your have not enough Gold for this action")
+      end
     end
   end
 
@@ -188,23 +192,19 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_fed_state(character)
-      if not_enough_available_activity_points?
-        redirection_to_character_path(character,"warning", "Your are too tired to move")
-      else
-        if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
-                                       :activity_require_level => activity_limit.activity_level_min_setter,
-                                       :happiness => happiness_limit.happiness_level_max_setter)
+    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
+                                   :activity_require_level => activity_limit.activity_level_min_setter,
+                                   :happiness => happiness_limit.happiness_level_max_setter)
 
-          if character.fed_state == 100
-            redirection_to_character_path(character,"warning", "Your character is full")
-          else
-            redirection_to_character_path(character,"notice", "Fed point added")
-          end
-          paying_service_proceed
-        else
-          redirection_to_character_path(character,"alert", "Did not like it")
-        end
+      if character.fed_state == 100
+        redirection_to_character_path(character,"warning", "Your character is full")
+      else
+        redirection_to_character_path(character,"notice", "Fed point added")
       end
+      paying_service_proceed
+    else
+      redirection_to_character_path(character,"alert", "Did not like it")
+    end
   end
 
   #test and refactor into service class required

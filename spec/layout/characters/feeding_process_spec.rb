@@ -86,8 +86,6 @@ RSpec.feature 'Feeding process page' do
 
           find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - 5}&amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_fed_state + 25}&happiness=#{character_happiness + 5}')]").click
 
-          find_button('Claim').click
-
           current_path.should == character_path(@char_of_feeding_proc)
 
           expect(page).to have_content('Your are too tired to move')
