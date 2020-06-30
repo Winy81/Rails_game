@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-include DateTransformHelper
+include Services::DateTransformer
 
 RSpec.feature 'Characters history page' do
 

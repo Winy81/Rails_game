@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-include DateTransformHelper
+include Services::DateTransformer
 
 RSpec.feature 'Show characters without user logged in' do
 

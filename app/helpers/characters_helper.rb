@@ -1,6 +1,6 @@
 module CharactersHelper
 
-  include DateTransformHelper
+  include Services::DateTransformer
 
   def life_length_counter(character)
     length = character.updated_at - character.created_at
