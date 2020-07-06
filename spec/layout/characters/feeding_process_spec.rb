@@ -134,7 +134,7 @@ RSpec.feature 'Feeding process page' do
         character_activity_require = current_character.activity_require_level
         character_happiness = current_character.happiness
         claim_able_feed_points = 5
-        spendable_amount = 3
+        spendable_amount = 5
         spendable_activity_point = 1
         claim_able_happiness = 1
         users_wallet = @user_feeding_process_wallet.amount

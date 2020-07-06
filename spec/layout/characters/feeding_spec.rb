@@ -31,8 +31,8 @@ RSpec.feature 'Feeding page' do
         character_current_name = @char_of_feeding_page.name
         users_wallet = @user_feeding_page_wallet.amount
 
-        link_for_feeding_process_small = "activity_require_level=#{character_current_activity_state - 1}&amount=#{users_wallet - 3}&extra=from_feeding&fed_state=#{character_current_fed_state + 5}&happiness=#{character_current_happiness + 1}"
-        link_for_feeding_process_minor = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet - 6}&extra=from_feeding&fed_state=#{character_current_fed_state + 10}&happiness=#{character_current_happiness + 2}"
+        link_for_feeding_process_small = "activity_require_level=#{character_current_activity_state - 1}&amount=#{users_wallet - 5}&extra=from_feeding&fed_state=#{character_current_fed_state + 5}&happiness=#{character_current_happiness + 1}"
+        link_for_feeding_process_minor = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet - 10}&extra=from_feeding&fed_state=#{character_current_fed_state + 10}&happiness=#{character_current_happiness + 2}"
         link_for_feeding_process_normal = "activity_require_level=#{character_current_activity_state - 3}&amount=#{users_wallet - 15}&extra=from_feeding&fed_state=#{character_current_fed_state + 15}&happiness=#{character_current_happiness + 3}"
         link_for_feeding_process_large = "activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet - 20}&extra=from_feeding&fed_state=#{character_current_fed_state + 20}&happiness=#{character_current_happiness + 4}"
         link_for_feeding_process_extra = "activity_require_level=#{character_current_activity_state - 5}&amount=#{users_wallet - 25}&extra=from_feeding&fed_state=#{character_current_fed_state + 25}&happiness=#{character_current_happiness + 5}"
