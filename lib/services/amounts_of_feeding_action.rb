@@ -1,5 +1,5 @@
 module Services
-  module AmountOfActions
+  module AmountsOfFeedingAction
 
     ADDED_MINOR_FEEDING = 5
     ADDED_SMALL_FEEDING = 10

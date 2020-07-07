@@ -25,11 +25,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-cherry-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 5),
-                                                                                                     amount:(@amount - 5),
-                                                                                                     happiness: (@character.happiness + 1),
-                                                                                                     activity_require_level:  (@character.activity_require_level - 1),
-                                                                                                     extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-cherry-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+                                                                                                                              @amount,
+                                                                                                                              Services::AmountsOfFeedingAction::ADDED_MINOR_FEEDING,
+                                                                                                                              Services::AmountsOfFeedingAction::PAID_MINOR_AMOUNT,
+                                                                                                                              Services::AmountsOfFeedingAction::ADDED_MINOR_HAPPINESS,
+                                                                                                                              Services::AmountsOfFeedingAction::LOST_MINOR_ACTIVITY,
+                                                                                                                              'from_feeding')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -46,11 +48,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-croissant-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 10),
-                                                                                                        amount:(@amount - 10),
-                                                                                                        happiness: (@character.happiness + 2),
-                                                                                                        activity_require_level:  (@character.activity_require_level - 2),
-                                                                                                        extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-croissant-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+                                                                                                                                 @amount,
+                                                                                                                                 Services::AmountsOfFeedingAction::ADDED_SMALL_FEEDING,
+                                                                                                                                 Services::AmountsOfFeedingAction::PAID_SMALL_AMOUNT,
+                                                                                                                                 Services::AmountsOfFeedingAction::ADDED_SMALL_HAPPINESS,
+                                                                                                                                 Services::AmountsOfFeedingAction::LOST_SMALL_ACTIVITY,
+                                                                                                                                 'from_feeding')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -67,11 +71,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-porridge-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 15),
-                                                                                                       amount:(@amount - 15),
-                                                                                                       happiness: (@character.happiness + 3),
-                                                                                                       activity_require_level:  (@character.activity_require_level - 3),
-                                                                                                       extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-porridge-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+                                                                                                                                @amount,
+                                                                                                                                Services::AmountsOfFeedingAction::ADDED_NORMAL_FEEDING,
+                                                                                                                                Services::AmountsOfFeedingAction::PAID_NORMAL_AMOUNT,
+                                                                                                                                Services::AmountsOfFeedingAction::ADDED_NORMAL_HAPPINESS,
+                                                                                                                                Services::AmountsOfFeedingAction::LOST_NORMAL_ACTIVITY,
+                                                                                                                                'from_feeding')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -88,11 +94,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 20),
-                                                                                                           amount:(@amount - 20),
-                                                                                                           happiness: (@character.happiness + 4),
-                                                                                                           activity_require_level:  (@character.activity_require_level - 4),
-                                                                                                           extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+                                                                                                                                    @amount,
+                                                                                                                                    Services::AmountsOfFeedingAction::ADDED_LARGE_FEEDING,
+                                                                                                                                    Services::AmountsOfFeedingAction::PAID_LARGE_AMOUNT,
+                                                                                                                                    Services::AmountsOfFeedingAction::ADDED_LARGE_HAPPINESS,
+                                                                                                                                    Services::AmountsOfFeedingAction::LOST_LARGE_ACTIVITY,
+                                                                                                                                    'from_feeding')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -109,11 +117,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, {fed_state:  (@character.fed_state + 25),
-                                                                                                           amount:(@amount - 25),
-                                                                                                           happiness: (@character.happiness + 5),
-                                                                                                           activity_require_level:  (@character.activity_require_level - 5),
-                                                                                                           extra: 'from_feeding' }), method: :post %>
+            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+                                                                                                                                    @amount,
+                                                                                                                                    Services::AmountsOfFeedingAction::ADDED_EXTRA_FEEDING,
+                                                                                                                                    Services::AmountsOfFeedingAction::PAID_EXTRA_AMOUNT,
+                                                                                                                                    Services::AmountsOfFeedingAction::ADDED_EXTRA_HAPPINESS,
+                                                                                                                                    Services::AmountsOfFeedingAction::LOST_EXTRA_ACTIVITY,
+                                                                                                                                    'from_feeding')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
