@@ -8,9 +8,9 @@
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow">
           <% if current_user %>
-            <%= link_to 'Back', characters_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%>
+            <%= link_to 'Back', characters_path, class: 'btn btn-outline-secondary'%>
           <% else %>
-            <%= link_to 'Back', mains_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%>
+            <%= link_to 'Back', mains_path, class: 'btn btn-outline-secondary'%>
           <% end %>
         </div>
         </br>
@@ -22,4 +22,3 @@
     </div>
   </div>
 </section>
-</br>

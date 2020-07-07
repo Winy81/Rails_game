@@ -99,22 +99,4 @@
 
 </br>
 
-<section class="content-section mt-5 text-muted text-center">
-
-  <div class="container mt-5 text-center">
-    <div class="row mt-5">
-
-      <div class="col-lg-5 col-md-7"></div>
-
-      <div class="col-lg-2 col-md-7">
-        <div class="action_arrow">
-          <p><%= link_to 'Back', character_path(@character), class: 'btn btn-outline-secondary' %></p>
-        </div>
-        <p class="list-inline-item small text-dark">Action Page</p>
-      </div>
-
-      <div class="col-lg-5 col-md-7"></div>
-
-    </div>
-  </div>
-</section>
+<%= render 'characters/shared/back_button_for_action_page' %>
