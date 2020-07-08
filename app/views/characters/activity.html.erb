@@ -1,16 +1,7 @@
 </br>
 <h4 class="list-item text-center text-muted mt-4">Activity</h4></li>
 
-<section class="content-section text-center text-secondary">
-  <div class="container pt-3">
-    <ul class="list-inline">
-      <li class="list-inline-item"><h6>Name Of Character: <%= @character.name %></h6></li></br>
-      <li class="list-inline-item"><h6>Activity require: <%= @character.activity_require_level %></h6></li>
-      <li class="list-inline-item"><h6>Fed State: <%= @character.fed_state %></h6></li>
-      <li class="list-inline-item"><h6>Happiness: <%= @character.happiness %></h6></li>
-    </ul>
-  </div>
-</section>
+<%= render 'characters/shared/details_of_character_state' %>
 
 </br>
 

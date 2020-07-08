@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/characters/shared/_back_button_for_action_page.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/characters/shared/_details_of_character_state.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/characters/activity.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/activity.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/characters/feeding.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/feeding.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/characters/playing.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/playing.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/mains/leaderboard.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/mains/leaderboard.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/_dinamic_single_index_back_button.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/_dinamic_single_index_back_button.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
