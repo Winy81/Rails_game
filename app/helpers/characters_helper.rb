@@ -14,11 +14,19 @@ module CharactersHelper
     params_of_activity = character.activity_require_level - activity_points
     params_of_amount = wallet - cost
 
-    {fed_state:params_of_fed_state,
-     amount:params_of_amount,
-     happiness:params_of_happiness,
-     activity_require_level:params_of_activity,
-     extra:source}
+    {fed_state: params_of_fed_state,
+     amount: params_of_amount,
+     happiness: params_of_happiness,
+     activity_require_level: params_of_activity,
+     extra: source}
+  end
+
+  def params_builder_of_feeding_process(fed_state,amount,activity_state,happiness_state,source)
+    {fed_state: fed_state,
+     amount: amount,
+     activity_require_level: activity_state,
+     happiness: happiness_state,
+     extra: source }
   end
 
   private
