@@ -154,6 +154,7 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content("Claim-able: #{claim_able_feed_points}")
         expect(page).to have_content("Going to Cost: #{spendable_amount} Gold")
 
+        #page.evaluate_script("$('#claim_button').removeAttr('disabled')")
         find_button('Claim').click
 
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
