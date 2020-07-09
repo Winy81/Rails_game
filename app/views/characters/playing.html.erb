@@ -16,7 +16,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-yoga-mat-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 2), amount:(@amount - 1), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-yoga-mat-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+                                                                                                                                   @amount,
+                                                                                                                                   Services::AmountsOfPlayingAction::ADDED_MINOR_FEEDING,
+                                                                                                                                   Services::AmountsOfPlayingAction::PAID_MINOR_AMOUNT,
+                                                                                                                                   Services::AmountsOfPlayingAction::ADDED_MINOR_HAPPINESS,
+                                                                                                                                   Services::AmountsOfPlayingAction::LOST_MINOR_ACTIVITY,
+                                                                                                                                   'from_playing')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -30,7 +36,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-racket-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 4), amount:(@amount - 2), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-racket-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+                                                                                                                                 @amount,
+                                                                                                                                 Services::AmountsOfPlayingAction::ADDED_SMALL_FEEDING,
+                                                                                                                                 Services::AmountsOfPlayingAction::PAID_SMALL_AMOUNT,
+                                                                                                                                 Services::AmountsOfPlayingAction::ADDED_SMALL_HAPPINESS,
+                                                                                                                                 Services::AmountsOfPlayingAction::LOST_SMALL_ACTIVITY,
+                                                                                                                                 'from_playing')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -44,7 +56,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-game-controller-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 6), amount:(@amount - 3), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-game-controller-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+                                                                                                                                          @amount,
+                                                                                                                                          Services::AmountsOfPlayingAction::ADDED_NORMAL_FEEDING,
+                                                                                                                                          Services::AmountsOfPlayingAction::PAID_NORMAL_AMOUNT,
+                                                                                                                                          Services::AmountsOfPlayingAction::ADDED_NORMAL_HAPPINESS,
+                                                                                                                                          Services::AmountsOfPlayingAction::LOST_NORMAL_ACTIVITY,
+                                                                                                                                          'from_playing')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -58,7 +76,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-rock-music-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 8), amount:(@amount - 4), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-rock-music-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+                                                                                                                                     @amount,
+                                                                                                                                     Services::AmountsOfPlayingAction::ADDED_LARGE_FEEDING,
+                                                                                                                                     Services::AmountsOfPlayingAction::PAID_LARGE_AMOUNT,
+                                                                                                                                     Services::AmountsOfPlayingAction::ADDED_LARGE_HAPPINESS,
+                                                                                                                                     Services::AmountsOfPlayingAction::LOST_LARGE_ACTIVITY,
+                                                                                                                                     'from_playing')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
@@ -72,7 +96,13 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-surf-50.png'), playing_process_path(@character.id, {happiness:  (@character.happiness + 10), amount:(@amount - 5), extra: 'from_playing' }), method: :post %>
+            <%= link_to image_tag('playing/icons8-surf-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+                                                                                                                               @amount,
+                                                                                                                               Services::AmountsOfPlayingAction::ADDED_EXTRA_FEEDING,
+                                                                                                                               Services::AmountsOfPlayingAction::PAID_EXTRA_AMOUNT,
+                                                                                                                               Services::AmountsOfPlayingAction::ADDED_EXTRA_HAPPINESS,
+                                                                                                                               Services::AmountsOfPlayingAction::LOST_EXTRA_ACTIVITY,
+                                                                                                                               'from_playing')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">

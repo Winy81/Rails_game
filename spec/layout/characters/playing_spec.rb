@@ -10,7 +10,7 @@ RSpec.feature 'Playing page' do
                                              user_id:1,
                                              status:'alive',
                                              age: 214,
-                                             fed_state:10,
+                                             fed_state:50,
                                              activity_require_level:46,
                                              happiness:31)
 

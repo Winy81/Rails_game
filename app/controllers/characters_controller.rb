@@ -109,10 +109,13 @@ class CharactersController < ApplicationController
 
   def playing_process
     #test required
-    @current_amount = params[:amount]
+    @current_amount = params[:amount].to_i
+    @spendable_amount = -1*(@current_user.wallet.amount - @current_amount)
+    @current_fed_state = params[:fed_state]
+    @current_activity_state = params[:activity_require_level]
     @current_happiness_state = params[:happiness]
     @sent_playing_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
-    @costs = wallet_view - @current_amount.to_i
+    @costs = wallet_view - @current_amount
   end
 
   def update
