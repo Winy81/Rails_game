@@ -30,6 +30,12 @@ RSpec.feature 'Playing page' do
         character_current_name = @char_of_playing_page.name
         users_wallet = @user_playing_page_wallet.amount
 
+        link_for_playing_process_minor = "activity_require_level=#{character_current_activity_state - 1}&amount=#{users_wallet - 1}&extra=from_playing&fed_state=#{character_current_fed_state + 5}&happiness=#{character_current_happiness + 2}"
+        link_for_playing_process_small = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet - 2}&extra=from_playing&fed_state=#{character_current_fed_state + 10}&happiness=#{character_current_happiness + 4}"
+        link_for_playing_process_normal = "activity_require_level=#{character_current_activity_state - 3}&amount=#{users_wallet - 3}&extra=from_playing&fed_state=#{character_current_fed_state + 15}&happiness=#{character_current_happiness + 6}"
+        link_for_playing_process_large = "activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet - 4}&extra=from_playing&fed_state=#{character_current_fed_state + 20}&happiness=#{character_current_happiness + 8}"
+        link_for_playing_process_extra = "activity_require_level=#{character_current_activity_state - 5}&amount=#{users_wallet - 5}&extra=from_playing&fed_state=#{character_current_fed_state + 25}&happiness=#{character_current_happiness + 10}"
+
         visit "/character/#{@char_of_playing_page.id}/playing"
 
         expect(page).to have_content('Name Of Character:')
@@ -44,11 +50,11 @@ RSpec.feature 'Playing page' do
         expect(page).to have_content(@user_playing_page_wallet.amount)
         expect(@user_playing_page_wallet.amount).to eq(100)
 
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 1}&extra=from_playing&happiness=#{character_current_happiness + 2}')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 2}&extra=from_playing&happiness=#{character_current_happiness + 4}')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 3}&extra=from_playing&happiness=#{character_current_happiness + 6}')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 4}&extra=from_playing&happiness=#{character_current_happiness + 8}')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?amount=#{users_wallet - 5}&extra=from_playing&happiness=#{character_current_happiness + 10}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?#{link_for_playing_process_minor}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?#{link_for_playing_process_small}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?#{link_for_playing_process_normal}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?#{link_for_playing_process_large}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process?#{link_for_playing_process_extra}')]")
 
         page.should have_xpath("//a[contains(@href,'character/#{character_id}/playing_process')]", :count => 5)
 

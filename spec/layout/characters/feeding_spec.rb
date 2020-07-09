@@ -13,9 +13,8 @@ RSpec.feature 'Feeding page' do
                                              fed_state:10,
                                              activity_require_level:46,
                                              happiness:31)
-    \
-    @user_feeding_page_wallet = Wallet.create(user_id:@user_feeding_page.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
 
+    @user_feeding_page_wallet = Wallet.create(user_id:@user_feeding_page.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
   end
 
   feature 'When the Character exist' do
@@ -31,8 +30,8 @@ RSpec.feature 'Feeding page' do
         character_current_name = @char_of_feeding_page.name
         users_wallet = @user_feeding_page_wallet.amount
 
-        link_for_feeding_process_small = "activity_require_level=#{character_current_activity_state - 1}&amount=#{users_wallet - 5}&extra=from_feeding&fed_state=#{character_current_fed_state + 5}&happiness=#{character_current_happiness + 1}"
-        link_for_feeding_process_minor = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet - 10}&extra=from_feeding&fed_state=#{character_current_fed_state + 10}&happiness=#{character_current_happiness + 2}"
+        link_for_feeding_process_minor = "activity_require_level=#{character_current_activity_state - 1}&amount=#{users_wallet - 5}&extra=from_feeding&fed_state=#{character_current_fed_state + 5}&happiness=#{character_current_happiness + 1}"
+        link_for_feeding_process_small = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet - 10}&extra=from_feeding&fed_state=#{character_current_fed_state + 10}&happiness=#{character_current_happiness + 2}"
         link_for_feeding_process_normal = "activity_require_level=#{character_current_activity_state - 3}&amount=#{users_wallet - 15}&extra=from_feeding&fed_state=#{character_current_fed_state + 15}&happiness=#{character_current_happiness + 3}"
         link_for_feeding_process_large = "activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet - 20}&extra=from_feeding&fed_state=#{character_current_fed_state + 20}&happiness=#{character_current_happiness + 4}"
         link_for_feeding_process_extra = "activity_require_level=#{character_current_activity_state - 5}&amount=#{users_wallet - 25}&extra=from_feeding&fed_state=#{character_current_fed_state + 25}&happiness=#{character_current_happiness + 5}"
@@ -51,8 +50,8 @@ RSpec.feature 'Feeding page' do
         expect(page).to have_content(@user_feeding_page_wallet.amount)
         expect(@user_feeding_page_wallet.amount).to eq(100)
 
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?#{link_for_feeding_process_small}')]")
         page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?#{link_for_feeding_process_minor}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?#{link_for_feeding_process_small}')]")
         page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?#{link_for_feeding_process_normal}')]")
         page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?#{link_for_feeding_process_large}')]")
         page.should have_xpath("//a[contains(@href,'character/#{character_id}/feeding_process?#{link_for_feeding_process_extra}')]")
