@@ -30,11 +30,11 @@ RSpec.feature 'Playing page' do
         character_current_name = @char_of_playing_page.name
         users_wallet = @user_playing_page_wallet.amount
 
-        link_for_playing_process_minor = "activity_require_level=#{character_current_activity_state - 1}&amount=#{users_wallet - 1}&extra=from_playing&fed_state=#{character_current_fed_state + 5}&happiness=#{character_current_happiness + 2}"
-        link_for_playing_process_small = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet - 2}&extra=from_playing&fed_state=#{character_current_fed_state + 10}&happiness=#{character_current_happiness + 4}"
-        link_for_playing_process_normal = "activity_require_level=#{character_current_activity_state - 3}&amount=#{users_wallet - 3}&extra=from_playing&fed_state=#{character_current_fed_state + 15}&happiness=#{character_current_happiness + 6}"
-        link_for_playing_process_large = "activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet - 4}&extra=from_playing&fed_state=#{character_current_fed_state + 20}&happiness=#{character_current_happiness + 8}"
-        link_for_playing_process_extra = "activity_require_level=#{character_current_activity_state - 5}&amount=#{users_wallet - 5}&extra=from_playing&fed_state=#{character_current_fed_state + 25}&happiness=#{character_current_happiness + 10}"
+        link_for_playing_process_minor = "activity_require_level=#{character_current_activity_state - 1}&amount=#{users_wallet - 1}&extra=from_playing&fed_state=#{character_current_fed_state - 5}&happiness=#{character_current_happiness + 2}"
+        link_for_playing_process_small = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet - 2}&extra=from_playing&fed_state=#{character_current_fed_state - 10}&happiness=#{character_current_happiness + 4}"
+        link_for_playing_process_normal = "activity_require_level=#{character_current_activity_state - 3}&amount=#{users_wallet - 3}&extra=from_playing&fed_state=#{character_current_fed_state - 15}&happiness=#{character_current_happiness + 6}"
+        link_for_playing_process_large = "activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet - 4}&extra=from_playing&fed_state=#{character_current_fed_state - 20}&happiness=#{character_current_happiness + 8}"
+        link_for_playing_process_extra = "activity_require_level=#{character_current_activity_state - 5}&amount=#{users_wallet - 5}&extra=from_playing&fed_state=#{character_current_fed_state - 25}&happiness=#{character_current_happiness + 10}"
 
         visit "/character/#{@char_of_playing_page.id}/playing"
 
