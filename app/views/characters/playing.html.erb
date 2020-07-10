@@ -18,7 +18,7 @@
           <li class="list-inline-item">
             <%= link_to image_tag('playing/icons8-yoga-mat-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
                                                                                                                                    @amount,
-                                                                                                                                   Services::AmountsOfPlayingAction::ADDED_MINOR_FEEDING,
+                                                                                                                                   Services::AmountsOfPlayingAction::LOST_MINOR_FEEDING,
                                                                                                                                    Services::AmountsOfPlayingAction::PAID_MINOR_AMOUNT,
                                                                                                                                    Services::AmountsOfPlayingAction::ADDED_MINOR_HAPPINESS,
                                                                                                                                    Services::AmountsOfPlayingAction::LOST_MINOR_ACTIVITY,
@@ -28,8 +28,11 @@
         <h5 class="mt-4 text-secondary">
           <strong>Small</strong>
         </h5>
-        <p class="text-secondary mb-0">Happiness: +2</p>
-        <p class="text-secondary mb-0 ">Fed State: -5</p>
+        <p class="text-secondary mb-0 ">Fed State -<%= Services::AmountsOfPlayingAction::LOST_MINOR_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness +<%= Services::AmountsOfPlayingAction::ADDED_MINOR_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: -<%= Services::AmountsOfPlayingAction::LOST_MINOR_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Cost: <%= Services::AmountsOfPlayingAction::PAID_MINOR_AMOUNT %> Gold</p></strong>
       </div>
 
 
@@ -38,7 +41,7 @@
           <li class="list-inline-item">
             <%= link_to image_tag('playing/icons8-racket-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
                                                                                                                                  @amount,
-                                                                                                                                 Services::AmountsOfPlayingAction::ADDED_SMALL_FEEDING,
+                                                                                                                                 Services::AmountsOfPlayingAction::LOST_SMALL_FEEDING,
                                                                                                                                  Services::AmountsOfPlayingAction::PAID_SMALL_AMOUNT,
                                                                                                                                  Services::AmountsOfPlayingAction::ADDED_SMALL_HAPPINESS,
                                                                                                                                  Services::AmountsOfPlayingAction::LOST_SMALL_ACTIVITY,
@@ -48,8 +51,11 @@
         <h5 class="mt-4 text-secondary">
           <strong>Minor</strong>
         </h5>
-        <p class="text-secondary mb-0">Happiness: +4</p>
-        <p class="text-secondary mb-0 ">Fed State: -10</p>
+        <p class="text-secondary mb-0 ">Fed State -<%= Services::AmountsOfPlayingAction::LOST_SMALL_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness +<%= Services::AmountsOfPlayingAction::ADDED_SMALL_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: -<%= Services::AmountsOfPlayingAction::LOST_SMALL_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Cost: <%= Services::AmountsOfPlayingAction::PAID_SMALL_AMOUNT %> Gold</p></strong>
       </div>
 
 
@@ -58,7 +64,7 @@
           <li class="list-inline-item">
             <%= link_to image_tag('playing/icons8-game-controller-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
                                                                                                                                           @amount,
-                                                                                                                                          Services::AmountsOfPlayingAction::ADDED_NORMAL_FEEDING,
+                                                                                                                                          Services::AmountsOfPlayingAction::LOST_NORMAL_FEEDING,
                                                                                                                                           Services::AmountsOfPlayingAction::PAID_NORMAL_AMOUNT,
                                                                                                                                           Services::AmountsOfPlayingAction::ADDED_NORMAL_HAPPINESS,
                                                                                                                                           Services::AmountsOfPlayingAction::LOST_NORMAL_ACTIVITY,
@@ -68,8 +74,11 @@
         <h5 class="mt-4 text-secondary">
           <strong>Normal</strong>
         </h5>
-        <p class="text-secondary mb-0">Happiness: +6</p>
-        <p class="text-secondary mb-0 ">Fed State: -15</p>
+        <p class="text-secondary mb-0 ">Fed State -<%= Services::AmountsOfPlayingAction::LOST_NORMAL_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness +<%= Services::AmountsOfPlayingAction::ADDED_NORMAL_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: -<%= Services::AmountsOfPlayingAction::LOST_NORMAL_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Cost: <%= Services::AmountsOfPlayingAction::PAID_NORMAL_AMOUNT %> Gold</p></strong>
       </div>
 
 
@@ -78,7 +87,7 @@
           <li class="list-inline-item">
             <%= link_to image_tag('playing/icons8-rock-music-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
                                                                                                                                      @amount,
-                                                                                                                                     Services::AmountsOfPlayingAction::ADDED_LARGE_FEEDING,
+                                                                                                                                     Services::AmountsOfPlayingAction::LOST_LARGE_FEEDING,
                                                                                                                                      Services::AmountsOfPlayingAction::PAID_LARGE_AMOUNT,
                                                                                                                                      Services::AmountsOfPlayingAction::ADDED_LARGE_HAPPINESS,
                                                                                                                                      Services::AmountsOfPlayingAction::LOST_LARGE_ACTIVITY,
@@ -88,8 +97,11 @@
         <h5 class="mt-4 text-secondary">
           <strong>Large</strong>
         </h5>
-        <p class="text-secondary mb-0">Happiness: +8</p>
-        <p class="text-secondary mb-0 ">Fed State: -20</p>
+        <p class="text-secondary mb-0 ">Fed State -<%= Services::AmountsOfPlayingAction::LOST_LARGE_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness +<%= Services::AmountsOfPlayingAction::ADDED_LARGE_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: -<%= Services::AmountsOfPlayingAction::LOST_LARGE_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Cost: <%= Services::AmountsOfPlayingAction::PAID_LARGE_AMOUNT %> Gold</p></strong>
       </div>
 
 
@@ -98,7 +110,7 @@
           <li class="list-inline-item">
             <%= link_to image_tag('playing/icons8-surf-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
                                                                                                                                @amount,
-                                                                                                                               Services::AmountsOfPlayingAction::ADDED_EXTRA_FEEDING,
+                                                                                                                               Services::AmountsOfPlayingAction::LOST_EXTRA_FEEDING,
                                                                                                                                Services::AmountsOfPlayingAction::PAID_EXTRA_AMOUNT,
                                                                                                                                Services::AmountsOfPlayingAction::ADDED_EXTRA_HAPPINESS,
                                                                                                                                Services::AmountsOfPlayingAction::LOST_EXTRA_ACTIVITY,
@@ -108,8 +120,11 @@
         <h5 class="mt-4 text-secondary">
           <strong>Extra</strong>
         </h5>
-        <p class="text-secondary mb-0">Happiness: +10</p>
-        <p class="text-secondary mb-0 ">Fed State: -25</p>
+        <p class="text-secondary mb-0 ">Fed State -<%= Services::AmountsOfPlayingAction::LOST_EXTRA_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness +<%= Services::AmountsOfPlayingAction::ADDED_EXTRA_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: -<%= Services::AmountsOfPlayingAction::LOST_EXTRA_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Cost: <%= Services::AmountsOfPlayingAction::PAID_EXTRA_AMOUNT %> Gold</p></strong>
       </div>
 
       <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
