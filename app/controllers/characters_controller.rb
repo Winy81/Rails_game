@@ -229,13 +229,15 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_playing_state(character)
-    if character.update_attributes(:happiness => happiness_limit.happiness_level_max_setter)
+    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
+                                   :activity_require_level => activity_limit.activity_level_min_setter,
+                                   :happiness => happiness_limit.happiness_level_max_setter)
       if character.happiness == 100
         redirection_to_character_path(character,"warning", "Your Character do not want to play more")
       else
-        paying_service_proceed
         redirection_to_character_path(character,"notice", "Happiness point added")
       end
+      paying_service_proceed
     else
       redirection_to_character_path(character,"alert", "Did not move")
     end
