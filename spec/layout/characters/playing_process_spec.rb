@@ -68,6 +68,69 @@ RSpec.feature 'Playing process page' do
       end
     end
 
+    feature 'With too low sources' do
+
+      before do
+        @char_of_playing_proc.update_attributes(fed_state:50,activity_require_level:2)
+      end
+
+      feature 'When the activity require level is low' do
+
+        scenario 'Should do not proceed and return with error message' do
+
+          character_id = @char_of_playing_proc.id
+          character_fed_state = @char_of_playing_proc.fed_state
+          character_activity = @char_of_playing_proc.activity_require_level
+          character_happiness = @char_of_playing_proc.happiness
+          users_wallet = @user_playing_process_wallet.amount
+          lose_able_feed_points = 25
+          spendable_amount = 25
+          spendable_activity_point = 5
+          claim_able_happiness = 5
+
+          visit "/character/#{character_id}/feeding"
+
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state - lose_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
+
+          current_path.should == character_path(@char_of_feeding_proc)
+
+          expect(page).to have_content('Your are too tired to move')
+
+        end
+
+      end
+
+      feature 'When the gold is low' do
+
+        before do
+          @char_of_feeding_proc.update_attributes(activity_require_level:25)
+          @user_playing_process_wallet.update_attributes(amount:2)
+        end
+
+        scenario 'Should do not proceed and return with error message' do
+
+          character_id = @char_of_playing_proc.id
+          character_fed_state = @char_of_playing_proc.fed_state
+          character_activity = @char_of_playing_proc.activity_require_level
+          character_happiness = @char_of_playing_proc.happiness
+          users_wallet = @user_playing_process_wallet.amount
+          lose_able_feed_points = 25
+          spendable_amount = 25
+          spendable_activity_point = 5
+          claim_able_happiness = 5
+
+          visit "/character/#{character_id}/feeding"
+
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state - lose_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
+
+          current_path.should == character_path(@char_of_playing_proc)
+
+          expect(page).to have_content('Your have not enough Gold for this action')
+
+        end
+      end
+    end
+
     feature 'With acceptable increase' do
 
       scenario 'Should be turn up with page with claim-able details and process button' do
