@@ -10,15 +10,17 @@
         <table class="table table-sm table-borderless text-secondary">
           <thead>
           <tr>
-            <th>Happiness: <%= @character.happiness %></th>
             <th>Fed State: <%= @character.fed_state %></th>
+            <th>Activity Require: <%= @character.activity_require_level %></th>
+            <th>Happiness: <%= @character.happiness %></th>
           </tr>
           </thead>
 
           <tbody>
           <tr>
-            <td>Claim-able: + <%= @sent_playing_points %></td>
-            <td>Claim-able: <%=  %></td>
+            <td>Lose-able: <%= @sent_potion_of_food %></td>
+            <td>Lose-able: <%= @sent_points_of_activity %></td>
+            <td>Claim-able: <%= @sent_happiness_points%></td>
           </tr>
           </tbody>
         </table>
@@ -31,9 +33,8 @@
   </div>
 </section>
 
-</br>
-</br>
-</br>
+<div class="spacer_1 pb-5"></div>
+
 
 <section class="content-section mt-5 text-muted text-center">
 
