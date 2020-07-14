@@ -11,8 +11,8 @@ module CharactersHelper
   def params_builder_of_feeding(character,wallet,fed_points,cost,happiness_points,activity_points,source)
     params_of_fed_state = character.fed_state + fed_points
     params_of_happiness = character.happiness + happiness_points
-    params_of_activity = character.activity_require_level - activity_points
-    params_of_amount = wallet - cost
+    params_of_activity = character.activity_require_level + activity_points
+    params_of_amount = wallet + cost
 
     {fed_state: params_of_fed_state,
      amount: params_of_amount,
@@ -50,15 +50,6 @@ module CharactersHelper
      extra: source }
   end
 
-  private
-
-  def result(seconds)
-    hours = seconds / SECOND_IN_A_HOUR
-    full_days = hours_to_full_days(hours)
-    hours = rest_of_hours(hours)
-    formated_time_layout(full_days,hours)
-  end
-
   def formated_time_layout(full_days,hours)
     "#{full_days} Days and #{hours} Hours"
   end
@@ -69,6 +60,15 @@ module CharactersHelper
 
   def amount_of_earn_on_actions(amount)
     "Going to Get: #{amount} Gold"
+  end
+
+  private
+
+  def result(seconds)
+    hours = seconds / SECOND_IN_A_HOUR
+    full_days = hours_to_full_days(hours)
+    hours = rest_of_hours(hours)
+    formated_time_layout(full_days,hours)
   end
 
 end
