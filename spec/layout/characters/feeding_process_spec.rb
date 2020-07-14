@@ -152,6 +152,8 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content('Happiness:')
         expect(page).to have_content(character_happiness)
         expect(page).to have_content("Claim-able: #{claim_able_feed_points}")
+        expect(page).to have_content("Lose-able: -#{spendable_activity_point}")
+        expect(page).to have_content("Claim-able: #{claim_able_happiness}")
         expect(page).to have_content("Going to Cost: #{spendable_amount} Gold")
 
         #page.evaluate_script("$('#claim_button').removeAttr('disabled')")

@@ -1,7 +1,6 @@
 module CharactersHelper
 
   include Services::DateTransformer
-  include Services::AmountsOfFeedingAction
 
   def life_length_counter(character)
     length = character.updated_at - character.created_at
@@ -22,10 +21,10 @@ module CharactersHelper
   end
 
   def params_builder_of_playing(character,wallet,fed_points,cost,happiness_points,activity_points,source)
-    params_of_fed_state = character.fed_state - fed_points
+    params_of_fed_state = character.fed_state + fed_points
     params_of_happiness = character.happiness + happiness_points
-    params_of_activity = character.activity_require_level - activity_points
-    params_of_amount = wallet - cost
+    params_of_activity = character.activity_require_level + activity_points
+    params_of_amount = wallet + cost
 
     {fed_state: params_of_fed_state,
      amount: params_of_amount,
