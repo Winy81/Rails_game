@@ -31,6 +31,13 @@ RSpec.feature 'Activity page' do
         character_current_name = @character_activity_page.name
         users_wallet = @user_activity_page_wallet.amount
 
+        link_for_activity_process_minor = "activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet + 2}&extra=from_activity&fed_state=#{character_current_fed_state - 1}&happiness=#{character_current_happiness + 1}"
+        link_for_activity_process_small = "activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet + 4}&extra=from_activity&fed_state=#{character_current_fed_state - 2}&happiness=#{character_current_happiness + 2}"
+        link_for_activity_process_normal = "activity_require_level=#{character_current_activity_state - 6}&amount=#{users_wallet + 6}&extra=from_activity&fed_state=#{character_current_fed_state - 3}&happiness=#{character_current_happiness + 3}"
+        link_for_activity_process_large = "activity_require_level=#{character_current_activity_state - 8}&amount=#{users_wallet + 8}&extra=from_activity&fed_state=#{character_current_fed_state - 4}&happiness=#{character_current_happiness + 4}"
+        link_for_activity_process_extra = "activity_require_level=#{character_current_activity_state - 10}&amount=#{users_wallet + 10}&extra=from_activity&fed_state=#{character_current_fed_state - 5}&happiness=#{character_current_happiness + 5}"
+
+
         visit "/character/#{@character_activity_page.id}/activity"
 
         expect(page).to have_content('Name Of Character:')
@@ -45,11 +52,11 @@ RSpec.feature 'Activity page' do
         expect(page).to have_content(@user_activity_page_wallet.amount)
         expect(@user_activity_page_wallet.amount).to eq(100)
 
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 2}&amount=#{users_wallet + 2}&extra=from_activity')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 4}&amount=#{users_wallet + 4}&extra=from_activity')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 6}&amount=#{users_wallet + 6}&extra=from_activity')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 8}&amount=#{users_wallet + 8}&extra=from_activity')]")
-        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_state - 10}&amount=#{users_wallet + 10}&extra=from_activity')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?#{link_for_activity_process_minor}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?#{link_for_activity_process_small}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?#{link_for_activity_process_normal}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?#{link_for_activity_process_large}')]")
+        page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process?#{link_for_activity_process_extra}')]")
 
         page.should have_xpath("//a[contains(@href,'character/#{character_id}/activity_process')]", :count => 5)
 
