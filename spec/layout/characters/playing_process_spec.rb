@@ -84,15 +84,15 @@ RSpec.feature 'Playing process page' do
           character_happiness = @char_of_playing_proc.happiness
           users_wallet = @user_playing_process_wallet.amount
           lose_able_feed_points = 25
-          spendable_amount = 25
+          spendable_amount = 5
           spendable_activity_point = 5
-          claim_able_happiness = 5
+          claim_able_happiness = 10
 
-          visit "/character/#{character_id}/feeding"
+          visit "/character/#{character_id}/playing"
 
-          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state - lose_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?activity_require_level=#{character_activity - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_playing&fed_state=#{character_fed_state - lose_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
 
-          current_path.should == character_path(@char_of_feeding_proc)
+          current_path.should == character_path(@char_of_playing_proc)
 
           expect(page).to have_content('Your are too tired to move')
 
@@ -103,7 +103,7 @@ RSpec.feature 'Playing process page' do
       feature 'When the gold is low' do
 
         before do
-          @char_of_feeding_proc.update_attributes(activity_require_level:25)
+          @char_of_playing_proc.update_attributes(activity_require_level:25)
           @user_playing_process_wallet.update_attributes(amount:2)
         end
 
@@ -115,13 +115,13 @@ RSpec.feature 'Playing process page' do
           character_happiness = @char_of_playing_proc.happiness
           users_wallet = @user_playing_process_wallet.amount
           lose_able_feed_points = 25
-          spendable_amount = 25
+          spendable_amount = 5
           spendable_activity_point = 5
-          claim_able_happiness = 5
+          claim_able_happiness = 10
 
-          visit "/character/#{character_id}/feeding"
+          visit "/character/#{character_id}/playing"
 
-          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state - lose_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?activity_require_level=#{character_activity - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_playing&fed_state=#{character_fed_state - lose_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
 
           current_path.should == character_path(@char_of_playing_proc)
 
