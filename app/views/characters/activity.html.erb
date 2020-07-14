@@ -15,75 +15,115 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-tennis-player-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 2), amount:(@amount + 2),  extra: 'from_activity'}), method: :post %>
+            <%= link_to image_tag('training/icons8-tennis-player-50.png'), activity_process_path(@character.id, params_builder_of_activity(@character,
+                                                                                                                                          @amount,
+                                                                                                                                          Services::AmountsOfActivityAction::LOST_MINOR_FEEDING,
+                                                                                                                                          Services::AmountsOfActivityAction::ADDED_MINOR_AMOUNT,
+                                                                                                                                          Services::AmountsOfActivityAction::ADDED_MINOR_HAPPINESS,
+                                                                                                                                          Services::AmountsOfActivityAction::LOST_MINOR_ACTIVITY,
+                                                                                                                                          'from_activity')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
           <strong>Small</strong>
         </h5>
-        <p class="text-secondary mb-0">Activity Require -2</p>
-        <p class="text-secondary mb-0">Happiness: +1</p>
-        <p class="text-secondary mb-0 ">Fed State: -1 </p>
+        <p class="text-secondary mb-0 ">Fed State <%= Services::AmountsOfActivityAction::LOST_MINOR_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness <%= Services::AmountsOfActivityAction::ADDED_MINOR_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: <%= Services::AmountsOfActivityAction::LOST_MINOR_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Get: <%= Services::AmountsOfActivityAction::ADDED_MINOR_AMOUNT %> Gold</p></strong>
       </div>
 
 
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-skiing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 4), amount:(@amount + 4), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-skiing-50.png'), activity_process_path(@character.id, params_builder_of_activity(@character,
+                                                                                                                                    @amount,
+                                                                                                                                    Services::AmountsOfActivityAction::LOST_SMALL_FEEDING,
+                                                                                                                                    Services::AmountsOfActivityAction::ADDED_SMALL_AMOUNT,
+                                                                                                                                    Services::AmountsOfActivityAction::ADDED_SMALL_HAPPINESS,
+                                                                                                                                    Services::AmountsOfActivityAction::LOST_SMALL_ACTIVITY,
+                                                                                                                                    'from_activity')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
           <strong>Minor</strong>
         </h5>
-        <p class="text-secondary mb-0">Activity Require -4</p>
-        <p class="text-secondary mb-0">Happiness: +2</p>
-        <p class="text-secondary mb-0 ">Fed State: -2 </p>
+        <p class="text-secondary mb-0 ">Fed State <%= Services::AmountsOfActivityAction::LOST_SMALL_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness <%= Services::AmountsOfActivityAction::ADDED_SMALL_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: <%= Services::AmountsOfActivityAction::LOST_SMALL_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Get: <%= Services::AmountsOfActivityAction::ADDED_SMALL_AMOUNT %> Gold</p></strong>
       </div>
 
 
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-climbing-50.png'), activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 6), amount:(@amount + 6), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-climbing-50.png'), activity_process_path(@character.id, params_builder_of_activity(@character,
+                                                                                                                                      @amount,
+                                                                                                                                      Services::AmountsOfActivityAction::LOST_NORMAL_FEEDING,
+                                                                                                                                      Services::AmountsOfActivityAction::ADDED_NORMAL_AMOUNT,
+                                                                                                                                      Services::AmountsOfActivityAction::ADDED_NORMAL_HAPPINESS,
+                                                                                                                                      Services::AmountsOfActivityAction::LOST_NORMAL_ACTIVITY,
+                                                                                                                                      'from_activity')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
           <strong>Normal</strong>
         </h5>
-        <p class="text-secondary mb-0">Activity Require -6</p>
-        <p class="text-secondary mb-0">Happiness: +3</p>
-        <p class="text-secondary mb-0 ">Fed State: -3 </p>
+        <p class="text-secondary mb-0 ">Fed State <%= Services::AmountsOfActivityAction::LOST_NORMAL_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness <%= Services::AmountsOfActivityAction::ADDED_NORMAL_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: <%= Services::AmountsOfActivityAction::LOST_NORMAL_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Get: <%= Services::AmountsOfActivityAction::ADDED_NORMAL_AMOUNT %> Gold</p></strong>
       </div>
 
 
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-canoe-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 8), amount:(@amount + 8), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-canoe-50.png'),  activity_process_path(@character.id, params_builder_of_activity(@character,
+                                                                                                                                    @amount,
+                                                                                                                                    Services::AmountsOfActivityAction::LOST_LARGE_FEEDING,
+                                                                                                                                    Services::AmountsOfActivityAction::ADDED_LARGE_AMOUNT,
+                                                                                                                                    Services::AmountsOfActivityAction::ADDED_LARGE_HAPPINESS,
+                                                                                                                                    Services::AmountsOfActivityAction::LOST_LARGE_ACTIVITY,
+                                                                                                                                    'from_activity')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
           <strong>Large</strong>
         </h5>
-        <p class="text-secondary mb-0">Activity Require -8</p>
-        <p class="text-secondary mb-0">Happiness: +4</p>
-        <p class="text-secondary mb-0 ">Fed State: -4 </p>
+        <p class="text-secondary mb-0 ">Fed State <%= Services::AmountsOfActivityAction::LOST_LARGE_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness <%= Services::AmountsOfActivityAction::ADDED_LARGE_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: <%= Services::AmountsOfActivityAction::LOST_LARGE_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Get: <%= Services::AmountsOfActivityAction::ADDED_LARGE_AMOUNT %> Gold</p></strong>
       </div>
 
 
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('training/icons8-weightlifting-50.png'),  activity_process_path(@character.id, {activity_require_level:  (@character.activity_require_level - 10), amount:(@amount + 10), extra: 'from_activity' }), method: :post %>
+            <%= link_to image_tag('training/icons8-weightlifting-50.png'),  activity_process_path(@character.id, params_builder_of_activity(@character,
+                                                                                                                                            @amount,
+                                                                                                                                            Services::AmountsOfActivityAction::LOST_EXTRA_FEEDING,
+                                                                                                                                            Services::AmountsOfActivityAction::ADDED_EXTRA_AMOUNT,
+                                                                                                                                            Services::AmountsOfActivityAction::ADDED_EXTRA_HAPPINESS,
+                                                                                                                                            Services::AmountsOfActivityAction::LOST_EXTRA_ACTIVITY,
+                                                                                                                                            'from_activity')), method: :post %>
           </li>
         </div>
         <h5 class="mt-4 text-secondary">
           <strong>Extra</strong>
         </h5>
-        <p class="text-secondary mb-0">Activity Require -10</p>
-        <p class="text-secondary mb-0">Happiness: +5</p>
-        <p class="text-secondary mb-0 ">Fed State: -5 </p>
+        <p class="text-secondary mb-0 ">Fed State <%= Services::AmountsOfActivityAction::LOST_EXTRA_FEEDING %> </p>
+        <p class="text-secondary mb-0">Happiness <%= Services::AmountsOfActivityAction::ADDED_EXTRA_HAPPINESS %></p>
+        <p class="text-secondary mb-0">Activity Require: <%= Services::AmountsOfActivityAction::LOST_EXTRA_ACTIVITY %></p>
+        </br>
+        <strong><p class="text-secondary mb-1">Get: <%= Services::AmountsOfActivityAction::ADDED_EXTRA_AMOUNT %> Gold</p></strong>
       </div>
 
       <div class="col-lg-1 col-md-6 mb-5 mb-lg-0">
