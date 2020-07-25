@@ -86,7 +86,7 @@ RSpec.feature 'Activity process page' do
 
         current_path.should == character_activity_path(current_character)
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity_require - spendable_activity_points}&amount=#{users_wallet + claimable_amount}&extra=from_feeding&fed_state=#{character_fed_state - spendable_feed_points}&happiness=#{character_happiness + claimable_happiness}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity_require + spendable_activity_points}&amount=#{users_wallet + claimable_amount}&extra=from_activity&fed_state=#{character_fed_state + spendable_feed_points}&happiness=#{character_happiness + claimable_happiness}')]").click
 
         expect(page).to have_content('Activity Require')
         expect(page).to have_content(character_activity_require)
@@ -94,10 +94,10 @@ RSpec.feature 'Activity process page' do
         expect(page).to have_content(character_fed_state)
         expect(page).to have_content('Happiness:')
         expect(page).to have_content(character_happiness)
-        expect(page).to have_content("Lose-able: -#{claim_able_feed_points}")
-        expect(page).to have_content("Lose-able: -#{spendable_activity_point}")
-        expect(page).to have_content("Claim-able: #{claim_able_happiness}")
-        expect(page).to have_content("Going to Get: #{spendable_amount} Gold")
+        expect(page).to have_content("Lose-able: #{spendable_feed_points}")
+        expect(page).to have_content("Lose-able: #{spendable_activity_points}")
+        expect(page).to have_content("Claim-able: #{claimable_happiness}")
+        expect(page).to have_content("Going to Get: #{claimable_amount} Gold")
 
         #page.evaluate_script("$('#claim_button').removeAttr('disabled')")
         find_button('Claim').click

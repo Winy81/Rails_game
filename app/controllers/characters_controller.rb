@@ -93,9 +93,15 @@ class CharactersController < ApplicationController
   def activity_process
     #test required
     @current_amount = params[:amount]
+    @current_fed_state = params[:fed_state]
     @current_activity_state = params[:activity_require_level]
+    @current_happiness_state = params[:happiness]
     @sent_points_of_activity = (@character.activity_require_level.to_i - @current_activity_state.to_i)
     @earn = -1*(wallet_view - @current_amount.to_i)
+
+    @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+    @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+    @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
   end
 
   def playing
