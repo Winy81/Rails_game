@@ -70,7 +70,7 @@ RSpec.feature 'Activity process page' do
 
       scenario 'Should be turn up with page with claim-able details and process button' do
 
-        current_character = Character.find_by(id:1)
+        current_character = Character.find_by(name:'char_activity_process')
 
         character_id = current_character.id
         character_fed_state = current_character.fed_state
@@ -114,7 +114,7 @@ RSpec.feature 'Activity process page' do
 
         updated_wallet = Wallet.find_by(user_id:@user_activity_process.id).amount
         expect(page).to have_content(updated_wallet)
-        expect(updated_wallet).to eq(users_wallet - spendable_amount)
+        expect(updated_wallet).to eq(users_wallet + claimable_amount)
 
       end
     end

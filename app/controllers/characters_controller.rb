@@ -96,7 +96,7 @@ class CharactersController < ApplicationController
     @current_fed_state = params[:fed_state]
     @current_activity_state = params[:activity_require_level]
     @current_happiness_state = params[:happiness]
-    @sent_points_of_activity = (@character.activity_require_level.to_i - @current_activity_state.to_i)
+
     @earn = -1*(wallet_view - @current_amount.to_i)
 
     @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
@@ -227,7 +227,10 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_from_activity_state(character)
-    if character.update_attributes(:activity_require_level => activity_limit.activity_level_min_setter)
+    binding.pry
+    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
+                                   :activity_require_level => activity_limit.activity_level_min_setter,
+                                   :happiness => happiness_limit.happiness_level_max_setter)
       if character.activity_require_level == 0
         redirection_to_character_path(character,"warning", "Your are too tired to move")
       else

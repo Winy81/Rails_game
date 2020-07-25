@@ -49,7 +49,11 @@
 
       <div class="col-lg-2 col-md-7">
         <div class="action_arrow mb-3">
-          <%= button_to 'Claim', character_path(@character.id, {activity_require_level:  (@current_activity_state), amount: (@current_amount), extra: 'from_activity_process' }), class:'btn btn-outline-secondary', :method => :put  %></p>
+          <%= button_to 'Claim', character_path(@character.id, params_builder_of_feeding_process(@current_fed_state,
+                                                                                                 @current_amount,
+                                                                                                 @current_activity_state,
+                                                                                                 @current_happiness_state,
+                                                                                                 'from_feeding_process' )), id:'claim_button', disabled: false, :remote => true, class: 'btn btn-outline-secondary', :method => :put %>
         </div>
         <p class="list-inline-item small text-dark">Claim your Points</p>
       </div>
