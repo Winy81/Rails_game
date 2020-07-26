@@ -6,12 +6,12 @@ RSpec.feature 'Activity process page' do
     @user_activity_process = User.create(name:'user_activity_process', email: 'user_activity_process@email.com', password:'password', password_confirmation:'password')
     login_as(@user_activity_process)
     @char_of_activity_proc = Character.create(name:'char_activity_process',
-                                             user_id:1,
-                                             status:'alive',
-                                             age: 214,
-                                             fed_state:50,
-                                             activity_require_level:5,
-                                             happiness:50)
+                                              user_id:1,
+                                              status:'alive',
+                                              age: 214,
+                                              fed_state:50,
+                                              activity_require_level:5,
+                                              happiness:50)
 
     @user_activity_process_wallet = Wallet.create(user_id:@user_activity_process.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
 
@@ -37,30 +37,60 @@ RSpec.feature 'Activity process page' do
 
   feature 'Should be proceed with POST request' do
 
-    feature 'With overloaded values' do
+    feature 'With low sources values' do
 
-      scenario 'Should be proceed until the min and redirected for character page with notice' do
+      feature 'Should redirected for character page with notice' do
 
-        character_id = @char_of_activity_proc.id
-        character_fed_state = @char_of_activity_proc.fed_state
-        character_activity = @char_of_activity_proc.activity_require_level
-        character_happiness = @char_of_activity_proc.happiness
-        users_wallet = @user_activity_process_wallet.amount
-        get_amount = 10
+        scenario 'with too low activity' do
 
-        visit "/character/#{character_id}/activity"
+          character_id = @char_of_activity_proc.id
+          character_fed_state = @char_of_activity_proc.fed_state
+          character_activity = @char_of_activity_proc.activity_require_level
+          character_happiness = @char_of_activity_proc.happiness
+          users_wallet = @user_activity_process_wallet.amount
+          get_amount = 10
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
+          visit "/character/#{character_id}/activity"
 
-        current_path.should == character_path(@char_of_activity_proc)
-        expect(page).to have_content('Your are too tired to move')
-        expect(page).to have_content('Activity')
-        expect(page).to have_content(character_activity)
-        Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
 
-        expect(page).to have_content(@user_activity_process_wallet.amount)
-        expect(@user_activity_process_wallet.amount).to eq(users_wallet)
+          current_path.should == character_path(@char_of_activity_proc)
+          expect(page).to have_content('Your are too tired to move')
+          expect(page).to have_content('Activity')
+          expect(page).to have_content(character_activity)
+          Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
 
+          expect(page).to have_content(@user_activity_process_wallet.amount)
+          expect(@user_activity_process_wallet.amount).to eq(users_wallet)
+
+        end
+
+        scenario 'with too low fed_state' do
+
+          @char_of_activity_proc.update_attributes(fed_state:2,activity_require_level:50)
+
+
+          character_id = @char_of_activity_proc.id
+          character_fed_state = @char_of_activity_proc.fed_state
+          character_activity = @char_of_activity_proc.activity_require_level
+          character_happiness = @char_of_activity_proc.happiness
+          users_wallet = @user_activity_process_wallet.amount
+          get_amount = 10
+
+          visit "/character/#{character_id}/activity"
+
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
+
+          current_path.should == character_path(@char_of_activity_proc)
+          expect(page).to have_content('Your are too hungry to move')
+          expect(page).to have_content('Activity')
+          expect(page).to have_content(character_activity)
+          Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
+
+          expect(page).to have_content(@user_activity_process_wallet.amount)
+          expect(@user_activity_process_wallet.amount).to eq(users_wallet)
+
+        end
       end
     end
 
