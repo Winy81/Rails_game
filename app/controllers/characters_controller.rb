@@ -126,6 +126,8 @@ class CharactersController < ApplicationController
     @costs = wallet_view - @current_amount
     if not_enough_available_activity_points?
       redirection_to_character_path(@character,"warning", "Your are too tired to move")
+    elsif not_enough_available_feeding_points?
+      redirection_to_character_path(@character,"warning", "Your are too hungry to move")
     else
       if paying_service_budget_check?(@spendable_amount) == true
         @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
