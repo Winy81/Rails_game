@@ -99,6 +99,8 @@ class CharactersController < ApplicationController
     @earn = -1*(wallet_view - @current_amount.to_i)
     if not_enough_available_activity_points?
       redirection_to_character_path(@character,"warning", "Your are too tired to move")
+    elsif not_enough_available_feeding_points?
+      redirection_to_character_path(@character,"warning", "Your are too hungry to move")
     else
       @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
       @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
@@ -229,16 +231,11 @@ class CharactersController < ApplicationController
 
   #test and refactor into service class required
   def update_from_activity_state(character)
-    binding.pry
     if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
                                    :activity_require_level => activity_limit.activity_level_min_setter,
                                    :happiness => happiness_limit.happiness_level_max_setter)
-      if character.activity_require_level == 0
-        redirection_to_character_path(character,"warning", "Your are too tired to move")
-      else
         paying_service_proceed
-        redirection_to_character_path(character,"notice", "Activity point has burned down")
-      end
+        redirection_to_character_path(character,"notice", "You have beaten the challenge and reached Gold")
     else
       redirection_to_character_path(character,"alert", "Did not move")
     end
@@ -314,6 +311,10 @@ class CharactersController < ApplicationController
 
   def not_enough_available_activity_points?
     params[:activity_require_level].to_i < 0
+  end
+
+  def not_enough_available_feeding_points?
+    params[:fed_state].to_i < 0
   end
 
 end
