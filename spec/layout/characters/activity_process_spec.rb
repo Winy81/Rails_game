@@ -52,13 +52,11 @@ RSpec.feature 'Activity process page' do
 
         find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
 
-        find_button('Claim').click
-
         current_path.should == character_path(@char_of_activity_proc)
         expect(page).to have_content('Your are too tired to move')
         expect(page).to have_content('Activity')
-        expect(page).to have_content('0')
-        Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == 0
+        expect(page).to have_content(character_activity)
+        Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
 
         expect(page).to have_content(@user_activity_process_wallet.amount)
         expect(@user_activity_process_wallet.amount).to eq(users_wallet)

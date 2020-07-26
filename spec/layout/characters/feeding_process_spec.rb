@@ -52,7 +52,6 @@ RSpec.feature 'Feeding process page' do
 
         find_button('Claim').click
 
-
         current_path.should == character_path(@char_of_feeding_proc)
         expect(page).to have_content('Your character is full')
         expect(page).to have_content('Fed State:')

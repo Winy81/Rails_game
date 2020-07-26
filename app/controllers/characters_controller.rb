@@ -96,12 +96,14 @@ class CharactersController < ApplicationController
     @current_fed_state = params[:fed_state]
     @current_activity_state = params[:activity_require_level]
     @current_happiness_state = params[:happiness]
-
     @earn = -1*(wallet_view - @current_amount.to_i)
-
-    @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
-    @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
-    @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+    if not_enough_available_activity_points?
+      redirection_to_character_path(@character,"warning", "Your are too tired to move")
+    else
+      @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+      @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+      @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+    end
   end
 
   def playing
