@@ -6,12 +6,12 @@ RSpec.feature 'Playing process page' do
     @user_playing_process = User.create(name:'user_playing_process', email: 'user_playing_process@email.com', password:'password', password_confirmation:'password')
     login_as(@user_playing_process)
     @char_of_playing_proc = Character.create(name:'char_of_playing_proc',
-                                              user_id:1,
-                                              status:'alive',
-                                              age: 214,
-                                              fed_state:50,
-                                              activity_require_level:50,
-                                              happiness:95)
+                                             user_id:1,
+                                             status:'alive',
+                                             age: 214,
+                                             fed_state:50,
+                                             activity_require_level:50,
+                                             happiness:95)
     @user_playing_process_wallet = Wallet.create(user_id:@user_playing_process.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
 
   end
@@ -127,6 +127,35 @@ RSpec.feature 'Playing process page' do
 
           expect(page).to have_content('Your have not enough Gold for this action')
 
+        end
+      end
+
+      feature 'When the fed_state is low' do
+
+        before do
+          @char_of_playing_proc.update_attributes(activity_require_level:25, fed_state:5)
+          @user_playing_process_wallet.update_attributes(amount:25)
+        end
+
+        scenario 'Should do not proceed and return with error message' do
+
+          character_id = @char_of_playing_proc.id
+          character_fed_state = @char_of_playing_proc.fed_state
+          character_activity = @char_of_playing_proc.activity_require_level
+          character_happiness = @char_of_playing_proc.happiness
+          users_wallet = @user_playing_process_wallet.amount
+          lose_able_feed_points = 25
+          spendable_amount = 5
+          spendable_activity_point = 5
+          claim_able_happiness = 10
+
+          visit "/character/#{character_id}/playing"
+
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/playing_process?activity_require_level=#{character_activity - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_playing&fed_state=#{character_fed_state - lose_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
+
+          current_path.should == character_path(@char_of_playing_proc)
+
+          expect(page).to have_content('Your are too hungry to move')
         end
       end
     end
