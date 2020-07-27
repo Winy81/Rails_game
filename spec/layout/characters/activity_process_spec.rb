@@ -39,9 +39,9 @@ RSpec.feature 'Activity process page' do
 
     feature 'With low sources values' do
 
-      feature 'Should redirected for character page with notice' do
+      feature 'With too low activity'  do
 
-        scenario 'with too low activity' do
+        scenario 'Should redirected for character page with notice'do
 
           character_id = @char_of_activity_proc.id
           character_fed_state = @char_of_activity_proc.fed_state
@@ -65,31 +65,35 @@ RSpec.feature 'Activity process page' do
 
         end
 
-        scenario 'with too low fed_state' do
+        feature 'With too low fed_state' do
 
-          @char_of_activity_proc.update_attributes(fed_state:2,activity_require_level:50)
+          before do
+            @char_of_activity_proc.update_attributes(fed_state:2,activity_require_level:50)
+          end
 
+          scenario 'Should redirected for character page with notice' do
 
-          character_id = @char_of_activity_proc.id
-          character_fed_state = @char_of_activity_proc.fed_state
-          character_activity = @char_of_activity_proc.activity_require_level
-          character_happiness = @char_of_activity_proc.happiness
-          users_wallet = @user_activity_process_wallet.amount
-          get_amount = 10
+            character_id = @char_of_activity_proc.id
+            character_fed_state = @char_of_activity_proc.fed_state
+            character_activity = @char_of_activity_proc.activity_require_level
+            character_happiness = @char_of_activity_proc.happiness
+            users_wallet = @user_activity_process_wallet.amount
+            get_amount = 10
 
-          visit "/character/#{character_id}/activity"
+            visit "/character/#{character_id}/activity"
 
-          find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
+            find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
 
-          current_path.should == character_path(@char_of_activity_proc)
-          expect(page).to have_content('Your are too hungry to move')
-          expect(page).to have_content('Activity')
-          expect(page).to have_content(character_activity)
-          Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
+            current_path.should == character_path(@char_of_activity_proc)
+            expect(page).to have_content('Your are too hungry to move')
+            expect(page).to have_content('Activity')
+            expect(page).to have_content(character_activity)
+            Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
 
-          expect(page).to have_content(@user_activity_process_wallet.amount)
-          expect(@user_activity_process_wallet.amount).to eq(users_wallet)
+            expect(page).to have_content(@user_activity_process_wallet.amount)
+            expect(@user_activity_process_wallet.amount).to eq(users_wallet)
 
+          end
         end
       end
     end
