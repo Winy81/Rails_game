@@ -15,7 +15,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-cherry-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+            <%= link_to image_tag('food/icons8-cherry-50.png'), feeding_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                               @amount,
                                                                                                                               Services::AmountsOfFeedingAction::ADDED_MINOR_FEEDING,
                                                                                                                               Services::AmountsOfFeedingAction::PAID_MINOR_AMOUNT,
@@ -38,7 +38,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-croissant-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+            <%= link_to image_tag('food/icons8-croissant-50.png'), feeding_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                  @amount,
                                                                                                                                  Services::AmountsOfFeedingAction::ADDED_SMALL_FEEDING,
                                                                                                                                  Services::AmountsOfFeedingAction::PAID_SMALL_AMOUNT,
@@ -61,7 +61,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-porridge-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+            <%= link_to image_tag('food/icons8-porridge-50.png'), feeding_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                 @amount,
                                                                                                                                 Services::AmountsOfFeedingAction::ADDED_NORMAL_FEEDING,
                                                                                                                                 Services::AmountsOfFeedingAction::PAID_NORMAL_AMOUNT,
@@ -84,7 +84,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+            <%= link_to image_tag('food/icons8-salami-pizza-50.png'), feeding_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                     @amount,
                                                                                                                                     Services::AmountsOfFeedingAction::ADDED_LARGE_FEEDING,
                                                                                                                                     Services::AmountsOfFeedingAction::PAID_LARGE_AMOUNT,
@@ -107,7 +107,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, params_builder_of_feeding(@character,
+            <%= link_to image_tag('food/icons8-rack-of-lamb-50.png'), feeding_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                     @amount,
                                                                                                                                     Services::AmountsOfFeedingAction::ADDED_EXTRA_FEEDING,
                                                                                                                                     Services::AmountsOfFeedingAction::PAID_EXTRA_AMOUNT,

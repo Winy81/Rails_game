@@ -15,7 +15,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-yoga-mat-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+            <%= link_to image_tag('playing/icons8-yoga-mat-50.png'), playing_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                    @amount,
                                                                                                                                    Services::AmountsOfPlayingAction::LOST_MINOR_FEEDING,
                                                                                                                                    Services::AmountsOfPlayingAction::PAID_MINOR_AMOUNT,
@@ -38,7 +38,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-racket-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+            <%= link_to image_tag('playing/icons8-racket-50.png'), playing_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                  @amount,
                                                                                                                                  Services::AmountsOfPlayingAction::LOST_SMALL_FEEDING,
                                                                                                                                  Services::AmountsOfPlayingAction::PAID_SMALL_AMOUNT,
@@ -61,7 +61,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-game-controller-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+            <%= link_to image_tag('playing/icons8-game-controller-50.png'), playing_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                           @amount,
                                                                                                                                           Services::AmountsOfPlayingAction::LOST_NORMAL_FEEDING,
                                                                                                                                           Services::AmountsOfPlayingAction::PAID_NORMAL_AMOUNT,
@@ -84,7 +84,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-rock-music-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+            <%= link_to image_tag('playing/icons8-rock-music-50.png'), playing_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                      @amount,
                                                                                                                                      Services::AmountsOfPlayingAction::LOST_LARGE_FEEDING,
                                                                                                                                      Services::AmountsOfPlayingAction::PAID_LARGE_AMOUNT,
@@ -107,7 +107,7 @@
       <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
         <div class="action_image_5">
           <li class="list-inline-item">
-            <%= link_to image_tag('playing/icons8-surf-50.png'), playing_process_path(@character.id, params_builder_of_playing(@character,
+            <%= link_to image_tag('playing/icons8-surf-50.png'), playing_process_path(@character.id, params_builder_of_action(@character,
                                                                                                                                @amount,
                                                                                                                                Services::AmountsOfPlayingAction::LOST_EXTRA_FEEDING,
                                                                                                                                Services::AmountsOfPlayingAction::PAID_EXTRA_AMOUNT,
