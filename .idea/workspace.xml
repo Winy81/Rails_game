@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/characters_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/characters_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/character.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/character.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/characters/all_of_my_character.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/characters/all_of_my_character.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/shared/_nav_for_users.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/_nav_for_users.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/statics/game_description.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/statics/game_description.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
