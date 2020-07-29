@@ -56,7 +56,7 @@ class CharactersController < ApplicationController
   end
 
   def feeding_deny
-    redirection_to_character_path(@character,'alert', "Opps, your character couldn't finish the meal")
+    redirection_to_character_path(@character,'alert', 'Opps, your character has could not finish the meal')
   end
 
   def feeding_process
@@ -84,7 +84,7 @@ class CharactersController < ApplicationController
   end
 
   def activity_deny
-    redirection_to_character_path(@character,'alert', "Opps, your character couldn't finish the training")
+    redirection_to_character_path(@character,'alert', 'Opps, your character has could not finish the training')
   end
 
   def activity_process
