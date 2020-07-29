@@ -30,7 +30,7 @@ class CharactersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :no_character_exist_rescue
 
   def index
-    @characters = Character.all.order(:age => :desc).limit(10)
+    @characters = Character.limited_desc_ordered_characters
     @my_character = @characters.where(user_id: current_user.id, status:'alive').first
   end
 
@@ -43,7 +43,7 @@ class CharactersController < ApplicationController
       redirect_to all_of_my_character_path
     else
       @owner_of_character = User.find_by(id:params[:id])
-      @owners_characters = Character.where(user_id:@owner_of_character.id).order(:status => :asc, :id => :desc)
+      @owners_characters = Character.where(user_id:@owner_of_character.id).characters_history_order_logic
     end
   end
 
@@ -179,7 +179,7 @@ class CharactersController < ApplicationController
 
   def character_info
     @character = Character.find(params[:id])
-    @user = User.find_by(id:@character.user_id)
+    @user = @character.user
   end
 
   private
