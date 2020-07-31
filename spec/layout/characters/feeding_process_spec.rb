@@ -26,7 +26,7 @@ RSpec.feature 'Feeding process page' do
 
       @char_of_feeding_proc.fed_state.should == 80
       current_path.should == character_path(@char_of_feeding_proc)
-      expect(page).to have_content('Opps, your character has could not finish the meal')
+      expect(page).to have_content('Oops, your character has could not finish the meal')
       expect(page).to have_content(@char_of_feeding_proc.fed_state)
 
     end

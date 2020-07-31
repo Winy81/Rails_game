@@ -27,7 +27,7 @@ RSpec.feature 'Playing process page' do
 
       @char_of_playing_proc.happiness.should == 95
       current_path.should == character_path(@char_of_playing_proc)
-      expect(page).to have_content("Opps, your character has not become Happy")
+      expect(page).to have_content("Oops, your character has not become Happy")
       expect(page).to have_content(@char_of_playing_proc.happiness)
 
     end

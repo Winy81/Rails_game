@@ -28,7 +28,7 @@ RSpec.feature 'Activity process page' do
 
       @char_of_activity_proc.activity_require_level.should == 5
       current_path.should == character_path(@char_of_activity_proc)
-      expect(page).to have_content('Opps, your character has could not finish the training')
+      expect(page).to have_content('Oops, your character has could not finish the training')
       expect(page).to have_content(@char_of_activity_proc.activity_require_level)
 
     end
