@@ -205,6 +205,7 @@ RSpec.feature 'Playing process page' do
         expect(page).to have_content(character_fed_state - lose_able_feed_points)
         expect(page).to have_content('Happiness:')
         expect(page).to have_content(character_happiness + claim_able_happiness)
+        expect(page).to have_content('Action has been proceed you feel more happy')
 
 
         updated_wallet = Wallet.find_by(user_id:@char_of_playing_proc.id).amount

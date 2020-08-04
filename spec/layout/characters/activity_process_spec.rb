@@ -142,6 +142,7 @@ RSpec.feature 'Activity process page' do
         expect(page).to have_content(character_fed_state + spendable_feed_points)
         expect(page).to have_content('Happiness:')
         expect(page).to have_content(character_happiness + claimable_happiness)
+        expect(page).to have_content('Action has been proceed you feel more rich')
 
 
         updated_wallet = Wallet.find_by(user_id:@user_activity_process.id).amount
