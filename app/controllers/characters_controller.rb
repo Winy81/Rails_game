@@ -210,7 +210,7 @@ class CharactersController < ApplicationController
       if character.fed_state == 100
         redirection_to_character_path(character,'warning', I18n.t('characters.action_warnings.you_can_not_eat_more'))
       else
-        redirection_to_character_path(character,'notice', 'Fed point added')
+        redirection_to_character_path(character,'notice', I18n.t('characters.action_notices.feeding_action_has_been_proceed'))
       end
       paying_service_proceed
     else
@@ -223,7 +223,7 @@ class CharactersController < ApplicationController
                                    :activity_require_level => activity_limit.activity_level_min_setter,
                                    :happiness => happiness_limit.happiness_level_max_setter)
         paying_service_proceed
-        redirection_to_character_path(character,'notice', 'You have beaten the challenge and reached Gold')
+        redirection_to_character_path(character,'notice', I18n.t('characters.action_notices.activity_action_has_been_proceed'))
     else
       redirection_to_character_path(character,'alert', I18n.t('characters.action_alerts.un_success_activity_process'))
     end
@@ -236,7 +236,7 @@ class CharactersController < ApplicationController
       if character.happiness == 100
         redirection_to_character_path(character,'warning', I18n.t('characters.action_warnings.you_can_not_play_more'))
       else
-        redirection_to_character_path(character,'notice', 'Happiness point added')
+        redirection_to_character_path(character,'notice', I18n.t('characters.action_notices.playing_action_has_been_proceed'))
       end
       paying_service_proceed
     else

@@ -3,6 +3,9 @@ en:
   characters:
     action_notices:
       character_has_born: "Tha character has born. You gave name: "
+      feeding_action_has_been_proceed: 'Action has been proceed you feel better'
+      playing_action_has_been_proceed: 'Action has been proceed you feel more happy'
+      activity_action_has_been_proceed: 'Action has been proceed you feel more rich'
     action_alerts:
       could_not_finish_meal: "Oops, your character has could not finish the meal"
       could_not_finish_training: "Oops, your character has could not finish the training"
