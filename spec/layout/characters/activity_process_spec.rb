@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Services::AmountsOfActivityAction
 
 RSpec.feature 'Activity process page' do
 
@@ -23,7 +22,7 @@ RSpec.feature 'Activity process page' do
     scenario 'Should be not proceed and redirected for character page' do
 
       character_id = @char_of_activity_proc.id
-      decrease_activity_state = LOST_MINOR_ACTIVITY
+      decrease_activity_state = Services::AmountsOfActivityAction::LOST_MINOR_ACTIVITY
 
       visit "/character/#{character_id}/activity_process?activity_require_level=#{decrease_activity_state}&extra=from_activity"
 
@@ -48,10 +47,10 @@ RSpec.feature 'Activity process page' do
           character_fed_state = @char_of_activity_proc.fed_state
           character_activity = @char_of_activity_proc.activity_require_level
           character_happiness = @char_of_activity_proc.happiness
-          spendable_feed_points = LOST_EXTRA_FEEDING
-          claimable_amount = ADDED_EXTRA_AMOUNT
-          spendable_activity_points = LOST_EXTRA_ACTIVITY
-          claimable_happiness = ADDED_EXTRA_HAPPINESS
+          spendable_feed_points = Services::AmountsOfActivityAction::LOST_EXTRA_FEEDING
+          claimable_amount = Services::AmountsOfActivityAction::ADDED_EXTRA_AMOUNT
+          spendable_activity_points = Services::AmountsOfActivityAction::LOST_EXTRA_ACTIVITY
+          claimable_happiness = Services::AmountsOfActivityAction::ADDED_EXTRA_HAPPINESS
           users_wallet = @user_activity_process_wallet.amount
 
           visit "/character/#{character_id}/activity"
@@ -81,10 +80,10 @@ RSpec.feature 'Activity process page' do
             character_fed_state = @char_of_activity_proc.fed_state
             character_activity = @char_of_activity_proc.activity_require_level
             character_happiness = @char_of_activity_proc.happiness
-            spendable_feed_points = LOST_EXTRA_FEEDING
-            claimable_amount = ADDED_EXTRA_AMOUNT
-            spendable_activity_points = LOST_EXTRA_ACTIVITY
-            claimable_happiness = ADDED_EXTRA_HAPPINESS
+            spendable_feed_points = Services::AmountsOfActivityAction::LOST_EXTRA_FEEDING
+            claimable_amount = Services::AmountsOfActivityAction::ADDED_EXTRA_AMOUNT
+            spendable_activity_points = Services::AmountsOfActivityAction::LOST_EXTRA_ACTIVITY
+            claimable_happiness = Services::AmountsOfActivityAction::ADDED_EXTRA_HAPPINESS
             users_wallet = @user_activity_process_wallet.amount
 
             visit "/character/#{character_id}/activity"
@@ -115,10 +114,10 @@ RSpec.feature 'Activity process page' do
         character_fed_state = current_character.fed_state
         character_activity_require = current_character.activity_require_level
         character_happiness = current_character.happiness
-        spendable_feed_points = LOST_MINOR_FEEDING
-        claimable_amount = ADDED_MINOR_AMOUNT
-        spendable_activity_points = LOST_MINOR_ACTIVITY
-        claimable_happiness = ADDED_MINOR_HAPPINESS
+        spendable_feed_points = Services::AmountsOfActivityAction::LOST_MINOR_FEEDING
+        claimable_amount = Services::AmountsOfActivityAction::ADDED_MINOR_AMOUNT
+        spendable_activity_points = Services::AmountsOfActivityAction::LOST_MINOR_ACTIVITY
+        claimable_happiness = Services::AmountsOfActivityAction::ADDED_MINOR_HAPPINESS
         users_wallet = @user_activity_process_wallet.amount
 
         visit "character/#{character_id}/activity"
