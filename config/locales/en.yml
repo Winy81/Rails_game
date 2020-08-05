@@ -8,7 +8,7 @@ en:
       activity_action_has_been_proceed: 'Action has been proceed you feel more rich'
     action_alerts:
       could_not_finish_meal: "Oops, your character has could not finish the meal"
-      could_not_finish_training: "Oops, your character has could not finish the training"
+      could_not_finish_training: "Oops, your character has could not finish the Challenge"
       could_not_finish_playing: "Oops, your character has not become Happy"
       you_have_character_alive: "You have a character Alive"
       something_went_wrong_on_character_creation: 'The character has not been created'

@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Services::AmountsOfActivityAction
 
 RSpec.feature 'Activity process page' do
 
@@ -22,13 +23,13 @@ RSpec.feature 'Activity process page' do
     scenario 'Should be not proceed and redirected for character page' do
 
       character_id = @char_of_activity_proc.id
-      decrease_activity_state = -3
+      decrease_activity_state = LOST_MINOR_ACTIVITY
 
       visit "/character/#{character_id}/activity_process?activity_require_level=#{decrease_activity_state}&extra=from_activity"
 
       @char_of_activity_proc.activity_require_level.should == 5
       current_path.should == character_path(@char_of_activity_proc)
-      expect(page).to have_content('Oops, your character has could not finish the training')
+      expect(page).to have_content('Oops, your character has could not finish the Challenge')
       expect(page).to have_content(@char_of_activity_proc.activity_require_level)
 
     end
@@ -47,12 +48,15 @@ RSpec.feature 'Activity process page' do
           character_fed_state = @char_of_activity_proc.fed_state
           character_activity = @char_of_activity_proc.activity_require_level
           character_happiness = @char_of_activity_proc.happiness
+          spendable_feed_points = LOST_EXTRA_FEEDING
+          claimable_amount = ADDED_EXTRA_AMOUNT
+          spendable_activity_points = LOST_EXTRA_ACTIVITY
+          claimable_happiness = ADDED_EXTRA_HAPPINESS
           users_wallet = @user_activity_process_wallet.amount
-          get_amount = 10
 
           visit "/character/#{character_id}/activity"
 
-          find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity + spendable_activity_points}&amount=#{users_wallet + claimable_amount}&extra=from_activity&fed_state=#{character_fed_state + spendable_feed_points}&happiness=#{character_happiness + claimable_happiness}')]").click
 
           current_path.should == character_path(@char_of_activity_proc)
           expect(page).to have_content('Your are too tired to move')
@@ -77,12 +81,15 @@ RSpec.feature 'Activity process page' do
             character_fed_state = @char_of_activity_proc.fed_state
             character_activity = @char_of_activity_proc.activity_require_level
             character_happiness = @char_of_activity_proc.happiness
+            spendable_feed_points = LOST_EXTRA_FEEDING
+            claimable_amount = ADDED_EXTRA_AMOUNT
+            spendable_activity_points = LOST_EXTRA_ACTIVITY
+            claimable_happiness = ADDED_EXTRA_HAPPINESS
             users_wallet = @user_activity_process_wallet.amount
-            get_amount = 10
 
             visit "/character/#{character_id}/activity"
 
-            find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity - 10}&amount=#{users_wallet + get_amount}&extra=from_activity&fed_state=#{character_fed_state - 5}&happiness=#{character_happiness + 5}')]").click
+            find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity + spendable_activity_points}&amount=#{users_wallet + claimable_amount}&extra=from_activity&fed_state=#{character_fed_state + spendable_feed_points}&happiness=#{character_happiness + claimable_happiness}')]").click
 
             current_path.should == character_path(@char_of_activity_proc)
             expect(page).to have_content('Your are too hungry to move')
@@ -108,10 +115,10 @@ RSpec.feature 'Activity process page' do
         character_fed_state = current_character.fed_state
         character_activity_require = current_character.activity_require_level
         character_happiness = current_character.happiness
-        spendable_feed_points = -1
-        claimable_amount = 2
-        spendable_activity_points = -2
-        claimable_happiness = 1
+        spendable_feed_points = LOST_MINOR_FEEDING
+        claimable_amount = ADDED_MINOR_AMOUNT
+        spendable_activity_points = LOST_MINOR_ACTIVITY
+        claimable_happiness = ADDED_MINOR_HAPPINESS
         users_wallet = @user_activity_process_wallet.amount
 
         visit "character/#{character_id}/activity"
