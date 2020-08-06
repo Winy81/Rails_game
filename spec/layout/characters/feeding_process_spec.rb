@@ -20,7 +20,7 @@ RSpec.feature 'Feeding process page' do
     scenario 'Should be not proceed and redirected for character page' do
 
       character_id = @char_of_feeding_proc.id
-      increased_fed_state = 15
+      increased_fed_state = Services::AmountsOfFeedingAction::ADDED_NORMAL_FEEDING
 
       visit "/character/#{character_id}/feeding_process?extra=from_feeding&fed_state=#{increased_fed_state}"
 
@@ -43,12 +43,15 @@ RSpec.feature 'Feeding process page' do
         character_fed_state = @char_of_feeding_proc.fed_state
         character_activity = @char_of_feeding_proc.activity_require_level
         character_happiness = @char_of_feeding_proc.happiness
+        claim_able_feed_points = Services::AmountsOfFeedingAction::ADDED_EXTRA_FEEDING
+        spendable_amount = Services::AmountsOfFeedingAction::PAID_EXTRA_AMOUNT
+        spendable_activity_point = Services::AmountsOfFeedingAction::LOST_EXTRA_ACTIVITY
+        claim_able_happiness = Services::AmountsOfFeedingAction::ADDED_EXTRA_HAPPINESS
         users_wallet = @user_feeding_process_wallet.amount
-        lost_amount = 25
 
         visit "/character/#{character_id}/feeding"
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - 5}&amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_fed_state + 25}&happiness=#{character_happiness + 5}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity + spendable_activity_point}&amount=#{users_wallet + spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state + claim_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
 
         find_button('Claim').click
 
@@ -78,12 +81,15 @@ RSpec.feature 'Feeding process page' do
           character_fed_state = @char_of_feeding_proc.fed_state
           character_activity = @char_of_feeding_proc.activity_require_level
           character_happiness = @char_of_feeding_proc.happiness
+          claim_able_feed_points = Services::AmountsOfFeedingAction::ADDED_EXTRA_FEEDING
+          spendable_amount = Services::AmountsOfFeedingAction::PAID_EXTRA_AMOUNT
+          spendable_activity_point = Services::AmountsOfFeedingAction::LOST_EXTRA_ACTIVITY
+          claim_able_happiness = Services::AmountsOfFeedingAction::ADDED_EXTRA_HAPPINESS
           users_wallet = @user_feeding_process_wallet.amount
-          lost_amount = 25
 
           visit "/character/#{character_id}/feeding"
 
-          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - 5}&amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_fed_state + 25}&happiness=#{character_happiness + 5}')]").click
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity + spendable_activity_point}&amount=#{users_wallet + spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state + claim_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
 
           current_path.should == character_path(@char_of_feeding_proc)
 
@@ -106,12 +112,15 @@ RSpec.feature 'Feeding process page' do
           character_fed_state = @char_of_feeding_proc.fed_state
           character_activity = @char_of_feeding_proc.activity_require_level
           character_happiness = @char_of_feeding_proc.happiness
+          claim_able_feed_points = Services::AmountsOfFeedingAction::ADDED_EXTRA_FEEDING
+          spendable_amount = Services::AmountsOfFeedingAction::PAID_EXTRA_AMOUNT
+          spendable_activity_point = Services::AmountsOfFeedingAction::LOST_EXTRA_ACTIVITY
+          claim_able_happiness = Services::AmountsOfFeedingAction::ADDED_EXTRA_HAPPINESS
           users_wallet = @user_feeding_process_wallet.amount
-          lost_amount = 25
 
           visit "/character/#{character_id}/feeding"
 
-          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity - 5}&amount=#{users_wallet - lost_amount}&extra=from_feeding&fed_state=#{character_fed_state + 25}&happiness=#{character_happiness + 5}')]").click
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity + spendable_activity_point}&amount=#{users_wallet + spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state + claim_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
 
           current_path.should == character_path(@char_of_feeding_proc)
 
@@ -132,17 +141,17 @@ RSpec.feature 'Feeding process page' do
         character_fed_state = current_character.fed_state
         character_activity_require = current_character.activity_require_level
         character_happiness = current_character.happiness
-        claim_able_feed_points = 5
-        spendable_amount = 5
-        spendable_activity_point = 1
-        claim_able_happiness = 1
+        claim_able_feed_points = Services::AmountsOfFeedingAction::ADDED_MINOR_FEEDING
+        spendable_amount = Services::AmountsOfFeedingAction::PAID_MINOR_AMOUNT
+        spendable_activity_point = Services::AmountsOfFeedingAction::LOST_MINOR_ACTIVITY
+        claim_able_happiness = Services::AmountsOfFeedingAction::ADDED_MINOR_HAPPINESS
         users_wallet = @user_feeding_process_wallet.amount
 
         visit "character/#{character_id}/feeding"
 
         current_path.should == character_feeding_path(current_character)
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity_require - spendable_activity_point}&amount=#{users_wallet - spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state + claim_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/feeding_process?activity_require_level=#{character_activity_require + spendable_activity_point}&amount=#{users_wallet + spendable_amount}&extra=from_feeding&fed_state=#{character_fed_state + claim_able_feed_points}&happiness=#{character_happiness + claim_able_happiness}')]").click
 
         expect(page).to have_content('Activity Require')
         expect(page).to have_content(character_activity_require)
@@ -151,9 +160,9 @@ RSpec.feature 'Feeding process page' do
         expect(page).to have_content('Happiness:')
         expect(page).to have_content(character_happiness)
         expect(page).to have_content("Claim-able: #{claim_able_feed_points}")
-        expect(page).to have_content("Lose-able: -#{spendable_activity_point}")
+        expect(page).to have_content("Lose-able: #{spendable_activity_point}")
         expect(page).to have_content("Claim-able: #{claim_able_happiness}")
-        expect(page).to have_content("Going to Cost: #{spendable_amount} Gold")
+        expect(page).to have_content("Going to Cost: #{-1*spendable_amount} Gold")
 
         #page.evaluate_script("$('#claim_button').removeAttr('disabled')")
         find_button('Claim').click
@@ -163,7 +172,7 @@ RSpec.feature 'Feeding process page' do
         current_path.should == character_path(current_character)
 
         expect(page).to have_content('Activity Require')
-        expect(page).to have_content(character_activity_require - spendable_activity_point)
+        expect(page).to have_content(character_activity_require + spendable_activity_point)
         expect(page).to have_content('Fed State:')
         expect(page).to have_content(character_fed_state + claim_able_feed_points)
         expect(page).to have_content('Happiness:')
@@ -173,7 +182,7 @@ RSpec.feature 'Feeding process page' do
 
         updated_wallet = Wallet.find_by(user_id:@user_feeding_process.id).amount
         expect(page).to have_content(updated_wallet)
-        expect(updated_wallet).to eq(users_wallet - spendable_amount)
+        expect(updated_wallet).to eq(users_wallet + spendable_amount)
 
       end
     end
