@@ -14,7 +14,6 @@
         <li class="list-inline-item mb-3" style="width:100px">Status:<%= character.status %></li>
         <% if character.status == 'alive' %>
           <%= link_to 'Details', character_info_path(character.id, {extra: 'from_characters_history'}), class: 'btn btn-outline-secondary' %>
-          <li class="list-inline-item mb-3">Was living:  <%= life_length_counter(character) %></li>
         <% else %>
           <li class="list-inline-item mb-3">This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
           <li class="list-inline-item mb-3">Accurate life length:  <%= life_length_counter(character) %></li>
