@@ -30,8 +30,8 @@ RSpec.feature 'All of my character page' do
   feature 'User has character' do
 
     before do
-      @character_2_of_user = Character.create(name:'Test_char_2_of_user', user_id:1, status:'dead')
-      @character_3_of_user = Character.create(name:'Test_char_3_of_user', user_id:1, status:'dead')
+      @character_2_of_user = Character.create(name:'Test_char_2_of_user', user_id:1, status:'dead', died_on: Time.now + 1.hour)
+      @character_3_of_user = Character.create(name:'Test_char_3_of_user', user_id:1, status:'dead', died_on: Time.now + 1.hour)
 
       @user_all_of_my_c_wallet = Wallet.create(user_id:@user_all_of_my_c.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
 
@@ -48,7 +48,7 @@ RSpec.feature 'All of my character page' do
       expect(page).to have_content('Your characters history')
       expect(page).to have_content('Name:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Age:', count: all_of_character_of_user_all_of_my_c)
-      expect(page).to have_content('Was living:', count: all_of_character_of_user_all_of_my_c)
+      expect(page).to have_content('Accurate life length:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Status: dead', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_link('Back')
       expect(page).to have_content('Characters Page')
@@ -75,7 +75,7 @@ RSpec.feature 'All of my character page' do
       expect(page).to have_content('Status: alive', count: character_alive)
       expect(page).to have_content('Age:', count: all_of_character_of_user_all_of_my_c)
       expect(page).to have_content('Name:', count: all_of_character_of_user_all_of_my_c)
-      expect(page).to have_content('Was living:', count: all_of_character_of_user_all_of_my_c - character_alive)
+      expect(page).to have_content('Accurate life length:', count: all_of_character_of_user_all_of_my_c - character_alive)
       expect(page).to have_content('Status: dead', count: all_of_character_of_user_all_of_my_c - character_alive)
       expect(page).to have_link('Back')
       expect(page).to have_content('Characters Page')

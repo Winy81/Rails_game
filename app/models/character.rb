@@ -15,6 +15,14 @@ class Character < ActiveRecord::Base
     order(:age => :desc).where(status:"alive")
   end
 
+  def self.characters_history_order_logic
+    order(:status => :asc, :id => :desc)
+  end
+
+  def self.limited_desc_ordered_characters
+    all.order(:age => :desc).limit(10)
+  end
+
   #unused
   def self.current_users_character(user)
     where.not(user_id:user.id)

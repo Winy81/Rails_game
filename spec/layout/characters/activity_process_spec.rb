@@ -6,12 +6,12 @@ RSpec.feature 'Activity process page' do
     @user_activity_process = User.create(name:'user_activity_process', email: 'user_activity_process@email.com', password:'password', password_confirmation:'password')
     login_as(@user_activity_process)
     @char_of_activity_proc = Character.create(name:'char_activity_process',
-                                             user_id:1,
-                                             status:'alive',
-                                             age: 214,
-                                             fed_state:50,
-                                             activity_require_level:5,
-                                             happiness:50)
+                                              user_id:1,
+                                              status:'alive',
+                                              age: 214,
+                                              fed_state:50,
+                                              activity_require_level:5,
+                                              happiness:50)
 
     @user_activity_process_wallet = Wallet.create(user_id:@user_activity_process.id, amount: WalletServices::WalletProcessor::STARTER_AMOUNT )
 
@@ -22,13 +22,13 @@ RSpec.feature 'Activity process page' do
     scenario 'Should be not proceed and redirected for character page' do
 
       character_id = @char_of_activity_proc.id
-      decrease_activity_state = -3
+      decrease_activity_state = Services::AmountsOfActivityAction::LOST_MINOR_ACTIVITY
 
       visit "/character/#{character_id}/activity_process?activity_require_level=#{decrease_activity_state}&extra=from_activity"
 
       @char_of_activity_proc.activity_require_level.should == 5
       current_path.should == character_path(@char_of_activity_proc)
-      expect(page).to have_content("Opps, your character couldn't finish the training")
+      expect(page).to have_content('Oops, your character has could not finish the Challenge')
       expect(page).to have_content(@char_of_activity_proc.activity_require_level)
 
     end
@@ -37,29 +37,70 @@ RSpec.feature 'Activity process page' do
 
   feature 'Should be proceed with POST request' do
 
-    feature 'With overloaded values' do
+    feature 'With low sources values' do
 
-      scenario 'Should be proceed until the min and redirected for character page with notice' do
+      feature 'With too low activity'  do
 
-        character_id = @char_of_activity_proc.id
-        character_activity_require_level = @char_of_activity_proc.activity_require_level
-        users_wallet = @user_activity_process_wallet.amount
+        scenario 'Should redirected for character page with notice'do
 
-        visit "/character/#{character_id}/activity"
+          character_id = @char_of_activity_proc.id
+          character_fed_state = @char_of_activity_proc.fed_state
+          character_activity = @char_of_activity_proc.activity_require_level
+          character_happiness = @char_of_activity_proc.happiness
+          spendable_feed_points = Services::AmountsOfActivityAction::LOST_EXTRA_FEEDING
+          claimable_amount = Services::AmountsOfActivityAction::ADDED_EXTRA_AMOUNT
+          spendable_activity_points = Services::AmountsOfActivityAction::LOST_EXTRA_ACTIVITY
+          claimable_happiness = Services::AmountsOfActivityAction::ADDED_EXTRA_HAPPINESS
+          users_wallet = @user_activity_process_wallet.amount
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity_require_level - 10}&amount=#{users_wallet + 10}')]").click
+          visit "/character/#{character_id}/activity"
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_activity_require_level - 10}&amount=#{users_wallet + 10}')]").click
+          find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity + spendable_activity_points}&amount=#{users_wallet + claimable_amount}&extra=from_activity&fed_state=#{character_fed_state + spendable_feed_points}&happiness=#{character_happiness + claimable_happiness}')]").click
 
-        current_path.should == character_path(@char_of_activity_proc)
-        expect(page).to have_content('Your are too tired to move')
-        expect(page).to have_content('Activity')
-        expect(page).to have_content('0')
-        Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == 0
+          current_path.should == character_path(@char_of_activity_proc)
+          expect(page).to have_content('Your are too tired to move')
+          expect(page).to have_content('Activity')
+          expect(page).to have_content(character_activity)
+          Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
 
-        expect(page).to have_content(@user_activity_process_wallet.amount)
-        expect(@user_activity_process_wallet.amount).to eq(users_wallet)
+          expect(page).to have_content(@user_activity_process_wallet.amount)
+          expect(@user_activity_process_wallet.amount).to eq(users_wallet)
 
+        end
+
+        feature 'With too low fed_state' do
+
+          before do
+            @char_of_activity_proc.update_attributes(fed_state:2,activity_require_level:50)
+          end
+
+          scenario 'Should redirected for character page with notice' do
+
+            character_id = @char_of_activity_proc.id
+            character_fed_state = @char_of_activity_proc.fed_state
+            character_activity = @char_of_activity_proc.activity_require_level
+            character_happiness = @char_of_activity_proc.happiness
+            spendable_feed_points = Services::AmountsOfActivityAction::LOST_EXTRA_FEEDING
+            claimable_amount = Services::AmountsOfActivityAction::ADDED_EXTRA_AMOUNT
+            spendable_activity_points = Services::AmountsOfActivityAction::LOST_EXTRA_ACTIVITY
+            claimable_happiness = Services::AmountsOfActivityAction::ADDED_EXTRA_HAPPINESS
+            users_wallet = @user_activity_process_wallet.amount
+
+            visit "/character/#{character_id}/activity"
+
+            find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity + spendable_activity_points}&amount=#{users_wallet + claimable_amount}&extra=from_activity&fed_state=#{character_fed_state + spendable_feed_points}&happiness=#{character_happiness + claimable_happiness}')]").click
+
+            current_path.should == character_path(@char_of_activity_proc)
+            expect(page).to have_content('Your are too hungry to move')
+            expect(page).to have_content('Activity')
+            expect(page).to have_content(character_activity)
+            Character.find_by(id:@char_of_activity_proc.id).activity_require_level.should == character_activity
+
+            expect(page).to have_content(@user_activity_process_wallet.amount)
+            expect(@user_activity_process_wallet.amount).to eq(users_wallet)
+
+          end
+        end
       end
     end
 
@@ -67,39 +108,52 @@ RSpec.feature 'Activity process page' do
 
       scenario 'Should be turn up with page with claim-able details and process button' do
 
-        current_character = Character.find_by(id:1)
+        current_character = Character.find_by(name:'char_activity_process')
 
         character_id = current_character.id
-        character_current_activity_require_level = current_character.activity_require_level
-        claim_able_activity_points = 2
-        claimed_amount = 2
+        character_fed_state = current_character.fed_state
+        character_activity_require = current_character.activity_require_level
+        character_happiness = current_character.happiness
+        spendable_feed_points = Services::AmountsOfActivityAction::LOST_MINOR_FEEDING
+        claimable_amount = Services::AmountsOfActivityAction::ADDED_MINOR_AMOUNT
+        spendable_activity_points = Services::AmountsOfActivityAction::LOST_MINOR_ACTIVITY
+        claimable_happiness = Services::AmountsOfActivityAction::ADDED_MINOR_HAPPINESS
         users_wallet = @user_activity_process_wallet.amount
 
         visit "character/#{character_id}/activity"
 
         current_path.should == character_activity_path(current_character)
 
-        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet + claimed_amount}')]").click
+        find(:xpath, "//a[contains(@href,'/character/#{character_id}/activity_process?activity_require_level=#{character_activity_require + spendable_activity_points}&amount=#{users_wallet + claimable_amount}&extra=from_activity&fed_state=#{character_fed_state + spendable_feed_points}&happiness=#{character_happiness + claimable_happiness}')]").click
 
-        expect(page).to have_content('Activity require:')
+        expect(page).to have_content('Activity Require')
+        expect(page).to have_content(character_activity_require)
         expect(page).to have_content('Fed State:')
+        expect(page).to have_content(character_fed_state)
         expect(page).to have_content('Happiness:')
-        expect(page).to have_content(character_current_activity_require_level)
-        expect(page).to have_content('Claim-able:')
-        expect(page).to have_content(claim_able_activity_points)
-        expect(page).to have_content("Going to Get: #{claimed_amount} Gold")
+        expect(page).to have_content(character_happiness)
+        expect(page).to have_content("Lose-able: #{spendable_feed_points}")
+        expect(page).to have_content("Lose-able: #{spendable_activity_points}")
+        expect(page).to have_content("Claim-able: #{claimable_happiness}")
+        expect(page).to have_content("Going to Get: #{claimable_amount} Gold")
 
-        find(:xpath, "//a[contains(@href,'/characters/#{character_id}?activity_require_level=#{character_current_activity_require_level - claim_able_activity_points}&amount=#{users_wallet + claimed_amount}')]").click
+        #page.evaluate_script("$('#claim_button').removeAttr('disabled')")
+        find_button('Claim').click
+
         page.all(:xpath, "//a[contains(@href,'characters/#{character_id}')]")
 
-        current_path.should == character_path(current_character)
-        expect(page).to have_content('Activity require')
-        expect(page).to have_content(character_current_activity_require_level - claim_able_activity_points)
+        expect(page).to have_content('Activity Require')
+        expect(page).to have_content(character_activity_require + spendable_activity_points)
+        expect(page).to have_content('Fed State:')
+        expect(page).to have_content(character_fed_state + spendable_feed_points)
+        expect(page).to have_content('Happiness:')
+        expect(page).to have_content(character_happiness + claimable_happiness)
+        expect(page).to have_content('Action has been proceed you feel more rich')
+
 
         updated_wallet = Wallet.find_by(user_id:@user_activity_process.id).amount
-
         expect(page).to have_content(updated_wallet)
-        expect(updated_wallet).to eq(users_wallet + claimed_amount)
+        expect(updated_wallet).to eq(users_wallet + claimable_amount)
 
       end
     end

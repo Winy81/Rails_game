@@ -1,5 +1,5 @@
 </br>
-<h4 class="list-item text-center text-muted mt-4">Your characters history</h4></li>
+<h4 class="list-item text-center text-muted mt-4 pb-1">Your characters history</h4></li>
 </br>
 <div class="container index_content_container">
   <div class="row justify-content-center mt-1">
@@ -10,6 +10,7 @@
       </ul>
       </br>
       </br>
+      <div class="spacer_2_5"></div>
     <% else %>
       <ul class="list-inline"><% @characters.each do |character| %>
           <li class="list-inline-item mb-3" style="width:220px">Name: <%= character.name %></li>
@@ -19,7 +20,7 @@
             <%= link_to 'Go', character_path(character.id, {extra: 'from_all_of_my_character'}), class: 'btn btn-outline-secondary mb-1', style:"width:50px"%>
           <% else %>
             <li class="list-inline-item mb-3" >This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
-            <li class="list-inline-item mb-3" >Was living:  <%= life_length_counter(character) %></li>
+            <li class="list-inline-item mb-3" >Accurate life length:  <%= life_length_counter(character) %></li>
           <% end %>
           </br>
         <% end %>
@@ -29,7 +30,7 @@
   </div>
 </div>
 
-<div class="spacer_3_5"></div>
+<div class="spacer_1_5"></div>
 
 <%= render 'shared/dinamic_single_index_back_button' %>
 

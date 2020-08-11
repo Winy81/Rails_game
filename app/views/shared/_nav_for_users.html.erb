@@ -6,12 +6,11 @@
       <li class="list-inline-item"><%= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-outline-secondary', method: :delete %></li>
     </div>
     <div class="col-md-1"></div>
-    <div class="col-md-2"><h5 class="font-weight-bold font-italic text-muted ml-4 mt-1">Wallet:  <%= @amount %> Gold</h5></div>
-    <div class="col-md-1"></div>
-    <div class="col-md-3 justify-content-center">
-      <li class="list-inline-item"><%= link_to 'Guide', game_description_path, class: 'btn btn-outline-secondary' %></li>
-      <li class="list-inline-item"><%= link_to 'Contact Us', contact_path, class: 'btn btn-outline-secondary' %></li>
-      <li class="list-inline-item"><%= link_to 'About Us', about_us_path, class: 'btn btn-outline-secondary' %></li>
+    <div class="col-md-3 ml-1 pl-5"><h5 class="font-weight-bold font-italic text-muted ml-4 mt-1">Wallet:  <%= @amount %> Gold</h5></div>
+    <div class="col-md-3 ml-5 pl-5">
+      <%= link_to 'Guide', game_description_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to 'Contact Us', contact_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to 'About Us', about_us_path, class: 'btn btn-outline-secondary' %>
     </div>
   </div>
   </div>

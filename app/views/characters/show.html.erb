@@ -5,7 +5,7 @@
 <div class="container pt-3">
 <ul class="list-inline">
   <li class="list-inline-item"><h6>Name Of Character: <%= @character.name %></h6></li></br>
-  <li class="list-inline-item"><h6>Age Of Character: <%= @character.age %></h6></li>
+  <li class="list-inline-item"><h6>Age Of Character: <%= @character.age %></h6></li></br></br>
   <li class="list-inline-item"><h6>Fed State: <%= @character.fed_state %></h6></li>
   <li class="list-inline-item"><h6>Activity require: <%= @character.activity_require_level %></h6></li>
   <li class="list-inline-item"><h6>Happiness: <%= @character.happiness %></h6></li>
@@ -25,9 +25,11 @@
         <h5 class="mt-4 action_image_text">
           <%= link_to 'Feeding', fed_state_path, class: 'btn btn-outline-secondary mb-1'%>
         </h5>
-        <p class="text-secondary mb-0 ">Main: Fed State </p>
+        <p class="text-secondary mb-0">Main: Fed State </p>
         <p class="text-secondary mb-0">Secondary: Happiness </p>
-        <p class="text-secondary mb-0">Loses: - No loses - </p>
+        <p class="text-secondary mb-0">Loses: Activity Require</p>
+        </br>
+        <strong><p class="text-secondary mb-0">Pay with Gold service</p></strong>
       </div>
 
 
@@ -43,7 +45,8 @@
         <p class="text-secondary mb-0">Main: Activity Require  </p>
         <p class="text-secondary mb-0">Secondary: Happiness </p>
         <p class="text-secondary mb-0">Loses: Fed State </p>
-
+        </br>
+        <strong><p class="text-secondary mb-0">Earn Gold with it</p></strong>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
@@ -58,7 +61,8 @@
         <p class="text-secondary mb-0">Main: Happiness  </p>
         <p class="text-secondary mb-0">Secondary: Activity Require </p>
         <p class="text-secondary mb-0">Loses: Fed State </p>
-
+        </br>
+        <strong><p class="text-secondary mb-0">Pay with Gold service</p></strong>
       </div>
     </div>
   </div>
@@ -86,3 +90,4 @@
 
 <!-- <p><%= link_to 'Destroy your character', character_path(@character), method: :delete, data: {confirm: "Are you sure"}, class:"float-right", style: 'color:red' %></p> -->
 
+</br>

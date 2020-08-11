@@ -26,112 +26,143 @@ class CharactersController < ApplicationController
                                      :playing_process,
                                      :update]
 
+
+  rescue_from ActiveRecord::RecordNotFound, with: :no_character_exist_rescue
+
   def index
-    @message = "Hello from CharactersController#index"
-    @characters = Character.all.order(:age => :desc).limit(10)
+    @characters = Character.limited_desc_ordered_characters
     @my_character = @characters.where(user_id: current_user.id, status:'alive').first
   end
 
   def all_of_my_character
-    @message = "Hello from CharactersController#all_of_my_character"
     @characters = Character.where(user_id: current_user.id).order(:id => :desc)
   end
 
   def characters_history
-    @message = "Hello from CharactersController#characters_history"
     if params[:id].to_i == current_user.id
       redirect_to all_of_my_character_path
     else
       @owner_of_character = User.find_by(id:params[:id])
-      @owners_characters = Character.where(user_id:@owner_of_character.id).order(:status => :asc, :id => :desc)
+      @owners_characters = Character.where(user_id:@owner_of_character.id).characters_history_order_logic
     end
   end
 
   def show
-    @message = "Hello from CharactersController#show"
+
   end
 
   def feeding
-    @message = "Hello from CharactersController#feeding"
+
   end
 
   def feeding_deny
-    redirection_to_character_path(@character,"alert", "Opps, your character couldn't finish the meal")
+    redirection_to_character_path(@character,'alert', I18n.t('characters.action_alerts.could_not_finish_meal'))
   end
 
   def feeding_process
-    #test required
+    @current_amount = params[:amount].to_i
+    @spendable_amount = -1*(@current_user.wallet.amount - @current_amount)
     @current_fed_state = params[:fed_state]
-    @current_amount = params[:amount]
-    @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
-    @costs = wallet_view - @current_amount.to_i
+    @current_activity_state = params[:activity_require_level]
+    @current_happiness_state = params[:happiness]
+    @costs = wallet_view - @current_amount
+    if not_enough_available_activity_points?
+      redirection_to_character_path(@character,'warning', I18n.t('characters.action_warnings.you_can_not_move'))
+    else
+      if paying_service_budget_check?(@spendable_amount) == true
+        @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+        @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+        @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+      else
+        redirection_to_character_path(@character,'warning', I18n.t('characters.action_warnings.low_on_gold'))
+      end
+    end
   end
 
   def activity
-    #test required
+
   end
 
   def activity_deny
-    redirection_to_character_path(@character,"alert", "Opps, your character couldn't finish the training")
+    redirection_to_character_path(@character,'alert', I18n.t('characters.action_alerts.could_not_finish_training'))
   end
 
   def activity_process
-    #test required
     @current_amount = params[:amount]
+    @current_fed_state = params[:fed_state]
     @current_activity_state = params[:activity_require_level]
-    @sent_points_of_activity = (@character.activity_require_level.to_i - @current_activity_state.to_i)
+    @current_happiness_state = params[:happiness]
     @earn = -1*(wallet_view - @current_amount.to_i)
+    if not_enough_available_activity_points?
+      redirection_to_character_path(@character,'warning', I18n.t('characters.action_warnings.you_can_not_move'))
+    elsif not_enough_available_feeding_points?
+      redirection_to_character_path(@character,'warning', I18n.t('characters.action_warnings.you_can_not_eat'))
+    else
+      @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+      @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+      @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+    end
   end
 
   def playing
-    #test required
-    @message = "Hello from CharactersController#playing"
+
   end
 
   def playing_deny
-    redirection_to_character_path(@character,"alert", "Opps, your character has not become Happy")
+    redirection_to_character_path(@character,'alert', I18n.t('characters.action_alerts.could_not_finish_playing'))
   end
 
   def playing_process
-    #test required
-    @current_amount = params[:amount]
+    @current_amount = params[:amount].to_i
+    @spendable_amount = -1*(@current_user.wallet.amount - @current_amount)
+    @current_fed_state = params[:fed_state]
+    @current_activity_state = params[:activity_require_level]
     @current_happiness_state = params[:happiness]
-    @sent_playing_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
-    @costs = wallet_view - @current_amount.to_i
+    @costs = wallet_view - @current_amount
+    if not_enough_available_activity_points?
+      redirection_to_character_path(@character,'warning', I18n.t('characters.action_warnings.you_can_not_move'))
+    elsif not_enough_available_feeding_points?
+      redirection_to_character_path(@character,'warning', I18n.t('characters.action_warnings.you_can_not_eat'))
+    else
+      if paying_service_budget_check?(@spendable_amount) == true
+        @sent_potion_of_food = -1*(@character.fed_state.to_i - @current_fed_state.to_i)
+        @sent_points_of_activity = -1*(@character.activity_require_level.to_i - @current_activity_state.to_i)
+        @sent_happiness_points = -1*(@character.happiness.to_i - @current_happiness_state.to_i)
+      else
+        redirection_to_character_path(@character,'warning', I18n.t('characters.action_warnings.low_on_gold'))
+      end
+    end
   end
 
   def update
-    if path_recogniser == "feeding"
+    if path_recogniser == 'feeding'
       update_fed_state(@character)
-    elsif path_recogniser == "activity"
+    elsif path_recogniser == 'activity'
       update_from_activity_state(@character)
-    elsif path_recogniser == "playing"
+    elsif path_recogniser == 'playing'
       update_playing_state(@character)
     end
   end
 
   def new
-    #test required
-    @message = "Hello from CharactersController#new"
     if alive_check_for_create_character
-      redirection_to_characters_path("alert","You have a character Alive")
+      redirection_to_characters_path('alert', I18n.t('characters.action_alerts.you_have_character_alive'))
     else
       Character.new
     end
   end
 
   def create
-    #test required
     if alive_check_for_create_character
-      redirection_to_characters_path("alert","You have a character Alive")
+      redirection_to_characters_path('alert',I18n.t('characters.action_alerts.you_have_character_alive'))
     else
       @character = Character.new(character_params)
       update_user_has_character_field(current_user)
       if @character.save
         WalletServices::BasicWalletCreator.new(current_user).setup_starter_amount
-        redirection_to_character_path(@character,"notice", "Tha character has born. You gave name: ", @character.name)
+        redirection_to_character_path(@character,'notice', I18n.t('characters.action_notices.character_has_born'), @character.name)
       else
-        flash.now[:alert] = "The character has not been created"
+        flash.now[:alert] = I18n.t('characters.action_alerts.something_went_wrong_on_character_creation')
         render :new
       end
     end
@@ -140,25 +171,23 @@ class CharactersController < ApplicationController
   def destroy
     current_character = @character
     if @character.delete
-      redirection_to_characters_path("warning","Character has been deleted with id:", current_character.id)
+      redirection_to_characters_path('warning', I18n.t('characters.action_warnings.character_has_been_destroyed'), current_character.id)
     else
-      redirection_to_characters_path("alert","Was not successful to delete Character with id:", current_character.id)
+      redirection_to_characters_path('alert', I18n.t('characters.action_alerts.something_went_wrong_on_character_destroying'), current_character.id)
     end
   end
 
   def character_info
-    @message = "Hello from CharactersController#character_info"
     @character = Character.find(params[:id])
-    @user = User.find_by(id:@character.user_id)
+    @user = @character.user
   end
 
   private
 
-  #test required
   def set_character_details_with_owner_filter
     @character = Character.find(params[:id])
     if @character.user_id != current_user.id
-      redirection_to_characters_path("alert","That Character is not Yours!")
+      redirection_to_characters_path('alert', I18n.t('characters.action_alerts.that_character_is_not_yours'))
     end
   end
 
@@ -173,49 +202,53 @@ class CharactersController < ApplicationController
                                       :activity_require_level)
   end
 
-  #test and refactor into service class required
   def update_fed_state(character)
-    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter)
+    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
+                                   :activity_require_level => activity_limit.activity_level_min_setter,
+                                   :happiness => happiness_limit.happiness_level_max_setter)
+
       if character.fed_state == 100
-        redirection_to_character_path(character,"warning", "Your are full")
+        redirection_to_character_path(character,'warning', I18n.t('characters.action_warnings.you_can_not_eat_more'))
       else
-        update_amount
-        redirection_to_character_path(character,"notice", "Fed point added")
+        redirection_to_character_path(character,'notice', I18n.t('characters.action_notices.feeding_action_has_been_proceed'))
       end
+      paying_service_proceed
     else
-      redirection_to_character_path(character,"alert", "Did not like it")
+      redirection_to_character_path(character,'alert', I18n.t('characters.action_alerts.un_success_feeding_process'))
     end
   end
 
-  #test and refactor into service class required
   def update_from_activity_state(character)
-    if character.update_attributes(:activity_require_level => activity_limit.activity_level_min_setter)
-      if character.activity_require_level == 0
-        redirection_to_character_path(character,"warning", "Your are too tired to move")
-      else
-        update_amount
-        redirection_to_character_path(character,"notice", "Activity point has burned down")
-      end
+    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
+                                   :activity_require_level => activity_limit.activity_level_min_setter,
+                                   :happiness => happiness_limit.happiness_level_max_setter)
+        paying_service_proceed
+        redirection_to_character_path(character,'notice', I18n.t('characters.action_notices.activity_action_has_been_proceed'))
     else
-      redirection_to_character_path(character,"alert", "Did not move")
+      redirection_to_character_path(character,'alert', I18n.t('characters.action_alerts.un_success_activity_process'))
     end
   end
 
-  #test and refactor into service class required
   def update_playing_state(character)
-    if character.update_attributes(:happiness => happiness_limit.happiness_level_max_setter)
+    if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
+                                   :activity_require_level => activity_limit.activity_level_min_setter,
+                                   :happiness => happiness_limit.happiness_level_max_setter)
       if character.happiness == 100
-        redirection_to_character_path(character,"warning", "Your Character do not want to play more")
+        redirection_to_character_path(character,'warning', I18n.t('characters.action_warnings.you_can_not_play_more'))
       else
-        update_amount
-        redirection_to_character_path(character,"notice", "Happiness point added")
+        redirection_to_character_path(character,'notice', I18n.t('characters.action_notices.playing_action_has_been_proceed'))
       end
+      paying_service_proceed
     else
-      redirection_to_character_path(character,"alert", "Did not move")
+      redirection_to_character_path(character,'alert', I18n.t('characters.action_alerts.un_success_activity_process'))
     end
   end
 
-  def update_amount
+  def paying_service_budget_check?(amount)
+    WalletServices::WalletActionManager.new(current_user, amount).budget_check?
+  end
+
+  def paying_service_proceed
     WalletServices::WalletActionManager.new(current_user, params[:amount].to_i).action_amount_calculator
   end
 
@@ -236,27 +269,37 @@ class CharactersController < ApplicationController
   end
 
   def alive_check
-    @character.status == "alive" ? true : redirection_to_characters_path("warning","This Character is Dead already!")
+    @character.status == 'alive' ? true : redirection_to_characters_path('warning', I18n.t('characters.action_warnings.character_is_dead'))
   end
 
   def alive_check_for_create_character
-    Character.where(user_id:current_user.id, status:"alive").count > 0
+    Character.where(user_id:current_user.id, status:'alive').count > 0
   end
 
-  #test and refactor into service class required
-  def redirection_to_characters_path(type, message, extra="")
+  def redirection_to_characters_path(type, message, extra='')
     output_type = type.to_sym
     redirect_to characters_path, {output_type => "#{message} #{extra}"}
   end
 
-  #test and refactor into service class required
-  def redirection_to_character_path(current_character,type, message, extra="")
+  def redirection_to_character_path(current_character,type, message, extra='')
     output_type = type.to_sym
     redirect_to character_path(current_character), {output_type => "#{message} #{extra}"}
   end
 
   def update_user_has_character_field(user)
     user.update_attributes(has_character:true)
+  end
+
+  def no_character_exist_rescue
+    redirection_to_characters_path('alert', I18n.t('characters.action_alerts.not_exist_character'))
+  end
+
+  def not_enough_available_activity_points?
+    params[:activity_require_level].to_i < 0
+  end
+
+  def not_enough_available_feeding_points?
+    params[:fed_state].to_i < 0
   end
 
 end

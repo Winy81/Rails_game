@@ -1,7 +1,7 @@
 </br>
-<h4 class="list-item text-center text-muted mt-4">Activity Require points Claim</h4></li>
+<h4 class="list-item text-center text-muted mt-4">Activity - Action Path</h4></li>
 
-<section class="content-section text-center mt -5 mb-5">
+<section class="content-section text-center mt-5 mb-5">
   <div class="container pt-5 mt-5 mb-5">
     <div class="row mt-5 mb-5">
       <div class="col-lg-3 col-md-7"></div>
@@ -10,16 +10,16 @@
           <thead>
           <tr>
             <th>Fed State: <%= @character.fed_state %></th>
+            <th>Activity Require: <%= @character.activity_require_level %></th>
             <th>Happiness: <%= @character.happiness %></th>
-            <th>Activity require:<%=  @character.activity_require_level%></th>
           </tr>
           </thead>
 
           <tbody>
           <tr>
-            <td>Claim-able: <%=  %></td>
-            <td>Claim-able: <%=  %></td>
-            <td>Claim-able: - <%= @sent_points_of_activity %></td>
+            <td>Lose-able: <%= @sent_potion_of_food %></td>
+            <td>Lose-able: <%= @sent_points_of_activity %></td>
+            <td>Claim-able: <%= @sent_happiness_points%></td>
           </tr>
           </tbody>
         </table>
@@ -32,9 +32,7 @@
   </div>
 </section>
 
-</br>
-</br>
-</br>
+<div class="spacer_1 pb-5"></div>
 
 <section class="content-section mt-5 text-muted text-center">
 
@@ -43,15 +41,19 @@
 
       <div class="col-lg-4 col-md-7"></div>
       <div class="col-lg-2 col-md-7">
-        <div class="action_arrow">
-          <p><%= link_to 'Back', character_path(@character), class: 'btn btn-outline-secondary' %></p>
+        <div class="action_arrow mb-3">
+          <%= link_to 'Back', character_path(@character), class: 'btn btn-outline-secondary' %>
         </div>
         <p class="list-inline-item small text-dark">Characters Page</p>
       </div>
 
       <div class="col-lg-2 col-md-7">
-        <div class="action_arrow">
-          <p><%= link_to 'Claim', character_path(@character.id, {activity_require_level:  (@current_activity_state), amount: (@current_amount), extra: 'from_activity_process' }), class:'btn btn-outline-secondary', :method => :put  %></p>
+        <div class="action_arrow mb-3">
+          <%= button_to 'Claim', character_path(@character.id, params_builder_of_action_process(@current_fed_state,
+                                                                                                @current_amount,
+                                                                                                @current_activity_state,
+                                                                                                @current_happiness_state,
+                                                                                                'from_activity_process' )), id:'claim_button', disabled: false, :remote => true, class: 'btn btn-outline-secondary', :method => :put %>
         </div>
         <p class="list-inline-item small text-dark">Claim your Points</p>
       </div>
@@ -61,3 +63,9 @@
   </div>
 
 </section>
+
+<!--<script>-->
+<!--    setTimeout(function(){-->
+<!--        $('#claim_button').removeAttr('disabled');-->
+<!--    }, <%= (@sent_points_of_activity.to_i)*1000 %> );-->
+<!--</script>-->

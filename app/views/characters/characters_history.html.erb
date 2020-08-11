@@ -1,5 +1,6 @@
 </br>
 <h4 class="list-item text-center text-muted mt-4">Characters history</h4></li>
+</br>
 <div class="container mt-5">
   <ul class="list-inline text-center text-secondary mb-5">
     <li class="list-inline-item"><h6>User: <%= @owner_of_character.name %></h6></li>
@@ -7,8 +8,6 @@
     </br>
   </ul>
   <div class="row justify-content-center full_character_history mb-1">
-    </br>
-    </br>
     <ul class="list-inline"><% @owners_characters.each do |character| %>
         <li class="list-inline-item mb-3" style="width:220px">Name: <%= character.name %></li>
         <li class="list-inline-item mb-3" style="width:80px">Age: <%= character.age %></li>
@@ -17,14 +16,14 @@
           <%= link_to 'Details', character_info_path(character.id, {extra: 'from_characters_history'}), class: 'btn btn-outline-secondary' %>
         <% else %>
           <li class="list-inline-item mb-3">This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
-          <li class="list-inline-item mb-3">Was living:  <%= life_length_counter(character) %></li>
+          <li class="list-inline-item mb-3">Accurate life length:  <%= life_length_counter(character) %></li>
         <% end %>
         </br>
       <% end %>
     </ul>
    </div>
 </div>
-</br>
-</br>
+<div class="spacer_1"
+</div>
 
 <%= render 'shared/dinamic_single_index_back_button' %>
