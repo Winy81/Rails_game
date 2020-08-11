@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+include CharactersHelper
+
 RSpec.feature 'Character info page' do
 
   before do
@@ -43,6 +45,8 @@ RSpec.feature 'Character info page' do
     expect(page).to have_content(@character_1.activity_require_level)
     expect(page).to have_content('Happiness:')
     expect(page).to have_content(@character_1.happiness)
+    expect(page).to have_content('Accurate life length:')
+    expect(page).to have_content(life_length_counter(@character_1))
 
   end
 

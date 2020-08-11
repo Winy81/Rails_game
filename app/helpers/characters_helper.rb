@@ -3,8 +3,13 @@ module CharactersHelper
   include Services::DateTransformer
 
   def life_length_counter(character)
-    length = character.updated_at - character.created_at
-    result(length)
+    if character.status == 'alive'
+      length = Time.now - character.created_at
+      result(length)
+    else
+      length = (character.created_at - character.died_on).abs
+      result(length)
+    end
   end
 
   def params_builder_of_action(character,wallet,fed_points,cost,happiness_points,activity_points,source)
@@ -43,7 +48,7 @@ module CharactersHelper
   private
 
   def result(seconds)
-    hours = seconds / SECOND_IN_A_HOUR
+    hours = seconds.to_i / SECOND_IN_A_HOUR
     full_days = hours_to_full_days(hours)
     hours = rest_of_hours(hours)
     formated_time_layout(full_days,hours)

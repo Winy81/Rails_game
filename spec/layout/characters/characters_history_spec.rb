@@ -49,10 +49,12 @@ RSpec.feature 'Characters history page' do
         @char_of_user_c_h_1 = Character.create(name:'char_of_user_c_h_1',user_id:@user_c_h.id,status:'alive')
         @char_of_user_c_h_2 = Character.create(name:'char_of_user_c_h_2',
                                                user_id:@user_c_h.id,
-                                               status:'dead')
+                                               status:'dead',
+                                               died_on: Time.now + 1.hour)
         @char_of_user_c_h_3 = Character.create(name:'char_of_user_c_h_3',
                                                user_id:@user_c_h.id,
-                                               status:'dead')
+                                               status:'dead',
+                                               died_on: Time.now + 1.hour)
       end
 
       scenario 'Has to turn up all of the characters include living time and dieing date' do
@@ -75,7 +77,7 @@ RSpec.feature 'Characters history page' do
         expect(page).to have_content('Age:', count: all_of_character_of_user_user_c_h)
         expect(page).to have_content('Status:', count: all_of_character_of_user_user_c_h)
         expect(page).to have_content('This Character has died on:', count: all_of_character_of_user_user_c_h - 1)
-        expect(page).to have_content('Was living:', count: all_of_character_of_user_user_c_h - 1)
+        expect(page).to have_content('Accurate life length:', count: all_of_character_of_user_user_c_h - 1)
 
         expect(page).to have_link('Back')
         expect(page).to have_content('Characters Page')

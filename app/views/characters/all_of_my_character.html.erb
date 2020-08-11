@@ -20,7 +20,7 @@
             <%= link_to 'Go', character_path(character.id, {extra: 'from_all_of_my_character'}), class: 'btn btn-outline-secondary mb-1', style:"width:50px"%>
           <% else %>
             <li class="list-inline-item mb-3" >This Character has died on: <%= date_view_optimizer(character.updated_at) %></li>
-            <li class="list-inline-item mb-3" >Was living:  <%= life_length_counter(character) %></li>
+            <li class="list-inline-item mb-3" >Accurate life length:  <%= life_length_counter(character) %></li>
           <% end %>
           </br>
         <% end %>
