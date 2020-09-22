@@ -1,10 +1,11 @@
 User.create!(email: "adam@adam.com",
              password: "password",
              password_confirmation: "password",
-             name: "Test_user_id_1"
+             name: "Admin_test_user",
+             role: "admin"
 )
 
-puts "First user created"
+puts "Admin user has created"
 
 User.create!(email: "adam2@adam.com",
              password: "password",
@@ -12,7 +13,7 @@ User.create!(email: "adam2@adam.com",
              name: "Test_user_id_2"
 )
 
-puts "Other user created"
+puts "Other user has created"
 
 User.create!(email: "adam3@adam.com",
              password: "password",
@@ -20,7 +21,7 @@ User.create!(email: "adam3@adam.com",
              name: "Test_user_id_3"
 )
 
-puts "Third user created"
+puts "Third user has created"
 
 4.times do |character|
   User.find_by(name:"Test_user_id_1").characters.create!(
