@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   get 'admins_index', to: 'admins#index', as: :admins_index
+  get 'account_management', to: 'admins#account_management', as: :account_management
 
   root to: 'mains#index'
 
