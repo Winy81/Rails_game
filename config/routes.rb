@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get 'statics/game_description', to: 'statics#game_description', as: :game_description
   end
 
-  get 'admin_index', to: 'admins#index', as: :index
+  get 'admins_index', to: 'admins#index', as: :admins_index
 
   root to: 'mains#index'
 
