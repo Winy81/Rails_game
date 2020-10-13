@@ -7,11 +7,11 @@ class AdminsController < ApplicationController
   end
 
   def account_management
-    @users = User.all
+    @users = User.all.user_in_asc_id_order
   end
 
   def character_management
-    @users = Character.all
+    @characters = Character.all
   end
 
   private
