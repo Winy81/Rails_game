@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/views/shared/admin/_back_from_admin_pages.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admins/account_management.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/account_management.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/index.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +45,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/shared/admin" />
       <recent name="$PROJECT_DIR$/lib/services" />
       <recent name="$PROJECT_DIR$/spec/layout/mains" />
       <recent name="$PROJECT_DIR$/app/assets/images/menu" />
@@ -92,7 +92,8 @@
       <workItem from="1596063100406" duration="1815000" />
       <workItem from="1596118901620" duration="1181000" />
       <workItem from="1596219490275" duration="13000000" />
-      <workItem from="1601291598373" duration="7907000" />
+      <workItem from="1601291598373" duration="8082000" />
+      <workItem from="1602594735239" duration="1046000" />
     </task>
     <servers />
   </component>
