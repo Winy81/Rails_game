@@ -14,6 +14,11 @@ class AdminsController < ApplicationController
     @characters = Character.all
   end
 
+  def search
+    binding.pry
+    @results = params[:search_params]
+  end
+
   private
 
   def is_user_admin?

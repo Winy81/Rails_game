@@ -2,11 +2,11 @@
 <h4 class="list-item text-center text-muted mt-4">Account Management</h4></li>
 </br>
 <div class="container mt-4">
-  <%= form_tag(characters_path, class:"navbar-form", role: "search") do %>
+  <%= form_tag(search_admins_path, class:"navbar-form", role: "search") do %>
     <div class="form-row">
       <div class="col-3"></div>
       <div class="col-6">
-        <%= text_field_tag :search, nil, placeholder:"search in accounts", class:"form-control"%>
+        <%= text_field_tag :search_params, nil, placeholder:"search in accounts", class:"form-control"%>
       </div>
       <div class="col-3">
         <div class="text-center">

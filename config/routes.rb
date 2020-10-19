@@ -39,6 +39,12 @@ Rails.application.routes.draw do
   get 'admins_index', to: 'admins#index', as: :admins_index
   get 'account_management', to: 'admins#account_management', as: :account_management
 
+  resources :admins, only:[:index] do
+    collection do
+      post :search, to: 'admins#search'
+    end
+  end
+
   root to: 'mains#index'
 
 end
