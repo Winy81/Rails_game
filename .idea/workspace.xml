@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/services/search_engine/search.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/services/search_engine/user_name_search.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/admins/show_user.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/admins_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/admins_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admins/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/search.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,7 @@
       <workItem from="1596118901620" duration="1181000" />
       <workItem from="1596219490275" duration="13000000" />
       <workItem from="1601291598373" duration="8082000" />
-      <workItem from="1602594735239" duration="10650000" />
+      <workItem from="1602594735239" duration="13332000" />
     </task>
     <servers />
   </component>
@@ -110,9 +111,9 @@
       <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="92" y="30" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1602838292459" />
-    <state x="700" y="410" width="782" height="567" key="find.popup" timestamp="1597141344156">
+    <state x="700" y="410" width="782" height="567" key="find.popup" timestamp="1603194586867">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
-    <state x="700" y="410" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1597141344156" />
+    <state x="700" y="410" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1603194586867" />
   </component>
 </project>

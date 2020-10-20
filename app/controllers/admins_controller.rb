@@ -6,6 +6,10 @@ class AdminsController < ApplicationController
 
   end
 
+  def show_user
+    @user = User.find_by(params[:id])
+  end
+
   def account_management
     @users = User.all.user_in_asc_id_order
   end

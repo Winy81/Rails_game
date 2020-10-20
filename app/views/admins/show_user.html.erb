@@ -1,0 +1,13 @@
+</br>
+<h4 class="list-item text-center text-muted mt-4">Admin: Show User</h4></li>
+
+<section class="content-section text-center text-secondary">
+  <div class="container pt-3">
+    <ul class="list-inline">
+      <li class="list-inline-item"><h6>Id:<%= @user.id %></h6></li></br>
+      <li class="list-inline-item"><h6>Name: <%= @user.name %></h6></li></br>
+      <li class="list-inline-item"><h6>Member Since: <%= date_view_optimizer(@user.created_at) %></h6></li></br></br>
+      <li class="list-inline-item"><h6>Active: <%= @user.has_character %></h6></li>
+    </ul>
+  </div>
+</section>

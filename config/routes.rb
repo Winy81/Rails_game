@@ -45,6 +45,11 @@ Rails.application.routes.draw do
     end
   end
 
+  scope '/admins' do
+    get ':id/show_user', to: 'admins#show_user', as: :show_user
+  end
+
+
   root to: 'mains#index'
 
 end
