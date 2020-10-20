@@ -15,8 +15,7 @@ class AdminsController < ApplicationController
   end
 
   def search
-    binding.pry
-    @results = params[:search_params]
+    @results = Services::SearchEngine::Search.new(params[:search_params]).data_response
   end
 
   private

@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/admins/search.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/services/search_engine/search.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/services/search_engine/user_name_search.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admins/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/search.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,11 +46,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/services/search_engine" />
+      <recent name="$PROJECT_DIR$/lib/services/search_engine/account" />
       <recent name="$PROJECT_DIR$/app/views/shared/admin" />
       <recent name="$PROJECT_DIR$/lib/services" />
       <recent name="$PROJECT_DIR$/spec/layout/mains" />
-      <recent name="$PROJECT_DIR$/app/assets/images/menu" />
-      <recent name="$PROJECT_DIR$/app/services/characters_services" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -93,7 +94,7 @@
       <workItem from="1596118901620" duration="1181000" />
       <workItem from="1596219490275" duration="13000000" />
       <workItem from="1601291598373" duration="8082000" />
-      <workItem from="1602594735239" duration="5676000" />
+      <workItem from="1602594735239" duration="10650000" />
     </task>
     <servers />
   </component>
@@ -101,6 +102,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603108412717">
+      <screen x="0" y="23" width="1680" height="969" />
+    </state>
+    <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.969@0.23.1680.969" timestamp="1603108412717" />
     <state x="92" y="30" width="1509" height="854" key="DiffContextDialog" timestamp="1602838292459">
       <screen x="0" y="23" width="1680" height="969" />
     </state>

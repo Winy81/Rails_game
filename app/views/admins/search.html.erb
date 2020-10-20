@@ -1,0 +1,7 @@
+<% if @result != nil %>
+  <% @results.each do |result| %>
+    <%= result.name %>
+  <% end %>
+<% else %>
+  <h3> No record found</h3>
+<% end %>
