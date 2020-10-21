@@ -1,13 +1,72 @@
 </br>
 <h4 class="list-item text-center text-muted mt-4">Admin: Show User</h4></li>
 
-<section class="content-section text-center text-secondary">
-  <div class="container pt-3">
-    <ul class="list-inline">
-      <li class="list-inline-item"><h6>Id:<%= @user.id %></h6></li></br>
-      <li class="list-inline-item"><h6>Name: <%= @user.name %></h6></li></br>
-      <li class="list-inline-item"><h6>Member Since: <%= date_view_optimizer(@user.created_at) %></h6></li></br></br>
-      <li class="list-inline-item"><h6>Active: <%= @user.has_character %></h6></li>
-    </ul>
+<%= form_for @user, :url => { :action => "user_update_by_admin" } do |f| %>
+  <div class="container index_content_container">
+    <div class="form-row">
+      <div class="col-3"></div>
+      <div class="col-6">
+
+        <div class="form-group">
+
+          <div class="form-group">
+            <%= f.label :id %>
+            <%= f.text_field :id, class:"form-control", :disabled=>true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :name %>
+            <%unless is_the_user_admin?(@user) %>
+              <%= f.text_field :name, class:"form-control" %>
+            <% else %>
+              <%= f.text_field :name, class:"form-control", :disabled=>true %>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email %>
+            <%unless is_the_user_admin?(@user) %>
+              <%= f.text_field :email, class:"form-control" %>
+            <% else %>
+              <%= f.text_field :email, class:"form-control", :disabled=>true %>
+            <% end %>
+          </div>
+
+
+          <div class="form-group">
+            <% unless is_the_user_admin?(@user) %>
+              <%= f.label :role %>
+              <div class="text-center"
+              <%= f.label :role, "Administrator", :value => "admin", :style => 'position:centre'  %>
+              <%= f.radio_button :role, "admin" %>
+              <%= f.label :role, "User", :value => "user", :style => 'position:centre'  %>
+              <%= f.radio_button :role, "user", :checked => true %>
+              </div>
+            <% else %>
+              <%= f.label :role %>
+              <%= f.text_field :role, class:"form-control", :disabled=>true %>
+            <% end %>
+            </div>
+
+        <div class="form-group">
+          <%= f.label :has_character %>
+          <%= f.text_field :has_character, class:"form-control", :disabled=>true %>
+        </div>
+
+        <div class="form-group text-center">
+          <% unless is_the_user_admin?(@user) %>
+            <%= f.submit 'Save User Details', class: 'btn btn-outline-secondary' %>
+          <% else %>
+            <h5 class="list-item text-center text-muted mt-4">You Can't edit an Admin user</h5>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+    <div class="col-3"></div>
+    </div>
   </div>
-</section>
+
+
+
+
+
