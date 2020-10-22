@@ -2,7 +2,7 @@
 <h4 class="list-item text-center text-muted mt-4">Admin: Show User</h4></li>
 
 <%= form_for @user, :url => { :action => "user_update_by_admin" } do |f| %>
-  <div class="container index_content_container">
+  <div class="container mt-4">
     <div class="form-row">
       <div class="col-3"></div>
       <div class="col-6">
@@ -49,7 +49,7 @@
             </div>
 
         <div class="form-group">
-          <%= f.label :has_character %>
+          <%= f.label :Active? %>
           <%= f.text_field :has_character, class:"form-control", :disabled=>true %>
         </div>
 
@@ -67,6 +67,6 @@
   </div>
 
 
-
+<%= render 'shared/admin/back_from_admin_pages' %>
 
 
