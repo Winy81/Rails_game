@@ -1,6 +1,7 @@
 </br>
 <h4 class="list-item text-center text-muted mt-4">Admin: Show User</h4></li>
 
+<div>
 <%= form_for @user, :url => { :action => "user_update_by_admin" } do |f| %>
   <div class="container mt-4">
     <div class="form-row">
@@ -65,7 +66,7 @@
     <div class="col-3"></div>
     </div>
   </div>
-
+</div>
 
 <%= render 'shared/admin/back_from_admin_pages' %>
 

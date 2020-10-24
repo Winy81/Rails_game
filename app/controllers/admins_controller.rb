@@ -37,7 +37,7 @@ class AdminsController < ApplicationController
   private
 
   def is_user_admin?
-    current_user.role == "admin" ? true : redirection_to_characters_path('alert', 'you have no admin privileges')
+    current_user.role == "admin" ? true : redirection_to_characters_path('alert', 'You have no admin privileges')
   end
 
 end
