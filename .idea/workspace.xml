@@ -4,6 +4,7 @@
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/search_engine/search.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/search_engine/search.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,7 @@
       <workItem from="1602594735239" duration="23430000" />
       <workItem from="1603297477584" duration="1084000" />
       <workItem from="1603349090140" duration="1019000" />
-      <workItem from="1603455029570" duration="5595000" />
+      <workItem from="1603455029570" duration="9035000" />
     </task>
     <servers />
   </component>
@@ -114,5 +115,9 @@
       <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="898" y="373" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1603522535686" />
+    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup" timestamp="1603799419838">
+      <screen x="0" y="23" width="1680" height="969" />
+    </state>
+    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup/0.23.1680.969@0.23.1680.969" timestamp="1603799419838" />
   </component>
 </project>

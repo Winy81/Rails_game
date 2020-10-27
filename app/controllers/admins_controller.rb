@@ -2,7 +2,7 @@ class AdminsController < ApplicationController
 
   before_action :is_user_admin?
 
-  UPDATE_ATTRS = [:name, :email, :role]
+  UPDATE_USER_ATTRS = [:name, :email, :role]
 
   def index
 
@@ -13,10 +13,9 @@ class AdminsController < ApplicationController
   end
 
   def user_update_by_admin
-    binding.pry
     @user = User.find_by(id:params[:id])
     if @user.update_attributes(update_user_params)
-        redirect_to admins_path
+        redirect_to admins_path, notice: 'User details has updated.'
       else
         render :show_user
       end
@@ -37,11 +36,11 @@ class AdminsController < ApplicationController
   private
 
   def is_user_admin?
-    current_user.role == "admin" ? true : redirection_to_characters_path('alert', 'You have no admin privileges')
+    current_user.role == 'admin' ? true : redirection_to_characters_path('alert', 'You have no admin privileges')
   end
 
   def update_user_params
-    params.require(:user).permit(UPDATE_ATTRS)
+    params.require(:user).permit(UPDATE_USER_ATTRS)
   end
 
 end
