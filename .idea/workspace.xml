@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/account_management.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/account_management.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/search_engine/search.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/search_engine/search.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/search_engine/user_name_search.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/search_engine/account/account_search.rb" afterDir="false" />
-    </list>
+    <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +91,7 @@
       <workItem from="1602594735239" duration="23430000" />
       <workItem from="1603297477584" duration="1084000" />
       <workItem from="1603349090140" duration="1019000" />
-      <workItem from="1603455029570" duration="14012000" />
+      <workItem from="1603455029570" duration="14116000" />
     </task>
     <servers />
   </component>

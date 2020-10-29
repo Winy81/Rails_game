@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   get 'admins_index', to: 'admins#index', as: :admins_index
   get 'account_management', to: 'admins#account_management', as: :account_management
+  get 'character_management', to: 'admins#character_management', as: :character_management
 
   resources :admins, only:[:index] do
     collection do
