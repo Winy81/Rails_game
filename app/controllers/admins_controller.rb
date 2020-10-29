@@ -30,7 +30,7 @@ class AdminsController < ApplicationController
   end
 
   def search
-    @results = Services::SearchEngine::Search.new(params[:search_params]).data_response
+    @results = Services::SearchEngine::Search.new(params[:search_params], params[:commit]).response
   end
 
   private

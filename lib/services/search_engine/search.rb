@@ -8,21 +8,16 @@ module Services
       ACTIVE = 'active'
       INACTIVE = 'inactive'
 
-      def initialize(data)
+      def initialize(data,source)
         @data = data
+        @source = source
       end
 
-      def data_response
-        if @data.match(ONLY_NUMBER) != nil
-          fetch_by_id(@data)
-        elsif @data.match(VALID_EMAIL) != nil
-          fetch_by_email(@data)
-        elsif ROLES.include?(@data)
-          fetch_by_role(@data)
-        elsif @data == ACTIVE || @data == INACTIVE
-          fetch_by_activity(@data)
-        elsif
-          fetch_by_name(@data)
+      def response
+        if @source == "Search User"
+          Services::SearchEngine::Account::AccountSearch.new(@data).return_data
+        else
+          return
         end
       end
 
