@@ -25,9 +25,9 @@
         <li class="list-inline-item mb-3" style="width:85px">Active:<%= user.has_character %></li>
         <li class="list-inline-item mb-3" >
           <% if is_the_user_admin?(user) %>
-            <%= link_to 'Show', show_user_path(user.id), class: 'btn btn-outline-secondary' %></li>
+            <%= link_to 'Show', edit_user_path(user.id), class: 'btn btn-outline-secondary' %></li>
           <% else %>
-            <%= link_to 'Edit', show_user_path(user.id), class: 'btn btn-outline-secondary' %></li>
+            <%= link_to 'Edit', edit_user_path(user.id), class: 'btn btn-outline-secondary' %></li>
           <% end %>
           </br>
       <% end %>

@@ -8,11 +8,11 @@ class AdminsController < ApplicationController
 
   end
 
-  def show_user
+  def edit_user
     @user = User.find_by(id:params[:id])
   end
 
-  def show_character
+  def edit_character
     @character = Character.find_by(id:params[:id])
   end
 

@@ -22,7 +22,7 @@
         <li class="list-inline-item mb-3" style="width:50px">Id: <%= character.id %></li>
         <li class="list-inline-item mb-3" style="width:320px">Name <%= character.name %></li>
         <li class="list-inline-item mb-3" style="width:230px">Status:<%= character.status %></li>
-        <li class="list-inline-item mb-3" ><%= link_to 'Edit', show_character_path(character.id), class: 'btn btn-outline-secondary' %></li>
+        <li class="list-inline-item mb-3" ><%= link_to 'Edit', edit_character_path(character.id), class: 'btn btn-outline-secondary' %></li>
         </br>
       <% end %>
     </ul>
