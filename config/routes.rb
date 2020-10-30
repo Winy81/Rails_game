@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
   scope '/admins' do
     get ':id/show_user', to: 'admins#show_user', as: :show_user
+    get ':id/show_character', to: 'admins#show_character', as: :show_character
     patch ':id/user_update_by_admin', to: 'admins#user_update_by_admin', as: :user_update_by_admin
   end
 

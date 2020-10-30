@@ -12,6 +12,10 @@ class AdminsController < ApplicationController
     @user = User.find_by(id:params[:id])
   end
 
+  def show_character
+    @character = Character.find_by(id:params[:id])
+  end
+
   def user_update_by_admin
     @user = User.find_by(id:params[:id])
     if @user.update_attributes(update_user_params)
