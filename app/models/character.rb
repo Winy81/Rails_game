@@ -15,6 +15,11 @@ class Character < ActiveRecord::Base
     order(:age => :desc).where(status:"alive")
   end
 
+  def self.character_in_asc_id_order
+    order(:id => :asc)
+  end
+
+
   def self.characters_history_order_logic
     order(:status => :asc, :id => :desc)
   end

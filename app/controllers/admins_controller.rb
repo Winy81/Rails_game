@@ -26,7 +26,7 @@ class AdminsController < ApplicationController
   end
 
   def character_management
-    @characters = Character.all
+    @characters = Character.all.character_in_asc_id_order
   end
 
   def search
