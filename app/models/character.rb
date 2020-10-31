@@ -19,7 +19,6 @@ class Character < ActiveRecord::Base
     order(:id => :asc)
   end
 
-
   def self.characters_history_order_logic
     order(:status => :asc, :id => :desc)
   end

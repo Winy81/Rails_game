@@ -19,9 +19,17 @@
   <% end %>
   <div class="row justify-content-center account_management_index mb-1 mt-5">
     <ul class="list-inline"><% @characters.each do |character| %>
-        <li class="list-inline-item mb-3" style="width:50px">Id: <%= character.id %></li>
-        <li class="list-inline-item mb-3" style="width:320px">Name <%= character.name %></li>
-        <li class="list-inline-item mb-3" style="width:230px">Status:<%= character.status %></li>
+        <li class="list-inline-item mb-3" style="width:60px">Id: <%= character.id %></li>
+        <li class="list-inline-item mb-3" style="width:230px">Name: <%= character.name %></li>
+        <li class="list-inline-item mb-3" style="width:85px">Age: <%= character.age %></li>
+        <li class="list-inline-item mb-3" style="width:140px">Born: <%= character.created_at.strftime("%F") %></li>
+        <li class="list-inline-item mb-3" style="width:100px">Status:<%= character.status %></li>
+        <% if character.status == 'alive' %>
+          <li class="list-inline-item mb-3" style="width:150px; text-align:center">------</li>
+        <% else %>
+          <li class="list-inline-item mb-3" style="width:150px">Died: <%= character.died_on.strftime("%F") %></li>
+        <% end %>
+        <li class="list-inline-item mb-3" style="width:110px">Active: <%= active_character(character) %></li>
         <li class="list-inline-item mb-3" ><%= link_to 'Edit', edit_character_path(character.id), class: 'btn btn-outline-secondary' %></li>
         </br>
       <% end %>
