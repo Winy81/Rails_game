@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
   before_action :is_user_admin?
 
   UPDATE_USER_ATTRS = [:name, :email, :role]
-  BUDGET_ATTR = [:amount]
+  UPDATE_BUDGET_ATTR = [:amount]
 
   def index
 
@@ -27,7 +27,9 @@ class AdminsController < ApplicationController
   end
 
   def character_update_by_admin
+    binding.pry
     @character = Character.find_by(id:params[:id])
+    redirect_to admins_path
   end
 
   def account_management
@@ -53,6 +55,6 @@ class AdminsController < ApplicationController
   end
 
   def update_wallet_params
-    params.require(:user).permit(BUDGET_ATTR)
+    params.require(:user).permit(UPDATE_BUDGET_ATTR)
   end
 end

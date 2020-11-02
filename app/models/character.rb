@@ -32,4 +32,8 @@ class Character < ActiveRecord::Base
     where.not(user_id:user.id)
   end
 
+  def owner_of_character
+    self.user.name
+  end
+
 end
