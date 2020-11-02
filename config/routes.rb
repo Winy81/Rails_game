@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     get ':id/edit_user', to: 'admins#edit_user', as: :edit_user
     get ':id/edit_character', to: 'admins#edit_character', as: :edit_character
     patch ':id/user_update_by_admin', to: 'admins#user_update_by_admin', as: :user_update_by_admin
+    patch ':id/character_update_by_admin', to: 'admins#character_update_by_admin', as: :character_update_by_admin
   end
 
 
