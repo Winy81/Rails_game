@@ -1,5 +1,5 @@
 </br>
-<h4 class="list-item text-center text-muted mt-4">Admin: Show User</h4></li>
+<h4 class="list-item text-center text-muted mt-4">Admin -  Edit User</h4></li>
 
 <div>
 <%= form_for @user, :url => { :action => "user_update_by_admin" } do |f| %>
@@ -50,8 +50,12 @@
             </div>
 
         <div class="form-group">
-          <%= f.label :Active? %>
-          <%= f.text_field :has_character, class:"form-control", :disabled=>true %>
+          <%= f.label :wallet %>
+          <%unless is_the_user_admin?(@user) %>
+            <%= f.text_field :amount, class:"form-control" %>
+          <% else %>
+            <%= f.text_field :amount, class:"form-control", :disabled=>true %>
+          <% end %>
         </div>
 
         <div class="form-group text-center">

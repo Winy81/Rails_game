@@ -34,4 +34,9 @@ class ApplicationController < ActionController::Base
     redirect_to character_path(current_character), {output_type => "#{message} #{extra}"}
   end
 
+  def redirection_to_admin_index_path(type, message)
+    output_type = type.to_sym
+    redirect_to admins_path, {output_type => "#{message}"}
+  end
+
 end

@@ -3,6 +3,7 @@ class AdminsController < ApplicationController
   before_action :is_user_admin?
 
   UPDATE_USER_ATTRS = [:name, :email, :role]
+  BUDGET_ATTR = [:amount]
 
   def index
 
@@ -18,10 +19,10 @@ class AdminsController < ApplicationController
 
   def user_update_by_admin
     @user = User.find_by(id:params[:id])
-    if @user.update_attributes(update_user_params)
-        redirect_to admins_path, notice: 'User details has updated.'
-      else
-        render :show_user
+       if @user.update_attributes(update_user_params) && @user.wallet.update_attributes(update_wallet_params)
+        redirection_to_admin_index_path('notice', 'User details has updated.')
+       else
+        redirection_to_admin_index_path('alert','User details has NOT been updated.')
       end
     end
 
@@ -47,4 +48,7 @@ class AdminsController < ApplicationController
     params.require(:user).permit(UPDATE_USER_ATTRS)
   end
 
+  def update_wallet_params
+    params.require(:user).permit(BUDGET_ATTR)
+  end
 end
