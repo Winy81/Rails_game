@@ -2,8 +2,20 @@ class AdminsController < ApplicationController
 
   before_action :is_user_admin?
 
-  UPDATE_USER_ATTRS = [:name, :email, :role]
+  UPDATE_USER_ATTRS = [:id, :name, :email, :role]
   UPDATE_BUDGET_ATTR = [:amount]
+  UPDATE_CHARACTER_ATTR = [:id,
+                           :name,
+                           :status,
+                           :age,
+                           :happiness,
+                           :fed_state,
+                           :activity_require_level,
+                           :created_at,
+                           :user_id,
+                           :hibernated,
+                           :manualy_hibernated,
+                           :died_on]
 
   def index
 
@@ -55,5 +67,9 @@ class AdminsController < ApplicationController
 
   def update_wallet_params
     params.require(:user).permit(UPDATE_BUDGET_ATTR)
+  end
+
+  def update_wallet_params
+    params.require(:character).permit(UPDATE_CHARACTER_ATTR)
   end
 end
