@@ -2,6 +2,8 @@ module Services
   module SearchEngine
     class Search
 
+      include ActiveModel::AttributeMethods
+
       VALID_EMAIL= /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
       ONLY_NUMBER = /\A\d+\Z/
       ROLES = User::Role::ALL
@@ -47,9 +49,23 @@ module Services
         ::Character.where(id:id.to_i)
       end
 
+      def account_search_marker(user)
+        user.map {|c| c.attributes.merge({'search_type' => 'account'}) }
+      end
+
+      def character_search_marker
+        attributes.merge({'search_type' => 'character'})
+      end
+
       #def fetch_by_user_since(data) if Date.parse("2020-10-15").class == Date
       #  User.where(created_at:Date.parse(data))
       #end
+
+      def json_converter
+        a=@results.to_json
+        b=JSON.parse(a)
+        b << ({'search_type' => 'account'})
+      end
 
     end
   end

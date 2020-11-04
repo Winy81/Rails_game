@@ -53,6 +53,7 @@ class AdminsController < ApplicationController
 
   def search
     @results = Services::SearchEngine::Search.new(params[:search_params], params[:commit]).response
+    binding.pry
   end
 
   private
