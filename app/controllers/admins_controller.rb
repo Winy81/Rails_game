@@ -27,7 +27,6 @@ class AdminsController < ApplicationController
   end
 
   def character_update_by_admin
-    binding.pry
     @character = Character.find_by(id:params[:id])
     redirect_to admins_path
   end

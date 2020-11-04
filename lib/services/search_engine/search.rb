@@ -16,31 +16,35 @@ module Services
       def response
         if @source == "Search User"
           Services::SearchEngine::Account::AccountSearch.new(@data).return_data
-        else
-          return
+        elsif @source == "Search Character"
+          Services::SearchEngine::Character::CharacterSearch.new(@data).return_data
         end
       end
 
       private
 
-      def fetch_by_id(id)
+      def user_fetch_by_id(id)
         User.where(id:id.to_i)
       end
 
-      def fetch_by_email(email)
+      def user_fetch_by_email(email)
         User.where(email:email)
       end
 
-      def fetch_by_role(role)
+      def user_fetch_by_role(role)
         User.where(role:role)
       end
 
-      def fetch_by_activity(activity_status)
+      def user_fetch_by_activity(activity_status)
         activity_status == 'active' ? User.where(has_character:true) : User.where(has_character:true)
       end
 
-      def fetch_by_name(name)
+      def user_fetch_by_name(name)
         User.where("name like ?", "%#{name}%")
+      end
+
+      def character_fetch_by_id(id)
+        ::Character.where(id:id.to_i)
       end
 
       #def fetch_by_user_since(data) if Date.parse("2020-10-15").class == Date
