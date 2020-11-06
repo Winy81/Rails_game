@@ -49,10 +49,6 @@ module Services
         ::Character.where(id:id.to_i)
       end
 
-      def character_search_marker
-        attributes.merge({'search_type' => 'character'})
-      end
-
     end
   end
 end

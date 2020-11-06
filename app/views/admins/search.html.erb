@@ -1,13 +1,19 @@
-<% if @users.empty? == false %>
-
-
+<% if @users.nil? == false %>
   <ul class="list-inline"><% @users.each do |user| %>
     <li class="list-inline-item mb-3" style="width:160px">Id: <%= user["id"] %></li>
     <li class="list-inline-item mb-3" style="width:160px">Name: <%= user["name"] %></li>
     <li class="list-inline-item mb-3" style="width:160px"><%= link_to 'Edit', edit_user_path(user["id"].to_i), class: 'btn btn-outline-secondary' %></li>
+  </ul>
+  <% end %>
+<% elsif @characters.nil? == false %>
+  <ul class="list-inline"><% @characters.each do |character| %>
+      <li class="list-inline-item mb-3" style="width:160px">Id: <%= character["id"] %></li>
+      <li class="list-inline-item mb-3" style="width:160px">Name: <%= character["name"] %></li>
+      <li class="list-inline-item mb-3" style="width:160px"><%= link_to 'Edit', edit_character_path(character["id"].to_i), class: 'btn btn-outline-secondary' %></li>
+  </ul>
   <% end %>
 <% else %>
 <h5>No Record found</h5>
 <% end  %>
-</ul>
+
 
