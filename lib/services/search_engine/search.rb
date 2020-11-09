@@ -4,11 +4,16 @@ module Services
 
       include ActiveModel::AttributeMethods
 
-      VALID_EMAIL= /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-      ONLY_NUMBER = /\A\d+\Z/
-      ROLES = User::Role::ALL
-      ACTIVE = 'active'
-      INACTIVE = 'inactive'
+      module UserRelatedFilters
+        VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+        ONLY_NUMBER = /\A\d+\Z/
+        ROLES = User::Role::ALL
+        ACTIVE_STATUS = ['active', 'inactive']
+      end
+
+      module CharactersRelatedFilters
+        CHARACTER_STATUS = ['dead', 'alive']
+      end
 
       def initialize(data,source)
         @data = data
@@ -47,6 +52,10 @@ module Services
 
       def character_fetch_by_id_or_age(number)
         ::Character.where(id:number.to_i) + ::Character.where(age:number.to_i)
+      end
+
+      def character_fetch_by_status(status)
+        ::Character.where(status:status)
       end
 
     end

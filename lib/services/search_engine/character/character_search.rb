@@ -8,10 +8,12 @@ module Services
         end
 
         def return_data
-          if @data.match(ONLY_NUMBER) != nil
+          if @data.match(CharactersRelatedFilters::ONLY_NUMBER) != nil
             characters = character_fetch_by_id_or_age(@data)
-            character_search_marker(characters)
+          elsif CharactersRelatedFilters::CHARACTER_STATUS.include?(@data)
+            characters = character_fetch_by_status(@data)
           end
+          character_search_marker(characters)
         end
 
         private

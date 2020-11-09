@@ -8,13 +8,13 @@ module Services
         end
 
         def return_data
-          if @data.match(ONLY_NUMBER) != nil
+          if @data.match(UserRelatedFilters::ONLY_NUMBER) != nil
             user = user_fetch_by_id(@data)
-          elsif @data.match(VALID_EMAIL) != nil
+          elsif @data.match(::UserRelatedFiltersVALID_EMAIL) != nil
             user = user_fetch_by_email(@data)
-          elsif ROLES.include?(@data)
+          elsif UserRelatedFilters::ROLES.include?(@data)
             user = user_fetch_by_role(@data)
-          elsif @data == ACTIVE || @data == INACTIVE
+          elsif UserRelatedFilters::ACTIVE_STATUS.include?(@data)
             user = user_fetch_by_activity(@data)
           elsif
             user =user_fetch_by_name(@data)
