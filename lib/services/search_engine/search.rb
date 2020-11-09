@@ -45,8 +45,8 @@ module Services
         User.where("name like ?", "%#{name}%")
       end
 
-      def character_fetch_by_id(id)
-        ::Character.where(id:id.to_i)
+      def character_fetch_by_id_or_age(number)
+        ::Character.where(id:number.to_i) + ::Character.where(age:number.to_i)
       end
 
     end
