@@ -50,11 +50,11 @@
             </div>
 
         <div class="form-group">
-          <%= f.label :wallet %>
+          <%= f.label :budget %>
           <%unless is_the_user_admin?(@user) %>
-            <%= f.text_field :amount, class:"form-control" %>
+            <%= f.text_field :budget, class:"form-control" %>
           <% else %>
-            <%= f.text_field :amount, class:"form-control", :disabled=>true %>
+            <%= f.text_field :budget, class:"form-control", :disabled=>true %>
           <% end %>
         </div>
 

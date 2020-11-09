@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
   before_action :is_user_admin?
 
   UPDATE_USER_ATTRS = [:id, :name, :email, :role]
-  UPDATE_BUDGET_ATTR = [:amount]
+  UPDATE_BUDGET_ATTR = [:budget]
   UPDATE_CHARACTER_ATTR = [:id,
                            :name,
                            :status,
@@ -31,7 +31,7 @@ class AdminsController < ApplicationController
 
   def user_update_by_admin
     @user = User.find_by(id:params[:id])
-    if @user.update_attributes(update_user_params) && @user.wallet.update_attributes(update_wallet_params)
+    if @user.update_attributes(update_user_params) && @user.set_budget(update_wallet_params[:budget])
       redirection_to_admin_index_path('notice', 'User details has updated.')
     else
       redirection_to_admin_index_path('alert','User details has NOT been updated.')
@@ -73,10 +73,11 @@ class AdminsController < ApplicationController
   end
 
   def update_wallet_params
+    binding.pry
     params.require(:user).permit(UPDATE_BUDGET_ATTR)
   end
 
-  def update_wallet_params
+  def update_character_params
     params.require(:character).permit(UPDATE_CHARACTER_ATTR)
   end
 end

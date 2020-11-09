@@ -17,14 +17,17 @@ class User < ActiveRecord::Base
 
   has_many :characters, dependent: :destroy
   has_one :wallet, dependent: :destroy
-  #accepts_nested_attributes_for :wallet
 
   def self.user_in_asc_id_order
     order(:id => :asc)
   end
 
-  def amount
+  def budget
     self.wallet.amount
+  end
+
+  def set_budget(amount)
+    self.wallet.update_attributes(amount: amount)
   end
 
 end
