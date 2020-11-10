@@ -12,6 +12,7 @@ module Services
       end
 
       module CharactersRelatedFilters
+        ONLY_NUMBER = UserRelatedFilters::ONLY_NUMBER
         CHARACTER_STATUS = ['dead', 'alive']
       end
 
@@ -58,7 +59,7 @@ module Services
         ::Character.where(status:status)
       end
 
-      def character__fetch_by_name(name)
+      def character_fetch_by_name(name)
         ::Character.where("name LIKE ?", "%#{name}%")
       end
 

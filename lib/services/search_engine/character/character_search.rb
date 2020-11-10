@@ -13,7 +13,7 @@ module Services
           elsif CharactersRelatedFilters::CHARACTER_STATUS.include?(@data)
             characters = character_fetch_by_status(@data)
           else
-            characters = character__fetch_by_name(@data)
+            characters = character_fetch_by_name(@data)
           end
           character_search_marker(characters)
         end
