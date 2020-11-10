@@ -43,11 +43,11 @@ module Services
       end
 
       def user_fetch_by_activity(activity_status)
-        activity_status == 'active' ? User.where(has_character:true) : User.where(has_character:true)
+        activity_status == 'active' ? User.where(has_character:true) : User.where(has_character:false)
       end
 
       def user_fetch_by_name(name)
-        User.where("name like ?", "%#{name}%")
+        User.where("name LIKE ?", "%#{name}%")
       end
 
       def character_fetch_by_id_or_age(number)
@@ -56,6 +56,10 @@ module Services
 
       def character_fetch_by_status(status)
         ::Character.where(status:status)
+      end
+
+      def character__fetch_by_name(name)
+        ::Character.where("name LIKE ?", "%#{name}%")
       end
 
     end
