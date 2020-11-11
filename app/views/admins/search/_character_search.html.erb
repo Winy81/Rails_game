@@ -1,6 +1,30 @@
-<ul class="list-inline"><% @characters.each do |character| %>
-    <li class="list-inline-item mb-3" style="width:160px">Id: <%= character["id"] %></li>
-    <li class="list-inline-item mb-3" style="width:160px">Name: <%= character["name"] %></li>
-    <li class="list-inline-item mb-3" style="width:160px"><%= link_to 'Edit', edit_character_path(character["id"].to_i), class: 'btn btn-outline-secondary' %></li>
-  <% end %>
-</ul>
+<h4 class="list-item text-center text-muted mt-4">Search - Character Results</h4></li>
+
+<div class="container mt-4">
+  <div class="form-row">
+    <div class="row justify-content-center account_management_index mb-1 mt-5">
+      <ul class="list-inline"><% @characters.each do |character| %>
+          <li class="list-inline-item mb-3" style="width:60px">Id: <%= character["id"] %></li>
+          <li class="list-inline-item mb-3" style="width:230px">Name: <%= character["name"] %></li>
+          <li class="list-inline-item mb-3" style="width:85px">Age: <%= character["age"] %></li>
+          <li class="list-inline-item mb-3" style="width:140px">Born: <%= character["created_at"].strftime("%F") %></li>
+          <li class="list-inline-item mb-3" style="width:100px">Status:<%= character["status"] %></li>
+          <% if character["status"] == "alive" %>
+            <li class="list-inline-item mb-3" style="width:150px; text-align:center">------</li>
+          <% else %>
+            <li class="list-inline-item mb-3" style="width:150px">Died: <%= character["died_on"].strftime("%F") %></li>
+          <% end %>
+          <% if character["status"] == "alive" %>
+            <li class="list-inline-item mb-3" style="width:110px">Active: <%= active_character(character) %></li>
+          <% else %>
+            <li class="list-inline-item mb-3" style="width:110px; text-align:center">----</li>
+          <% end %>
+          <li class="list-inline-item mb-3" ><%= link_to 'Edit', edit_character_path(character["id"]), class: 'btn btn-outline-secondary' %></li>
+          </br>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/admin/back_from_admin_pages' %>

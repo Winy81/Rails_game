@@ -56,6 +56,7 @@ module Services
       end
 
       def character_fetch_by_status(status)
+        binding.pry
         ::Character.where(status:status)
       end
 

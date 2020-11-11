@@ -7,7 +7,7 @@ module AdminsHelper
   end
 
   def active_character(character)
-    character.hibernated || character.manualy_hibernated == true ? 'no' : 'yes'
+    character['hibernated'] || character['manualy_hibernated'] == true ? 'no' : 'yes'
   end
 
   def alive_check(character)
