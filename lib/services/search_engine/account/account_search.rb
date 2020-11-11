@@ -26,7 +26,11 @@ module Services
         private
 
         def account_search_marker(user)
-          user.map {|c| c.attributes.merge({'search_type' => 'account'}) }
+          if user.empty?
+            user << {'search_type' => 'account'}
+          else
+            user.map {|c| c.attributes.merge({'search_type' => 'account'}) }
+          end
         end
 
       end
