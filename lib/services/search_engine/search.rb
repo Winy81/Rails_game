@@ -14,6 +14,7 @@ module Services
       module CharactersRelatedFilters
         ONLY_NUMBER = UserRelatedFilters::ONLY_NUMBER
         CHARACTER_STATUS = ['dead', 'alive']
+        CHARACTER_ACTIVITY_STATUS = ['active', 'inactive']
       end
 
       def initialize(data,source)
@@ -56,12 +57,15 @@ module Services
       end
 
       def character_fetch_by_status(status)
-        binding.pry
         ::Character.where(status:status)
       end
 
       def character_fetch_by_name(name)
         ::Character.where("name LIKE ?", "%#{name}%")
+      end
+
+      def character_fetch_by_activity_status(status)
+        status == 'active' ? ::Character.where(hibernated:true) : ::Character.where(hibernated:false)
       end
 
     end

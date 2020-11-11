@@ -3,6 +3,7 @@
 <div class="container mt-4">
   <div class="form-row">
     <div class="row justify-content-center account_management_index mb-1 mt-5">
+      <% if @characters.first.include?("id") %>
       <ul class="list-inline"><% @characters.each do |character| %>
           <li class="list-inline-item mb-3" style="width:60px">Id: <%= character["id"] %></li>
           <li class="list-inline-item mb-3" style="width:230px">Name: <%= character["name"] %></li>
@@ -22,9 +23,15 @@
           <li class="list-inline-item mb-3" ><%= link_to 'Edit', edit_character_path(character["id"]), class: 'btn btn-outline-secondary' %></li>
           </br>
         <% end %>
+      <% else %>
+          <h4 class="text-muted text-center mt-5">No Record found</h4>
+      <% end %>
       </ul>
     </div>
   </div>
+</div>
+
+<div class="spacer_1">
 </div>
 
 <%= render 'shared/admin/back_from_admin_pages' %>
