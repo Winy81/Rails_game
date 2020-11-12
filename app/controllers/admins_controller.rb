@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
 
   before_action :is_user_admin?
+  before_action :admin_path_recogniser?
 
   UPDATE_USER_ATTRS = [:id, :name, :email, :role]
   UPDATE_BUDGET_ATTR = [:budget]
@@ -80,4 +81,9 @@ class AdminsController < ApplicationController
   def update_character_params
     params.require(:character).permit(UPDATE_CHARACTER_ATTR)
   end
+
+  def admin_path_recogniser?
+    @admin_path = params['controller'] == 'admins' ? true : false
+  end
+
 end
