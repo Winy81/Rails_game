@@ -41,7 +41,11 @@ class AdminsController < ApplicationController
 
   def character_update_by_admin
     @character = Character.find_by(id:params[:id])
-    redirect_to admins_path
+    if @character.update_attributes(update_character_params)
+      redirection_to_admin_index_path('notice', 'Character details has updated.')
+    else
+      redirection_to_admin_index_path('alert','Character details has NOT been updated.')
+    end
   end
 
   def account_management

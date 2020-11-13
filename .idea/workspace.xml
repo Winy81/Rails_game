@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/shared/admin/_back_for_admin_index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/account_management.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/account_management.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/edit_character.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/edit_character.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/edit_user.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/edit_user.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admins/search/_character_search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/search/_character_search.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/admin/_back_for_characters_search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/admin/_back_for_characters_search.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/admin/_back_from_admin_pages.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/admin/_back_for_account_search.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +95,7 @@
       <workItem from="1603297477584" duration="1084000" />
       <workItem from="1603349090140" duration="1019000" />
       <workItem from="1603455029570" duration="44844000" />
-      <workItem from="1604672554995" duration="16851000" />
+      <workItem from="1604672554995" duration="17774000" />
     </task>
     <servers />
   </component>
