@@ -2,6 +2,10 @@ module AdminsHelper
 
   include Services::DateTransformer
 
+  def is_the_user_admin_api?(user)
+    user['role'] == 'admin' ? true : false
+  end
+
   def is_the_user_admin?(user)
     user.role == 'admin' ? true : false
   end
