@@ -26,3 +26,11 @@ en:
       you_can_not_eat_more: 'Your character is full'
       you_can_not_play_more: 'Your Character do not want to play more'
       character_is_dead: 'This Character is Dead already!'
+
+  admin:
+    messages:
+      user_has_updated: 'User details has been updated.'
+      user_has_not_updated: 'User details has NOT been updated.'
+      character_has_updated: 'Character details has updated.'
+      character_has_not_updated: 'Character details has NOT been updated.'
+      user_has_no_admin_privileges: 'You have no admin privileges'

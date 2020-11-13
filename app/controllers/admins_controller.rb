@@ -33,18 +33,18 @@ class AdminsController < ApplicationController
   def user_update_by_admin
     @user = User.find_by(id:params[:id])
     if @user.update_attributes(update_user_params) && @user.set_budget(update_wallet_params[:budget])
-      redirection_to_admin_index_path('notice', 'User details has updated.')
+      redirection_to_admin_index_path('notice', I18n.t('admin.messages.user_has_updated'))
     else
-      redirection_to_admin_index_path('alert','User details has NOT been updated.')
+      redirection_to_admin_index_path('alert',I18n.t('admin.messages.user_has_not_updated'))
     end
   end
 
   def character_update_by_admin
     @character = Character.find_by(id:params[:id])
     if @character.update_attributes(update_character_params)
-      redirection_to_admin_index_path('notice', 'Character details has updated.')
+      redirection_to_admin_index_path('notice', I18n.t('admin.messages.character_has_updated.'))
     else
-      redirection_to_admin_index_path('alert','Character details has NOT been updated.')
+      redirection_to_admin_index_path('alert',I18n.t('admin.messages.character_has_not_updated.'))
     end
   end
 
@@ -70,7 +70,7 @@ class AdminsController < ApplicationController
   private
 
   def is_user_admin?
-    current_user.role == 'admin' ? true : redirection_to_characters_path('alert', 'You have no admin privileges')
+    current_user.role == 'admin' ? true : redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_no_admin_privileges'))
   end
 
   def update_user_params
@@ -78,7 +78,6 @@ class AdminsController < ApplicationController
   end
 
   def update_wallet_params
-    binding.pry
     params.require(:user).permit(UPDATE_BUDGET_ATTR)
   end
 
