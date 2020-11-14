@@ -4,6 +4,13 @@
     <div class="col-md-4 ml-2">
       <li class="list-inline-item text-muted"><h5>Username: <%= current_user.name %></h5></li>
       <li class="list-inline-item"><%= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-outline-secondary', method: :delete %></li>
+      <% if user_admin?(current_user) %>
+        <% if @admin_path %>
+          <li class="list-inline-item"><%= link_to 'Gaming page', characters_path, class: 'btn btn-outline-secondary'%></li>
+        <% else %>
+          <li class="list-inline-item"><%= link_to 'Admin index', admins_index_path, class: 'btn btn-outline-secondary'%></li>
+        <% end %>
+      <% end %>
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-3 ml-1 pl-5"><h5 class="font-weight-bold font-italic text-muted ml-4 mt-1">Wallet:  <%= @amount %> Gold</h5></div>

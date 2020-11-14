@@ -276,16 +276,6 @@ class CharactersController < ApplicationController
     Character.where(user_id:current_user.id, status:'alive').count > 0
   end
 
-  def redirection_to_characters_path(type, message, extra='')
-    output_type = type.to_sym
-    redirect_to characters_path, {output_type => "#{message} #{extra}"}
-  end
-
-  def redirection_to_character_path(current_character,type, message, extra='')
-    output_type = type.to_sym
-    redirect_to character_path(current_character), {output_type => "#{message} #{extra}"}
-  end
-
   def update_user_has_character_field(user)
     user.update_attributes(has_character:true)
   end

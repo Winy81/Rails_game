@@ -1,10 +1,11 @@
 User.create!(email: "adam@adam.com",
              password: "password",
              password_confirmation: "password",
-             name: "Test_user_id_1"
+             name: "Admin_test_user",
+             role: "admin"
 )
 
-puts "First user created"
+puts "Admin user has created"
 
 User.create!(email: "adam2@adam.com",
              password: "password",
@@ -12,7 +13,7 @@ User.create!(email: "adam2@adam.com",
              name: "Test_user_id_2"
 )
 
-puts "Other user created"
+puts "Other user has created"
 
 User.create!(email: "adam3@adam.com",
              password: "password",
@@ -20,10 +21,10 @@ User.create!(email: "adam3@adam.com",
              name: "Test_user_id_3"
 )
 
-puts "Third user created"
+puts "Third user has created"
 
 4.times do |character|
-  User.find_by(name:"Test_user_id_1").characters.create!(
+  User.find_by(name:"Admin_test_user").characters.create!(
       name: "#{character}_of_User_with_id_1",
       fed_state: rand(30..60),
       happiness: rand(30..60),
@@ -35,7 +36,7 @@ puts "Third user created"
 end
 
 1.times do |character|
-  User.find_by(name:"Test_user_id_1").characters.create!(
+  User.find_by(name:"Admin_test_user").characters.create!(
       name: "#{character}_of_User_with_id_1_a",
       fed_state: rand(30..60),
       happiness: rand(30..60),
@@ -44,6 +45,8 @@ end
       status:'alive'
   )
 end
+
+User.find_by(email:'adam@adam.com').update_attributes(has_character:true)
 
 puts "5 Character created for of_User_with_id_1 one is surely alive"
 
@@ -104,9 +107,10 @@ users = User.all
 
 users.each do |user|
   random_factor = rand(1..5)
-  if random_factor > 1
+  if random_factor > 2
     users_character = Character.where(user_id:user.id).last
     users_character.update_attributes(status:'alive', died_on:nil)
+    user.update_attributes(has_character:true)
     print '.'
   end
 end

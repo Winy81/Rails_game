@@ -36,6 +36,24 @@ Rails.application.routes.draw do
     get 'statics/game_description', to: 'statics#game_description', as: :game_description
   end
 
+  get 'admins_index', to: 'admins#index', as: :admins_index
+  get 'account_management', to: 'admins#account_management', as: :account_management
+  get 'character_management', to: 'admins#character_management', as: :character_management
+
+  resources :admins, only:[:index] do
+    collection do
+      post :search, to: 'admins#search'
+    end
+  end
+
+  scope '/admins' do
+    get ':id/edit_user', to: 'admins#edit_user', as: :edit_user
+    get ':id/edit_character', to: 'admins#edit_character', as: :edit_character
+    patch ':id/user_update_by_admin', to: 'admins#user_update_by_admin', as: :user_update_by_admin
+    patch ':id/character_update_by_admin', to: 'admins#character_update_by_admin', as: :character_update_by_admin
+  end
+
+
   root to: 'mains#index'
 
 end

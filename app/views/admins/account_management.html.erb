@@ -1,0 +1,38 @@
+</br>
+<h4 class="list-item text-center text-muted mt-4">Account Management</h4></li>
+</br>
+<div class="container mt-4">
+  <%= form_tag(search_admins_path, class:"navbar-form", role: "search") do %>
+    <div class="form-row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <%= text_field_tag :search_params, nil, placeholder:"search in accounts", class:"form-control"%>
+      </div>
+      <div class="col-3">
+        <div class="text-center">
+          <%= submit_tag "Search User", class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row justify-content-center account_management_index mb-1 mt-5">
+    <ul class="list-inline"><% @users.each do |user| %>
+        <li class="list-inline-item mb-3" style="width:50px">Id: <%= user.id %></li>
+        <li class="list-inline-item mb-3" style="width:320px">Email: <%= user.email %></li>
+        <li class="list-inline-item mb-3" style="width:230px">Name:<%= user.name %></li>
+        <li class="list-inline-item mb-3" style="width:180px">User since:<%= user.created_at.strftime("%F") %></li>
+        <li class="list-inline-item mb-3" style="width:100px">Role:<%= user.role %></li>
+        <li class="list-inline-item mb-3" style="width:85px">Active:<%= user.has_character %></li>
+        <li class="list-inline-item mb-3" >
+          <% if is_the_user_admin?(user) %>
+            <%= link_to 'Show', edit_user_path(user.id), class: 'btn btn-outline-secondary' %></li>
+          <% else %>
+            <%= link_to 'Edit', edit_user_path(user.id), class: 'btn btn-outline-secondary' %></li>
+          <% end %>
+          </br>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<%= render 'shared/admin/back_for_admin_index' %>
