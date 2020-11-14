@@ -1,9 +1,10 @@
 module Jobs
   class CharacterDetailsManagerRunner
+
     @queue = :manager
 
     def perform
-      CharacterDetailsManager.hold
+      CharactersServices::CharacterDetailsManager.hold
     end
 
   end
