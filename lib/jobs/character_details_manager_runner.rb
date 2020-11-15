@@ -4,7 +4,7 @@ module Jobs
     @queue = :manager
 
     def perform
-      CharactersServices::CharacterDetailsManager.hold
+      CharactersServices::CharacterDetailsManager.new().process
     end
 
   end
