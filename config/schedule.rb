@@ -22,5 +22,5 @@ set :output, "log/cron.log"
 # Learn more: http://github.com/javan/whenever
 
 #every 1.minute do
-#  runner 'CharactersServices::CharacterDetailsManager.process, :environment => "development'
+#  runner 'Jobs::CharacterDetailsManagerRunner.new().perform'
 #end

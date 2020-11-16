@@ -2,17 +2,26 @@ module CharactersServices
   class CharacterDetailsManager
 
     def process
-      characters = Character.where(status:'alive',hibernated:false, manualy_hibernated:false)
+      characters = Character.active_living_characters
       characters.each do |character|
-        character.update_attributes(fed_state: character.fed_state -= 1,
-                                    activity_require_level: character.activity_require_level += 2,
-                                    happiness: character.happiness -= 1)
+        time_pass_process(character)
         character.reload
         if character.fed_state <= 0
-          character.update_attributes(status:'dead', died_on: Time.now)
-          character.user.update_attributes(has_character:false)
+          dying_process(character)
         end
       end
     end
+
+    private
+
+    def time_pass_process(character)
+      character.simulated_time_passed_updated
+    end
+
+    def dying_process(character)
+      character.character_is_dying
+      character.user.user_loosing_character
+    end
+
   end
 end

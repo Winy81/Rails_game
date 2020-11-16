@@ -1,7 +1,7 @@
 module Jobs
   class CharacterDetailsManagerRunner
 
-    @queue = :manager
+    #@queue = :manager
 
     def perform
       CharactersServices::CharacterDetailsManager.new().process

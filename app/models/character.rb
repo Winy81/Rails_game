@@ -36,4 +36,19 @@ class Character < ActiveRecord::Base
     self.user.name
   end
 
+  def self.active_living_characters
+    where(status:'alive',hibernated:false, manualy_hibernated:false)
+  end
+
+  def character_is_dying
+    self.update_attributes(status:'dead',
+                           died_on: Time.now)
+  end
+
+  def simulated_time_passed_updated
+    self.update_attributes(fed_state: self.fed_state -= 1,
+                           activity_require_level: self.activity_require_level += 2,
+                           happiness: self.happiness -= 1)
+  end
+
 end
