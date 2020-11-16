@@ -4,7 +4,7 @@ module Jobs
     #@queue = :manager
 
     def perform
-      CharactersServices::CharacterDetailsManager.new().process
+      CharactersServices::Events::CharacterTimePassManager.new().process
     end
 
   end

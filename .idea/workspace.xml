@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/character.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/character.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/characters_services/character_details_manager.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/character_details_manager.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/schedule.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/schedule.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/characters_services/character_details_manager.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/events/character_time_pass_manager.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/jobs/character_details_manager_runner.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jobs/character_details_manager_runner.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +44,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/services/characters_services/events" />
       <recent name="$PROJECT_DIR$/lib/services/search_engine" />
       <recent name="$PROJECT_DIR$/lib/services/search_engine/account" />
       <recent name="$PROJECT_DIR$/app/views/shared/admin" />
       <recent name="$PROJECT_DIR$/lib/services" />
-      <recent name="$PROJECT_DIR$/spec/layout/mains" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -99,7 +96,7 @@
       <workItem from="1603297477584" duration="1084000" />
       <workItem from="1603349090140" duration="1019000" />
       <workItem from="1603455029570" duration="44844000" />
-      <workItem from="1604672554995" duration="29012000" />
+      <workItem from="1604672554995" duration="29383000" />
     </task>
     <servers />
   </component>
