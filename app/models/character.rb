@@ -46,9 +46,26 @@ class Character < ActiveRecord::Base
   end
 
   def simulated_time_passed_updated
-    self.update_attributes(fed_state: self.fed_state -= 1,
-                           activity_require_level: self.activity_require_level += 2,
-                           happiness: self.happiness -= 1)
+    current_fed_state = self.fed_state
+    current_activity_require_level = self.activity_require_level
+    current_happiness = self.happiness
+    self.update_attributes(fed_state: fed_limit(current_fed_state -= 1).fed_level_min_setter,
+                           activity_require_level: activity_limit(current_activity_require_level += 2).activity_level_max_setter,
+                           happiness: happiness_limit(current_happiness -= 1).happiness_level_min_setter)
+  end
+
+  private
+
+  def fed_limit(points)
+    CharactersServices::DataFieldLimitSetter.new(points)
+  end
+
+  def activity_limit(points)
+    CharactersServices::DataFieldLimitSetter.new(points)
+  end
+
+  def happiness_limit(points)
+    CharactersServices::DataFieldLimitSetter.new(points)
   end
 
 end
