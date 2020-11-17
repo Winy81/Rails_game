@@ -21,6 +21,6 @@ set :output, "log/cron.log"
 
 # Learn more: http://github.com/javan/whenever
 
-#every 1.minute do
-#  runner 'Jobs::CharacterDetailsManagerRunner.new().perform'
+#every 1.hours do
+#  runner 'Jobs::CharacterSpecialEventRunner.new().perform'
 #end
