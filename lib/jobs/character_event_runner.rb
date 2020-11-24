@@ -12,7 +12,9 @@ module Jobs
     end
 
     def random_event_caller(identifier)
-      identifier
+      if (1..100).include?(identifier)
+        CharactersServices::Events::RandomEvents::CharityEvent.new().process
+      end
     end
 
   end
