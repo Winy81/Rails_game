@@ -21,6 +21,12 @@ set :output, "log/cron.log"
 
 # Learn more: http://github.com/javan/whenever
 
+
+
 #every 1.hours do
 #  runner 'Jobs::CharacterSpecialEventRunner.new().perform'
+#end
+
+#every :hour, at: 30 do
+#  runner 'Jobs::CharacterEventRunner.new().perform'
 #end

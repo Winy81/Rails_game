@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/schedule.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/schedule.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/jobs/character_event_runner.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jobs/character_event_runner.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +97,7 @@
       <workItem from="1603349090140" duration="1019000" />
       <workItem from="1603455029570" duration="44844000" />
       <workItem from="1604672554995" duration="45622000" />
-      <workItem from="1605793268970" duration="6110000" />
+      <workItem from="1605793268970" duration="7692000" />
     </task>
     <servers />
   </component>
