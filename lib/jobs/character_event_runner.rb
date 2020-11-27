@@ -14,7 +14,7 @@ module Jobs
     end
 
     def random_event_caller(identifier)
-      if (1..10).include?(identifier)
+      if (1..1000).include?(identifier)
         EVENT_ID_1.new().process
       end
     end

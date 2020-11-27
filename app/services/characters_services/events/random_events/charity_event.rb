@@ -13,6 +13,7 @@ module CharactersServices
           characters.each do |character|
             character.user.set_budget(updated_budget(character))
           end
+          event_recording
         end
 
         private
@@ -26,6 +27,9 @@ module CharactersServices
           character.user.budget
         end
 
+        def event_recording
+          CharactersServices::Events::EventRecorder.new(DESCRIPTION).process
+        end
       end
     end
   end
