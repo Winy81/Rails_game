@@ -1,7 +1,8 @@
 module Jobs
   class CharacterEventRunner
 
-    EVENT_ID_1 = CharactersServices::Events::RandomEvents::CharityEvent
+    EVENT_1 = CharactersServices::Events::RandomEvents::CharityEvent
+    EVENT_2 = CharactersServices::Events::RandomEvents::WorldHuntingEvent
 
     def perform
       random_event_caller(random_event_selector)
@@ -14,8 +15,10 @@ module Jobs
     end
 
     def random_event_caller(identifier)
-      if (1..1000).include?(identifier)
-        EVENT_ID_1.new().process
+      if (1..10).include?(identifier)
+        EVENT_1.new().process
+      elsif (11..20).include?(identifier)
+        EVENT_2.new().process
       end
     end
 

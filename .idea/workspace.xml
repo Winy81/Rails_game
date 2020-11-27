@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/services/characters_services/events/event_recorder.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/characters_services/events/random_events/world_hunting_event.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/characters_services/events/random_events/charity_event.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/characters_services/events/random_events/charity_event.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/jobs/character_event_runner.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jobs/character_event_runner.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +98,7 @@
       <workItem from="1603455029570" duration="44844000" />
       <workItem from="1604672554995" duration="45622000" />
       <workItem from="1605793268970" duration="8520000" />
-      <workItem from="1606482310131" duration="1311000" />
+      <workItem from="1606482310131" duration="1958000" />
     </task>
     <servers />
   </component>
@@ -119,9 +118,9 @@
       <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="898" y="373" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1605884263202" />
-    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup" timestamp="1606149182443">
+    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup" timestamp="1606491086914">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
-    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup/0.23.1680.969@0.23.1680.969" timestamp="1606149182443" />
+    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup/0.23.1680.969@0.23.1680.969" timestamp="1606491086914" />
   </component>
 </project>
