@@ -1,7 +1,7 @@
 module CharactersServices
   module Events
     module RandomEvents
-      class WorldHuntingEvent
+      class WorldHuntingEvent < EventRecorder
 
         ID = 2
         FED_STATE_FOR_REACH = '25%'
@@ -14,14 +14,9 @@ module CharactersServices
           characters.each do |character|
             #character
           end
-          event_recording
+          event_recording(ID,EVENT_NAME,DESCRIPTION)
         end
 
-        private
-
-        def event_recording
-          CharactersServices::Events::EventRecorder.new(ID,EVENT_NAME,DESCRIPTION).process
-        end
       end
     end
   end

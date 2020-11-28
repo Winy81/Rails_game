@@ -2,14 +2,8 @@ module CharactersServices
   module Events
     class EventRecorder
 
-      def initialize(id,name,description)
-        @id = id
-        @name = name
-        @description = description
-      end
-
-      def process
-        Event.create(event_id:@id,event_name:@name,description:@description)
+      def event_recording(id,event_name,description)
+        Event.create(event_id:id,event_name:event_name,description:description)
       end
 
     end
