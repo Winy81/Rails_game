@@ -4,8 +4,8 @@ module CharactersServices
       class WorldHuntingEvent
 
         ID = 2
-        FED_STATE_FOR_REACH = 25%
-        ACTIVITY_LEVEL = 50%
+        FED_STATE_FOR_REACH = '25%'
+        ACTIVITY_LEVEL = '50%'
         DESCRIPTION = "You were part of a global hunting event. Lost #{ACTIVITY_LEVEL} your Activity level but reached extra #{FED_STATE_FOR_REACH} for your Fed State"
         EVENT_NAME = self.to_s.split("::").last
 
@@ -20,7 +20,7 @@ module CharactersServices
         private
 
         def event_recording
-          CharactersServices::Events::EventRecorder.new(DESCRIPTION).process
+          CharactersServices::Events::EventRecorder.new(ID,EVENT_NAME,DESCRIPTION).process
         end
       end
     end

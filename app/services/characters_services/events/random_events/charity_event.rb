@@ -28,7 +28,7 @@ module CharactersServices
         end
 
         def event_recording
-          CharactersServices::Events::EventRecorder.new(DESCRIPTION).process
+          CharactersServices::Events::EventRecorder.new(ID,EVENT_NAME,DESCRIPTION).process
         end
       end
     end
