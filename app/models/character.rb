@@ -54,6 +54,24 @@ class Character < ActiveRecord::Base
                            happiness: happiness_limit(current_happiness -= 1).happiness_level_min_setter)
   end
 
+  def activity_require_level_decrease(current_activity_level,decreased_with)
+    decreased_value = current_activity_level + decreased_with
+    accepted_decreased_value = activity_limit(decreased_value).activity_level_min_setter
+    self.update_attributes(activity_require_level:accepted_decreased_value)
+  end
+
+  def fed_state_increase(current_fed_state,increased_with)
+    increased_value = current_fed_state.to_i + increased_with.to_i
+    accepted_increased_value = fed_limit(increased_value).fed_level_max_setter
+    self.update_attributes(fed_state:accepted_increased_value)
+  end
+
+  def happiness_increase(current_happiness_state,increased_with)
+    increased_value = current_happiness_state.to_i + increased_with.to_i
+    accepted_increased_value = happiness_limit(increased_value).happiness_level_max_setter
+    self.update_attributes(happiness:accepted_increased_value)
+  end
+
   private
 
   def fed_limit(points)
