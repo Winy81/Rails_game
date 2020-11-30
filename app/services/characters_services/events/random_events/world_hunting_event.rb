@@ -13,9 +13,9 @@ module CharactersServices
         def process
           characters = Character.active_living_characters
           characters.each do |character|
-            character.activity_require_level_decrease(character.activity_require_level, REDUCED_ACTIVITY_LEVEL_WITH)
-            character.fed_state_increase(character.fed_state, INCREASED_FED_STATE_WITH)
-            character.happiness_increase(character.happiness, INCREASED_HAPPINESS_WITH)
+            character.activity_require_level_decrease_with(REDUCED_ACTIVITY_LEVEL_WITH)
+            character.fed_state_increase_with(INCREASED_FED_STATE_WITH)
+            character.happiness_increase_with(INCREASED_HAPPINESS_WITH)
           end
           event_recording(ID,EVENT_NAME,DESCRIPTION)
         end
