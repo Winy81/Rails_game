@@ -1,7 +1,7 @@
 module CharactersServices
   module Events
     module RandomEvents
-      class CharityEvent
+      class CharityEvent < EventRecorder
 
         ID = 1
         GOLD_FOR_LOST = 1
