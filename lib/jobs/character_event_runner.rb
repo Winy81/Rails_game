@@ -3,6 +3,7 @@ module Jobs
 
     EVENT_1 = CharactersServices::Events::RandomEvents::CharityEvent
     EVENT_2 = CharactersServices::Events::RandomEvents::WorldHuntingEvent
+    EVENT_3 = CharactersServices::Events::RandomEvents::GoldRainEvent
 
     def perform
       random_event_caller(random_event_selector)
@@ -19,6 +20,8 @@ module Jobs
         EVENT_1.new().process
       elsif (11..20).include?(identifier)
         EVENT_2.new().process
+      elsif (21..30).include?(identifier)
+        EVENT_3.new().process
       end
     end
 
