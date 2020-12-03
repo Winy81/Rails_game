@@ -26,7 +26,7 @@ module Jobs
     end
 
     def halloween_event
-
+      true
     end
 
     def current_date_time
