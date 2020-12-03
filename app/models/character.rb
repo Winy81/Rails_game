@@ -60,6 +60,12 @@ class Character < ActiveRecord::Base
     self.update_attributes(activity_require_level:accepted_decreased_value)
   end
 
+  def activity_require_level_increased_with(increased_with)
+    increased_value = self.activity_require_level.to_i + increased_with
+    accepted_decreased_value = activity_limit(increased_value).activity_level_max_setter
+    self.update_attributes(activity_require_level:accepted_decreased_value)
+  end
+
   def fed_state_increase_with(increased_with)
     increased_value = self.fed_state.to_i + increased_with
     accepted_increased_value = fed_limit(increased_value).fed_level_max_setter
