@@ -5,7 +5,7 @@ module CharactersServices
 
         ID = 101
         GOLD_FOR_REACH = 100
-        DESCRIPTION = "You have a christmas gift with #{GOLD_FOR_REACH} in it!"
+        DESCRIPTION = "You have a christmas gift with #{GOLD_FOR_REACH} in it Merry Christmas!"
         EVENT_NAME = self.to_s.split("::").last
 
         def process
