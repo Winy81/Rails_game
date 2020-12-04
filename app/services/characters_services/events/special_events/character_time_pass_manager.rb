@@ -1,7 +1,11 @@
 module CharactersServices
   module Events
     module SpecialEvents
-      class CharacterTimePassManager
+      class CharacterTimePassManager < EventRecorder
+
+        ID = 100
+        DESCRIPTION = "An another hour has passed"
+        EVENT_NAME = self.to_s.split("::").last
 
         def process
           characters = Character.active_living_characters
@@ -12,6 +16,7 @@ module CharactersServices
               dying_process(character)
             end
           end
+          event_recording(ID,EVENT_NAME,DESCRIPTION)
         end
 
         private
