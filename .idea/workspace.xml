@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/services/characters_services/events/random_events/charity_event_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/services/characters_services/events/random_events/charity_event_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/spec_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +100,9 @@
       <workItem from="1606482310131" duration="20556000" />
       <workItem from="1607404580640" duration="444000" />
       <workItem from="1607405154604" duration="596000" />
-      <workItem from="1607492653334" duration="7703000" />
+      <workItem from="1607492653334" duration="8745000" />
+      <workItem from="1608318495689" duration="208000" />
+      <workItem from="1608444227792" duration="1997000" />
     </task>
     <servers />
   </component>
