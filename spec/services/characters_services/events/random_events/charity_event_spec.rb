@@ -6,7 +6,6 @@ describe CharactersServices::Events::RandomEvents::CharityEvent do
   let(:gold_for_lost) { CharactersServices::Events::RandomEvents::CharityEvent::GOLD_FOR_LOST }
   let(:description) { CharactersServices::Events::RandomEvents::CharityEvent::DESCRIPTION }
   let(:event_name) { described_class.to_s.split("::").last }
-  let(:event) { double(Event) }
 
   context 'When the event has been called' do
 
@@ -27,9 +26,7 @@ describe CharactersServices::Events::RandomEvents::CharityEvent do
       CharactersServices::Events::RandomEvents::CharityEvent.new().process
 
     end
-
   end
-
 end
 
 
