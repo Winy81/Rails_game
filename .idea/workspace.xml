@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/spec/services/characters_services/events/random_events/world_hunting_event_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/services/characters_services/events/random_events/gold_rain_event_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/services/characters_services/events/random_events/gold_rain_event_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/services/characters_services/events/special_events/character_time_pass_manager_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1607405154604" duration="596000" />
       <workItem from="1607492653334" duration="8745000" />
       <workItem from="1608318495689" duration="208000" />
-      <workItem from="1608444227792" duration="4868000" />
+      <workItem from="1608444227792" duration="5339000" />
     </task>
     <servers />
   </component>

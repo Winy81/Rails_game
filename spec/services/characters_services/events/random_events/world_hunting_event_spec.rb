@@ -14,7 +14,7 @@ describe CharactersServices::Events::RandomEvents::WorldHuntingEvent do
     let(:character) { double('Character', id:1, user_id: 1) }
     let(:characters) { [ character ] }
 
-    it 'should update the characters owner budget with GOLD_FOR_LOST' do
+    it 'should update the characters with INCREASED_HAPPINESS_WITH, INCREASED_FED_STATE_WITH, REDUCED_ACTIVITY_LEVEL_WITH' do
 
       expect(Character).to receive(:active_living_characters).and_return(characters)
       expect(character).to receive(:activity_require_level_decrease_with).with(activity_for_lost)
