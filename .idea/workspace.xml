@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/services/characters_services/events/special_events/character_time_pass_manager_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/services/characters_services/events/special_events/character_time_pass_manager_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +102,7 @@
       <workItem from="1607405154604" duration="596000" />
       <workItem from="1607492653334" duration="8745000" />
       <workItem from="1608318495689" duration="208000" />
-      <workItem from="1608444227792" duration="6100000" />
+      <workItem from="1608444227792" duration="7511000" />
     </task>
     <servers />
   </component>
@@ -113,10 +114,10 @@
       <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.969@0.23.1680.969" timestamp="1606144155340" />
-    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog" timestamp="1608003438355">
+    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog" timestamp="1608544277928">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
-    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1608003438355" />
+    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1608544277928" />
     <state x="898" y="373" width="782" height="567" key="find.popup" timestamp="1605884263202">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
