@@ -5,7 +5,7 @@ describe CharactersServices::Events::RandomEvents::GoldRainEvent do
   let(:id) { CharactersServices::Events::RandomEvents::GoldRainEvent::ID }
   let(:gold_for_reach) { CharactersServices::Events::RandomEvents::GoldRainEvent::GOLD_FOR_REACH }
   let(:description) { CharactersServices::Events::RandomEvents::GoldRainEvent::DESCRIPTION }
-  let(:activity_for_lost) { CharactersServices::Events::RandomEvents::GoldRainEvent::REDUCED_ACTIVITY_LEVEL_WITH}
+  let(:activity_for_lost) { CharactersServices::Events::RandomEvents::GoldRainEvent::REDUCED_ACTIVITY_LEVEL_WITH }
   let(:event_name) { described_class.to_s.split("::").last }
 
   context 'When the event has been called' do
