@@ -13,20 +13,22 @@ module Jobs
       time_pass_event
     end
 
+    private
+
     def time_pass_event
       CharactersServices::Events::SpecialEvents::CharacterTimePassManager.new().process
     end
 
     def christmas_event
-      true
+      CharactersServices::Events::SpecialEvents::ChristmasEvent.new().process
     end
 
     def new_year_event
-      true
+      CharactersServices::Events::SpecialEvents::NewYearsEvent.new().process
     end
 
     def halloween_event
-      true
+      CharactersServices::Events::SpecialEvents::HalloweenEvent.new().process
     end
 
     def current_date_time
