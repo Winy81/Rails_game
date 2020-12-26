@@ -1,7 +1,7 @@
 module Jobs
   class CharacterEventRunner
 
-    module EventList
+    module RandomEventList
       EVENT_1 = CharactersServices::Events::RandomEvents::CharityEvent
       EVENT_2 = CharactersServices::Events::RandomEvents::WorldHuntingEvent
       EVENT_3 = CharactersServices::Events::RandomEvents::GoldRainEvent
