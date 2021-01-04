@@ -25,19 +25,19 @@ module Jobs
     private
 
     def time_pass_event
-      EVENT_1.new().process
+      SpecialEventList::EVENT_1.new().process
     end
 
     def christmas_event
-      EVENT_2.new().process
+      SpecialEventList::EVENT_2.new().process
     end
 
     def new_year_event
-      EVENT_3.new().process
+      SpecialEventList::EVENT_3.new().process
     end
 
     def halloween_event
-      EVENT_4.new().process
+      SpecialEventList::EVENT_4.new().process
     end
 
     def current_date_time
