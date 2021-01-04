@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spec/lib/jobs/character_event_runner_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/lib/jobs/character_special_event_runner_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/event_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/event_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jobs/character_special_event_runner.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jobs/character_special_event_runner.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +106,7 @@
       <workItem from="1608318495689" duration="208000" />
       <workItem from="1608444227792" duration="11330000" />
       <workItem from="1608701261739" duration="5642000" />
-      <workItem from="1608803459705" duration="10978000" />
+      <workItem from="1608803459705" duration="21283000" />
     </task>
     <servers />
   </component>
