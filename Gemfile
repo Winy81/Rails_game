@@ -32,6 +32,9 @@ gem 'whenever', require: false
 #for layout
 gem 'bootstrap', '~> 4.0'
 
+#for test
+gem 'timecop', '~> 0.9.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
