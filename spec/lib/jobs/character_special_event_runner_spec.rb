@@ -37,6 +37,23 @@ describe Jobs::CharacterSpecialEventRunner do
 
       end
     end
+
+    context 'When Halloween time' do
+
+      before do
+        new_time = Time.local(2020, 10, 31, 20, 0, 0)
+        Timecop.travel(new_time)
+      end
+
+      it 'should process HalloweenEvent' do
+
+        Jobs::CharacterSpecialEventRunner.new().perform
+
+        expect(Event.last(2).first.event_name).to eq('HalloweenEvent')
+        expect(Event.last.event_name).to eq('CharacterTimePassManager')
+
+      end
+    end
   end
 
 end
