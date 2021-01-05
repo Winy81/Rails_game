@@ -10,7 +10,7 @@ module Jobs
 
     module DatesOfSpecialEvents
       CHRISTMAS_DATE = "12-24--06-00"
-      NEW_YEARS_EVE_DATE = "01-01--00-00"
+      NEW_YEARS_EVE_DATE = "1-1--00-00"
       HALLOWEEN_EVENT = "10-31--20-00"
     end
 
@@ -42,7 +42,7 @@ module Jobs
 
     def current_date_time
       date_time = Time.now
-      formated_date_time = date_time.strftime("%_m-%-d--%H-%M")
+      formated_date_time = date_time.strftime("%_m-%-d--%H-%M").gsub(/\s+/, "")
       formated_date_time
     end
 

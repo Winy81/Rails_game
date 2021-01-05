@@ -4,24 +4,36 @@ describe Jobs::CharacterSpecialEventRunner do
 
   context 'Hit a event call' do
 
-    let(:EVENT_1) {double(Jobs::CharacterSpecialEventRunner::SpecialEventList::Events::SpecialEvents::CharacterTimePassManager)}
-    let(:EVENT_2) {double(Jobs::CharacterSpecialEventRunner::SpecialEventList::Events::SpecialEvents::ChristmasEvent)}
-
     context 'When Christmas time' do
 
-      let(:service) {double(Jobs::CharacterSpecialEventRunner)}
-      let(:christmas_event) {double(CharactersServices::Events::SpecialEvents::ChristmasEvent)}
-      let(:christmas_date) { "12-24--06-00" }
+      before do
+        new_time = Time.local(2020, 12, 24, 6, 0, 0)
+        Timecop.travel(new_time)
+      end
 
       it 'should process ChristmasEvent' do
 
-        new_time = Time.local(2020, 12, 24, 6, 0, 0)
+        Jobs::CharacterSpecialEventRunner.new().perform
+
+        expect(Event.last(2).first.event_name).to eq('ChristmasEvent')
+        expect(Event.last.event_name).to eq('CharacterTimePassManager')
+
+      end
+    end
+
+    context 'When New Years Eve time' do
+
+      before do
+        new_time = Time.local(2020, 1, 1, 0, 0, 0)
         Timecop.travel(new_time)
+      end
+
+      it 'should process NewYearsEvent' do
 
         Jobs::CharacterSpecialEventRunner.new().perform
 
+        expect(Event.last(2).first.event_name).to eq('NewYearsEvent')
         expect(Event.last.event_name).to eq('CharacterTimePassManager')
-        expect(Event.last(2).first.event_name).to eq('ChristmasEvent')
 
       end
     end
