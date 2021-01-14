@@ -20,13 +20,13 @@ module Jobs
 
     def random_event_caller(identifier)
       if (1..10).include?(identifier)
-        EventList::EVENT_1.new().process
+        RandomEventList::EVENT_1.new().process
       elsif (11..20).include?(identifier)
-        EventList::EVENT_2.new().process
+        RandomEventList::EVENT_2.new().process
       elsif (21..30).include?(identifier)
-        EventList::EVENT_3.new().process
+        RandomEventList::EVENT_3.new().process
       elsif (31..40).include?(identifier)
-        EventList::EVENT_3.new().process
+        RandomEventList::EVENT_3.new().process
       end
     end
 

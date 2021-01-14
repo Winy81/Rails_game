@@ -6,20 +6,23 @@ describe Jobs::CharacterEventRunner do
 
     context 'when CharityEvent rolled' do
 
-      let(:service) {double(Jobs::CharacterEventRunner)}
+      let(:subject) { double(Jobs::CharacterEventRunner )}
       let(:charity_event) { double(CharactersServices::Events::RandomEvents::CharityEvent) }
-      #let(:random_event_selector) { 5 }
-
-      before do
-
-      end
+      let(:random) { double(::Random) }
 
       it 'should process CharityEvent' do
 
-        service.should_receive(:random_event_selector).and_return(5)
-        expect(service).to receive(:random_event_caller).with(:random_event_selector)
+=begin
+        allow(::Random).to receive(:new).and_return(random)
+        expect(random).to receive(:rand).with(1..1000).and_return(5)
+        expect(subject).to receive(:random_event_caller).with(5)
+
+        expect(CharactersServices::Events::RandomEvents::CharityEvent).to receive(:new).and_return(charity_event)
+        expect(charity_event).to receive(:process)
 
         Jobs::CharacterEventRunner.new().perform
+=end
+
       end
     end
 
