@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
     self.wallet.update_attributes(amount: amount)
   end
 
+  def user_loosing_character
+    self.update_attributes(has_character:false)
+  end
+
 end

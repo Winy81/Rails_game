@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/locales/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jobs/character_event_runner.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jobs/character_event_runner.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/lib/jobs/character_event_runner_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/lib/jobs/character_event_runner_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,11 +44,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/services/characters_services/events/special_events" />
+      <recent name="$PROJECT_DIR$/app/services/characters_services/events" />
       <recent name="$PROJECT_DIR$/lib/services/search_engine" />
       <recent name="$PROJECT_DIR$/lib/services/search_engine/account" />
       <recent name="$PROJECT_DIR$/app/views/shared/admin" />
-      <recent name="$PROJECT_DIR$/lib/services" />
-      <recent name="$PROJECT_DIR$/spec/layout/mains" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -96,7 +96,18 @@
       <workItem from="1603297477584" duration="1084000" />
       <workItem from="1603349090140" duration="1019000" />
       <workItem from="1603455029570" duration="44844000" />
-      <workItem from="1604672554995" duration="19549000" />
+      <workItem from="1604672554995" duration="45622000" />
+      <workItem from="1605793268970" duration="8520000" />
+      <workItem from="1606482310131" duration="20556000" />
+      <workItem from="1607404580640" duration="444000" />
+      <workItem from="1607405154604" duration="596000" />
+      <workItem from="1607492653334" duration="8745000" />
+      <workItem from="1608318495689" duration="208000" />
+      <workItem from="1608444227792" duration="11330000" />
+      <workItem from="1608701261739" duration="5642000" />
+      <workItem from="1608803459705" duration="31792000" />
+      <workItem from="1610339180639" duration="565000" />
+      <workItem from="1610369341950" duration="636000" />
     </task>
     <servers />
   </component>
@@ -104,21 +115,23 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603108412717">
+    <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606144155340">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
-    <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.969@0.23.1680.969" timestamp="1603108412717" />
-    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog" timestamp="1605242117237">
+    <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.969@0.23.1680.969" timestamp="1606144155340" />
+    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog" timestamp="1610596455225">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
-    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1605242117237" />
-    <state x="898" y="373" width="782" height="567" key="find.popup" timestamp="1605276221925">
-      <screen x="0" y="23" width="1680" height="969" />
+    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1610596455225" />
+    <state x="898" y="372" width="782" height="566" key="find.popup" timestamp="1609847095488">
+      <screen x="0" y="23" width="1680" height="966" />
     </state>
-    <state x="898" y="373" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1605276221925" />
-    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup" timestamp="1603799419838">
-      <screen x="0" y="23" width="1680" height="969" />
+    <state x="898" y="372" width="782" height="566" key="find.popup/0.23.1680.966@0.23.1680.966" timestamp="1609847095488" />
+    <state x="898" y="373" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1605884263202" />
+    <state x="566" y="304" width="670" height="674" key="search.everywhere.popup" timestamp="1609825058245">
+      <screen x="0" y="23" width="1680" height="966" />
     </state>
-    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup/0.23.1680.969@0.23.1680.969" timestamp="1603799419838" />
+    <state x="566" y="304" width="670" height="674" key="search.everywhere.popup/0.23.1680.966@0.23.1680.966" timestamp="1609825058245" />
+    <state x="566" y="305" width="670" height="676" key="search.everywhere.popup/0.23.1680.969@0.23.1680.969" timestamp="1606491086914" />
   </component>
 </project>

@@ -32,6 +32,9 @@ gem 'whenever', require: false
 #for layout
 gem 'bootstrap', '~> 4.0'
 
+#for test
+gem 'timecop', '~> 0.9.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -57,5 +60,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 4.0'
 end
 

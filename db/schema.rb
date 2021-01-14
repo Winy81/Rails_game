@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200921161340) do
+ActiveRecord::Schema.define(version: 20201127150843) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name",                                     null: false
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20200921161340) do
     t.boolean  "hibernated",             default: false
     t.boolean  "manualy_hibernated",     default: false
     t.datetime "died_on"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "event_id",    null: false
+    t.string   "event_name",  null: false
+    t.string   "description", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

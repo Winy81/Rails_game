@@ -3,6 +3,8 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
+set :output, "log/cron.log"
+
 # Example:
 #
 # set :output, "/path/to/my/cron_log.log"
@@ -18,3 +20,13 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+
+
+#every 1.hours do
+#  runner 'Jobs::CharacterSpecialEventRunner.new().perform'
+#end
+
+#every :hour, at: 30 do
+#  runner 'Jobs::CharacterEventRunner.new().perform'
+#end
