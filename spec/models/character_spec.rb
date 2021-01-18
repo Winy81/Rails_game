@@ -14,6 +14,10 @@ RSpec.describe Character, type: :model do
 
       it { is_expected.to validate_presence_of :user_id }
 
+      it { should validate_length_of(:name).is_at_most(25).with_message('is too long (maximum is 25 characters)') }
+
+      it { should validate_uniqueness_of(:name) }
+
     end
 
   end
