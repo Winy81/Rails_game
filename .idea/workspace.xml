@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Dragon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dragon.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/models/character_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/character_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,7 @@
       <workItem from="1608701261739" duration="5642000" />
       <workItem from="1608803459705" duration="31792000" />
       <workItem from="1610339180639" duration="565000" />
-      <workItem from="1610369341950" duration="4758000" />
+      <workItem from="1610369341950" duration="7769000" />
     </task>
     <servers />
   </component>
@@ -118,9 +119,10 @@
       <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.969@0.23.1680.969" timestamp="1606144155340" />
-    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog" timestamp="1610596455225">
-      <screen x="0" y="23" width="1680" height="969" />
+    <state x="92" y="30" width="1509" height="853" key="DiffContextDialog" timestamp="1611051385408">
+      <screen x="0" y="23" width="1680" height="967" />
     </state>
+    <state x="92" y="30" width="1509" height="853" key="DiffContextDialog/0.23.1680.967@0.23.1680.967" timestamp="1611051385408" />
     <state x="92" y="30" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1610596455225" />
     <state x="898" y="372" width="782" height="566" key="find.popup" timestamp="1609847095488">
       <screen x="0" y="23" width="1680" height="966" />
