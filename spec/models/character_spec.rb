@@ -88,5 +88,23 @@ RSpec.describe Character, type: :model do
     end
   end
 
+  describe '#characters_history_order_logic' do
+
+    before do
+      @updated_character_1 = @character_1.update(id:100)
+      @dead_character = Character.create(name:'dead_character_1',fed_state: 10,happiness:10, activity_require_level: 10, status:'dead', age: 10, user_id: 1)
+      @dead_character_2 = Character.create(name:'dead_character_2',fed_state: 10,happiness:10, activity_require_level: 10, status:'dead', age: 20, user_id: 1)
+    end
+
+    it 'has to returned with all character the with "alive" first and DESC order by ID' do
+
+      ordered_characters = Character.all.characters_history_order_logic
+
+      expect(ordered_characters.count).to eq(3)
+
+      expect(ordered_characters.first.status).to eq('alive')
+      expect(ordered_characters.second.id).to be > (ordered_characters.last.id)
+    end
+  end
 
 end
