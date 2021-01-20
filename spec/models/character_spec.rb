@@ -70,4 +70,23 @@ RSpec.describe Character, type: :model do
   end
 
 
+  describe '#character_in_asc_id_order' do
+
+    before do
+      @character_2 = Character.create(name:'character_2',fed_state: 10,happiness:10, activity_require_level: 10, status:'alive', age: 5, user_id: 1 )
+      @dead_character = Character.create(name:'dead_character',fed_state: 10,happiness:10, activity_require_level: 10, status:'dead', age: 10, user_id: 1)
+    end
+
+    it 'has to returned with all character in ASC order by ID' do
+
+      ordered_characters = Character.all.character_in_asc_id_order
+
+      expect(ordered_characters.count).to eq(3)
+
+      expect(ordered_characters.first.id).to be < (ordered_characters.second.id)
+      expect(ordered_characters.first.id).to be < (ordered_characters.last.id)
+    end
+  end
+
+
 end
