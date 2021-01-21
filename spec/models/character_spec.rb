@@ -23,12 +23,12 @@ RSpec.describe Character, type: :model do
 
       it { should validate_length_of(:name).is_at_most(25).with_message('is too long (maximum is 25 characters)') }
 
-        it 'required unique name' do
+      it 'required unique name' do
 
-          expect(@character_1).to be_valid
-          expect(invalid_char_by_name).not_to be_valid
+        expect(@character_1).to be_valid
+        expect(invalid_char_by_name).not_to be_valid
 
-        end
+      end
     end
   end
 
@@ -104,6 +104,35 @@ RSpec.describe Character, type: :model do
 
       expect(ordered_characters.first.status).to eq('alive')
       expect(ordered_characters.second.id).to be > (ordered_characters.last.id)
+    end
+  end
+
+  describe '#limited_desc_ordered_characters' do
+
+    before do
+      15.times do |character |
+        Character.create(name:"#{character}_of_test",
+                         user_id:1,
+                         fed_state: 10,
+                         happiness: 10,
+                         age: rand(10..200),
+                         activity_require_level:10,
+                         status:'dead',
+                         died_on: Time.now
+        )
+      end
+    end
+
+    it 'has to returned with all character in DESC order by age with limit 10' do
+
+      all_characters = Character.all
+      ordered_characters = Character.all.limited_desc_ordered_characters
+
+      expect(all_characters.count).to eq(16)
+      expect(ordered_characters.count).to eq(10)
+      expect(ordered_characters.first.age).to be > (ordered_characters.second.age)
+      expect(ordered_characters.first.age).to be > (ordered_characters.last.age)
+
     end
   end
 
