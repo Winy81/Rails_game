@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Character, type: :model do
 
   before :each do
-    @user = User.create(id:1, email: "test_user@email.com", name: "test_user", role: "user")
+    @user = User.create(id:1, email: "test_user@email.com", name: "test_user", role: "user", password:'password')
     @character_1 = Character.create(name:'character_1',fed_state: 10,happiness:10, activity_require_level: 10, status:'alive', age: 3, user_id: 1 )
   end
 
@@ -132,6 +132,17 @@ RSpec.describe Character, type: :model do
       expect(ordered_characters.count).to eq(10)
       expect(ordered_characters.first.age).to be > (ordered_characters.second.age)
       expect(ordered_characters.first.age).to be > (ordered_characters.last.age)
+
+    end
+  end
+
+  describe '#owner_of_character' do
+
+    it 'has to returned with name owner of character' do
+
+      filtered = @character_1.owner_of_character
+
+      expect(filtered).to eq("test_user")
 
     end
   end
