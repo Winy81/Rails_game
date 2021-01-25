@@ -147,4 +147,26 @@ RSpec.describe Character, type: :model do
     end
   end
 
+  describe '#active_living_characters' do
+
+    before do
+      @character_2 = Character.create(name:'character_2',fed_state: 10,happiness:10, activity_require_level: 10, status:'alive', age: 5, user_id: 1 )
+      @dead_character = Character.create(name:'dead_character',fed_state: 10,happiness:10, activity_require_level: 10, status:'dead', age: 10, user_id: 1)
+    end
+
+    it 'has to returned with all character in ASC order by ID' do
+
+      all_characters = Character.all
+      ordered_characters = Character.active_living_characters
+
+      expect(all_characters.count).to eq(3)
+
+      expect(ordered_characters.count).to eq(2)
+
+      ordered_characters.each { |character| expect(character.status).to eq('alive')
+                                            expect(character.hibernated).to eq(false)
+                                            expect(character.manualy_hibernated).to eq(false)}
+
+    end
+  end
 end
