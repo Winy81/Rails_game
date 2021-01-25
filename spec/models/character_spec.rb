@@ -154,7 +154,7 @@ RSpec.describe Character, type: :model do
       @dead_character = Character.create(name:'dead_character',fed_state: 10,happiness:10, activity_require_level: 10, status:'dead', age: 10, user_id: 1)
     end
 
-    it 'has to returned with all character in ASC order by ID' do
+    it 'has to returned with all active living character' do
 
       all_characters = Character.all
       ordered_characters = Character.active_living_characters
@@ -166,6 +166,26 @@ RSpec.describe Character, type: :model do
       ordered_characters.each { |character| expect(character.status).to eq('alive')
                                             expect(character.hibernated).to eq(false)
                                             expect(character.manualy_hibernated).to eq(false)}
+
+    end
+  end
+
+  describe '#character_is_dying' do
+
+    it 'the active character has to be updated for status: "dead" and died_on: "Now"' do
+
+      process_time = Timecop.freeze(Time.now)
+
+      dying_character = Character.find_by(id:1)
+
+      dying_character.character_is_dying
+
+      dead_character = Character.find_by(id:1)
+
+      expect(dead_character.status).to eq('dead')
+      expect(dead_character.died_on).to eq(process_time)
+
+      Timecop.return
 
     end
   end
