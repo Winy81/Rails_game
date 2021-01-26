@@ -164,8 +164,8 @@ RSpec.describe Character, type: :model do
       expect(ordered_characters.count).to eq(2)
 
       ordered_characters.each { |character| expect(character.status).to eq('alive')
-                                            expect(character.hibernated).to eq(false)
-                                            expect(character.manualy_hibernated).to eq(false)}
+      expect(character.hibernated).to eq(false)
+      expect(character.manualy_hibernated).to eq(false)}
 
     end
   end
@@ -187,6 +187,30 @@ RSpec.describe Character, type: :model do
 
       Timecop.return
 
+    end
+  end
+
+  describe '#simulated_time_passed_updated' do
+
+    context 'regular time pass process' do
+
+      it 'the active character has to be updated for ....................' do
+
+        character = Character.find_by(id:1)
+
+        original_fed_state = character.fed_state
+        original_activity_require_level = character.activity_require_level
+        original_happiness = character.happiness
+        original_age = character.age
+
+        character.simulated_time_passed_updated
+
+        expect(character.fed_state).to eq(original_fed_state - 1)
+        expect(character.activity_require_level).to eq(original_activity_require_level + 2)
+        expect(character.happiness).to eq(original_happiness - 1)
+        expect(character.age).to eq(original_age + 1)
+
+      end
     end
   end
 end
