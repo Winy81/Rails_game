@@ -194,7 +194,7 @@ RSpec.describe Character, type: :model do
 
     context 'regular time pass process' do
 
-      it 'the active character has to be updated for ....................' do
+      it 'the active character has to be updated on fed_state, activity_require_level, happiness, age' do
 
         character = Character.find_by(id:1)
 
@@ -210,6 +210,33 @@ RSpec.describe Character, type: :model do
         expect(character.happiness).to eq(original_happiness - 1)
         expect(character.age).to eq(original_age + 1)
 
+      end
+    end
+
+    context 'when the skills hit the limit' do
+
+      context 'when the activity level hit the maximum' do
+
+        let(:activity_require_level_max) { CharactersServices::DataFieldLimitSetter::CharacterValuesLimit::ACTIVITY_LIMIT_MAX }
+
+        it 'the active character has to be updated on fed_state, happiness, age but the activity level still has to be the max' do
+
+          character = Character.find_by(id:1)
+          character.update_attributes(activity_require_level:activity_require_level_max)
+
+          original_fed_state = character.fed_state
+          original_activity_require_level = character.activity_require_level
+          original_happiness = character.happiness
+          original_age = character.age
+
+          character.simulated_time_passed_updated
+
+          expect(character.fed_state).to eq(original_fed_state - 1)
+          expect(character.activity_require_level).to eq(original_activity_require_level)
+          expect(character.happiness).to eq(original_happiness - 1)
+          expect(character.age).to eq(original_age + 1)
+
+        end
       end
     end
   end
