@@ -219,7 +219,7 @@ RSpec.describe Character, type: :model do
 
         let(:activity_require_level_max) { CharactersServices::DataFieldLimitSetter::CharacterValuesLimit::ACTIVITY_LIMIT_MAX }
 
-        it 'the active character has to be updated on fed_state, happiness, age but the activity level still has to be the max' do
+        it 'the active character has to be updated on fed_state, happiness, age, but the activity level still has to be the max' do
 
           character = Character.find_by(id:1)
           character.update_attributes(activity_require_level:activity_require_level_max)
@@ -234,6 +234,30 @@ RSpec.describe Character, type: :model do
           expect(character.fed_state).to eq(original_fed_state - 1)
           expect(character.activity_require_level).to eq(original_activity_require_level)
           expect(character.happiness).to eq(original_happiness - 1)
+          expect(character.age).to eq(original_age + 1)
+
+        end
+      end
+
+      context 'when the happiness level hit the minimum' do
+
+        let(:happiness_min) { CharactersServices::DataFieldLimitSetter::CharacterValuesLimit::HAPPINESS_LIMIT_MIN }
+
+        it 'the active character has to be updated on fed_state, activity level, age, but the happiness still has to be the min' do
+
+          character = Character.find_by(id:1)
+          character.update_attributes(happiness:happiness_min)
+
+          original_fed_state = character.fed_state
+          original_activity_require_level = character.activity_require_level
+          original_happiness = character.happiness
+          original_age = character.age
+
+          character.simulated_time_passed_updated
+
+          expect(character.fed_state).to eq(original_fed_state - 1)
+          expect(character.activity_require_level).to eq(original_activity_require_level + 2)
+          expect(character.happiness).to eq(original_happiness)
           expect(character.age).to eq(original_age + 1)
 
         end
