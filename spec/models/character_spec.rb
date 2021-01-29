@@ -288,4 +288,24 @@ RSpec.describe Character, type: :model do
       end
     end
   end
+
+  describe 'Attributes update' do
+
+    describe '#activity_require_level_decrease_with' do
+
+      let(:value_for_decrease_with) { 5 }
+
+      it 'should return with decreased activity_require_level' do
+
+        character = Character.find_by(id:1)
+
+        original_activity_require_level = character.activity_require_level
+
+        character.activity_require_level_decrease_with(value_for_decrease_with)
+
+        expect(character.activity_require_level).to eq(original_activity_require_level + value_for_decrease_with)
+
+      end
+    end
+  end
 end
