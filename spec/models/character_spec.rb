@@ -262,6 +262,30 @@ RSpec.describe Character, type: :model do
 
         end
       end
+
+      context 'when the fed_state level hit the minimum' do
+
+        let(:fed_state_min) { CharactersServices::DataFieldLimitSetter::CharacterValuesLimit::FED_LIMIT_MIN }
+
+        it 'the active character has to be updated on happiness activity level, age, but the fed_state still has to be the min' do
+
+          character = Character.find_by(id:1)
+          character.update_attributes(fed_state:fed_state_min)
+
+          original_fed_state = character.fed_state
+          original_activity_require_level = character.activity_require_level
+          original_happiness = character.happiness
+          original_age = character.age
+
+          character.simulated_time_passed_updated
+
+          expect(character.fed_state).to eq(original_fed_state)
+          expect(character.activity_require_level).to eq(original_activity_require_level + 2)
+          expect(character.happiness).to eq(original_happiness - 1)
+          expect(character.age).to eq(original_age + 1)
+
+        end
+      end
     end
   end
 end
