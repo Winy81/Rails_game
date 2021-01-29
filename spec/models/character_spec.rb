@@ -341,5 +341,22 @@ RSpec.describe Character, type: :model do
 
       end
     end
+
+    describe '#happiness_increase_with' do
+
+      let(:value_for_increase_with) { 5 }
+
+      it 'should return with increased happiness' do
+
+        character = Character.find_by(id:1)
+
+        original_activity_require_level = character.happiness
+
+        character.happiness_increase_with(value_for_increase_with)
+
+        expect(character.happiness).to eq(original_activity_require_level + value_for_increase_with)
+
+      end
+    end
   end
 end
