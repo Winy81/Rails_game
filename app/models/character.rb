@@ -74,16 +74,16 @@ class Character < ActiveRecord::Base
     self.update_attributes(fed_state:accepted_increased_value)
   end
 
-  def happiness_increase_with(increased_with)
-    increased_value = self.happiness.to_i + increased_with
-    accepted_increased_value = happiness_limit(increased_value).happiness_level_max_setter
-    self.update_attributes(happiness:accepted_increased_value)
-  end
-
   def happiness_decreased_with(decreased_with)
     decreased_value = self.happiness.to_i + decreased_with
     accepted_decreased_value = happiness_limit(decreased_value).happiness_level_min_setter
     self.update_attributes(happiness:accepted_decreased_value)
+  end
+
+  def happiness_increase_with(increased_with)
+    increased_value = self.happiness.to_i + increased_with
+    accepted_increased_value = happiness_limit(increased_value).happiness_level_max_setter
+    self.update_attributes(happiness:accepted_increased_value)
   end
 
   private
