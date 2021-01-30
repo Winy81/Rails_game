@@ -174,7 +174,7 @@ RSpec.describe Character, type: :model do
 
     it 'the active character has to be updated for status: "dead" and died_on: "Now"' do
 
-      process_time = Timecop.freeze(Time.now)
+      process_time = Timecop.freeze(Time.now.to_s(:db))
 
       dying_character = Character.find_by(id:1)
 
