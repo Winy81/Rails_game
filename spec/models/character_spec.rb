@@ -358,5 +358,23 @@ RSpec.describe Character, type: :model do
 
       end
     end
+
+    describe '#fed_state_increase_with' do
+
+      let(:value_for_increase_with) { 5 }
+
+      it 'should return with increased fed_state' do
+
+        character = Character.find_by(id:1)
+
+        original_activity_require_level = character.fed_state
+
+        character.fed_state_increase_with(value_for_increase_with)
+
+        expect(character.fed_state).to eq(original_activity_require_level + value_for_increase_with)
+
+      end
+
+    end
   end
 end
