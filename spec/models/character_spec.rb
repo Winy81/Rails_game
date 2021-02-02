@@ -32,6 +32,12 @@ RSpec.describe Character, type: :model do
     end
   end
 
+  describe 'associations' do
+
+    it { should belong_to(:user) }
+
+  end
+
   describe '#age_order_filter' do
 
     before do
