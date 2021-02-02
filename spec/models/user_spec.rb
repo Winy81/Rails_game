@@ -17,4 +17,11 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'associations' do
+
+    it { should have_many(:characters) }
+    it { should have_one(:wallet) }
+
+  end
+
 end
