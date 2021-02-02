@@ -12,4 +12,11 @@ RSpec.describe Wallet, type: :model do
 
     end
   end
+
+  describe 'associations' do
+
+    it { should belong_to(:user) }
+
+  end
+
 end
