@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   has_many :characters, dependent: :destroy
   has_one :wallet, dependent: :destroy
 
-  def self.user_in_asc_id_order
-    order(:id => :asc)
+  def self.users_in_asc_id_order
+    all.order(:id => :asc)
   end
 
   def budget

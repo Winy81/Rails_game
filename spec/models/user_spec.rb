@@ -24,4 +24,25 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe '#users_in_asc_id_order' do
+
+    before do
+      @user = User.create(id:1, email: "test_user@email.com", name: "test_user", role: "user", password:'password')
+      @user2 = User.create(id:2, email: "test_user2@email.com", name: "test_user2", role: "user", password:'password')
+    end
+
+    it 'should return with all users in ASC ordered ID' do
+
+      all_users = User.all
+      ordered_users = User.users_in_asc_id_order
+
+      expect(all_users.count).to eq(2)
+      expect(all_users.count).to eq(ordered_users.count)
+
+      expect(ordered_users.first.id).to eq(1)
+      expect(ordered_users.last.id).to eq(2)
+    end
+
+  end
+
 end

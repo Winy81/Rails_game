@@ -49,7 +49,7 @@ class AdminsController < ApplicationController
   end
 
   def account_management
-    @users = User.all.user_in_asc_id_order
+    @users = User.users_in_asc_id_order
   end
 
   def character_management
