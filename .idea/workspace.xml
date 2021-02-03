@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/user_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/user_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +109,7 @@
       <workItem from="1610369341950" duration="30628000" />
       <workItem from="1612088905738" duration="6969000" />
       <workItem from="1612280630100" duration="598000" />
-      <workItem from="1612286180110" duration="596000" />
+      <workItem from="1612286180110" duration="5214000" />
     </task>
     <servers />
   </component>
@@ -123,10 +121,10 @@
       <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="618" y="353" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.969@0.23.1680.969" timestamp="1606144155340" />
-    <state x="92" y="30" width="1509" height="854" key="DiffContextDialog" timestamp="1611987870606">
-      <screen x="0" y="23" width="1680" height="969" />
+    <state x="92" y="30" width="1509" height="853" key="DiffContextDialog" timestamp="1612337266746">
+      <screen x="0" y="23" width="1680" height="966" />
     </state>
-    <state x="92" y="30" width="1509" height="853" key="DiffContextDialog/0.23.1680.966@0.23.1680.966" timestamp="1611063702404" />
+    <state x="92" y="30" width="1509" height="853" key="DiffContextDialog/0.23.1680.966@0.23.1680.966" timestamp="1612337266746" />
     <state x="92" y="30" width="1509" height="853" key="DiffContextDialog/0.23.1680.967@0.23.1680.967" timestamp="1611591236140" />
     <state x="92" y="30" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1611987870604" />
     <state x="92" y="30" width="1509" height="858" key="DiffContextDialog/0.23.1680.972@0.23.1680.972" timestamp="1611329581257" />
