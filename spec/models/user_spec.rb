@@ -45,4 +45,21 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe '#budget' do
+
+    before do
+      @user = User.create(id:1, email: "test_user@email.com", name: "test_user", role: "user", password:'password')
+      @users_wallet = Wallet.create(user_id: 1, amount:100)
+    end
+
+    it 'should return with a users budget' do
+
+      users_budget = @user.budget
+
+      expect(users_budget).to eq(100)
+
+    end
+
+  end
+
 end

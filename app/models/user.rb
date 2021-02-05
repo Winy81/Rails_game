@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def budget
-    self.wallet.amount
+    wallet.amount
   end
 
   def set_budget(amount)
