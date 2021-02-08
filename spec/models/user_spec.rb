@@ -83,4 +83,20 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe '#user_loosing_character' do
+
+    before do
+      @user = User.create(id:1, email: "test_user@email.com", name: "test_user", role: "user", password:'password', has_character:true)
+    end
+
+    it 'should return with a updated user with has_character:false' do
+
+      @user.user_loosing_character
+
+      expect(@user.has_character).to eq(false)
+
+    end
+
+  end
+
 end
