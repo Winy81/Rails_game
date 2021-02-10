@@ -1,7 +1,6 @@
 class MainsController < ApplicationController
 
   def index
-    @message = "Hello from mains_controller#index"
     @characters = Character.all.age_order_filter.limit(10)
   end
 
