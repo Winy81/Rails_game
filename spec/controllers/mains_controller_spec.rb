@@ -47,7 +47,18 @@ describe MainsController, type: :request do
 
   describe 'GET#show' do
 
+    it 'should return with user and his own characters' do
 
+      user = User.create(id:101, email: "test_user@email.com", name: "test_user", role: "user", password:'password')
+      character = Character.create(id:101, name:'character_main_show',fed_state: 10,happiness:10, activity_require_level: 10, status:'alive', age: 3, user_id:101 )
+      all_users_character = [ character ]
+
+      get "/mains/#{character.id}"
+
+      expect(assigns(:user)).to eq(user)
+      expect(assigns(:number_of_characters)).to eq(all_users_character)
+
+    end
   end
 
   describe 'GET#leaderboard' do
@@ -72,7 +83,7 @@ describe MainsController, type: :request do
       expect(ordered_characters.first.age).to eq(90)
       expect(ordered_characters.last.age).to eq(3)
 
-      get mains_path
+      get leaderboard_path
 
     end
   end
