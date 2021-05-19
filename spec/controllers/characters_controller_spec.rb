@@ -27,7 +27,7 @@ describe CharactersController, type: :request do
       get characters_path
 
       expect(assigns(:characters).count).to eq(number_of_all_characters)
-      expect(assigns(:my_character)).to eq(Character.find_by(id:1002))
+      expect(assigns(:my_character)).to eq(Character.find_by(user_id:@current_user.id, status:'alive'))
 
     end
   end
@@ -94,7 +94,7 @@ describe CharactersController, type: :request do
       login_as(@current_user)
     end
 
-    let(:message) { "Oops, your character has could not finish the meal " }
+    let(:message) { 'Oops, your character has could not finish the meal ' }
 
     it 'should redirect into character_path and flash a message' do
 
@@ -106,6 +106,35 @@ describe CharactersController, type: :request do
     end
   end
 
+  describe 'POST#feeding_process' do
 
+    before do
+      login_as(@current_user)
+    end
 
+    context 'When the character has not enough activity point to process the action' do
+
+      it 'should redirect to character path with warning message' do
+
+      end
+
+    end
+
+    context 'When the character has enough activity point but the user has not enough gold to process this action' do
+
+      it 'should redirect to character path with warning message' do
+
+      end
+
+    end
+
+    context 'When the user has enough activity point and money to cover the action' do
+
+      it 'should processed the action and update the character and wallet details' do
+
+      end
+
+    end
+
+  end
 end

@@ -61,7 +61,6 @@
         </serviceView>
       </list>
     </option>
-    <option name="showServicesTree" value="false" />
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -118,7 +117,7 @@
       <workItem from="1616967088790" duration="142000" />
       <workItem from="1617006983121" duration="7268000" />
       <workItem from="1618830092479" duration="513000" />
-      <workItem from="1619888530448" duration="6513000" />
+      <workItem from="1619888530448" duration="8048000" />
     </task>
     <servers />
   </component>
