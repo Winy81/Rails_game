@@ -182,4 +182,23 @@ describe CharactersController, type: :request do
       end
     end
   end
+
+  describe 'GET#activity_deny' do
+
+    before do
+      login_as(@current_user)
+    end
+
+    let(:message) { 'Oops, your character has could not finish the Challenge ' }
+
+    it 'should redirect into character_path and flash a message' do
+
+      get activity_process_path(id: @character_first_user_alive.id)
+
+      expect(flash[:alert]).to eq(message)
+      response.should redirect_to character_path(@character_first_user_alive)
+
+    end
+  end
+
 end

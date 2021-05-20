@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/controllers/characters_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/characters_controller_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,6 +60,7 @@
         </serviceView>
       </list>
     </option>
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -117,7 +117,7 @@
       <workItem from="1616967088790" duration="142000" />
       <workItem from="1617006983121" duration="7268000" />
       <workItem from="1618830092479" duration="513000" />
-      <workItem from="1619888530448" duration="12091000" />
+      <workItem from="1619888530448" duration="12433000" />
     </task>
     <servers />
   </component>
