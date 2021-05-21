@@ -273,9 +273,25 @@ describe CharactersController, type: :request do
         expect(assigns(:sent_happiness_points)).to eq(-1*(@character_first_user_alive.happiness.to_i - current_happiness_state.to_i))
 
       end
+    end
+  end
 
+  describe 'GET#playing_deny' do
+
+    before do
+      login_as(@current_user)
     end
 
+    let(:message) { 'Oops, your character has not become Happy ' }
+
+    it 'should redirect into character_path and flash a message' do
+
+      get playing_process_path(id: @character_first_user_alive.id)
+
+      expect(flash[:alert]).to eq(message)
+      response.should redirect_to character_path(@character_first_user_alive)
+
+    end
   end
 
 end
