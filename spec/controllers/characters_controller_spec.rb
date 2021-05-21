@@ -294,4 +294,80 @@ describe CharactersController, type: :request do
     end
   end
 
+
+  describe 'POST#playing_process' do
+
+    before do
+      login_as(@current_user)
+    end
+
+    context 'When the character has not enough activity point to process the action' do
+
+      let(:params) { {:id => @character_first_user_alive.id,
+                      :amount => 5,
+                      :fed_state => 12,
+                      :activity_require_level => -1,
+                      :happiness => 12 } }
+
+      it 'should redirect to character path with warning message' do
+
+        post playing_process_path(params)
+
+        expect(flash[:warning]).to eq('Your are too tired to move ')
+        response.should redirect_to character_path(@character_first_user_alive)
+
+      end
+
+    end
+
+    context 'When the character has not enough feed point to process the action' do
+
+      let(:params) { {:id => @character_first_user_alive.id,
+                      :amount => 5,
+                      :fed_state => -1,
+                      :activity_require_level => 5,
+                      :happiness => 12 } }
+
+      it 'should redirect to character path with warning message' do
+
+        post playing_process_path(params)
+
+        expect(flash[:warning]).to eq('Your are too hungry to move ')
+        response.should redirect_to character_path(@character_first_user_alive)
+
+      end
+
+    end
+
+    context 'When the character has enough activity and feed points to cover the action' do
+
+      let(:params) { {:id => @character_first_user_alive.id,
+                      :amount => 95,
+                      :fed_state => '12',
+                      :activity_require_level => '7',
+                      :happiness => '12' } }
+      let(:current_amount) { params[:amount].to_i }
+      let(:current_fed_state) { params[:fed_state] }
+      let(:current_activity_state) { params[:activity_require_level] }
+      let(:current_happiness_state) { params[:happiness] }
+      let(:wallet_view) { @current_user.wallet.amount }
+
+      it 'should processed the action and update the character and wallet details' do
+
+        post playing_process_path(params)
+
+        expect(assigns(:current_fed_state)).to eq(params[:fed_state])
+        expect(assigns(:current_activity_state)).to eq(params[:activity_require_level])
+        expect(assigns(:current_happiness_state)).to eq(params[:happiness])
+        expect(assigns(:current_amount)).to eq(current_amount)
+        expect(assigns(:spendable_amount)).to eq(-1*(@current_user.wallet.amount - current_amount))
+        expect(assigns(:costs)).to eq((wallet_view - current_amount))
+
+        expect(assigns(:sent_potion_of_food)).to eq(-1*(@character_first_user_alive.fed_state.to_i - current_fed_state.to_i))
+        expect(assigns(:sent_points_of_activity)).to eq(-1*(@character_first_user_alive.activity_require_level.to_i - current_activity_state.to_i))
+        expect(assigns(:sent_happiness_points)).to eq(-1*(@character_first_user_alive.happiness.to_i - current_happiness_state.to_i))
+
+      end
+    end
+  end
 end
