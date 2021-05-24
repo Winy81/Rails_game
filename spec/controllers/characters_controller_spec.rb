@@ -6,8 +6,10 @@ describe CharactersController, type: :request do
   before do
     @current_user = User.create(id:101, email: "test_user@email.com", name: "test_user", role: "user", password:'password')
     @not_current_user = User.create(id:102, email: "test_user2@email.com", name: "test_user2", role: "user", password:'password')
+    @user_with_no_character = User.create(id:103, email: "test_use32@email.com", name: "test_user3", role: "user", password:'password')
     Wallet.create(amount: 100, user_id: 101)
     Wallet.create(amount: 100, user_id: 102)
+    Wallet.create(amount: 100, user_id: 103)
     @character_first_user_dead = Character.create(id:1001, name:'character_1',fed_state: 10,happiness:10, activity_require_level: 10, status:'dead', died_on: '2021-09-15 18:36:27', age: 3, user_id: 101 )
     @character_first_user_alive = Character.create(id:1002, name:'character_2',fed_state: 10,happiness:10, activity_require_level: 10, status:'alive', age: 5, user_id: 101 )
     Character.create(id:1003, name:'character_3',fed_state: 10,happiness:10, activity_require_level: 10, status:'dead', died_on: '2021-09-15 18:36:27',age: 5, user_id: 102 )
@@ -426,6 +428,41 @@ describe CharactersController, type: :request do
 
       end
 
+    end
+  end
+
+  describe 'GET#new' do
+
+    context 'When current user has character alive' do
+
+      before do
+        login_as(@current_user)
+      end
+
+      it 'should be redirected with an alert' do
+
+        get new_character_path
+
+        expect(flash[:alert]).to eq('You have a character Alive ')
+        response.should redirect_to characters_path
+
+      end
+
+    end
+
+    context 'When current user has NO character alive' do
+
+      before do
+        login_as(@user_with_no_character)
+      end
+
+      it 'should start character create process' do
+
+        get new_character_path
+
+        allow(Character).to receive(:new)
+
+      end
     end
   end
 end
