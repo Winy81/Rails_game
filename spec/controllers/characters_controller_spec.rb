@@ -370,4 +370,62 @@ describe CharactersController, type: :request do
       end
     end
   end
+
+  describe 'PUT#update' do
+
+    before do
+      login_as(@current_user)
+    end
+
+    let(:path_recogniser) { double(CharactersServices::RequestPathRecogniser)}
+
+    context 'when the action is feeding action' do
+
+      let(:params) { { :id => @character_first_user_alive.id, :extra => 'from_feeding_process'} }
+      let(:expected_path) { CharactersServices::RequestPathRecogniser::FEEDING_PATH }
+
+      it 'should trigger update_fed_state' do
+
+        allow(CharactersServices::RequestPathRecogniser).to receive(:new).with(params[:extra]).and_return(path_recogniser)
+        allow(path_recogniser).to receive(:request_path_recognise_helper).and_return(expected_path)
+
+        put character_path(params)
+
+      end
+
+    end
+
+    context 'when the action is activity action' do
+
+      let(:params) { { :id => @character_first_user_alive.id, :extra => 'from_activity_process'} }
+      let(:expected_path) { CharactersServices::RequestPathRecogniser::ACTIVITY_PATH }
+
+      it 'should trigger update_activity_state' do
+
+        allow(CharactersServices::RequestPathRecogniser).to receive(:new).with(params[:extra]).and_return(path_recogniser)
+        allow(path_recogniser).to receive(:request_path_recognise_helper).and_return(expected_path)
+
+        put character_path(params)
+
+
+      end
+
+    end
+
+    context 'when the action is playing action' do
+
+      let(:params) { { :id => @character_first_user_alive.id, :extra => 'from_playing_process'} }
+      let(:expected_path) { CharactersServices::RequestPathRecogniser::PLAYING_PATH }
+
+      it 'should trigger update_playing_state' do
+
+        allow(CharactersServices::RequestPathRecogniser).to receive(:new).with(params[:extra]).and_return(path_recogniser)
+        allow(path_recogniser).to receive(:request_path_recognise_helper).and_return(expected_path)
+
+        put character_path(params)
+
+      end
+
+    end
+  end
 end

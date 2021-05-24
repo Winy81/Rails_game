@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/characters_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/characters_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/controllers/characters_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/characters_controller_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +119,8 @@
       <workItem from="1616967088790" duration="142000" />
       <workItem from="1617006983121" duration="7268000" />
       <workItem from="1618830092479" duration="513000" />
-      <workItem from="1619888530448" duration="15307000" />
+      <workItem from="1619888530448" duration="19820000" />
+      <workItem from="1621669081865" duration="613000" />
     </task>
     <servers />
   </component>
@@ -126,15 +128,15 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="92" y="29" width="1509" height="854" key="DiffContextDialog" timestamp="1617878732284">
+    <state x="92" y="29" width="1509" height="854" key="DiffContextDialog" timestamp="1621845193750">
       <screen x="0" y="23" width="1680" height="969" />
     </state>
-    <state x="92" y="29" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1617878732284" />
-    <state x="898" y="372" width="782" height="567" key="find.popup" timestamp="1621323297231">
-      <screen x="0" y="23" width="1680" height="967" />
+    <state x="92" y="29" width="1509" height="854" key="DiffContextDialog/0.23.1680.969@0.23.1680.969" timestamp="1621845193750" />
+    <state x="898" y="372" width="782" height="567" key="find.popup" timestamp="1621586431991">
+      <screen x="0" y="23" width="1680" height="969" />
     </state>
     <state x="898" y="372" width="782" height="566" key="find.popup/0.23.1680.966@0.23.1680.966" timestamp="1621085078958" />
     <state x="898" y="372" width="782" height="567" key="find.popup/0.23.1680.967@0.23.1680.967" timestamp="1621323297231" />
-    <state x="898" y="372" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1615714816747" />
+    <state x="898" y="372" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1621586431991" />
   </component>
 </project>
