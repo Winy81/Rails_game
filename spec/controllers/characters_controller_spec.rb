@@ -546,4 +546,38 @@ describe CharactersController, type: :request do
       end
     end
   end
+
+  describe 'POST#destroy' do
+
+    before do
+      login_as(@current_user)
+    end
+
+    context 'When tha character successfully deleted' do
+
+      it 'should delete the character and return with a warning' do
+
+        delete character_path(id:@character_first_user_alive.id)
+
+        expect(flash[:warning]).to eq("Character has been deleted with id:  #{@character_first_user_alive.id}")
+        expect(Character.find_by(id:@character_first_user_alive.id)).to be_nil
+
+      end
+
+    end
+
+    context 'When tha character has NOT successfully deleted' do
+
+      it 'should return with a alert' do
+
+        expect_any_instance_of(Character).to receive(:delete).and_return(false)
+
+        delete character_path(id:@character_first_user_alive.id)
+
+        expect(flash[:alert]).to eq("Was not successful to delete Character with id:  #{@character_first_user_alive.id}")
+        expect(Character.find_by(id:@character_first_user_alive.id).id).to eq(@character_first_user_alive.id)
+
+      end
+    end
+  end
 end
