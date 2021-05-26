@@ -465,4 +465,85 @@ describe CharactersController, type: :request do
       end
     end
   end
+
+  describe 'POST#create' do
+
+    context 'When the user has Character alive' do
+
+      before do
+        login_as(@current_user)
+      end
+
+      it 'should be redirected with an alert' do
+
+        post characters_path
+
+        expect(flash[:alert]).to eq('You have a character Alive ')
+        response.should redirect_to characters_path
+
+      end
+
+    end
+
+    context 'When th user do NOT have Character alive' do
+
+      context 'When the character is NOT successfully saved' do
+
+        before do
+          login_as(@user_with_no_character)
+        end
+
+        let(:params) { { :character => { 'id' => "#{Character.last.id+1}",
+                                         'name' => 'new_for_create',
+                                         'user_id' => "#{@user_with_no_character.id}" } } }
+        let(:character) { double(Character,
+                                 id:params[:character]['id'],
+                                 name: params[:character]['name'],
+                                 user_id: params[:character]['user_id']) }
+
+        it 'should be redirected with an alert' do
+
+          Character.should_receive(:new).with(params[:character]).and_return(character)
+
+          expect(character).to receive(:save).and_return(false)
+
+          post characters_path(params)
+
+          expect(flash[:alert]).to eq('The character has not been created')
+          response.should render_template('new')
+
+        end
+
+      end
+
+      context 'When the character is successfully saved' do
+
+        before do
+          login_as(@user_with_no_character)
+        end
+
+        let(:params) { { :character => { id: Character.last.id+1,
+                                         name:'new_for_create',
+                                         user_id: @user_with_no_character.id } } }
+        let(:character) { double(Character) }
+        let(:wallet_service) { double(WalletServices::BasicWalletCreator) }
+
+        it 'Should setup the starter amount and redirect with notice' do
+
+          allow(character).to receive(:save)
+          expect(WalletServices::BasicWalletCreator).to receive(:new).with(@user_with_no_character).and_return(wallet_service)
+          expect(wallet_service).to receive(:setup_starter_amount)
+
+          post characters_path(params)
+
+          expect(flash[:notice]).to eq("Tha character has born. You gave name:  #{Character.last.name}")
+
+          expect(Character.last.name).to eq(params[:character][:name])
+          expect(Character.last.user.has_character).to eq(true)
+          expect(Character.last.user.wallet.amount).to eq(WalletServices::WalletProcessor::STARTER_AMOUNT)
+
+        end
+      end
+    end
+  end
 end
