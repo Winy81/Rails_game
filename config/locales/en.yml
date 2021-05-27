@@ -34,3 +34,4 @@ en:
       character_has_updated: 'Character details has updated.'
       character_has_not_updated: 'Character details has NOT been updated.'
       user_has_no_admin_privileges: 'You have no admin privileges'
+      user_has_not_logged_in_with_admin_privileges: 'You have to log in first with admin privileges'

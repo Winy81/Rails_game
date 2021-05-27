@@ -73,7 +73,7 @@ class AdminsController < ApplicationController
     unless current_user.nil?
       current_user.role == 'admin' ? true : redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_no_admin_privileges'))
     else
-      redirect_to characters_path
+      redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_not_logged_in_with_admin_privileges'))
     end
   end
 
