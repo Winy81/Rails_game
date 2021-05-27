@@ -580,4 +580,21 @@ describe CharactersController, type: :request do
       end
     end
   end
+
+  describe 'GET#character_info' do
+
+    before do
+      login_as(@current_user)
+    end
+
+    it 'should return with character and user infos' do
+
+      get character_info_path(id:@character_first_user_alive.id)
+
+      expect(assigns(:character)).to eq(@character_first_user_alive)
+      expect(assigns(:user)).to eq(@character_first_user_alive.user)
+
+    end
+
+  end
 end
