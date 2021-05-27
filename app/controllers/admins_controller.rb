@@ -70,7 +70,11 @@ class AdminsController < ApplicationController
   private
 
   def is_user_admin?
-    current_user.role == 'admin' ? true : redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_no_admin_privileges'))
+    unless current_user.nil?
+      current_user.role == 'admin' ? true : redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_no_admin_privileges'))
+    else
+      redirect_to characters_path
+    end
   end
 
   def update_user_params
