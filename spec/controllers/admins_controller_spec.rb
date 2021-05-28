@@ -5,6 +5,15 @@ RSpec.describe AdminsController, type: :request do
   before do
     @admin_user = User.create(id:101, email: "test_user@email.com", name: "test_user", role: "admin", password:'password')
     @not_admin_user = User.create(id:102, email: "test_user2@email.com", name: "test_user2", role: "user", password:'password')
+    @character = Character.create(id:1001,
+                                  name:'character_1',
+                                  fed_state: 10,
+                                  happiness:10,
+                                  activity_require_level: 10,
+                                  status:'dead',
+                                  died_on: '2021-09-15 18:36:27',
+                                  age: 3,
+                                  user_id: 102 )
     Wallet.create(amount: 100, user_id: 101)
     Wallet.create(amount: 100, user_id: 102)
   end
@@ -95,6 +104,23 @@ RSpec.describe AdminsController, type: :request do
       get edit_user_path(params)
 
       expect(assigns(:user)).to eq(@not_admin_user)
+
+    end
+  end
+
+  describe 'GET#edit_character' do
+
+    before do
+      login_as(@admin_user)
+    end
+
+    let(:params) { { id:@character.id } }
+
+    it 'should return with a user whos id is same as params_id' do
+
+      get edit_character_path(params)
+
+      expect(assigns(:character)).to eq(@character)
 
     end
   end
