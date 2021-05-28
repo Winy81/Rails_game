@@ -81,4 +81,21 @@ RSpec.describe AdminsController, type: :request do
       end
     end
   end
+
+  describe 'GET#edit_user' do
+
+    before do
+      login_as(@admin_user)
+    end
+
+    let(:params) { { id:@not_admin_user.id } }
+
+    it 'should return with a user whos id is same as params_id' do
+
+      get edit_user_path(params)
+
+      expect(assigns(:user)).to eq(@not_admin_user)
+
+    end
+  end
 end
