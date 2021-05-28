@@ -63,9 +63,22 @@ RSpec.describe AdminsController, type: :request do
 
     describe '#admin_path_recogniser?' do
 
+      before do
+        login_as(@admin_user)
+      end
 
+      context 'When the path is admin_path' do
 
+        let(:params) { { :controller => 'admins' } }
+
+        it 'should return true' do
+
+          get admins_index_path
+
+          expect(assigns(:admin_path)).to eq(true)
+
+        end
+      end
     end
-
   end
 end
