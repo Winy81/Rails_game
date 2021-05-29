@@ -116,12 +116,43 @@ RSpec.describe AdminsController, type: :request do
 
     let(:params) { { id:@character.id } }
 
-    it 'should return with a user whos id is same as params_id' do
+    it 'should return with a character whos id is same as params_id' do
 
       get edit_character_path(params)
 
       expect(assigns(:character)).to eq(@character)
 
+    end
+  end
+
+  describe 'GET#user_update_by_admin' do
+
+    before do
+      login_as(@admin_user)
+    end
+
+    context 'if NOT successfully updated' do
+
+      let(:params) { {} }
+
+      it 'should return with an error' do
+
+        get user_update_by_admin_path(params)
+
+        expect(assigns(:user)).to eq(@not_admin_user)
+      end
+    end
+
+    context 'if successfully updated' do
+
+      let(:params) { {} }
+
+      it 'should update users details and return with a notice' do
+
+        get user_update_by_admin_path(params)
+
+        expect(assigns(:user)).to eq(@not_admin_user)
+      end
     end
   end
 end
