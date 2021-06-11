@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/controllers/admins_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/admins_controller_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +119,7 @@
       <workItem from="1618830092479" duration="513000" />
       <workItem from="1619888530448" duration="19820000" />
       <workItem from="1621669081865" duration="25704000" />
-      <workItem from="1622912178638" duration="4131000" />
+      <workItem from="1622912178638" duration="4773000" />
     </task>
     <servers />
   </component>

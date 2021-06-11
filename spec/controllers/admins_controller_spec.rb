@@ -226,5 +226,25 @@ describe AdminsController, type: :request do
 
       end
     end
+
+    describe 'GET#character_management' do
+
+      before do
+        login_as(@admin_user)
+      end
+
+      let(:all_characters) { Character.all }
+
+      it 'should return with all character in ASC order by user_id' do
+
+        characters_in_order = all_characters.order(:id => :asc)
+
+        allow(Character).to receive(:all).and_return(all_characters)
+        expect(all_characters).to receive(:character_in_asc_id_order).and_return(characters_in_order)
+
+        get character_management_path
+
+      end
+    end
   end
 end
