@@ -209,5 +209,22 @@ describe AdminsController, type: :request do
 
       end
     end
+
+    describe 'GET#account_management' do
+
+      before do
+        login_as(@admin_user)
+      end
+
+      it 'should return with all user in ASC order by user_id' do
+
+        users_in_order = User.all.order(:id => :asc)
+
+        expect(User).to receive(:users_in_asc_id_order).and_return(users_in_order)
+
+        get account_management_path
+
+      end
+    end
   end
 end
