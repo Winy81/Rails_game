@@ -1,6 +1,7 @@
+require 'spec_helper'
 require 'rails_helper'
 
-RSpec.describe AdminsController, type: :request do
+describe AdminsController, type: :request do
 
   before do
     @admin_user = User.create(id:101, email: "test_user@email.com", name: "test_user", role: "admin", password:'password')
@@ -131,27 +132,81 @@ RSpec.describe AdminsController, type: :request do
       login_as(@admin_user)
     end
 
+
+    context 'if successfully updated' do
+
+      let(:message) { 'User details has been updated.' }
+      let(:new_budget) { 10000 }
+      let(:params) { { :id => @not_admin_user.id,
+                       :user => { :id => @not_admin_user.id,
+                                  :name => @not_admin_user.name,
+                                  :email => @not_admin_user.email,
+                                  :role => 'user',
+                                  :budget => new_budget} } }
+
+
+      it 'should update users details and return with a notice' do
+
+        patch user_update_by_admin_path(params)
+
+        expect(flash[:notice]).to eq(message)
+        expect(assigns(:user)).to eq(@not_admin_user)
+        expect(@not_admin_user.wallet.amount).to eq(new_budget)
+
+      end
+    end
+
     context 'if NOT successfully updated' do
 
       let(:params) { {} }
 
       it 'should return with an error' do
 
-        get user_update_by_admin_path(params)
+        #patch user_update_by_admin_path(params)
 
-        expect(assigns(:user)).to eq(@not_admin_user)
+        #expect(assigns(:user)).to eq(@not_admin_user)
+
       end
+    end
+  end
+
+  describe 'GET#character_update_by_admin' do
+
+    before do
+      login_as(@admin_user)
     end
 
     context 'if successfully updated' do
 
-      let(:params) { {} }
+      let(:new_name_of_character) { 'NeW_NaMe' }
+      let(:message) { 'Character details has updated.' }
+      let(:params) { { :id => @character.id,
+                       :character => { :id => @character.id,
+                                       :name => new_name_of_character } } }
 
       it 'should update users details and return with a notice' do
 
-        get user_update_by_admin_path(params)
+        patch character_update_by_admin_path(params)
 
-        expect(assigns(:user)).to eq(@not_admin_user)
+        expect(flash[:notice]).to eq(message)
+        expect(assigns(:character)).to eq(@character)
+        expect(Character.find_by(id:@character.id).name).to eq(new_name_of_character)
+
+      end
+    end
+
+    context 'if NOT successfully updated' do
+
+      let(:new_name_of_character) { 'NeW_NaMe' }
+      let(:message) { 'Character details has updated.' }
+      let(:params) { { :id => @character.id } }
+
+      it 'should update users details and return with a notice' do
+
+        #patch character_update_by_admin_path(params)
+
+        #expect(flash[:alert]).to eq(message)
+
       end
     end
   end

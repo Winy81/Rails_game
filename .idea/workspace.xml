@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admins_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admins_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/controllers/admins_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/admins_controller_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +62,6 @@
         </serviceView>
       </list>
     </option>
-    <option name="showServicesTree" value="false" />
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -119,7 +119,8 @@
       <workItem from="1617006983121" duration="7268000" />
       <workItem from="1618830092479" duration="513000" />
       <workItem from="1619888530448" duration="19820000" />
-      <workItem from="1621669081865" duration="24380000" />
+      <workItem from="1621669081865" duration="25704000" />
+      <workItem from="1622912178638" duration="3726000" />
     </task>
     <servers />
   </component>
@@ -141,5 +142,9 @@
     <state x="898" y="372" width="782" height="566" key="find.popup/0.23.1680.966@0.23.1680.966" timestamp="1621085078958" />
     <state x="898" y="372" width="782" height="567" key="find.popup/0.23.1680.967@0.23.1680.967" timestamp="1621323297231" />
     <state x="898" y="372" width="782" height="567" key="find.popup/0.23.1680.969@0.23.1680.969" timestamp="1622113688932" />
+    <state x="589" y="273" width="670" height="676" key="search.everywhere.popup" timestamp="1623425373055">
+      <screen x="0" y="23" width="1680" height="969" />
+    </state>
+    <state x="589" y="273" width="670" height="676" key="search.everywhere.popup/0.23.1680.969@0.23.1680.969" timestamp="1623425373055" />
   </component>
 </project>
