@@ -57,7 +57,7 @@ class AdminsController < ApplicationController
   end
 
   def search
-    @response= Services::SearchEngine::Search.new(params[:search_params], params[:commit]).response
+    @response = Services::SearchEngine::Search.new(params[:search_params], params[:commit]).response
     if @response.first["search_type"] == "account"
       @users = @response
     elsif @response.first["search_type"] == "character"
