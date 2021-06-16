@@ -255,6 +255,24 @@ describe AdminsController, type: :request do
 
       context 'when account search' do
 
+        let(:params) { { :search_params => 'character_1',
+                         :commit => 'Search User' } }
+        let(:instance_of_search) { double(Services::SearchEngine::Search) }
+        let(:response_of_search) { [{'name' => 'test_user2',
+                                     'search_type' => 'account',
+                                     'email' => 'test_user2@email.com'}]}
+
+        it 'should return with user based on search' do
+
+          expect(Services::SearchEngine::Search).to receive(:new).with(params[:search_params], params[:commit]).and_return(instance_of_search)
+          expect(instance_of_search).to receive(:response).and_return(response_of_search)
+
+          post search_admins_path(params)
+
+          expect(assigns(:users)).to eq(response_of_search)
+
+        end
+
       end
 
       context 'when character search' do
