@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
 
-  context 'validations' do
+  describe 'validations' do
 
-    context 'built in validations' do
+    describe 'built in validations' do
 
       it { is_expected.to validate_presence_of :event_id }
       it { is_expected.to validate_presence_of :event_name }
@@ -12,7 +12,7 @@ RSpec.describe Event, type: :model do
 
     end
 
-    context 'custom validations' do
+    describe 'custom validations' do
 
       context 'exist Event' do
 
@@ -47,9 +47,7 @@ RSpec.describe Event, type: :model do
             expect(event.errors.messages).to eq({:event_id=>[" : #{event_id} is a NOT valid event_id"]})
           end
         end
-
       end
-
     end
   end
 end

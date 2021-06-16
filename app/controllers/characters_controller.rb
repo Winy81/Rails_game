@@ -138,7 +138,7 @@ class CharactersController < ApplicationController
     if path_recogniser == 'feeding'
       update_fed_state(@character)
     elsif path_recogniser == 'activity'
-      update_from_activity_state(@character)
+      update_activity_state(@character)
     elsif path_recogniser == 'playing'
       update_playing_state(@character)
     end
@@ -218,7 +218,7 @@ class CharactersController < ApplicationController
     end
   end
 
-  def update_from_activity_state(character)
+  def update_activity_state(character)
     if character.update_attributes(:fed_state => fed_limit.fed_level_max_setter,
                                    :activity_require_level => activity_limit.activity_level_min_setter,
                                    :happiness => happiness_limit.happiness_level_max_setter)

@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -52,6 +53,7 @@ group :development, :test do
   gem 'capybara', '~> 3.31'
   #gem 'capybara-webkit', '~> 1.6'
   gem 'database_cleaner', '1.3.0'
+  gem 'factory_girl', '~> 4.9'
 end
 
 group :development do

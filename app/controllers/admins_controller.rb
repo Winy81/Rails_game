@@ -49,7 +49,7 @@ class AdminsController < ApplicationController
   end
 
   def account_management
-    @users = User.all.user_in_asc_id_order
+    @users = User.users_in_asc_id_order
   end
 
   def character_management
@@ -57,7 +57,7 @@ class AdminsController < ApplicationController
   end
 
   def search
-    @response= Services::SearchEngine::Search.new(params[:search_params], params[:commit]).response
+    @response = Services::SearchEngine::Search.new(params[:search_params], params[:commit]).response
     if @response.first["search_type"] == "account"
       @users = @response
     elsif @response.first["search_type"] == "character"
@@ -70,7 +70,11 @@ class AdminsController < ApplicationController
   private
 
   def is_user_admin?
-    current_user.role == 'admin' ? true : redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_no_admin_privileges'))
+    unless current_user.nil?
+      current_user.role == 'admin' ? true : redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_no_admin_privileges'))
+    else
+      redirection_to_characters_path('alert', I18n.t('admin.messages.user_has_not_logged_in_with_admin_privileges'))
+    end
   end
 
   def update_user_params
