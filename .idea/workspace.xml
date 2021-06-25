@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/controllers/guides_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/guides_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/guides/activity_require.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/activity_require.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/guides/age.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/age.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/guides/happiness.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/happiness.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

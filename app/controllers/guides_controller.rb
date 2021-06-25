@@ -9,7 +9,7 @@ class GuidesController < ApplicationController
   end
 
   def happiness
-    @message = "Hello from GuidesController#happiness"
+
   end
 
   def age
