@@ -5,7 +5,6 @@ class GuidesController < ApplicationController
   end
 
   def activity_require_level
-    @message = "Hello from GuidesController#activity_require_level"
     render 'activity_require'
   end
 
