@@ -13,7 +13,7 @@ class GuidesController < ApplicationController
   end
 
   def age
-    @message = "Hello from GuidesController#age"
+
   end
 
   def hibernated
