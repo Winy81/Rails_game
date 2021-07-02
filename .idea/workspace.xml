@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/guides_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/guides_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/guides/happiness.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/happiness.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/guides/hibernated.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/hibernated.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +121,9 @@
       <workItem from="1621669081865" duration="25704000" />
       <workItem from="1622912178638" duration="9542000" />
       <workItem from="1623675150674" duration="1453000" />
+      <workItem from="1624873270070" duration="497000" />
+      <workItem from="1624977067665" duration="597000" />
+      <workItem from="1625049347728" duration="929000" />
     </task>
     <servers />
   </component>
