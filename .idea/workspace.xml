@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86256678-eaf7-4337-afca-e83ab5604eb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/statics/game_description.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/statics/game_description.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/guides/fed_state.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/guides/fed_state.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +130,7 @@
       <workItem from="1626951575767" duration="971000" />
       <workItem from="1628509792679" duration="573000" />
       <workItem from="1629378694884" duration="539000" />
-      <workItem from="1631041347354" duration="1424000" />
+      <workItem from="1631041347354" duration="1769000" />
     </task>
     <servers />
   </component>
