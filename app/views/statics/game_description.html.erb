@@ -2,8 +2,14 @@
 <h4 class="list-item text-center text-muted mt-2">Guides:</h4></li>
 <div class="spacer_0_5"></div>
 <div class="container index_content_container">
-  <h4 class="list-item text-center text-muted mt-2">Stats:</h4>
+  <div class="container mt-5 mb-3 text-center">
+    <p class="text-secondary">The main duty is keep your character alive as long as you can. You have to feed if the fed point is low.
+      Use your activity points wisely, you will receive some in every hour.
+      You have to play if you would like to make your character happy or you can beat challenges if you need gold. </p>
+  </div>
   <div class="spacer_1"></div>
+  <h4 class="list-item text-center text-muted mt-2">Stats:</h4>
+  <div class="spacer_0_5"></div>
   <div class="row justify-content-center full_leader_board">
     <ul class="list">
       <li class="list-inline-item"><%= link_to 'Age', age_path({extra: 'from_guides'}), class: 'btn btn-outline-secondary'%></li>
@@ -15,6 +21,6 @@
   </div>
 </div>
 </br>
-<div class="spacer_2_5"></div>
+<div class="spacer_1"></div>
 
 <%= render 'shared/dinamic_single_index_back_button' %>
